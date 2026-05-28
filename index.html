@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muk Post | Professional Post-Production</title>
+    <!-- FontAwesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* DESIGN SYSTEM */
         :root {
@@ -26,7 +28,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* IMAGE RENDERING - Preserves the stippled "spray paint" texture */
+        /* IMAGE RENDERING */
         img {
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
@@ -55,6 +57,8 @@
 
         .nav-logo { width: 45px; height: auto; }
 
+        .nav-right { display: flex; align-items: center; }
+
         .nav-links a {
             color: var(--text-dim);
             text-decoration: none;
@@ -67,6 +71,22 @@
         }
 
         .nav-links a:hover { color: var(--accent); }
+
+        .nav-socials {
+            display: flex;
+            gap: 1.2rem;
+            margin-left: 3rem;
+            padding-left: 2rem;
+            border-left: 1px solid #333;
+        }
+
+        .nav-socials a {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        .nav-socials a:hover { color: var(--accent); transform: translateY(-2px); }
 
         /* HERO */
         .hero {
@@ -145,7 +165,7 @@
             line-height: 1.6;
         }
 
-        /* PORTFOLIO CATEGORIES */
+        /* PORTFOLIO */
         .work-cat { margin-bottom: 6rem; }
         
         .work-header {
@@ -182,7 +202,7 @@
             width: 0; height: 0;
             border-style: solid;
             border-width: 15px 0 15px 25px;
-            border-color: transparent transparent transparent rgba(255,255,255,0.2);
+            border-color: transparent transparent transparent rgba(255,255,255,0.1);
         }
 
         /* FOOTER */
@@ -197,22 +217,42 @@
             align-items: center;
         }
 
-        .contact-links a {
+        .contact-links a.email-link {
             color: var(--text-main);
             text-decoration: none;
-            font-size: clamp(1.2rem, 4vw, 2rem);
+            font-size: clamp(1.2rem, 4vw, 2.2rem);
             font-weight: 700;
             border-bottom: 2px solid transparent;
             transition: 0.3s;
         }
 
-        .contact-links a:hover { border-bottom-color: var(--accent); }
+        .contact-links a.email-link:hover { border-bottom-color: var(--accent); }
 
-        .social-link {
-            font-size: 1rem !important;
-            color: var(--text-dim) !important;
-            letter-spacing: 0.1em;
+        .footer-socials {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-btn {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
             text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            transition: 0.3s;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+        }
+
+        .social-btn:hover {
+            color: var(--accent);
+            border-color: #333;
+            background: var(--surface);
         }
 
         /* SCROLL REVEAL */
@@ -220,7 +260,7 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
+            .nav-links, .nav-socials { display: none; }
             .hero-wordmark { width: 85vw; }
             section { padding: 80px 0; }
             .workflow-headline { font-size: 2.2rem; }
@@ -234,10 +274,16 @@
             <a href="#">
                 <img src="https://i.imgur.com/0czpN64.png" alt="M Logo" class="nav-logo">
             </a>
-            <div class="nav-links">
-                <a href="#about">Workflow</a>
-                <a href="#work">Work</a>
-                <a href="#contact">Contact</a>
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="#about">Workflow</a>
+                    <a href="#work">Work</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="nav-socials">
+                    <a href="https://www.instagram.com/muk.post/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://x.com/muk_post" target="_blank" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
             </div>
         </div>
     </nav>
@@ -317,8 +363,16 @@
         <img src="https://i.imgur.com/0czpN64.png" alt="M Logo" class="footer-logo reveal">
         <div class="contact-links reveal">
             <span class="section-tag">Let's Work</span>
-            <a href="mailto:muk.postproduction@gmail.com">muk.postproduction@gmail.com</a>
-            <a href="https://instagram.com/muk.post" class="social-link" target="_blank">@muk.post</a>
+            <a href="mailto:muk.postproduction@gmail.com" class="email-link">muk.postproduction@gmail.com</a>
+            
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/muk.post/" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+                <a href="https://x.com/muk_post" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-x-twitter"></i> X / Twitter
+                </a>
+            </div>
         </div>
     </footer>
 
