@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muk Post | Professional Post-Production</title>
+    <!-- FontAwesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* DESIGN SYSTEM */
+        :root {
+            --bg: #0a0a0a;
+            --surface: #111111;
+            --text-main: #eeeeee;
+            --text-dim: #888888;
+            --accent: #ffffff;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            display: block;
+        }
+
+        /* LAYOUT */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        section { padding: 120px 0; border-bottom: 1px solid #222; }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; height: 80px;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        nav .container {
+            display: flex; justify-content: space-between; align-items: center; width: 100%;
+        }
+
+        .nav-logo { width: 45px; height: auto; }
+
+        .nav-right { display: flex; align-items: center; }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            margin-left: 2.5rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        .nav-socials {
+            display: flex;
+            gap: 1.2rem;
+            margin-left: 3rem;
+            padding-left: 2rem;
+            border-left: 1px solid #333;
+        }
+
+        .nav-socials a {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        .nav-socials a:hover { color: var(--accent); transform: translateY(-2px); }
+
+        /* HERO */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: none;
+        }
+
+        .hero-wordmark { 
+            width: 600px; 
+            max-width: 85vw; 
+            margin-bottom: 2rem; 
+        }
+
+        .hero h1 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5em;
+            color: var(--text-dim);
+            font-weight: 400;
+            margin-top: 1rem;
+        }
+
+        /* CAPABILITIES */
+        .section-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .workflow-headline {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            text-transform: uppercase;
+            max-width: 900px;
+            line-height: 1.1;
+            margin-bottom: 4rem;
+            font-weight: 800;
+        }
+
+        .caps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cap-card {
+            padding: 3rem 2rem;
+            background: var(--surface);
+            border-top: 1px solid #333;
+            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cap-card:hover { 
+            background: #1a1a1a; 
+            border-top-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .cap-card h3 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .cap-card p {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        /* PORTFOLIO */
+        .work-cat { margin-bottom: 6rem; }
+        
+        .work-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 1rem;
+        }
+
+        .work-header h2 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; 
+            height: 0;
+            overflow: hidden;
+            border: 1px solid #222;
+            background: #151515;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-box {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #151515;
+            border: 1px solid #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .video-box:hover { border-color: #555; }
+
+        .video-box::before {
+            content: '';
+            width: 0; height: 0;
+            border-style: solid;
+            border-width: 15px 0 15px 25px;
+            border-color: transparent transparent transparent rgba(255,255,255,0.1);
+        }
+
+        /* FOOTER */
+        footer { padding: 150px 0 80px; text-align: center; }
+
+        .footer-logo { width: 60px; margin: 0 auto 4rem; opacity: 0.8; }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .contact-links a.email-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: clamp(1.2rem, 4vw, 2.2rem);
+            font-weight: 700;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+        }
+
+        .contact-links a.email-link:hover { border-bottom-color: var(--accent); }
+
+        .footer-socials {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-btn {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            transition: 0.3s;
+            padding: 0.5rem 1rem;
+            border: 1px solid transparent;
+        }
+
+        .social-btn:hover {
+            color: var(--accent);
+            border-color: #333;
+            background: var(--surface);
+        }
+
+        /* SCROLL REVEAL */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-socials { display: none; }
+            .hero-wordmark { width: 85vw; }
+            section { padding: 80px 0; }
+            .workflow-headline { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="#">
+                <img src="https://i.imgur.com/0czpN64.png" alt="M Logo" class="nav-logo">
+            </a>
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="#about">Workflow</a>
+                    <a href="#work">Work</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="nav-socials">
+                    <a href="https://www.instagram.com/muk.post/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://x.com/muk_post" target="_blank" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero container">
+            <img src="https://i.imgur.com/MilMt1c.png" alt="MUK POST" class="hero-wordmark reveal">
+            <h1 class="reveal">Toronto-Based Remote Post-Production House</h1>
+        </section>
+
+        <!-- SERVICES -->
+        <section id="about" class="container">
+            <span class="section-tag reveal">Capabilities</span>
+            <h2 class="workflow-headline reveal">Professional grade integration of sight and sound.</h2>
+            
+            <div class="caps-grid">
+                <div class="cap-card reveal">
+                    <h3>01. Editing</h3>
+                    <p>Narrative-driven assembly and precision cutting for films, music videos, and commercial campaigns. Native 4K/8K workflows exclusively in DaVinci Resolve.</p>
+                </div>
+                <div class="cap-card reveal">
+                    <h3>02. Sound</h3>
+                    <p>High-fidelity sound design, mixing, and surgical dialogue restoration in Pro Tools. Engineered for theatrical impact and digital clarity.</p>
+                </div>
+                <div class="cap-card reveal">
+                    <h3>03. Colour</h3>
+                    <p>Industrial-grade grading to evoke mood and maintain visual integrity. Professional monitoring to ensure accuracy across all delivery formats.</p>
+                </div>
+                <div class="cap-card reveal">
+                    <h3>04. Design</h3>
+                    <p>Bespoke film titling, motion graphics, and visual identity design using After Effects and Fusion to round out the final cinematic form.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO -->
+        <section id="work" class="container">
+            <span class="section-tag reveal">Selected Projects</span>
+            
+            <div class="work-cat reveal">
+                <div class="work-header">
+                    <h2>Editing</h2>
+                    <span class="section-tag">Narrative / Music Video</span>
+                </div>
+                <div class="video-box"></div>
+            </div>
+
+            <div class="work-cat reveal">
+                <div class="work-header">
+                    <h2>Sound</h2>
+                    <span class="section-tag">Design / Mix</span>
+                </div>
+                <div class="video-box"></div>
+            </div>
+
+            <div class="work-cat reveal">
+                <div class="work-header">
+                    <h2>Colour</h2>
+                    <span class="section-tag">Cinematic Grade</span>
+                </div>
+                <div class="video-box"></div>
+            </div>
+
+          <!-- TITLING SECTION -->
+<div class="work-cat reveal">
+    <div class="work-header">
+        <h2>Titling</h2>
+        <span class="section-tag">Graphic Design</span>
+    </div>
+    <div class="video-container">
+        <iframe 
+            src="https://www.youtube.com/embed/9u2EourejMM?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=9u2EourejMM" 
+            title="Titling Reel"
+            allow="autoplay; encrypted-media; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+        </section>
+    </main>
+
+    <!-- CONTACT -->
+    <footer id="contact" class="container">
+        <img src="https://i.imgur.com/0czpN64.png" alt="M Logo" class="footer-logo reveal">
+        <div class="contact-links reveal">
+            <span class="section-tag">Let's Work</span>
+            <a href="mailto:muk.postproduction@gmail.com" class="email-link">muk.postproduction@gmail.com</a>
+            
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/muk.post/" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+                <a href="https://x.com/muk_post" target="_blank" class="social-btn">
+                    <i class="fa-brands fa-x-twitter"></i> X / Twitter
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
