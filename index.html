@@ -271,7 +271,69 @@
             border-color: #333;
             background: var(--surface);
         }
+/* BEFORE/AFTER SLIDER */
+        .comparison-slider {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            border: 1px solid #222;
+            background: #151515;
+            margin-top: 2rem;
+        }
 
+        .comparison-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .img-before {
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+            z-index: 2;
+        }
+
+        .img-after {
+            z-index: 1;
+        }
+
+        .slider-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            appearance: none;
+            -webkit-appearance: none;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            outline: none;
+            margin: 0;
+            z-index: 3;
+            cursor: ew-resize;
+        }
+
+        .slider-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 4px;
+            height: 2000px;
+            background: var(--accent);
+            box-shadow: 0 0 10px rgba(0,0,0,0.8);
+            cursor: ew-resize;
+        }
+
+        .slider-input::-moz-range-thumb {
+            width: 4px;
+            height: 2000px;
+            background: var(--accent);
+            box-shadow: 0 0 10px rgba(0,0,0,0.8);
+            cursor: ew-resize;
+            border: none;
+        }
         /* SCROLL REVEAL */
         .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
@@ -369,6 +431,11 @@
                         allowfullscreen>
                     </iframe>
                 </div>
+                
+            <div class="comparison-slider">
+                <img class="img-after" src="https://i.imgur.com/Mue08R1.jpg" alt="Coloured Grade">
+                <img id="before-img" class="img-before" src="https://i.imgur.com/kRrD6EF.jpg" alt="Log Image">
+                <input type="range" min="0" max="100" value="50" class="slider-input" oninput="document.getElementById('before-img').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`">
             </div>
           <!-- TITLING SECTION -->
 <div class="work-cat reveal">
