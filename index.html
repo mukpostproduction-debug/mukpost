@@ -796,32 +796,25 @@
                 </div>
                 
                 <!-- 2. Colour Comparison Stills Grid & Slider (Under Reel) -->
-                <div class="stills-grid">
-                    <!-- Still 1 -->
-                    <div class="still-card" onclick="openColorModal('Toll by Insyt (Official Video)', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&sat=-100&w=1200&q=80')">
-                        <div class="still-thumb">
-                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80" alt="Toll by Insyt">
-                        </div>
-                        <div class="still-title">Toll by Insyt (Official Video)</div>
-                    </div>
-
-                    <!-- Still 2 -->
-                    <div class="still-card" onclick="openColorModal('360° by Insyt (Official Video)', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&sat=-100&w=1200&q=80')">
-                        <div class="still-thumb">
-                            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80" alt="360° by Insyt">
-                        </div>
-                        <div class="still-title">360° by Insyt (Official Video)</div>
-                    </div>
-
-                    <!-- Still 3 -->
-                    <div class="still-card" onclick="openColorModal('needmoretime! by Donat Jackson (Official Video)', 'https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&sat=-100&w=1200&q=80')">
-                        <div class="still-thumb">
-                            <img src="https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=600&q=80" alt="needmoretime!">
-                        </div>
-                        <div class="still-title">needmoretime! by Donat Jackson (Official Video)</div>
-                    </div>
-                </div>
+               <div class="comparison-slider">
+                <img class="img-after" src="https://i.imgur.com/Mue08R1.jpg" alt="Coloured Grade">
+                <img id="before-img" class="img-before" src="https://i.imgur.com/kRrD6EF.jpg" alt="Log Image">
+                <input type="range" min="0" max="100" value="50" class="slider-input" oninput="document.getElementById('before-img').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`">
             </div>
+
+            <div class="comparison-slider">
+                <img class="img-after" src="https://i.imgur.com/Z82T1V9.jpg" alt="Coloured Grade 2">
+                <img id="before-img-2" class="img-before" src="https://i.imgur.com/M37D5Zl.jpg" alt="Log Image 2">
+                <input type="range" min="0" max="100" value="50" class="slider-input" oninput="document.getElementById('before-img-2').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`">
+            </div>
+
+            <div class="comparison-slider">
+                <img class="img-after" src="https://i.imgur.com/pwfJOKY.jpg" alt="Coloured Grade 3">
+                <img id="before-img-3" class="img-before" src="https://i.imgur.com/gd6lS5r.jpg" alt="Log Image 3">
+                <input type="range" min="0" max="100" value="50" class="slider-input" oninput="document.getElementById('before-img-3').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`">
+            </div>
+
+        </div>
 
             <!-- TITLING & DESIGN -->
             <div class="work-cat reveal">
