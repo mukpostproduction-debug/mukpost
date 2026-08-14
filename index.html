@@ -243,7 +243,7 @@
             overflow: hidden;
             border: 1px solid var(--border);
             background: #121212;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
 
         .video-container iframe {
@@ -255,7 +255,7 @@
             border: none;
         }
 
-        /* Coming Soon Video Boxes */
+        /* Placeholder Video Boxes */
         .video-box {
             width: 100%;
             aspect-ratio: 16/9;
@@ -430,57 +430,81 @@
             box-shadow: 0 0 12px rgba(0,0,0,0.6);
         }
 
-        /* TITLING DISPLAY */
-        .titling-demo-container {
-            width: 100%;
-            background: #111;
-            border: 1px solid var(--border);
-            padding: 3rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.8rem;
+        /* TITLING INTERACTIVE GRID */
+        .titling-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
             margin-top: 1.5rem;
         }
 
-        .titling-display {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 220px;
-            max-height: 480px;
-            overflow: hidden;
-            transition: background 0.3s ease;
+        @media (min-width: 768px) {
+            .titling-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        .titling-display img {
-            max-width: 90%;
-            height: auto;
-            max-height: 400px;
-            object-fit: contain;
-        }
-
-        .bg-removed {
-            background: repeating-conic-gradient(#1a1a1a 0% 25%, #111111 0% 50%) 50% / 20px 20px;
-        }
-
-        .toggle-bg-btn {
-            background: var(--surface);
-            color: var(--text-main);
-            border: 1px solid #3a3a3a;
-            padding: 0.8rem 2rem;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
+        .titling-item {
+            position: relative;
+            aspect-ratio: 16/9;
             cursor: pointer;
+            border: 1px solid #222;
+            background: #000000;
+            overflow: hidden;
             transition: 0.3s;
         }
 
-        .toggle-bg-btn:hover {
-            background: #ffffff;
-            color: #000000;
+        .titling-item:hover {
+            border-color: #555;
         }
+
+        .titling-item img {
+            position: absolute;
+            top: 0; 
+            left: 0;
+            width: 100%; 
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.4s ease-in-out;
+            pointer-events: none;
+        }
+
+        .title-with-bg { z-index: 2; }
+        .title-isolated { z-index: 1; }
+
+        /* Hide top image when clicked */
+        .titling-item.isolated-view .title-with-bg {
+            opacity: 0;
+        }
+
+        /* Toggle Indicator */
+        .toggle-indicator {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 3;
+            background: rgba(10, 10, 10, 0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-main);
+            pointer-events: none;
+            transition: 0.3s ease;
+        }
+
+        .titling-item:hover .toggle-indicator {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--bg);
+        }
+
+        .toggle-indicator .view-context { display: none; }
+        
+        .titling-item.isolated-view .toggle-indicator .view-isolated { display: none; }
+        .titling-item.isolated-view .toggle-indicator .view-context { display: inline; }
 
         /* CONTACT & FOOTER */
         footer { 
@@ -633,7 +657,7 @@
             .form-group input, 
             .form-group select, 
             .form-group textarea {
-                font-size: 16px; /* Prevents auto-zoom in iOS Safari */
+                font-size: 16px; /* Prevents iOS auto-zoom */
             }
             .submit-btn {
                 width: 100%;
@@ -721,7 +745,7 @@
                 </div>
             </div>
 
-            <!-- In-House Storage Badge -->
+            <!-- Storage Badge Under Capabilities -->
             <div class="storage-wrapper reveal">
                 <div class="storage-banner">
                     <span class="storage-badge-dot"></span>
@@ -794,12 +818,43 @@
                     <h2>Titling & Design</h2>
                 </div>
                 
-                <!-- Titling Transparency Demo -->
-                <div class="titling-demo-container">
-                    <div class="titling-display" id="titlingDisplay">
-                        <img src="https://i.imgur.com/MilMt1c.png" id="titlingImage" alt="Titling Isolation Demo">
+                <!-- Interactive 2x2 Titling Grid -->
+                <div class="titling-grid">
+                    <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
+                        <img class="title-isolated" src="https://i.imgur.com/CDDqpRU.jpg" alt="Title 1 Isolated">
+                        <img class="title-with-bg" src="https://i.imgur.com/gWEirNW.jpg" alt="Title 1 Context">
+                        <div class="toggle-indicator">
+                            <span class="view-isolated">Isolate</span>
+                            <span class="view-context">Context</span>
+                        </div>
                     </div>
-                    <button class="toggle-bg-btn" onclick="toggleTitleBg()">Remove Background</button>
+
+                    <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
+                        <img class="title-isolated" src="https://i.imgur.com/OYbowMM.jpg" alt="Title 2 Isolated">
+                        <img class="title-with-bg" src="https://i.imgur.com/e6CYyoG.jpg" alt="Title 2 Context">
+                        <div class="toggle-indicator">
+                            <span class="view-isolated">Isolate</span>
+                            <span class="view-context">Context</span>
+                        </div>
+                    </div>
+
+                    <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
+                        <img class="title-isolated" src="https://i.imgur.com/W3iBRIl.jpg" alt="Title 3 Isolated">
+                        <img class="title-with-bg" src="https://i.imgur.com/wQGUuEr.jpg" alt="Title 3 Context">
+                        <div class="toggle-indicator">
+                            <span class="view-isolated">Isolate</span>
+                            <span class="view-context">Context</span>
+                        </div>
+                    </div>
+
+                    <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
+                        <img class="title-isolated" src="https://i.imgur.com/43s9l4k.jpg" alt="Title 4 Isolated">
+                        <img class="title-with-bg" src="https://i.imgur.com/pCZGH7x.jpg" alt="Title 4 Context">
+                        <div class="toggle-indicator">
+                            <span class="view-isolated">Isolate</span>
+                            <span class="view-context">Context</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Showcase Reel -->
@@ -942,22 +997,6 @@
                 }
             });
         });
-
-        // TITLING BACKGROUND TOGGLE
-        let isBgRemoved = false;
-        function toggleTitleBg() {
-            const display = document.getElementById('titlingDisplay');
-            const btn = document.querySelector('.toggle-bg-btn');
-            
-            isBgRemoved = !isBgRemoved;
-            if(isBgRemoved) {
-                display.classList.add('bg-removed');
-                btn.textContent = 'Add Background';
-            } else {
-                display.classList.remove('bg-removed');
-                btn.textContent = 'Remove Background';
-            }
-        }
 
         // COLOUR MODAL & SLIDER
         function openColorModal(title, gradedUrl, ungradedUrl) {
