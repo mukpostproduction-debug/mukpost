@@ -7,11 +7,10 @@
     <!-- FontAwesome for Social Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* DESIGN SYSTEM */
+        /* DESIGN SYSTEM (From July 8th Version) */
         :root {
             --bg: #0a0a0a;
             --surface: #111111;
-            --surface-hover: #1a1a1a;
             --text-main: #eeeeee;
             --text-dim: #888888;
             --accent: #ffffff;
@@ -32,13 +31,14 @@
 
         img {
             image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
             display: block;
             max-width: 100%;
         }
 
         /* LAYOUT */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        section { padding: 110px 0; border-bottom: 1px solid var(--border); }
+        section { padding: 120px 0; border-bottom: 1px solid var(--border); }
 
         /* NAV */
         nav {
@@ -80,7 +80,12 @@
             border-left: 1px solid #333;
         }
 
-        .nav-socials a { color: var(--text-dim); font-size: 1.1rem; transition: 0.3s; }
+        .nav-socials a {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
         .nav-socials a:hover { color: var(--accent); transform: translateY(-2px); }
 
         /* HERO */
@@ -148,7 +153,7 @@
             text-transform: uppercase;
             max-width: 900px;
             line-height: 1.1;
-            margin-bottom: 3.5rem;
+            margin-bottom: 4rem;
             font-weight: 800;
         }
 
@@ -159,14 +164,14 @@
         }
 
         .cap-card {
-            padding: 2.5rem 2rem;
+            padding: 3rem 2rem;
             background: var(--surface);
             border-top: 1px solid #333;
             transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .cap-card:hover { 
-            background: var(--surface-hover); 
+            background: #1a1a1a; 
             border-top-color: var(--accent);
             transform: translateY(-5px);
         }
@@ -178,6 +183,7 @@
             letter-spacing: 0.05em;
         }
 
+        /* Jot List Styling */
         .cap-list {
             list-style: none;
             padding: 0;
@@ -201,7 +207,7 @@
         }
 
         /* PORTFOLIO */
-        .work-cat { margin-bottom: 5rem; }
+        .work-cat { margin-bottom: 6rem; }
         
         .work-header {
             margin-bottom: 1.5rem;
@@ -217,10 +223,10 @@
 
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%; 
             height: 0;
             overflow: hidden;
-            border: 1px solid var(--border);
+            border: 1px solid #222;
             background: #151515;
         }
 
@@ -237,8 +243,8 @@
         .video-box {
             width: 100%;
             aspect-ratio: 16/9;
-            background: #121212;
-            border: 1px solid var(--border);
+            background: #151515;
+            border: 1px solid #222;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -249,7 +255,7 @@
             transition: 0.3s;
         }
 
-        .video-box:hover { border-color: #444; color: var(--text-main); }
+        .video-box:hover { border-color: #555; color: var(--text-main); }
 
         /* COLOUR STILLS ROW */
         .stills-grid {
@@ -261,7 +267,7 @@
 
         .still-card {
             background: var(--surface);
-            border: 1px solid var(--border);
+            border: 1px solid #222;
             cursor: pointer;
             overflow: hidden;
             transition: 0.3s ease;
@@ -355,7 +361,7 @@
             aspect-ratio: 16/9;
             overflow: hidden;
             user-select: none;
-            border: 1px solid var(--border);
+            border: 1px solid #222;
             cursor: ew-resize;
         }
 
@@ -417,7 +423,7 @@
         /* CONTACT FORM SECTION */
         .contact-section {
             background: var(--surface);
-            border: 1px solid var(--border);
+            border: 1px solid #222;
             padding: 3rem;
             margin-top: 3rem;
             text-align: left;
@@ -481,7 +487,8 @@
         .submit-btn:hover { background: #ccc; }
 
         /* FOOTER */
-        footer { padding: 120px 0 80px; text-align: center; }
+        footer { padding: 150px 0 80px; text-align: center; }
+
         .footer-logo { width: 60px; margin: 0 auto 3rem; opacity: 0.8; }
 
         .footer-socials {
@@ -503,7 +510,7 @@
             font-weight: 600;
             transition: 0.3s;
             padding: 0.6rem 1.2rem;
-            border: 1px solid var(--border);
+            border: 1px solid #222;
         }
 
         .social-btn:hover {
@@ -519,8 +526,8 @@
         @media (max-width: 768px) {
             .nav-links, .nav-socials { display: none; }
             .hero-wordmark { width: 85vw; }
-            section { padding: 70px 0; }
-            .workflow-headline { font-size: 2rem; }
+            section { padding: 80px 0; }
+            .workflow-headline { font-size: 2.2rem; }
             .stills-grid { grid-template-columns: 1fr; }
             .form-grid { grid-template-columns: 1fr; }
             .form-group.full-width { grid-column: span 1; }
@@ -554,7 +561,7 @@
             <img src="https://i.imgur.com/MilMt1c.png" alt="MUK POST" class="hero-wordmark reveal">
             <h1 class="reveal">Toronto-Based Remote Post-Production House</h1>
             
-            <!-- In-House Storage Badge -->
+            <!-- In-House Storage Banner -->
             <div class="storage-banner reveal">
                 <span class="storage-badge-dot"></span>
                 <span>15TB+ In-House High-Speed SSD & HDD Storage</span>
@@ -636,7 +643,7 @@
                     <h2>Colour</h2>
                 </div>
                 
-                <!-- Main Colour Reel Video -->
+                <!-- Main Colour Reel YouTube Video (From July 8th Code) -->
                 <div class="video-container">
                     <iframe 
                         src="https://www.youtube.com/embed/yaZ__LsubwY?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=yaZ__LsubwY&cc_load_policy=0" 
@@ -646,35 +653,35 @@
                     </iframe>
                 </div>
 
-                <!-- 3 Small Stills Row Below Video -->
+                <!-- 3 Small Stills Row Below Colour Video (Using Imgur Links) -->
                 <div class="stills-grid">
                     <!-- Still 1 -->
-                    <div class="still-card" onclick="openColorModal('Toll by Insyt (Official Video)', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&sat=-100&w=1200&q=80')">
+                    <div class="still-card" onclick="openColorModal('Toll by Insyt (Official Video)', 'https://i.imgur.com/TOLL_GRADED.png', 'https://i.imgur.com/TOLL_UNGRADED.png')">
                         <div class="still-thumb">
-                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80" alt="Toll by Insyt">
+                            <img src="https://i.imgur.com/TOLL_THUMB.png" alt="Toll by Insyt" onerror="this.src='https://i.imgur.com/MilMt1c.png'">
                         </div>
                         <div class="still-title">Toll by Insyt (Official Video)</div>
                     </div>
 
                     <!-- Still 2 -->
-                    <div class="still-card" onclick="openColorModal('360° by Insyt (Official Video)', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&sat=-100&w=1200&q=80')">
+                    <div class="still-card" onclick="openColorModal('360° by Insyt (Official Video)', 'https://i.imgur.com/360_GRADED.png', 'https://i.imgur.com/360_UNGRADED.png')">
                         <div class="still-thumb">
-                            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80" alt="360° by Insyt">
+                            <img src="https://i.imgur.com/360_THUMB.png" alt="360° by Insyt" onerror="this.src='https://i.imgur.com/MilMt1c.png'">
                         </div>
                         <div class="still-title">360° by Insyt (Official Video)</div>
                     </div>
 
                     <!-- Still 3 -->
-                    <div class="still-card" onclick="openColorModal('needmoretime! by Donat Jackson (Official Video)', 'https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&sat=-100&w=1200&q=80')">
+                    <div class="still-card" onclick="openColorModal('needmoretime! by Donat Jackson (Official Video)', 'https://i.imgur.com/NMT_GRADED.png', 'https://i.imgur.com/NMT_UNGRADED.png')">
                         <div class="still-thumb">
-                            <img src="https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=600&q=80" alt="needmoretime!">
+                            <img src="https://i.imgur.com/NMT_THUMB.png" alt="needmoretime!" onerror="this.src='https://i.imgur.com/MilMt1c.png'">
                         </div>
                         <div class="still-title">needmoretime! by Donat Jackson (Official Video)</div>
                     </div>
                 </div>
             </div>
 
-            <!-- TITLING SECTION -->
+            <!-- TITLING SECTION (From July 8th Code) -->
             <div class="work-cat reveal">
                 <div class="work-header">
                     <h2>Titling</h2>
@@ -822,13 +829,13 @@
             });
         });
 
-        // COLOUR LIGHTBOX MODAL & BEFORE/AFTER SLIDER
+        // COLOUR LIGHTBOX MODAL & BEFORE/AFTER SLIDER LOGIC
         function openColorModal(title, gradedUrl, ungradedUrl) {
             document.getElementById('modalVideoTitle').textContent = title;
             document.getElementById('imgGraded').src = gradedUrl;
             document.getElementById('imgUngraded').src = ungradedUrl;
             
-            // Reset slider to center (50%)
+            // Reset slider handle to center (50%)
             setSliderPosPercent(50);
             
             document.getElementById('colorModal').classList.add('active');
@@ -838,7 +845,6 @@
             document.getElementById('colorModal').classList.remove('active');
         }
 
-        // BEFORE/AFTER SLIDER LOGIC
         const slider = document.getElementById('baSlider');
         const topImg = document.getElementById('imgUngraded');
         const handle = document.getElementById('baHandle');
@@ -869,7 +875,6 @@
             if (isDragging) setSliderPos(e.clientX);
         });
 
-        // Touch support for mobile devices
         slider.addEventListener('touchstart', (e) => {
             isDragging = true;
             if (e.touches[0]) setSliderPos(e.touches[0].clientX);
