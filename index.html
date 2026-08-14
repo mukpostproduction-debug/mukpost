@@ -11,9 +11,11 @@
         :root {
             --bg: #0a0a0a;
             --surface: #111111;
+            --surface-hover: #1a1a1a;
             --text-main: #eeeeee;
             --text-dim: #888888;
             --accent: #ffffff;
+            --border: #222222;
             --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
         }
 
@@ -30,13 +32,13 @@
 
         img {
             image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
             display: block;
+            max-width: 100%;
         }
 
         /* LAYOUT */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        section { padding: 120px 0; border-bottom: 1px solid #222; }
+        section { padding: 100px 0; border-bottom: 1px solid var(--border); }
 
         /* NAV */
         nav {
@@ -55,7 +57,6 @@
         }
 
         .nav-logo { width: 45px; height: auto; }
-
         .nav-right { display: flex; align-items: center; }
 
         .nav-links a {
@@ -79,12 +80,7 @@
             border-left: 1px solid #333;
         }
 
-        .nav-socials a {
-            color: var(--text-dim);
-            font-size: 1.1rem;
-            transition: 0.3s;
-        }
-
+        .nav-socials a { color: var(--text-dim); font-size: 1.1rem; transition: 0.3s; }
         .nav-socials a:hover { color: var(--accent); transform: translateY(-2px); }
 
         /* HERO */
@@ -113,6 +109,30 @@
             margin-top: 1rem;
         }
 
+        /* STORAGE BADGE */
+        .storage-banner {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid #333;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .storage-badge-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00ff88;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #00ff88;
+        }
+
         /* CAPABILITIES */
         .section-tag {
             font-size: 0.7rem;
@@ -128,7 +148,7 @@
             text-transform: uppercase;
             max-width: 900px;
             line-height: 1.1;
-            margin-bottom: 4rem;
+            margin-bottom: 3.5rem;
             font-weight: 800;
         }
 
@@ -139,14 +159,14 @@
         }
 
         .cap-card {
-            padding: 3rem 2rem;
+            padding: 2.5rem 2rem;
             background: var(--surface);
             border-top: 1px solid #333;
             transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .cap-card:hover { 
-            background: #1a1a1a; 
+            background: var(--surface-hover); 
             border-top-color: var(--accent);
             transform: translateY(-5px);
         }
@@ -154,41 +174,42 @@
         .cap-card h3 {
             font-size: 1.1rem;
             text-transform: uppercase;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             letter-spacing: 0.05em;
         }
 
-        .cap-card p {
-            font-size: 0.9rem;
+        /* Jot List Styling */
+        .cap-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cap-list li {
+            font-size: 0.85rem;
             color: var(--text-dim);
-            line-height: 1.6;
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.6rem;
+            line-height: 1.4;
         }
 
-        /* PORTFOLIO */
-        .work-cat { margin-bottom: 6rem; }
-        
-        .work-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid #333;
-            padding-bottom: 1rem;
+        .cap-list li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #555;
         }
 
-        .work-header h2 {
-            font-size: 2.2rem;
-            text-transform: uppercase;
-            font-weight: 800;
-        }
-
+        /* REEL SECTION */
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; 
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
             overflow: hidden;
-            border: 1px solid #222;
-            background: #151515;
+            max-width: 100%;
+            margin: 0 auto;
+            border: 1px solid var(--border);
         }
 
         .video-container iframe {
@@ -200,61 +221,327 @@
             border: none;
         }
 
+        /* PORTFOLIO */
+        .work-cat { margin-bottom: 5rem; }
+        
+        .work-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 1rem;
+        }
+
+        .work-header h2 {
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        /* Placeholder Video Box */
         .video-box {
             width: 100%;
             aspect-ratio: 16/9;
-            background: #151515;
-            border: 1px solid #222;
+            background: #121212;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 0.85rem;
+            color: #555;
+            transition: 0.3s;
+        }
+
+        .video-box:hover { border-color: #444; color: var(--text-dim); }
+
+        /* COLOUR STILLS GRID (3 SMALL SLIDERS IN A ROW) */
+        .stills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .still-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            overflow: hidden;
+            transition: 0.3s ease;
+        }
+
+        .still-card:hover {
+            border-color: #555;
+            transform: translateY(-3px);
+        }
+
+        .still-thumb {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #181818;
+            position: relative;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .still-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .still-title {
+            padding: 1rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-dim);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* LIGHTBOX MODAL FOR BEFORE/AFTER STILLS */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal-content {
+            max-width: 1000px;
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid #333;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-size: 1.8rem;
             cursor: pointer;
             transition: 0.3s;
         }
 
-        .video-box:hover { border-color: #555; }
+        .modal-close:hover { color: var(--accent); }
 
-        .video-box::before {
-            content: '';
-            width: 0; height: 0;
-            border-style: solid;
-            border-width: 15px 0 15px 25px;
-            border-color: transparent transparent transparent rgba(255,255,255,0.1);
+        .modal-header-title {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            padding-right: 2rem;
         }
 
-        /* FOOTER */
-        footer { padding: 150px 0 80px; text-align: center; }
+        /* BEFORE / AFTER INTERACTIVE COMPARISON SLIDER */
+        .ba-slider {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            user-select: none;
+        }
 
-        .footer-logo { width: 60px; margin: 0 auto 4rem; opacity: 0.8; }
+        .ba-slider img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
 
-        .contact-links {
+        .ba-slider .img-after {
+            position: absolute;
+            top: 0; left: 0;
+            width: 50%; height: 100%;
+            overflow: hidden;
+        }
+
+        .ba-slider .img-after img {
+            width: 1000px; /* Matched to modal width */
+            max-width: none;
+        }
+
+        .ba-handle {
+            position: absolute;
+            top: 0; bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: #fff;
+            cursor: ew-resize;
+            z-index: 10;
+        }
+
+        .ba-handle::after {
+            content: '↔';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 32px; height: 32px;
+            background: #fff;
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* TITLING FLEXIBLE ASPECT RATIOS & ISOLATE BUTTONS */
+        .titling-demo-container {
+            width: 100%;
+            background: #141414;
+            border: 1px solid var(--border);
+            padding: 2rem;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
             align-items: center;
+            gap: 1.5rem;
         }
 
-        .contact-links a.email-link {
+        .titling-display {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Dynamic height preserving intrinsic aspect ratio */
+            min-height: 250px;
+            max-height: 600px;
+            overflow: hidden;
+            transition: background 0.4s ease;
+        }
+
+        .titling-display img {
+            max-width: 100%;
+            height: auto;
+            max-height: 550px;
+            object-fit: contain; /* Prevents cutoff */
+        }
+
+        .bg-removed {
+            background: repeating-conic-gradient(#1a1a1a 0% 25%, #111111 0% 50%) 50% / 20px 20px;
+        }
+
+        .toggle-bg-btn {
+            background: var(--surface);
             color: var(--text-main);
-            text-decoration: none;
-            font-size: clamp(1.2rem, 4vw, 2.2rem);
-            font-weight: 700;
-            border-bottom: 2px solid transparent;
+            border: 1px solid #444;
+            padding: 0.75rem 1.8rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            cursor: pointer;
             transition: 0.3s;
         }
 
-        .contact-links a.email-link:hover { border-bottom-color: var(--accent); }
+        .toggle-bg-btn:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* CONTACT FORM SECTION */
+        .contact-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-top: 3rem;
+            text-align: left;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-dim);
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            color: var(--text-main);
+            padding: 0.9rem 1rem;
+            font-family: var(--font);
+            font-size: 0.9rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .submit-btn {
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: #ccc;
+        }
+
+        /* FOOTER */
+        footer { padding: 120px 0 80px; text-align: center; }
+        .footer-logo { width: 60px; margin: 0 auto 3rem; opacity: 0.8; }
 
         .footer-socials {
             display: flex;
+            justify-content: center;
             gap: 2rem;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
         }
 
         .social-btn {
             color: var(--text-dim);
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
             gap: 0.8rem;
@@ -262,153 +549,16 @@
             letter-spacing: 0.1em;
             font-weight: 600;
             transition: 0.3s;
-            padding: 0.5rem 1rem;
-            border: 1px solid transparent;
+            padding: 0.6rem 1.2rem;
+            border: 1px solid var(--border);
         }
 
         .social-btn:hover {
             color: var(--accent);
-            border-color: #333;
+            border-color: #555;
             background: var(--surface);
         }
-/* BEFORE/AFTER SLIDER */
-        .comparison-slider {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-            border: 1px solid #222;
-            background: #151515;
-            margin-top: 2rem;
-        }
 
-        .comparison-slider img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-        }
-
-        .img-before {
-            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-            z-index: 2;
-        }
-
-        .img-after {
-            z-index: 1;
-        }
-
-        .slider-input {
-            position: absolute;
-            top: 0;
-            left: 0;
-            appearance: none;
-            -webkit-appearance: none;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            outline: none;
-            margin: 0;
-            z-index: 3;
-            cursor: ew-resize;
-        }
-
-        .slider-input::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 4px;
-            height: 2000px;
-            background: var(--accent);
-            box-shadow: 0 0 10px rgba(0,0,0,0.8);
-            cursor: ew-resize;
-        }
-
-        .slider-input::-moz-range-thumb {
-            width: 4px;
-            height: 2000px;
-            background: var(--accent);
-            box-shadow: 0 0 10px rgba(0,0,0,0.8);
-            cursor: ew-resize;
-            border: none;
-        }
-        /* TITLING INTERACTIVE GRID */
-        .titling-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .titling-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .titling-item {
-            position: relative;
-            aspect-ratio: 16/9;
-            cursor: pointer;
-            border: 1px solid #222;
-            background: #000000;
-            overflow: hidden;
-            transition: 0.3s;
-        }
-
-        .titling-item:hover {
-            border-color: #555;
-        }
-
-        .titling-item img {
-            position: absolute;
-            top: 0; 
-            left: 0;
-            width: 100%; 
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.4s ease-in-out;
-            pointer-events: none;
-        }
-
-        .title-with-bg { z-index: 2; }
-        .title-isolated { z-index: 1; }
-
-        /* Hide the top image when clicked */
-        .titling-item.isolated-view .title-with-bg {
-            opacity: 0;
-        }
-
-        /* Subtle Toggle Indicator */
-        .toggle-indicator {
-            position: absolute;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            z-index: 3;
-            background: rgba(10, 10, 10, 0.65);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 0.4rem 0.8rem;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--text-main);
-            pointer-events: none;
-            transition: 0.3s ease;
-        }
-
-        .titling-item:hover .toggle-indicator {
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--bg);
-        }
-
-        .toggle-indicator .view-context { display: none; }
-        
-        .titling-item.isolated-view .toggle-indicator .view-isolated { display: none; }
-        .titling-item.isolated-view .toggle-indicator .view-context { display: inline; }
         /* SCROLL REVEAL */
         .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
@@ -416,8 +566,11 @@
         @media (max-width: 768px) {
             .nav-links, .nav-socials { display: none; }
             .hero-wordmark { width: 85vw; }
-            section { padding: 80px 0; }
-            .workflow-headline { font-size: 2.2rem; }
+            section { padding: 70px 0; }
+            .workflow-headline { font-size: 2rem; }
+            .stills-grid { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full-width { grid-column: span 1; }
         }
     </style>
 </head>
@@ -431,6 +584,7 @@
             <div class="nav-right">
                 <div class="nav-links">
                     <a href="#about">Workflow</a>
+                    <a href="#graphic-design-reel">Reel</a>
                     <a href="#work">Work</a>
                     <a href="#contact">Contact</a>
                 </div>
@@ -447,9 +601,15 @@
         <section class="hero container">
             <img src="https://i.imgur.com/MilMt1c.png" alt="MUK POST" class="hero-wordmark reveal">
             <h1 class="reveal">Toronto-Based Remote Post-Production House</h1>
+            
+            <!-- In-House Storage Badge -->
+            <div class="storage-banner reveal">
+                <span class="storage-badge-dot"></span>
+                <span>15TB+ In-House High-Speed SSD & HDD Storage</span>
+            </div>
         </section>
 
-        <!-- SERVICES -->
+        <!-- SERVICES / CAPABILITIES -->
         <section id="about" class="container">
             <span class="section-tag reveal">Capabilities</span>
             <h2 class="workflow-headline reveal">Professional grade integration of sight and sound.</h2>
@@ -457,20 +617,53 @@
             <div class="caps-grid">
                 <div class="cap-card reveal">
                     <h3>01. Editing</h3>
-                    <p>Narrative-driven assembly and precision cutting for films, music videos, and commercial campaigns. Native 4K/8K workflows exclusively in DaVinci Resolve.</p>
+                    <ul class="cap-list">
+                        <li>Narrative & commercial precision cutting</li>
+                        <li>Native 4K/8K media handling</li>
+                        <li>DaVinci Resolve studio workflow</li>
+                        <li>Camera raw media management</li>
+                    </ul>
                 </div>
                 <div class="cap-card reveal">
                     <h3>02. Sound</h3>
-                    <p>High-fidelity sound design, mixing, and surgical dialogue restoration in Pro Tools. Engineered for theatrical impact and digital clarity.</p>
+                    <ul class="cap-list">
+                        <li>High-fidelity sound design & mixing</li>
+                        <li>Dialogue cleanup & surgical restoration</li>
+                        <li>Pro Tools theatrical audio mastering</li>
+                        <li>Digital & broadcast mix compliance</li>
+                    </ul>
                 </div>
                 <div class="cap-card reveal">
                     <h3>03. Colour</h3>
-                    <p>Industrial-grade grading to evoke mood and maintain visual integrity. Professional monitoring to ensure accuracy across all delivery formats.</p>
+                    <ul class="cap-list">
+                        <li>Industrial-grade cinematic grading</li>
+                        <li>Mood alignment & look development</li>
+                        <li>Color space management & LUT creation</li>
+                        <li>Calibrated monitoring delivery</li>
+                    </ul>
                 </div>
                 <div class="cap-card reveal">
                     <h3>04. Design</h3>
-                    <p>Bespoke film titling, motion graphics, and visual identity design using After Effects and Fusion to round out the final cinematic form.</p>
+                    <ul class="cap-list">
+                        <li>Bespoke film titling & typography</li>
+                        <li>Motion graphics & VFX integration</li>
+                        <li>After Effects & Fusion compositing</li>
+                        <li>Visual identity & branding</li>
+                    </ul>
                 </div>
+            </div>
+        </section>
+
+        <!-- Graphic Design Reel Section -->
+        <section id="graphic-design-reel" class="container">
+            <span class="section-tag reveal">Showcase</span>
+            <h2 class="workflow-headline reveal">Graphic Design Reel</h2>
+            <div class="video-container reveal">
+                <iframe 
+                    src="https://www.youtube.com/embed/9u2EourejMM" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen>
+                </iframe>
             </div>
         </section>
 
@@ -478,126 +671,182 @@
         <section id="work" class="container">
             <span class="section-tag reveal">Selected Projects</span>
             
+            <!-- EDITING -->
             <div class="work-cat reveal">
                 <div class="work-header">
                     <h2>Editing</h2>
-                    <span class="section-tag">Narrative / Music Video</span>
                 </div>
-                <div class="video-box"></div>
+                <div class="video-box">
+                    <i class="fa-solid fa-film" style="font-size: 1.8rem; margin-bottom: 0.8rem; color: #444;"></i>
+                    <span>Coming Soon</span>
+                </div>
             </div>
 
+            <!-- SOUND -->
             <div class="work-cat reveal">
                 <div class="work-header">
                     <h2>Sound</h2>
-                    <span class="section-tag">Design / Mix</span>
                 </div>
-                <div class="video-box"></div>
+                <div class="video-box">
+                    <i class="fa-solid fa-waveform" style="font-size: 1.8rem; margin-bottom: 0.8rem; color: #444;"></i>
+                    <span>Coming Soon</span>
+                </div>
             </div>
+
+            <!-- COLOUR SECTION WITH 3 SMALL STILLS IN A ROW -->
             <div class="work-cat reveal">
                 <div class="work-header">
                     <h2>Colour</h2>
-                    <span class="section-tag">Cinematic Grade</span>
-                </div>
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/yaZ__LsubwY?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=yaZ__LsubwY&cc_load_policy=0" 
-                        title="Colour Reel"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
                 </div>
                 
-            <div class="comparison-slider">
-                <img class="img-after" src="https://i.imgur.com/Mue08R1.jpg" alt="Coloured Grade">
-                <img id="before-img" class="img-before" src="https://i.imgur.com/kRrD6EF.jpg" alt="Log Image">
-                <input type="range" min="0" max="100" value="50" class="slider-input" oninput="document.getElementById('before-img').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`">
+                <div class="stills-grid">
+                    <!-- Still 1 -->
+                    <div class="still-card" onclick="openColorModal('Toll by Insyt (Official Video)', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&sat=-100&w=1200&q=80')">
+                        <div class="still-thumb">
+                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80" alt="Toll by Insyt">
+                        </div>
+                        <div class="still-title">Toll by Insyt (Official Video)</div>
+                    </div>
+
+                    <!-- Still 2 -->
+                    <div class="still-card" onclick="openColorModal('360° by Insyt (Official Video)', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&sat=-100&w=1200&q=80')">
+                        <div class="still-thumb">
+                            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80" alt="360° by Insyt">
+                        </div>
+                        <div class="still-title">360° by Insyt (Official Video)</div>
+                    </div>
+
+                    <!-- Still 3 -->
+                    <div class="still-card" onclick="openColorModal('needmoretime! by Donat Jackson (Official Video)', 'https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&sat=-100&w=1200&q=80')">
+                        <div class="still-thumb">
+                            <img src="https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=600&q=80" alt="needmoretime!">
+                        </div>
+                        <div class="still-title">needmoretime! by Donat Jackson (Official Video)</div>
+                    </div>
+                </div>
             </div>
-                <div class="comparison-slider">
-                <img class="img-after" src="https://i.imgur.com/Z82T1V9.jpg" alt="Coloured Grade 2">
-                <img id="before-img-2" class="img-before" src="https://i.imgur.com/M37D5Zl.jpg" alt="Log Image 2">
-                <input type="range" min="0" max="100" value="50" class="slider-input" oninput="document.getElementById('before-img-2').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`">
-            </div>
-                <div class="comparison-slider">
-                <img class="img-after" src="https://i.imgur.com/pwfJOKY.jpg" alt="Coloured Grade 3">
-                <img id="before-img-3" class="img-before" src="https://i.imgur.com/gd6lS5r.jpg" alt="Log Image 3">
-                <input type="range" min="0" max="100" value="50" class="slider-input" oninput="document.getElementById('before-img-3').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`">
-            </div>
-          <!-- TITLING SECTION -->
-<div class="work-cat reveal">
-    <div class="work-header">
-        <h2>Titling</h2>
-        <span class="section-tag">Graphic Design</span>
-    </div>
-    <div class="video-container">
-        <iframe 
-            src="https://www.youtube.com/embed/9u2EourejMM?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=9u2EourejMM" 
-            title="Titling Reel"
-            allow="autoplay; encrypted-media; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
-    </div>
-</div>
-                <div class="titling-grid">
+
+            <!-- TITLING SECTION (Flexible Aspect Ratio & Simplified Buttons) -->
+            <div class="work-cat reveal">
+                <div class="work-header">
+                    <h2>Titling</h2>
+                </div>
                 
-                <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
-                    <img class="title-isolated" src="https://i.imgur.com/CDDqpRU.jpg" alt="Title 1 Isolated">
-                    <img class="title-with-bg" src="https://i.imgur.com/gWEirNW.jpg" alt="Title 1 Context">
-                    <div class="toggle-indicator">
-                        <span class="view-isolated">Isolate</span>
-                        <span class="view-context">Context</span>
+                <div class="titling-demo-container">
+                    <div class="titling-display" id="titlingDisplay">
+                        <img src="https://i.imgur.com/MilMt1c.png" id="titlingImage" alt="Titling Isolation Demo">
                     </div>
+                    <button class="toggle-bg-btn" onclick="toggleTitleBg()">Remove Background</button>
                 </div>
-
-                <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
-                    <img class="title-isolated" src="https://i.imgur.com/OYbowMM.jpg" alt="Title 2 Isolated">
-                    <img class="title-with-bg" src="https://i.imgur.com/e6CYyoG.jpg" alt="Title 2 Context">
-                    <div class="toggle-indicator">
-                        <span class="view-isolated">Isolate</span>
-                        <span class="view-context">Context</span>
-                    </div>
-                </div>
-
-                <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
-                    <img class="title-isolated" src="https://i.imgur.com/W3iBRIl.jpg" alt="Title 3 Isolated">
-                    <img class="title-with-bg" src="https://i.imgur.com/wQGUuEr.jpg" alt="Title 3 Context">
-                    <div class="toggle-indicator">
-                        <span class="view-isolated">Isolate</span>
-                        <span class="view-context">Context</span>
-                    </div>
-                </div>
-
-                <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
-                    <img class="title-isolated" src="https://i.imgur.com/43s9l4k.jpg" alt="Title 4 Isolated">
-                    <img class="title-with-bg" src="https://i.imgur.com/pCZGH7x.jpg" alt="Title 4 Context">
-                    <div class="toggle-indicator">
-                        <span class="view-isolated">Isolate</span>
-                        <span class="view-context">Context</span>
-                    </div>
-                </div>
-
             </div>
         </section>
     </main>
 
-    <!-- CONTACT -->
+    <!-- EXPANDABLE LIGHTBOX MODAL FOR COLOUR STILLS -->
+    <div class="modal-overlay" id="colorModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeColorModal()">&times;</button>
+            <div class="modal-header-title" id="modalVideoTitle">Project Title</div>
+            
+            <div class="ba-slider" id="baSlider">
+                <img id="imgBefore" src="" alt="Graded">
+                <div class="img-after" id="imgAfterWrap">
+                    <img id="imgAfter" src="" alt="Ungraded">
+                </div>
+                <div class="ba-handle" id="baHandle"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT SECTION -->
     <footer id="contact" class="container">
         <img src="https://i.imgur.com/0czpN64.png" alt="M Logo" class="footer-logo reveal">
-        <div class="contact-links reveal">
-            <span class="section-tag">Let's Work</span>
-            <a href="mailto:muk.postproduction@gmail.com" class="email-link">muk.postproduction@gmail.com</a>
-            
-            <div class="footer-socials">
-                <a href="https://www.instagram.com/muk.post/" target="_blank" class="social-btn">
-                    <i class="fa-brands fa-instagram"></i> Instagram
-                </a>
-                <a href="https://x.com/muk_post" target="_blank" class="social-btn">
-                    <i class="fa-brands fa-x-twitter"></i> X / Twitter
-                </a>
-            </div>
+        
+        <div class="reveal">
+            <span class="section-tag">Start A Project</span>
+            <h2 class="workflow-headline" style="margin-bottom: 1rem;">Request a Project Quote</h2>
+            <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto 2rem;">Fill out the details below to receive a fast, tailored quote directly to your inbox.</p>
+        </div>
+
+        <!-- Integrated Contact Intake Form -->
+        <div class="contact-section reveal">
+            <form action="https://formspree.io/f/muk.postproduction@gmail.com" method="POST" class="form-grid">
+                
+                <div class="form-group">
+                    <label for="name">Your Name / Company</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe / Studio" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="_replyto" placeholder="client@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="project_type">Project Type</label>
+                    <select id="project_type" name="project_type" required>
+                        <option value="" disabled selected>Select project type</option>
+                        <option value="Music Video">Music Video</option>
+                        <option value="Narrative Film / Short">Narrative Film / Short</option>
+                        <option value="Commercial / Brand">Commercial / Brand</option>
+                        <option value="Documentary">Documentary</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="services">Services Required</label>
+                    <select id="services" name="services" required>
+                        <option value="" disabled selected>Select primary service</option>
+                        <option value="Full Post-Production Package">Full Post (Editing, Sound, Colour, Titles)</option>
+                        <option value="Editing Only">Editing Only</option>
+                        <option value="Sound Design & Mix Only">Sound Design & Mix Only</option>
+                        <option value="Colour Grading Only">Colour Grading Only</option>
+                        <option value="Titling & Graphic Design">Titling & Graphic Design</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="timeline">Target Delivery Date / Timeline</label>
+                    <input type="text" id="timeline" name="timeline" placeholder="e.g. 2 weeks / Oct 15th">
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Estimated Budget (CAD/USD)</label>
+                    <input type="text" id="budget" name="budget" placeholder="e.g. $2,000 - $5,000">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="links">Raw Footage / Project Reference Links</label>
+                    <input type="text" id="links" name="project_links" placeholder="Google Drive, Dropbox, Frame.io links">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="message">Project Overview & Specifics</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell us about the vision, camera specs, number of deliverables..." required></textarea>
+                </div>
+
+                <div class="form-group full-width" style="text-align: right;">
+                    <button type="submit" class="submit-btn">Send Quote Request</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="footer-socials reveal">
+            <a href="mailto:muk.postproduction@gmail.com" class="social-btn">
+                <i class="fa-regular fa-envelope"></i> muk.postproduction@gmail.com
+            </a>
+            <a href="https://www.instagram.com/muk.post/" target="_blank" class="social-btn">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="https://x.com/muk_post" target="_blank" class="social-btn">
+                <i class="fa-brands fa-x-twitter"></i> X / Twitter
+            </a>
         </div>
     </footer>
 
     <script>
+        // Scroll Fade-in Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -608,6 +857,7 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+        // Smooth Nav Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -620,6 +870,59 @@
                 }
             });
         });
+
+        // TITLING ISOLATION BUTTON TOGGLE
+        let isBgRemoved = false;
+        function toggleTitleBg() {
+            const display = document.getElementById('titlingDisplay');
+            const btn = document.querySelector('.toggle-bg-btn');
+            
+            isBgRemoved = !isBgRemoved;
+            if(isBgRemoved) {
+                display.classList.add('bg-removed');
+                btn.textContent = 'Add Background';
+            } else {
+                display.classList.remove('bg-removed');
+                btn.textContent = 'Remove Background';
+            }
+        }
+
+        // COLOUR LIGHTBOX MODAL & BEFORE/AFTER SLIDER
+        function openColorModal(title, gradedUrl, ungradedUrl) {
+            document.getElementById('modalVideoTitle').textContent = title;
+            document.getElementById('imgBefore').src = gradedUrl;
+            document.getElementById('imgAfter').src = ungradedUrl;
+            document.getElementById('colorModal').classList.add('active');
+        }
+
+        function closeColorModal() {
+            document.getElementById('colorModal').classList.remove('active');
+        }
+
+        // BEFORE/AFTER SLIDER INTERACTION LOGIC
+        const slider = document.getElementById('baSlider');
+        const afterWrap = document.getElementById('imgAfterWrap');
+        const handle = document.getElementById('baHandle');
+        let isDragging = false;
+
+        function setSliderPos(xPos) {
+            const rect = slider.getBoundingClientRect();
+            let pos = ((xPos - rect.left) / rect.width) * 100;
+            if (pos < 0) pos = 0;
+            if (pos > 100) pos = 100;
+
+            afterWrap.style.width = `${pos}%`;
+            handle.style.left = `${pos}%`;
+        }
+
+        window.addEventListener('mousedown', (e) => { if (e.target.closest('#baSlider')) isDragging = true; });
+        window.addEventListener('mouseup', () => isDragging = false);
+        window.addEventListener('mousemove', (e) => { if (isDragging) setSliderPos(e.clientX); });
+
+        // Touch support for mobile
+        window.addEventListener('touchstart', (e) => { if (e.target.closest('#baSlider')) isDragging = true; });
+        window.addEventListener('touchend', () => isDragging = false);
+        window.addEventListener('touchmove', (e) => { if (isDragging && e.touches[0]) setSliderPos(e.touches[0].clientX); });
     </script>
 </body>
 </html>
