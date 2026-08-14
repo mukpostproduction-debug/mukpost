@@ -243,7 +243,7 @@
             overflow: hidden;
             border: 1px solid var(--border);
             background: #121212;
-            margin-bottom: 1.8rem;
+            margin-bottom: 2rem;
         }
 
         .video-container iframe {
@@ -277,200 +277,68 @@
             color: var(--text-dim); 
         }
 
-        /* INLINE COMPARISON SLIDER (CLIP-PATH) */
+        /* INLINE COMPARISON SLIDERS */
         .comparison-slider {
             position: relative;
             width: 100%;
             aspect-ratio: 16/9;
             overflow: hidden;
-            border: 1px solid var(--border);
-            background: #000;
-            margin-top: 1.8rem;
+            border: 1px solid #222;
+            background: #151515;
+            margin-top: 2rem;
         }
 
         .comparison-slider img {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
             pointer-events: none;
         }
 
-        .comparison-slider .img-after {
+        .img-before {
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+            z-index: 2;
+        }
+
+        .img-after {
             z-index: 1;
         }
 
-        .comparison-slider .img-before {
-            z-index: 2;
-            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-        }
-
-        .comparison-slider .slider-input {
+        .slider-input {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            opacity: 0;
-            cursor: ew-resize;
-            z-index: 3;
+            appearance: none;
             -webkit-appearance: none;
-        }
-
-        /* COLOUR STILLS GRID */
-        .stills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 1.8rem;
-        }
-
-        .still-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            cursor: pointer;
-            overflow: hidden;
-            transition: 0.3s ease;
-        }
-
-        .still-card:hover {
-            border-color: #444;
-            transform: translateY(-3px);
-        }
-
-        .still-thumb {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: #151515;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .still-thumb img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-        }
-
-        .still-title {
-            padding: 0.9rem 1rem;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-dim);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        /* LIGHTBOX MODAL FOR COLOUR STILLS */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.94);
-            backdrop-filter: blur(12px);
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-        }
-
-        .modal-overlay.active { display: flex; }
-
-        .modal-content {
-            max-width: 1000px;
-            width: 100%;
-            background: var(--surface);
-            border: 1px solid #333;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            background: none;
-            border: none;
-            color: var(--text-dim);
-            font-size: 2rem;
-            cursor: pointer;
-            transition: 0.3s;
-            line-height: 1;
-            padding: 0.5rem;
-        }
-
-        .modal-close:hover { color: var(--accent); }
-
-        .modal-header-title {
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1.5rem;
-            padding-right: 2.5rem;
-        }
-
-        /* INTERACTIVE BEFORE/AFTER MODAL SLIDER */
-        .ba-slider {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-            user-select: none;
-            touch-action: none;
-        }
-
-        .ba-slider img {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            pointer-events: none;
-        }
-
-        .ba-slider .img-after {
-            position: absolute;
-            top: 0; left: 0;
-            width: 50%; height: 100%;
-            overflow: hidden;
-        }
-
-        .ba-slider .img-after img {
-            width: 100%;
-            height: 100%;
-            max-width: none;
-            object-fit: cover;
-        }
-
-        .ba-handle {
-            position: absolute;
-            top: 0; bottom: 0;
-            left: 50%;
-            width: 2px;
-            background: #fff;
+            background: transparent;
+            outline: none;
+            margin: 0;
+            z-index: 3;
             cursor: ew-resize;
-            z-index: 10;
         }
 
-        .ba-handle::after {
-            content: '↔';
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 34px; height: 34px;
-            background: #fff;
-            color: #000;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            font-weight: bold;
-            box-shadow: 0 0 12px rgba(0,0,0,0.6);
+        .slider-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 4px;
+            height: 2000px;
+            background: var(--accent);
+            box-shadow: 0 0 10px rgba(0,0,0,0.8);
+            cursor: ew-resize;
+        }
+
+        .slider-input::-moz-range-thumb {
+            width: 4px;
+            height: 2000px;
+            background: var(--accent);
+            box-shadow: 0 0 10px rgba(0,0,0,0.8);
+            cursor: ew-resize;
+            border: none;
         }
 
         /* TITLING INTERACTIVE GRID */
@@ -478,7 +346,7 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
-            margin-top: 1.8rem;
+            margin-top: 2rem;
         }
 
         @media (min-width: 768px) {
@@ -545,7 +413,6 @@
         }
 
         .toggle-indicator .view-context { display: none; }
-        
         .titling-item.isolated-view .toggle-indicator .view-isolated { display: none; }
         .titling-item.isolated-view .toggle-indicator .view-context { display: inline; }
 
@@ -681,8 +548,6 @@
             section { padding: 100px 0; }
             .work-cat { margin-bottom: 5.5rem; }
             .workflow-headline { margin-bottom: 3rem; }
-            .stills-grid { grid-template-columns: 1fr; }
-            .modal-content { padding: 1.5rem 1rem; }
             
             /* Form Mobile Tuning */
             .contact-section { 
@@ -700,7 +565,7 @@
             .form-group input, 
             .form-group select, 
             .form-group textarea {
-                font-size: 16px; /* Prevents iOS auto-zoom */
+                font-size: 16px; /* Prevents iOS browser auto-zoom */
             }
             .submit-btn {
                 width: 100%;
@@ -838,38 +703,23 @@
                     </iframe>
                 </div>
 
-                <!-- Inline Interactive Log vs. Grade Slider -->
+                <!-- 2. Interactive Comparison Sliders (Under Reel) -->
+                <div class="comparison-slider">
+                    <img class="img-after" src="https://i.imgur.com/Mue08R1.jpg" alt="Coloured Grade">
+                    <img id="before-img" class="img-before" src="https://i.imgur.com/kRrD6EF.jpg" alt="Log Image">
+                    <input type="range" min="0" max="100" value="50" class="slider-input" oninput="document.getElementById('before-img').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`">
+                </div>
+
+                <div class="comparison-slider">
+                    <img class="img-after" src="https://i.imgur.com/Z82T1V9.jpg" alt="Coloured Grade 2">
+                    <img id="before-img-2" class="img-before" src="https://i.imgur.com/M37D5Zl.jpg" alt="Log Image 2">
+                    <input type="range" min="0" max="100" value="50" class="slider-input" oninput="document.getElementById('before-img-2').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`">
+                </div>
+
                 <div class="comparison-slider">
                     <img class="img-after" src="https://i.imgur.com/pwfJOKY.jpg" alt="Coloured Grade 3">
                     <img id="before-img-3" class="img-before" src="https://i.imgur.com/gd6lS5r.jpg" alt="Log Image 3">
                     <input type="range" min="0" max="100" value="50" class="slider-input" oninput="document.getElementById('before-img-3').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`">
-                </div>
-                
-                <!-- 2. Colour Comparison Stills Grid & Slider Modal -->
-                <div class="stills-grid">
-                    <!-- Still 1 -->
-                    <div class="still-card" onclick="openColorModal('Toll by Insyt (Official Video)', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&sat=-100&w=1200&q=80')">
-                        <div class="still-thumb">
-                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80" alt="Toll by Insyt">
-                        </div>
-                        <div class="still-title">Toll by Insyt (Official Video)</div>
-                    </div>
-
-                    <!-- Still 2 -->
-                    <div class="still-card" onclick="openColorModal('360° by Insyt (Official Video)', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&sat=-100&w=1200&q=80')">
-                        <div class="still-thumb">
-                            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80" alt="360° by Insyt">
-                        </div>
-                        <div class="still-title">360° by Insyt (Official Video)</div>
-                    </div>
-
-                    <!-- Still 3 -->
-                    <div class="still-card" onclick="openColorModal('needmoretime! by Donat Jackson (Official Video)', 'https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&sat=-100&w=1200&q=80')">
-                        <div class="still-thumb">
-                            <img src="https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=600&q=80" alt="needmoretime!">
-                        </div>
-                        <div class="still-title">needmoretime! by Donat Jackson (Official Video)</div>
-                    </div>
                 </div>
             </div>
 
@@ -930,22 +780,6 @@
             </div>
         </section>
     </main>
-
-    <!-- LIGHTBOX MODAL FOR COLOUR COMPARISON -->
-    <div class="modal-overlay" id="colorModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeColorModal()">&times;</button>
-            <div class="modal-header-title" id="modalVideoTitle">Project Title</div>
-            
-            <div class="ba-slider" id="baSlider">
-                <img id="imgBefore" src="" alt="Graded">
-                <div class="img-after" id="imgAfterWrap">
-                    <img id="imgAfter" src="" alt="Ungraded">
-                </div>
-                <div class="ba-handle" id="baHandle"></div>
-            </div>
-        </div>
-    </div>
 
     <!-- CONTACT / FOOTER -->
     <footer id="contact" class="container">
@@ -1057,60 +891,6 @@
                     });
                 }
             });
-        });
-
-        // COLOUR MODAL & SLIDER
-        function openColorModal(title, gradedUrl, ungradedUrl) {
-            document.getElementById('modalVideoTitle').textContent = title;
-            document.getElementById('imgBefore').src = gradedUrl;
-            document.getElementById('imgAfter').src = ungradedUrl;
-            
-            const afterWrap = document.getElementById('imgAfterWrap');
-            const handle = document.getElementById('baHandle');
-            afterWrap.style.width = '50%';
-            handle.style.left = '50%';
-            
-            document.getElementById('colorModal').classList.add('active');
-        }
-
-        function closeColorModal() {
-            document.getElementById('colorModal').classList.remove('active');
-        }
-
-        document.getElementById('colorModal').addEventListener('click', function(e) {
-            if (e.target === this) closeColorModal();
-        });
-
-        // SLIDER DRAG LOGIC (MOUSE & TOUCH)
-        const slider = document.getElementById('baSlider');
-        const afterWrap = document.getElementById('imgAfterWrap');
-        const handle = document.getElementById('baHandle');
-        let isDragging = false;
-
-        function setSliderPos(clientX) {
-            const rect = slider.getBoundingClientRect();
-            let pos = ((clientX - rect.left) / rect.width) * 100;
-            if (pos < 0) pos = 0;
-            if (pos > 100) pos = 100;
-
-            afterWrap.style.width = `${pos}%`;
-            handle.style.left = `${pos}%`;
-        }
-
-        window.addEventListener('mousedown', (e) => { 
-            if (e.target.closest('#baSlider')) isDragging = true; 
-        });
-        window.addEventListener('mouseup', () => isDragging = false);
-        window.addEventListener('mousemove', (e) => { 
-            if (isDragging) setSliderPos(e.clientX); 
-        });
-
-        window.addEventListener('touchstart', (e) => { 
-            if (e.target.closest('#baSlider')) isDragging = true; 
-        });
-        window.addEventListener('touchend', () => isDragging = false);
-        window.addEventListener('touchmove', (e) => { 
-            if (isDragging && e.touches[0]) setSliderPos(e.touches[0].clientX); 
         });
     </script>
 </body>
