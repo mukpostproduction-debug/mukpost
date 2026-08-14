@@ -159,7 +159,6 @@
             letter-spacing: 0.05em;
         }
 
-        /* Jot List Styling */
         .cap-list {
             list-style: none;
             padding: 0;
@@ -186,7 +185,7 @@
         .storage-wrapper {
             display: flex;
             justify-content: center;
-            margin-top: 3rem;
+            margin-top: 3.5rem;
         }
 
         .storage-banner {
@@ -201,7 +200,6 @@
             letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--accent);
-            text-align: center;
         }
 
         .storage-badge-dot {
@@ -238,6 +236,7 @@
             overflow: hidden;
             border: 1px solid var(--border);
             background: #151515;
+            margin-top: 1.5rem;
         }
 
         .video-container iframe {
@@ -271,7 +270,215 @@
             color: var(--text-dim); 
         }
 
-        /* CONTACT FORM & FOOTER */
+        /* COLOUR STILLS GRID */
+        .stills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .still-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            overflow: hidden;
+            transition: 0.3s ease;
+        }
+
+        .still-card:hover {
+            border-color: #555;
+            transform: translateY(-3px);
+        }
+
+        .still-thumb {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #181818;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .still-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .still-title {
+            padding: 1rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-dim);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* LIGHTBOX MODAL FOR BEFORE/AFTER STILLS */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal-content {
+            max-width: 1000px;
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid #333;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: 0.3s;
+            line-height: 1;
+        }
+
+        .modal-close:hover { color: var(--accent); }
+
+        .modal-header-title {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            padding-right: 2rem;
+        }
+
+        /* BEFORE / AFTER SLIDER */
+        .ba-slider {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            user-select: none;
+            touch-action: none;
+        }
+
+        .ba-slider img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .ba-slider .img-after {
+            position: absolute;
+            top: 0; left: 0;
+            width: 50%; height: 100%;
+            overflow: hidden;
+        }
+
+        .ba-slider .img-after img {
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            object-fit: cover;
+        }
+
+        .ba-handle {
+            position: absolute;
+            top: 0; bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: #fff;
+            cursor: ew-resize;
+            z-index: 10;
+        }
+
+        .ba-handle::after {
+            content: '↔';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 32px; height: 32px;
+            background: #fff;
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        /* TITLING / GRAPHIC DESIGN DISPLAY */
+        .titling-demo-container {
+            width: 100%;
+            background: #141414;
+            border: 1px solid var(--border);
+            padding: 2.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .titling-display {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 220px;
+            max-height: 500px;
+            overflow: hidden;
+            transition: background 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .titling-display img {
+            max-width: 90%;
+            height: auto;
+            max-height: 450px;
+            object-fit: contain;
+        }
+
+        .bg-removed {
+            background: repeating-conic-gradient(#1a1a1a 0% 25%, #111111 0% 50%) 50% / 20px 20px;
+        }
+
+        .toggle-bg-btn {
+            background: var(--surface);
+            color: var(--text-main);
+            border: 1px solid #444;
+            padding: 0.75rem 1.8rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .toggle-bg-btn:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* CONTACT FORM SECTION */
         footer { 
             padding: 120px 0 80px; 
             text-align: center; 
@@ -402,6 +609,8 @@
             .hero-wordmark { width: 85vw; }
             section { padding: 70px 0; }
             .workflow-headline { font-size: 2rem; margin-bottom: 2.5rem; }
+            .stills-grid { grid-template-columns: 1fr; }
+            .modal-content { padding: 1.5rem 1rem; }
             
             /* Responsive Contact Form */
             .contact-section { 
@@ -544,32 +753,60 @@
                 </div>
             </div>
 
-            <!-- COLOUR (Reel Iframe as in July 8th version) -->
+            <!-- COLOUR STILLS GRID & COMPARISON SLIDER -->
             <div class="work-cat reveal">
                 <div class="work-header">
                     <h2>Colour</h2>
                     <span class="section-tag">Cinematic Grade</span>
                 </div>
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/yaZ__LsubwY?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=yaZ__LsubwY&cc_load_policy=0" 
-                        title="Colour Reel"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
+                
+                <div class="stills-grid">
+                    <!-- Still 1 -->
+                    <div class="still-card" onclick="openColorModal('Toll by Insyt (Official Video)', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&sat=-100&w=1200&q=80')">
+                        <div class="still-thumb">
+                            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80" alt="Toll by Insyt">
+                        </div>
+                        <div class="still-title">Toll by Insyt (Official Video)</div>
+                    </div>
+
+                    <!-- Still 2 -->
+                    <div class="still-card" onclick="openColorModal('360° by Insyt (Official Video)', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&sat=-100&w=1200&q=80')">
+                        <div class="still-thumb">
+                            <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80" alt="360° by Insyt">
+                        </div>
+                        <div class="still-title">360° by Insyt (Official Video)</div>
+                    </div>
+
+                    <!-- Still 3 -->
+                    <div class="still-card" onclick="openColorModal('needmoretime! by Donat Jackson (Official Video)', 'https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&sat=-100&w=1200&q=80')">
+                        <div class="still-thumb">
+                            <img src="https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=600&q=80" alt="needmoretime!">
+                        </div>
+                        <div class="still-title">needmoretime! by Donat Jackson (Official Video)</div>
+                    </div>
                 </div>
             </div>
 
-            <!-- TITLING / GRAPHIC DESIGN (Reel Iframe as in July 8th version) -->
+            <!-- TITLING & GRAPHIC DESIGN -->
             <div class="work-cat reveal">
                 <div class="work-header">
-                    <h2>Titling</h2>
-                    <span class="section-tag">Graphic Design</span>
+                    <h2>Titling & Graphic Design</h2>
+                    <span class="section-tag">Typography & Motion</span>
                 </div>
+                
+                <!-- Titling Transparency Isolation Display -->
+                <div class="titling-demo-container">
+                    <div class="titling-display" id="titlingDisplay">
+                        <img src="https://i.imgur.com/MilMt1c.png" id="titlingImage" alt="Titling Isolation Demo">
+                    </div>
+                    <button class="toggle-bg-btn" onclick="toggleTitleBg()">Remove Background</button>
+                </div>
+
+                <!-- Showcase Video Reel -->
                 <div class="video-container">
                     <iframe 
                         src="https://www.youtube.com/embed/9u2EourejMM?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=9u2EourejMM" 
-                        title="Titling Reel"
+                        title="Graphic Design Reel"
                         allow="autoplay; encrypted-media; picture-in-picture" 
                         allowfullscreen>
                     </iframe>
@@ -577,6 +814,22 @@
             </div>
         </section>
     </main>
+
+    <!-- LIGHTBOX MODAL FOR COLOUR STILLS SLIDER -->
+    <div class="modal-overlay" id="colorModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeColorModal()">&times;</button>
+            <div class="modal-header-title" id="modalVideoTitle">Project Title</div>
+            
+            <div class="ba-slider" id="baSlider">
+                <img id="imgBefore" src="" alt="Graded">
+                <div class="img-after" id="imgAfterWrap">
+                    <img id="imgAfter" src="" alt="Ungraded">
+                </div>
+                <div class="ba-handle" id="baHandle"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- CONTACT / FOOTER -->
     <footer id="contact" class="container">
@@ -689,6 +942,79 @@
                     });
                 }
             });
+        });
+
+        // TITLING ISOLATION TOGGLE
+        let isBgRemoved = false;
+        function toggleTitleBg() {
+            const display = document.getElementById('titlingDisplay');
+            const btn = document.querySelector('.toggle-bg-btn');
+            
+            isBgRemoved = !isBgRemoved;
+            if(isBgRemoved) {
+                display.classList.add('bg-removed');
+                btn.textContent = 'Add Background';
+            } else {
+                display.classList.remove('bg-removed');
+                btn.textContent = 'Remove Background';
+            }
+        }
+
+        // COLOUR LIGHTBOX MODAL & BEFORE/AFTER SLIDER
+        function openColorModal(title, gradedUrl, ungradedUrl) {
+            document.getElementById('modalVideoTitle').textContent = title;
+            document.getElementById('imgBefore').src = gradedUrl;
+            document.getElementById('imgAfter').src = ungradedUrl;
+            
+            // Reset position to center
+            const afterWrap = document.getElementById('imgAfterWrap');
+            const handle = document.getElementById('baHandle');
+            afterWrap.style.width = '50%';
+            handle.style.left = '50%';
+            
+            document.getElementById('colorModal').classList.add('active');
+        }
+
+        function closeColorModal() {
+            document.getElementById('colorModal').classList.remove('active');
+        }
+
+        // Close on background click
+        document.getElementById('colorModal').addEventListener('click', function(e) {
+            if (e.target === this) closeColorModal();
+        });
+
+        // SLIDER INTERACTION
+        const slider = document.getElementById('baSlider');
+        const afterWrap = document.getElementById('imgAfterWrap');
+        const handle = document.getElementById('baHandle');
+        let isDragging = false;
+
+        function setSliderPos(clientX) {
+            const rect = slider.getBoundingClientRect();
+            let pos = ((clientX - rect.left) / rect.width) * 100;
+            if (pos < 0) pos = 0;
+            if (pos > 100) pos = 100;
+
+            afterWrap.style.width = `${pos}%`;
+            handle.style.left = `${pos}%`;
+        }
+
+        window.addEventListener('mousedown', (e) => { 
+            if (e.target.closest('#baSlider')) isDragging = true; 
+        });
+        window.addEventListener('mouseup', () => isDragging = false);
+        window.addEventListener('mousemove', (e) => { 
+            if (isDragging) setSliderPos(e.clientX); 
+        });
+
+        // Mobile Touch Support
+        window.addEventListener('touchstart', (e) => { 
+            if (e.target.closest('#baSlider')) isDragging = true; 
+        });
+        window.addEventListener('touchend', () => isDragging = false);
+        window.addEventListener('touchmove', (e) => { 
+            if (isDragging && e.touches[0]) setSliderPos(e.touches[0].clientX); 
         });
     </script>
 </body>
