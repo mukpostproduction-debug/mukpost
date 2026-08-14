@@ -184,11 +184,12 @@
             color: #444;
         }
 
-        /* STORAGE BADGE */
+        /* STORAGE BADGE & ENLARGED SPACING */
         .storage-wrapper {
             display: flex;
             justify-content: center;
             margin-top: 4rem;
+            margin-bottom: 3.5rem;
         }
 
         .storage-banner {
@@ -255,7 +256,7 @@
             border: none;
         }
 
-        /* Placeholder Video Boxes */
+        /* Placeholder Video Boxes (Play Button Icons) */
         .video-box {
             width: 100%;
             aspect-ratio: 16/9;
@@ -268,8 +269,17 @@
             text-transform: uppercase;
             letter-spacing: 0.3em;
             font-size: 0.8rem;
-            color: #4a4a4a;
+            color: #555;
             transition: 0.3s;
+            cursor: default;
+        }
+
+        .video-box i {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            color: #444;
+            margin-left: 4px; /* visually centers triangle */
+            transition: 0.3s ease;
         }
 
         .video-box:hover { 
@@ -277,15 +287,22 @@
             color: var(--text-dim); 
         }
 
-        /* INLINE COMPARISON SLIDERS */
+        .video-box:hover i {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        /* OVERLAPPING BEFORE/AFTER COMPARISON SLIDERS */
         .comparison-slider {
             position: relative;
             width: 100%;
             aspect-ratio: 16/9;
             overflow: hidden;
             border: 1px solid #222;
-            background: #151515;
+            background: #111;
             margin-top: 2rem;
+            user-select: none;
+            touch-action: pan-y;
         }
 
         .comparison-slider img {
@@ -298,16 +315,65 @@
             pointer-events: none;
         }
 
-        .img-before {
-            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
-            z-index: 2;
-        }
-
-        .img-after {
+        .comparison-slider .img-after {
             z-index: 1;
         }
 
-        .slider-input {
+        .comparison-slider .img-before {
+            clip-path: inset(0 50% 0 0); /* Shows left 50% Log initially */
+            z-index: 2;
+        }
+
+        .comparison-slider .slider-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: #ffffff;
+            z-index: 4;
+            transform: translateX(-50%);
+            pointer-events: none;
+            box-shadow: 0 0 10px rgba(0,0,0,0.6);
+        }
+
+        .comparison-slider .handle-arrow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 32px;
+            height: 32px;
+            background: #ffffff;
+            color: #000000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 800;
+            box-shadow: 0 0 12px rgba(0,0,0,0.7);
+        }
+
+        .comparison-slider .slider-label {
+            position: absolute;
+            bottom: 1rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(10, 10, 10, 0.75);
+            backdrop-filter: blur(6px);
+            color: #ffffff;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            pointer-events: none;
+            z-index: 3;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .comparison-slider .label-left { left: 1rem; }
+        .comparison-slider .label-right { right: 1rem; }
+
+        .comparison-slider .slider-input {
             position: absolute;
             top: 0;
             left: 0;
@@ -318,27 +384,8 @@
             background: transparent;
             outline: none;
             margin: 0;
-            z-index: 3;
+            z-index: 5;
             cursor: ew-resize;
-        }
-
-        .slider-input::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 4px;
-            height: 2000px;
-            background: var(--accent);
-            box-shadow: 0 0 10px rgba(0,0,0,0.8);
-            cursor: ew-resize;
-        }
-
-        .slider-input::-moz-range-thumb {
-            width: 4px;
-            height: 2000px;
-            background: var(--accent);
-            box-shadow: 0 0 10px rgba(0,0,0,0.8);
-            cursor: ew-resize;
-            border: none;
         }
 
         /* TITLING INTERACTIVE GRID */
@@ -416,9 +463,9 @@
         .titling-item.isolated-view .toggle-indicator .view-isolated { display: none; }
         .titling-item.isolated-view .toggle-indicator .view-context { display: inline; }
 
-        /* CONTACT & FOOTER */
+        /* CONTACT & FOOTER WITH EXTENDED BOTTOM SPACE */
         footer { 
-            padding: 160px 0 100px; 
+            padding: 160px 0 280px; /* Extra bottom black space to scroll past */
             text-align: center; 
         }
 
@@ -565,7 +612,7 @@
             .form-group input, 
             .form-group select, 
             .form-group textarea {
-                font-size: 16px; /* Prevents iOS browser auto-zoom */
+                font-size: 16px; /* Prevents iOS auto-zoom */
             }
             .submit-btn {
                 width: 100%;
@@ -629,7 +676,7 @@
                     <ul class="cap-list">
                         <li>High-fidelity sound design & mixing</li>
                         <li>Dialogue cleanup & surgical restoration</li>
-                        <li>Pro Tools & Fairlight audio workflow</li>
+                        <li>Pro Tools and DaVinci Fairlight mixing and mastering</li>
                     </ul>
                 </div>
                 <div class="cap-card reveal">
@@ -651,7 +698,7 @@
                 </div>
             </div>
 
-            <!-- Storage Badge Under Capabilities -->
+            <!-- In-House Storage Badge (With Extra Spacing Below) -->
             <div class="storage-wrapper reveal">
                 <div class="storage-banner">
                     <span class="storage-badge-dot"></span>
@@ -669,7 +716,7 @@
                     <h2>Editing</h2>
                 </div>
                 <div class="video-box">
-                    <i class="fa-solid fa-film" style="font-size: 1.8rem; margin-bottom: 0.8rem; color: #3a3a3a;"></i>
+                    <i class="fa-solid fa-play"></i>
                     <span>Coming Soon</span>
                 </div>
             </div>
@@ -680,7 +727,7 @@
                     <h2>Sound</h2>
                 </div>
                 <div class="video-box">
-                    <i class="fa-solid fa-lines-leaning" style="font-size: 1.8rem; margin-bottom: 0.8rem; color: #3a3a3a;"></i>
+                    <i class="fa-solid fa-play"></i>
                     <span>Coming Soon</span>
                 </div>
             </div>
@@ -701,23 +748,38 @@
                     </iframe>
                 </div>
 
-                <!-- 2. Interactive Comparison Sliders (Under Reel) -->
+                <!-- 2. Overlapping Before/After Comparison Sliders (Under Reel) -->
                 <div class="comparison-slider">
-                    <img class="img-after" src="https://i.imgur.com/Mue08R1.jpg" alt="Coloured Grade">
-                    <img id="before-img" class="img-before" src="https://i.imgur.com/kRrD6EF.jpg" alt="Log Image">
-                    <input type="range" min="0" max="100" value="50" class="slider-input" oninput="document.getElementById('before-img').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`">
+                    <img class="img-after" src="https://i.imgur.com/Mue08R1.jpg" alt="Coloured Grade 1">
+                    <img class="img-before" src="https://i.imgur.com/kRrD6EF.jpg" alt="Log Image 1">
+                    <div class="slider-handle">
+                        <span class="handle-arrow">&#10094;&#10095;</span>
+                    </div>
+                    <span class="slider-label label-left">Log</span>
+                    <span class="slider-label label-right">Graded</span>
+                    <input type="range" min="0" max="100" value="50" class="slider-input" oninput="updateComparisonSlider(this)">
                 </div>
 
                 <div class="comparison-slider">
                     <img class="img-after" src="https://i.imgur.com/Z82T1V9.jpg" alt="Coloured Grade 2">
-                    <img id="before-img-2" class="img-before" src="https://i.imgur.com/M37D5Zl.jpg" alt="Log Image 2">
-                    <input type="range" min="0" max="100" value="50" class="slider-input" oninput="document.getElementById('before-img-2').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`">
+                    <img class="img-before" src="https://i.imgur.com/M37D5Zl.jpg" alt="Log Image 2">
+                    <div class="slider-handle">
+                        <span class="handle-arrow">&#10094;&#10095;</span>
+                    </div>
+                    <span class="slider-label label-left">Log</span>
+                    <span class="slider-label label-right">Graded</span>
+                    <input type="range" min="0" max="100" value="50" class="slider-input" oninput="updateComparisonSlider(this)">
                 </div>
 
                 <div class="comparison-slider">
                     <img class="img-after" src="https://i.imgur.com/pwfJOKY.jpg" alt="Coloured Grade 3">
-                    <img id="before-img-3" class="img-before" src="https://i.imgur.com/gd6lS5r.jpg" alt="Log Image 3">
-                    <input type="range" min="0" max="100" value="50" class="slider-input" oninput="document.getElementById('before-img-3').style.clipPath = `polygon(0 0, ${this.value}% 0, ${this.value}% 100%, 0 100%)`">
+                    <img class="img-before" src="https://i.imgur.com/gd6lS5r.jpg" alt="Log Image 3">
+                    <div class="slider-handle">
+                        <span class="handle-arrow">&#10094;&#10095;</span>
+                    </div>
+                    <span class="slider-label label-left">Log</span>
+                    <span class="slider-label label-right">Graded</span>
+                    <input type="range" min="0" max="100" value="50" class="slider-input" oninput="updateComparisonSlider(this)">
                 </div>
             </div>
 
@@ -866,7 +928,7 @@
     </footer>
 
     <script>
-        // Scroll Observer
+        // Scroll Reveal Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -877,7 +939,7 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Smooth Scrolling
+        // Smooth Scrolling Navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -890,6 +952,17 @@
                 }
             });
         });
+
+        // Comparison Slider Handler (Smooth Clipping & Handle Positioning)
+        function updateComparisonSlider(input) {
+            const container = input.closest('.comparison-slider');
+            const beforeImg = container.querySelector('.img-before');
+            const handle = container.querySelector('.slider-handle');
+            const val = input.value;
+            
+            beforeImg.style.clipPath = `inset(0 ${100 - val}% 0 0)`;
+            handle.style.left = `${val}%`;
+        }
     </script>
 </body>
 </html>
