@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muk Post | Professional Post-Production</title>
-    <!-- FontAwesome for Social Icons -->
+    <!-- FontAwesome for Social & Media Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* DESIGN SYSTEM (From July 8th Version) */
+        /* DESIGN SYSTEM */
         :root {
             --bg: #0a0a0a;
             --surface: #111111;
+            --surface-hover: #1a1a1a;
             --text-main: #eeeeee;
             --text-dim: #888888;
             --accent: #ffffff;
@@ -31,7 +32,6 @@
 
         img {
             image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
             display: block;
             max-width: 100%;
         }
@@ -114,30 +114,6 @@
             margin-top: 1rem;
         }
 
-        /* STORAGE BADGE */
-        .storage-banner {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid #333;
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            margin-top: 2.5rem;
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--accent);
-        }
-
-        .storage-badge-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #00ff88;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #00ff88;
-        }
-
         /* CAPABILITIES */
         .section-tag {
             font-size: 0.7rem;
@@ -164,14 +140,14 @@
         }
 
         .cap-card {
-            padding: 3rem 2rem;
+            padding: 2.5rem 2rem;
             background: var(--surface);
             border-top: 1px solid #333;
             transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .cap-card:hover { 
-            background: #1a1a1a; 
+            background: var(--surface-hover); 
             border-top-color: var(--accent);
             transform: translateY(-5px);
         }
@@ -206,10 +182,44 @@
             color: #555;
         }
 
+        /* STORAGE BADGE */
+        .storage-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .storage-banner {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid #333;
+            padding: 0.7rem 1.4rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            text-align: center;
+        }
+
+        .storage-badge-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00ff88;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #00ff88;
+            flex-shrink: 0;
+        }
+
         /* PORTFOLIO */
         .work-cat { margin-bottom: 6rem; }
         
         .work-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
             margin-bottom: 1.5rem;
             border-bottom: 1px solid #333;
             padding-bottom: 1rem;
@@ -226,7 +236,7 @@
             padding-bottom: 56.25%; 
             height: 0;
             overflow: hidden;
-            border: 1px solid #222;
+            border: 1px solid var(--border);
             background: #151515;
         }
 
@@ -239,191 +249,43 @@
             border: none;
         }
 
-        /* Placeholder Video Box (Pure Text) */
+        /* Coming Soon Video Boxes */
         .video-box {
             width: 100%;
             aspect-ratio: 16/9;
-            background: #151515;
-            border: 1px solid #222;
+            background: #121212;
+            border: 1px solid var(--border);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-transform: uppercase;
             letter-spacing: 0.3em;
             font-size: 0.85rem;
-            color: #666;
+            color: #555;
             transition: 0.3s;
         }
 
-        .video-box:hover { border-color: #555; color: var(--text-main); }
-
-        /* COLOUR STILLS ROW */
-        .stills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-            margin-top: 1.5rem;
+        .video-box:hover { 
+            border-color: #444; 
+            color: var(--text-dim); 
         }
 
-        .still-card {
-            background: var(--surface);
-            border: 1px solid #222;
-            cursor: pointer;
-            overflow: hidden;
-            transition: 0.3s ease;
+        /* CONTACT FORM & FOOTER */
+        footer { 
+            padding: 120px 0 80px; 
+            text-align: center; 
         }
 
-        .still-card:hover {
-            border-color: #555;
-            transform: translateY(-3px);
+        .footer-logo { 
+            width: 60px; 
+            margin: 0 auto 3rem; 
+            opacity: 0.8; 
         }
 
-        .still-thumb {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: #181818;
-            overflow: hidden;
-        }
-
-        .still-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .still-card:hover .still-thumb img {
-            transform: scale(1.03);
-        }
-
-        .still-title {
-            padding: 0.8rem 1rem;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-dim);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        /* LIGHTBOX MODAL FOR COLOUR STILLS */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(12px);
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .modal-overlay.active { display: flex; }
-
-        .modal-content {
-            max-width: 1050px;
-            width: 100%;
-            background: var(--surface);
-            border: 1px solid #333;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            background: none;
-            border: none;
-            color: var(--text-dim);
-            font-size: 2rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .modal-close:hover { color: var(--accent); }
-
-        .modal-header-title {
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1.5rem;
-            padding-right: 2rem;
-            font-weight: 700;
-        }
-
-        /* BEFORE / AFTER SLIDER USING CLIP-PATH */
-        .ba-slider {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-            user-select: none;
-            border: 1px solid #222;
-            cursor: ew-resize;
-        }
-
-        .ba-img {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            pointer-events: none;
-        }
-
-        .ba-top-img {
-            clip-path: inset(0 50% 0 0); /* Shows left side initially */
-        }
-
-        .ba-handle {
-            position: absolute;
-            top: 0; bottom: 0;
-            left: 50%;
-            width: 2px;
-            background: #ffffff;
-            z-index: 10;
-            transform: translateX(-50%);
-            pointer-events: none;
-        }
-
-        .ba-handle-arrow {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 32px; height: 32px;
-            background: #ffffff;
-            color: #000000;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: bold;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-        }
-
-        .ba-label {
-            position: absolute;
-            bottom: 12px;
-            padding: 4px 10px;
-            background: rgba(0,0,0,0.75);
-            color: #fff;
-            font-size: 0.65rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            pointer-events: none;
-            z-index: 5;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .ba-label-left { left: 12px; }
-        .ba-label-right { right: 12px; }
-
-        /* CONTACT FORM SECTION */
         .contact-section {
             background: var(--surface);
-            border: 1px solid #222;
+            border: 1px solid var(--border);
             padding: 3rem;
             margin-top: 3rem;
             text-align: left;
@@ -442,7 +304,9 @@
             gap: 0.5rem;
         }
 
-        .form-group.full-width { grid-column: span 2; }
+        .form-group.full-width {
+            grid-column: span 2;
+        }
 
         .form-group label {
             font-size: 0.75rem;
@@ -454,6 +318,7 @@
         .form-group input, 
         .form-group select, 
         .form-group textarea {
+            width: 100%;
             background: #0a0a0a;
             border: 1px solid #333;
             color: var(--text-main);
@@ -462,6 +327,16 @@
             font-size: 0.9rem;
             outline: none;
             transition: 0.3s;
+            border-radius: 0;
+            -webkit-appearance: none;
+        }
+
+        .form-group select {
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23888888" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.2rem;
+            cursor: pointer;
         }
 
         .form-group input:focus, 
@@ -481,21 +356,19 @@
             letter-spacing: 0.15em;
             cursor: pointer;
             transition: 0.3s;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
         }
 
-        .submit-btn:hover { background: #ccc; }
-
-        /* FOOTER */
-        footer { padding: 150px 0 80px; text-align: center; }
-
-        .footer-logo { width: 60px; margin: 0 auto 3rem; opacity: 0.8; }
+        .submit-btn:hover {
+            background: #ccc;
+        }
 
         .footer-socials {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 2.5rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 3rem;
         }
 
         .social-btn {
@@ -510,7 +383,7 @@
             font-weight: 600;
             transition: 0.3s;
             padding: 0.6rem 1.2rem;
-            border: 1px solid #222;
+            border: 1px solid var(--border);
         }
 
         .social-btn:hover {
@@ -523,14 +396,42 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
+        /* RESPONSIVE BREAKPOINTS */
         @media (max-width: 768px) {
             .nav-links, .nav-socials { display: none; }
             .hero-wordmark { width: 85vw; }
-            section { padding: 80px 0; }
-            .workflow-headline { font-size: 2.2rem; }
-            .stills-grid { grid-template-columns: 1fr; }
-            .form-grid { grid-template-columns: 1fr; }
-            .form-group.full-width { grid-column: span 1; }
+            section { padding: 70px 0; }
+            .workflow-headline { font-size: 2rem; margin-bottom: 2.5rem; }
+            
+            /* Responsive Contact Form */
+            .contact-section { 
+                padding: 1.5rem 1.2rem; 
+                margin-top: 2rem;
+            }
+            .form-grid { 
+                grid-template-columns: 1fr; 
+                gap: 1.2rem;
+                margin-top: 1.5rem;
+            }
+            .form-group.full-width { 
+                grid-column: span 1; 
+            }
+            .form-group input, 
+            .form-group select, 
+            .form-group textarea {
+                font-size: 16px; /* Prevents auto-zoom on mobile safari */
+            }
+            .submit-btn {
+                width: 100%;
+                padding: 1rem;
+            }
+            .footer-socials {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .social-btn {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -560,12 +461,6 @@
         <section class="hero container">
             <img src="https://i.imgur.com/MilMt1c.png" alt="MUK POST" class="hero-wordmark reveal">
             <h1 class="reveal">Toronto-Based Remote Post-Production House</h1>
-            
-            <!-- In-House Storage Banner -->
-            <div class="storage-banner reveal">
-                <span class="storage-badge-dot"></span>
-                <span>15TB+ In-House High-Speed SSD & HDD Storage</span>
-            </div>
         </section>
 
         <!-- SERVICES / CAPABILITIES -->
@@ -611,6 +506,14 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- In-House Storage Badge Placed Under Capabilities -->
+            <div class="storage-wrapper reveal">
+                <div class="storage-banner">
+                    <span class="storage-badge-dot"></span>
+                    <span>15TB+ In-House High-Speed SSD & HDD Storage</span>
+                </div>
+            </div>
         </section>
 
         <!-- PORTFOLIO -->
@@ -621,8 +524,10 @@
             <div class="work-cat reveal">
                 <div class="work-header">
                     <h2>Editing</h2>
+                    <span class="section-tag">Narrative / Music Video</span>
                 </div>
                 <div class="video-box">
+                    <i class="fa-solid fa-film" style="font-size: 1.8rem; margin-bottom: 0.8rem; color: #444;"></i>
                     <span>Coming Soon</span>
                 </div>
             </div>
@@ -631,19 +536,20 @@
             <div class="work-cat reveal">
                 <div class="work-header">
                     <h2>Sound</h2>
+                    <span class="section-tag">Design / Mix</span>
                 </div>
                 <div class="video-box">
+                    <i class="fa-solid fa-lines-leaning" style="font-size: 1.8rem; margin-bottom: 0.8rem; color: #444;"></i>
                     <span>Coming Soon</span>
                 </div>
             </div>
 
-            <!-- COLOUR SECTION -->
+            <!-- COLOUR (Reel Iframe as in July 8th version) -->
             <div class="work-cat reveal">
                 <div class="work-header">
                     <h2>Colour</h2>
+                    <span class="section-tag">Cinematic Grade</span>
                 </div>
-                
-                <!-- Main Colour Reel YouTube Video (From July 8th Code) -->
                 <div class="video-container">
                     <iframe 
                         src="https://www.youtube.com/embed/yaZ__LsubwY?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=yaZ__LsubwY&cc_load_policy=0" 
@@ -652,39 +558,13 @@
                         allowfullscreen>
                     </iframe>
                 </div>
-
-                <!-- 3 Small Stills Row Below Colour Video (Using Imgur Links) -->
-                <div class="stills-grid">
-                    <!-- Still 1 -->
-                    <div class="still-card" onclick="openColorModal('Toll by Insyt (Official Video)', 'https://i.imgur.com/TOLL_GRADED.png', 'https://i.imgur.com/TOLL_UNGRADED.png')">
-                        <div class="still-thumb">
-                            <img src="https://i.imgur.com/TOLL_THUMB.png" alt="Toll by Insyt" onerror="this.src='https://i.imgur.com/MilMt1c.png'">
-                        </div>
-                        <div class="still-title">Toll by Insyt (Official Video)</div>
-                    </div>
-
-                    <!-- Still 2 -->
-                    <div class="still-card" onclick="openColorModal('360° by Insyt (Official Video)', 'https://i.imgur.com/360_GRADED.png', 'https://i.imgur.com/360_UNGRADED.png')">
-                        <div class="still-thumb">
-                            <img src="https://i.imgur.com/360_THUMB.png" alt="360° by Insyt" onerror="this.src='https://i.imgur.com/MilMt1c.png'">
-                        </div>
-                        <div class="still-title">360° by Insyt (Official Video)</div>
-                    </div>
-
-                    <!-- Still 3 -->
-                    <div class="still-card" onclick="openColorModal('needmoretime! by Donat Jackson (Official Video)', 'https://i.imgur.com/NMT_GRADED.png', 'https://i.imgur.com/NMT_UNGRADED.png')">
-                        <div class="still-thumb">
-                            <img src="https://i.imgur.com/NMT_THUMB.png" alt="needmoretime!" onerror="this.src='https://i.imgur.com/MilMt1c.png'">
-                        </div>
-                        <div class="still-title">needmoretime! by Donat Jackson (Official Video)</div>
-                    </div>
-                </div>
             </div>
 
-            <!-- TITLING SECTION (From July 8th Code) -->
+            <!-- TITLING / GRAPHIC DESIGN (Reel Iframe as in July 8th version) -->
             <div class="work-cat reveal">
                 <div class="work-header">
                     <h2>Titling</h2>
+                    <span class="section-tag">Graphic Design</span>
                 </div>
                 <div class="video-container">
                     <iframe 
@@ -698,25 +578,7 @@
         </section>
     </main>
 
-    <!-- EXPANDABLE LIGHTBOX MODAL FOR COLOUR STILLS -->
-    <div class="modal-overlay" id="colorModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeColorModal()">&times;</button>
-            <div class="modal-header-title" id="modalVideoTitle">Project Title</div>
-            
-            <div class="ba-slider" id="baSlider">
-                <img id="imgGraded" class="ba-img" src="" alt="Graded">
-                <img id="imgUngraded" class="ba-img ba-top-img" src="" alt="Ungraded">
-                <div class="ba-handle" id="baHandle">
-                    <span class="ba-handle-arrow">&#10094;&#10095;</span>
-                </div>
-                <span class="ba-label ba-label-left">Graded</span>
-                <span class="ba-label ba-label-right">Ungraded / Log</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- CONTACT SECTION -->
+    <!-- CONTACT / FOOTER -->
     <footer id="contact" class="container">
         <img src="https://i.imgur.com/0czpN64.png" alt="M Logo" class="footer-logo reveal">
         
@@ -827,62 +689,6 @@
                     });
                 }
             });
-        });
-
-        // COLOUR LIGHTBOX MODAL & BEFORE/AFTER SLIDER LOGIC
-        function openColorModal(title, gradedUrl, ungradedUrl) {
-            document.getElementById('modalVideoTitle').textContent = title;
-            document.getElementById('imgGraded').src = gradedUrl;
-            document.getElementById('imgUngraded').src = ungradedUrl;
-            
-            // Reset slider handle to center (50%)
-            setSliderPosPercent(50);
-            
-            document.getElementById('colorModal').classList.add('active');
-        }
-
-        function closeColorModal() {
-            document.getElementById('colorModal').classList.remove('active');
-        }
-
-        const slider = document.getElementById('baSlider');
-        const topImg = document.getElementById('imgUngraded');
-        const handle = document.getElementById('baHandle');
-        let isDragging = false;
-
-        function setSliderPos(xPos) {
-            const rect = slider.getBoundingClientRect();
-            let pos = ((xPos - rect.left) / rect.width) * 100;
-            if (pos < 0) pos = 0;
-            if (pos > 100) pos = 100;
-
-            topImg.style.clipPath = `inset(0 ${100 - pos}% 0 0)`;
-            handle.style.left = `${pos}%`;
-        }
-
-        function setSliderPosPercent(pos) {
-            topImg.style.clipPath = `inset(0 ${100 - pos}% 0 0)`;
-            handle.style.left = `${pos}%`;
-        }
-
-        slider.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            setSliderPos(e.clientX);
-        });
-
-        window.addEventListener('mouseup', () => isDragging = false);
-        window.addEventListener('mousemove', (e) => {
-            if (isDragging) setSliderPos(e.clientX);
-        });
-
-        slider.addEventListener('touchstart', (e) => {
-            isDragging = true;
-            if (e.touches[0]) setSliderPos(e.touches[0].clientX);
-        });
-
-        window.addEventListener('touchend', () => isDragging = false);
-        window.addEventListener('touchmove', (e) => {
-            if (isDragging && e.touches[0]) setSliderPos(e.touches[0].clientX);
         });
     </script>
 </body>
