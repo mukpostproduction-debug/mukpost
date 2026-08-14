@@ -38,7 +38,7 @@
 
         /* LAYOUT */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        section { padding: 100px 0; border-bottom: 1px solid var(--border); }
+        section { padding: 110px 0; border-bottom: 1px solid var(--border); }
 
         /* NAV */
         nav {
@@ -118,7 +118,7 @@
             border: 1px solid #333;
             padding: 0.6rem 1.2rem;
             border-radius: 4px;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             font-size: 0.75rem;
             letter-spacing: 0.15em;
             text-transform: uppercase;
@@ -178,7 +178,6 @@
             letter-spacing: 0.05em;
         }
 
-        /* Jot List Styling */
         .cap-list {
             list-style: none;
             padding: 0;
@@ -201,26 +200,6 @@
             color: #555;
         }
 
-        /* REEL SECTION */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            margin: 0 auto;
-            border: 1px solid var(--border);
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
         /* PORTFOLIO */
         .work-cat { margin-bottom: 5rem; }
         
@@ -236,30 +215,47 @@
             font-weight: 800;
         }
 
-        /* Placeholder Video Box */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #151515;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Placeholder Video Box (Pure Text) */
         .video-box {
             width: 100%;
             aspect-ratio: 16/9;
             background: #121212;
             border: 1px solid var(--border);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-transform: uppercase;
             letter-spacing: 0.3em;
             font-size: 0.85rem;
-            color: #555;
+            color: #666;
             transition: 0.3s;
         }
 
-        .video-box:hover { border-color: #444; color: var(--text-dim); }
+        .video-box:hover { border-color: #444; color: var(--text-main); }
 
-        /* COLOUR STILLS GRID (3 SMALL SLIDERS IN A ROW) */
+        /* COLOUR STILLS ROW */
         .stills-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            gap: 1.25rem;
             margin-top: 1.5rem;
         }
 
@@ -280,36 +276,37 @@
             width: 100%;
             aspect-ratio: 16/9;
             background: #181818;
-            position: relative;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .still-thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .still-card:hover .still-thumb img {
+            transform: scale(1.03);
         }
 
         .still-title {
-            padding: 1rem;
-            font-size: 0.8rem;
+            padding: 0.8rem 1rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
             color: var(--text-dim);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
-        /* LIGHTBOX MODAL FOR BEFORE/AFTER STILLS */
+        /* LIGHTBOX MODAL FOR COLOUR STILLS */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             z-index: 2000;
             display: none;
             align-items: center;
@@ -320,7 +317,7 @@
         .modal-overlay.active { display: flex; }
 
         .modal-content {
-            max-width: 1000px;
+            max-width: 1050px;
             width: 100%;
             background: var(--surface);
             border: 1px solid #333;
@@ -335,7 +332,7 @@
             background: none;
             border: none;
             color: var(--text-dim);
-            font-size: 1.8rem;
+            font-size: 2rem;
             cursor: pointer;
             transition: 0.3s;
         }
@@ -343,23 +340,26 @@
         .modal-close:hover { color: var(--accent); }
 
         .modal-header-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-bottom: 1.5rem;
             padding-right: 2rem;
+            font-weight: 700;
         }
 
-        /* BEFORE / AFTER INTERACTIVE COMPARISON SLIDER */
+        /* BEFORE / AFTER SLIDER USING CLIP-PATH */
         .ba-slider {
             position: relative;
             width: 100%;
             aspect-ratio: 16/9;
             overflow: hidden;
             user-select: none;
+            border: 1px solid var(--border);
+            cursor: ew-resize;
         }
 
-        .ba-slider img {
+        .ba-img {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
@@ -367,16 +367,8 @@
             pointer-events: none;
         }
 
-        .ba-slider .img-after {
-            position: absolute;
-            top: 0; left: 0;
-            width: 50%; height: 100%;
-            overflow: hidden;
-        }
-
-        .ba-slider .img-after img {
-            width: 1000px; /* Matched to modal width */
-            max-width: none;
+        .ba-top-img {
+            clip-path: inset(0 50% 0 0); /* Shows left side initially */
         }
 
         .ba-handle {
@@ -384,78 +376,43 @@
             top: 0; bottom: 0;
             left: 50%;
             width: 2px;
-            background: #fff;
-            cursor: ew-resize;
+            background: #ffffff;
             z-index: 10;
+            transform: translateX(-50%);
+            pointer-events: none;
         }
 
-        .ba-handle::after {
-            content: '↔';
+        .ba-handle-arrow {
             position: absolute;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
             width: 32px; height: 32px;
-            background: #fff;
-            color: #000;
+            background: #ffffff;
+            color: #000000;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-
-        /* TITLING FLEXIBLE ASPECT RATIOS & ISOLATE BUTTONS */
-        .titling-demo-container {
-            width: 100%;
-            background: #141414;
-            border: 1px solid var(--border);
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .titling-display {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* Dynamic height preserving intrinsic aspect ratio */
-            min-height: 250px;
-            max-height: 600px;
-            overflow: hidden;
-            transition: background 0.4s ease;
-        }
-
-        .titling-display img {
-            max-width: 100%;
-            height: auto;
-            max-height: 550px;
-            object-fit: contain; /* Prevents cutoff */
-        }
-
-        .bg-removed {
-            background: repeating-conic-gradient(#1a1a1a 0% 25%, #111111 0% 50%) 50% / 20px 20px;
-        }
-
-        .toggle-bg-btn {
-            background: var(--surface);
-            color: var(--text-main);
-            border: 1px solid #444;
-            padding: 0.75rem 1.8rem;
             font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            cursor: pointer;
-            transition: 0.3s;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
 
-        .toggle-bg-btn:hover {
-            background: #ffffff;
-            color: #000000;
+        .ba-label {
+            position: absolute;
+            bottom: 12px;
+            padding: 4px 10px;
+            background: rgba(0,0,0,0.75);
+            color: #fff;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            pointer-events: none;
+            z-index: 5;
+            border: 1px solid rgba(255,255,255,0.1);
         }
+        .ba-label-left { left: 12px; }
+        .ba-label-right { right: 12px; }
 
         /* CONTACT FORM SECTION */
         .contact-section {
@@ -479,9 +436,7 @@
             gap: 0.5rem;
         }
 
-        .form-group.full-width {
-            grid-column: span 2;
-        }
+        .form-group.full-width { grid-column: span 2; }
 
         .form-group label {
             font-size: 0.75rem;
@@ -523,9 +478,7 @@
             margin-top: 1rem;
         }
 
-        .submit-btn:hover {
-            background: #ccc;
-        }
+        .submit-btn:hover { background: #ccc; }
 
         /* FOOTER */
         footer { padding: 120px 0 80px; text-align: center; }
@@ -584,7 +537,6 @@
             <div class="nav-right">
                 <div class="nav-links">
                     <a href="#about">Workflow</a>
-                    <a href="#graphic-design-reel">Reel</a>
                     <a href="#work">Work</a>
                     <a href="#contact">Contact</a>
                 </div>
@@ -654,19 +606,6 @@
             </div>
         </section>
 
-        <!-- Graphic Design Reel Section -->
-        <section id="graphic-design-reel" class="container">
-            <span class="section-tag reveal">Showcase</span>
-            <h2 class="workflow-headline reveal">Graphic Design Reel</h2>
-            <div class="video-container reveal">
-                <iframe 
-                    src="https://www.youtube.com/embed/9u2EourejMM" 
-                    allow="autoplay; encrypted-media" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-        </section>
-
         <!-- PORTFOLIO -->
         <section id="work" class="container">
             <span class="section-tag reveal">Selected Projects</span>
@@ -677,7 +616,6 @@
                     <h2>Editing</h2>
                 </div>
                 <div class="video-box">
-                    <i class="fa-solid fa-film" style="font-size: 1.8rem; margin-bottom: 0.8rem; color: #444;"></i>
                     <span>Coming Soon</span>
                 </div>
             </div>
@@ -688,17 +626,27 @@
                     <h2>Sound</h2>
                 </div>
                 <div class="video-box">
-                    <i class="fa-solid fa-waveform" style="font-size: 1.8rem; margin-bottom: 0.8rem; color: #444;"></i>
                     <span>Coming Soon</span>
                 </div>
             </div>
 
-            <!-- COLOUR SECTION WITH 3 SMALL STILLS IN A ROW -->
+            <!-- COLOUR SECTION -->
             <div class="work-cat reveal">
                 <div class="work-header">
                     <h2>Colour</h2>
                 </div>
                 
+                <!-- Main Colour Reel Video -->
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/yaZ__LsubwY?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=yaZ__LsubwY&cc_load_policy=0" 
+                        title="Colour Reel"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <!-- 3 Small Stills Row Below Video -->
                 <div class="stills-grid">
                     <!-- Still 1 -->
                     <div class="still-card" onclick="openColorModal('Toll by Insyt (Official Video)', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80', 'https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&sat=-100&w=1200&q=80')">
@@ -726,17 +674,18 @@
                 </div>
             </div>
 
-            <!-- TITLING SECTION (Flexible Aspect Ratio & Simplified Buttons) -->
+            <!-- TITLING SECTION -->
             <div class="work-cat reveal">
                 <div class="work-header">
                     <h2>Titling</h2>
                 </div>
-                
-                <div class="titling-demo-container">
-                    <div class="titling-display" id="titlingDisplay">
-                        <img src="https://i.imgur.com/MilMt1c.png" id="titlingImage" alt="Titling Isolation Demo">
-                    </div>
-                    <button class="toggle-bg-btn" onclick="toggleTitleBg()">Remove Background</button>
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/9u2EourejMM?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=9u2EourejMM" 
+                        title="Titling Reel"
+                        allow="autoplay; encrypted-media; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
         </section>
@@ -749,11 +698,13 @@
             <div class="modal-header-title" id="modalVideoTitle">Project Title</div>
             
             <div class="ba-slider" id="baSlider">
-                <img id="imgBefore" src="" alt="Graded">
-                <div class="img-after" id="imgAfterWrap">
-                    <img id="imgAfter" src="" alt="Ungraded">
+                <img id="imgGraded" class="ba-img" src="" alt="Graded">
+                <img id="imgUngraded" class="ba-img ba-top-img" src="" alt="Ungraded">
+                <div class="ba-handle" id="baHandle">
+                    <span class="ba-handle-arrow">&#10094;&#10095;</span>
                 </div>
-                <div class="ba-handle" id="baHandle"></div>
+                <span class="ba-label ba-label-left">Graded</span>
+                <span class="ba-label ba-label-right">Ungraded / Log</span>
             </div>
         </div>
     </div>
@@ -871,27 +822,15 @@
             });
         });
 
-        // TITLING ISOLATION BUTTON TOGGLE
-        let isBgRemoved = false;
-        function toggleTitleBg() {
-            const display = document.getElementById('titlingDisplay');
-            const btn = document.querySelector('.toggle-bg-btn');
-            
-            isBgRemoved = !isBgRemoved;
-            if(isBgRemoved) {
-                display.classList.add('bg-removed');
-                btn.textContent = 'Add Background';
-            } else {
-                display.classList.remove('bg-removed');
-                btn.textContent = 'Remove Background';
-            }
-        }
-
         // COLOUR LIGHTBOX MODAL & BEFORE/AFTER SLIDER
         function openColorModal(title, gradedUrl, ungradedUrl) {
             document.getElementById('modalVideoTitle').textContent = title;
-            document.getElementById('imgBefore').src = gradedUrl;
-            document.getElementById('imgAfter').src = ungradedUrl;
+            document.getElementById('imgGraded').src = gradedUrl;
+            document.getElementById('imgUngraded').src = ungradedUrl;
+            
+            // Reset slider to center (50%)
+            setSliderPosPercent(50);
+            
             document.getElementById('colorModal').classList.add('active');
         }
 
@@ -899,9 +838,9 @@
             document.getElementById('colorModal').classList.remove('active');
         }
 
-        // BEFORE/AFTER SLIDER INTERACTION LOGIC
+        // BEFORE/AFTER SLIDER LOGIC
         const slider = document.getElementById('baSlider');
-        const afterWrap = document.getElementById('imgAfterWrap');
+        const topImg = document.getElementById('imgUngraded');
         const handle = document.getElementById('baHandle');
         let isDragging = false;
 
@@ -911,18 +850,35 @@
             if (pos < 0) pos = 0;
             if (pos > 100) pos = 100;
 
-            afterWrap.style.width = `${pos}%`;
+            topImg.style.clipPath = `inset(0 ${100 - pos}% 0 0)`;
             handle.style.left = `${pos}%`;
         }
 
-        window.addEventListener('mousedown', (e) => { if (e.target.closest('#baSlider')) isDragging = true; });
-        window.addEventListener('mouseup', () => isDragging = false);
-        window.addEventListener('mousemove', (e) => { if (isDragging) setSliderPos(e.clientX); });
+        function setSliderPosPercent(pos) {
+            topImg.style.clipPath = `inset(0 ${100 - pos}% 0 0)`;
+            handle.style.left = `${pos}%`;
+        }
 
-        // Touch support for mobile
-        window.addEventListener('touchstart', (e) => { if (e.target.closest('#baSlider')) isDragging = true; });
+        slider.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            setSliderPos(e.clientX);
+        });
+
+        window.addEventListener('mouseup', () => isDragging = false);
+        window.addEventListener('mousemove', (e) => {
+            if (isDragging) setSliderPos(e.clientX);
+        });
+
+        // Touch support for mobile devices
+        slider.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            if (e.touches[0]) setSliderPos(e.touches[0].clientX);
+        });
+
         window.addEventListener('touchend', () => isDragging = false);
-        window.addEventListener('touchmove', (e) => { if (isDragging && e.touches[0]) setSliderPos(e.touches[0].clientX); });
+        window.addEventListener('touchmove', (e) => {
+            if (isDragging && e.touches[0]) setSliderPos(e.touches[0].clientX);
+        });
     </script>
 </body>
 </html>
