@@ -465,7 +465,7 @@
 
         /* CONTACT & FOOTER WITH EXTENDED BOTTOM SPACE */
         footer { 
-            padding: 160px 0 280px; /* Extra bottom black space to scroll past */
+            padding: 160px 0 280px; 
             text-align: center; 
         }
 
@@ -603,7 +603,7 @@
             }
             .form-grid { 
                 grid-template-columns: 1fr; 
-                gap: 1.3rem;
+                gap: 1.3rem; 
                 margin-top: 1.5rem;
             }
             .form-group.full-width { 
@@ -611,20 +611,20 @@
             }
             .form-group input, 
             .form-group select, 
-            .form-group textarea {
+            .form-group textarea { 
                 font-size: 16px; /* Prevents iOS auto-zoom */
             }
-            .submit-btn {
-                width: 100%;
-                padding: 1.1rem;
+            .submit-btn { 
+                width: 100%; 
+                padding: 1.1rem; 
             }
-            .footer-socials {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 1rem;
+            .footer-socials { 
+                flex-direction: column; 
+                align-items: stretch; 
+                gap: 1rem; 
             }
-            .social-btn {
-                justify-content: center;
+            .social-btn { 
+                justify-content: center; 
             }
         }
     </style>
@@ -852,8 +852,11 @@
 
         <!-- Intake Form -->
         <div class="contact-section reveal">
-            <form action="https://formspree.io/f/muk.postproduction@gmail.com" method="POST" class="form-grid">
+            <form action="https://formspree.io/f/xrpzyngg" method="POST" class="form-grid">
                 
+                <!-- Email Subject Header -->
+                <input type="hidden" name="_subject" value="[Muk Post] New Project Quote Request">
+
                 <div class="form-group">
                     <label for="name">Your Name / Company</label>
                     <input type="text" id="name" name="name" placeholder="John Doe / Studio" required>
@@ -915,8 +918,8 @@
         </div>
 
         <div class="footer-socials reveal">
-            <a href="mailto:muk.postproduction@gmail.com" class="social-btn">
-                <i class="fa-regular fa-envelope"></i> muk.postproduction@gmail.com
+            <a href="mailto:contact@mukpost.com" class="social-btn">
+                <i class="fa-regular fa-envelope"></i> contact@mukpost.com
             </a>
             <a href="https://www.instagram.com/muk.post/" target="_blank" class="social-btn">
                 <i class="fa-brands fa-instagram"></i> Instagram
