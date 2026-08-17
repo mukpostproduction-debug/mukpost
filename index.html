@@ -58,6 +58,7 @@
             display: flex;
             align-items: center;
             border-bottom: 1px solid rgba(255,255,255,0.05);
+            animation: navFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         nav .container {
@@ -99,7 +100,7 @@
 
         .nav-socials a:hover { color: var(--accent); transform: translateY(-2px); }
 
-        /* HERO */
+        /* HERO & OPENING ANIMATIONS */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -114,7 +115,11 @@
         .hero-wordmark { 
             width: 600px; 
             max-width: 85vw; 
-            margin-bottom: 2rem; 
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: scale(0.95);
+            animation: heroFadeScale 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.2s;
         }
 
         .hero h1 {
@@ -123,6 +128,43 @@
             letter-spacing: 0.4em;
             color: var(--text-dim);
             font-weight: 400;
+            opacity: 0;
+            transform: translateY(12px);
+            animation: heroSubFade 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.9s;
+        }
+
+        @keyframes heroFadeScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.94);
+                filter: blur(4px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes heroSubFade {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes navFade {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
         /* CAPABILITIES */
@@ -184,7 +226,7 @@
             color: #444;
         }
 
-        /* STORAGE BADGE & ENLARGED SPACING */
+        /* STORAGE BADGE */
         .storage-wrapper {
             display: flex;
             justify-content: center;
@@ -256,7 +298,7 @@
             border: none;
         }
 
-        /* Placeholder Video Boxes (Play Button Icons) */
+        /* Placeholder Video Boxes */
         .video-box {
             width: 100%;
             aspect-ratio: 16/9;
@@ -278,7 +320,7 @@
             font-size: 1.6rem;
             margin-bottom: 0.8rem;
             color: #444;
-            margin-left: 4px; /* visually centers triangle */
+            margin-left: 4px;
             transition: 0.3s ease;
         }
 
@@ -292,7 +334,7 @@
             transform: scale(1.1);
         }
 
-        /* OVERLAPPING BEFORE/AFTER COMPARISON SLIDERS */
+        /* COMPARISON SLIDERS */
         .comparison-slider {
             position: relative;
             width: 100%;
@@ -320,7 +362,7 @@
         }
 
         .comparison-slider .img-before {
-            clip-path: inset(0 50% 0 0); /* Shows left 50% Log initially */
+            clip-path: inset(0 50% 0 0);
             z-index: 2;
         }
 
@@ -388,7 +430,7 @@
             cursor: ew-resize;
         }
 
-        /* TITLING INTERACTIVE GRID */
+        /* TITLING GRID */
         .titling-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -430,12 +472,10 @@
         .title-with-bg { z-index: 2; }
         .title-isolated { z-index: 1; }
 
-        /* Hide top image when clicked */
         .titling-item.isolated-view .title-with-bg {
             opacity: 0;
         }
 
-        /* Toggle Indicator */
         .toggle-indicator {
             position: absolute;
             bottom: 1.5rem;
@@ -463,7 +503,7 @@
         .titling-item.isolated-view .toggle-indicator .view-isolated { display: none; }
         .titling-item.isolated-view .toggle-indicator .view-context { display: inline; }
 
-        /* CONTACT & FOOTER WITH EXTENDED BOTTOM SPACE */
+        /* CONTACT & FOOTER */
         footer { 
             padding: 160px 0 280px; 
             text-align: center; 
@@ -584,7 +624,7 @@
             background: var(--surface);
         }
 
-        /* SCROLL REVEAL */
+        /* SCROLL REVEAL (Remaining Sections) */
         .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -596,7 +636,6 @@
             .work-cat { margin-bottom: 5.5rem; }
             .workflow-headline { margin-bottom: 3rem; }
             
-            /* Form Mobile Tuning */
             .contact-section { 
                 padding: 2rem 1.2rem; 
                 margin-top: 2.5rem;
@@ -612,7 +651,7 @@
             .form-group input, 
             .form-group select, 
             .form-group textarea { 
-                font-size: 16px; /* Prevents iOS auto-zoom */
+                font-size: 16px;
             }
             .submit-btn { 
                 width: 100%; 
@@ -653,8 +692,8 @@
     <main>
         <!-- HERO -->
         <section class="hero container">
-            <img src="https://i.imgur.com/MilMt1c.png" alt="MUK POST" class="hero-wordmark reveal">
-            <h1 class="reveal">Toronto-Based Remote Post-Production House</h1>
+            <img src="https://i.imgur.com/MilMt1c.png" alt="MUK POST" class="hero-wordmark">
+            <h1>Toronto-Based Remote Post-Production House</h1>
         </section>
 
         <!-- CAPABILITIES -->
@@ -698,7 +737,7 @@
                 </div>
             </div>
 
-            <!-- In-House Storage Badge (With Extra Spacing Below) -->
+            <!-- In-House Storage Badge -->
             <div class="storage-wrapper reveal">
                 <div class="storage-banner">
                     <span class="storage-badge-dot"></span>
@@ -738,7 +777,7 @@
                     <h2>Colour</h2>
                 </div>
 
-                <!-- 1. Colour Video Reel (First) -->
+                <!-- 1. Colour Video Reel -->
                 <div class="video-container">
                     <iframe 
                         src="https://www.youtube.com/embed/yaZ__LsubwY?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=yaZ__LsubwY&cc_load_policy=0" 
@@ -748,7 +787,7 @@
                     </iframe>
                 </div>
 
-                <!-- 2. Overlapping Before/After Comparison Sliders (Under Reel) -->
+                <!-- 2. Overlapping Before/After Comparison Sliders -->
                 <div class="comparison-slider">
                     <img class="img-after" src="https://i.imgur.com/Mue08R1.jpg" alt="Coloured Grade 1">
                     <img class="img-before" src="https://i.imgur.com/kRrD6EF.jpg" alt="Log Image 1">
@@ -789,7 +828,7 @@
                     <h2>Titling & Design</h2>
                 </div>
 
-                <!-- 1. Graphic Design / Titling Showcase Reel (First) -->
+                <!-- 1. Graphic Design / Titling Showcase Reel -->
                 <div class="video-container">
                     <iframe 
                         src="https://www.youtube.com/embed/9u2EourejMM?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=9u2EourejMM" 
@@ -799,7 +838,7 @@
                     </iframe>
                 </div>
                 
-                <!-- 2. Interactive 2x2 Titling Grid (Under Reel) -->
+                <!-- 2. Interactive 2x2 Titling Grid -->
                 <div class="titling-grid">
                     <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
                         <img class="title-isolated" src="https://i.imgur.com/CDDqpRU.jpg" alt="Title 1 Isolated">
@@ -854,7 +893,6 @@
         <div class="contact-section reveal">
             <form action="https://formspree.io/f/xrpzyngg" method="POST" class="form-grid">
                 
-                <!-- Email Subject Header -->
                 <input type="hidden" name="_subject" value="[Muk Post] New Project Quote Request">
 
                 <div class="form-group">
@@ -956,7 +994,7 @@
             });
         });
 
-        // Comparison Slider Handler (Smooth Clipping & Handle Positioning)
+        // Comparison Slider Handler
         function updateComparisonSlider(input) {
             const container = input.closest('.comparison-slider');
             const beforeImg = container.querySelector('.img-before');
