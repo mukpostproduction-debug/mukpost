@@ -226,11 +226,34 @@
             color: #444;
         }
 
+        /* LAURELS */
+        .laurels-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+            margin-top: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .laurels-wrapper img {
+            height: 75px;
+            width: auto;
+            opacity: 0.85;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: default;
+        }
+
+        .laurels-wrapper img:hover {
+            opacity: 1;
+            transform: scale(1.05) translateY(-2px);
+        }
+
         /* STORAGE BADGE */
         .storage-wrapper {
             display: flex;
             justify-content: center;
-            margin-top: 4rem;
+            margin-top: 3rem;
             margin-bottom: 3.5rem;
         }
 
@@ -779,6 +802,13 @@
                 width: 100%;
                 margin-bottom: 0.5rem;
             }
+            .laurels-wrapper {
+                gap: 1.5rem;
+                margin-top: 3rem;
+            }
+            .laurels-wrapper img {
+                height: 55px;
+            }
         }
     </style>
 </head>
@@ -849,6 +879,14 @@
                         <li>Intermediate Fusion compositing</li>
                     </ul>
                 </div>
+            </div>
+
+            <!-- AWARDS & LAURELS -->
+            <div class="laurels-wrapper reveal">
+                <img src="https://i.imgur.com/uXp4ggq.png" alt="Film Laurel 1">
+                <img src="https://i.imgur.com/pom1iLu.png" alt="Film Laurel 2">
+                <img src="https://i.imgur.com/AWGLDJQ.png" alt="Film Laurel 3">
+                <img src="https://i.imgur.com/Y6bzzrL.png" alt="Film Laurel 4">
             </div>
 
             <!-- In-House Storage Badge -->
