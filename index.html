@@ -299,6 +299,19 @@
         }
 
         /* COMPARISON SLIDERS */
+        .slider-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .slider-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
         .comparison-slider {
             position: relative;
             width: 100%;
@@ -306,9 +319,25 @@
             overflow: hidden;
             border: 1px solid #222;
             background: #111;
-            margin-top: 2rem;
             user-select: none;
             touch-action: pan-y;
+            transition: all 0.3s ease;
+        }
+
+        .comparison-slider.fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw !important;
+            height: 100vh !important;
+            z-index: 10000;
+            margin: 0;
+            border: none;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: auto;
         }
 
         .comparison-slider img {
@@ -319,6 +348,10 @@
             top: 0;
             left: 0;
             pointer-events: none;
+        }
+
+        .comparison-slider.fullscreen img {
+            object-fit: contain;
         }
 
         .comparison-slider .img-after {
@@ -392,6 +425,27 @@
             margin: 0;
             z-index: 5;
             cursor: ew-resize;
+        }
+
+        .expand-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 10;
+            background: rgba(10,10,10,0.65);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+            padding: 0.5rem 0.6rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .expand-btn:hover {
+            background: #fff;
+            color: #000;
         }
 
         /* TITLING GRID */
@@ -560,7 +614,7 @@
 
         /* CONTACT & FOOTER */
         footer { 
-            padding: 240px 0 400px; /* Increased top padding to separate from graphics, increased bottom padding for extra scroll */
+            padding: 240px 0 400px; 
             text-align: center; 
         }
 
@@ -963,38 +1017,52 @@
                     </iframe>
                 </div>
 
-                <!-- 2. Overlapping Before/After Comparison Sliders -->
-                <div class="comparison-slider">
-                    <img class="img-after" src="https://i.imgur.com/Mue08R1.jpg" alt="Coloured Grade 1">
-                    <img class="img-before" src="https://i.imgur.com/kRrD6EF.jpg" alt="Log Image 1">
-                    <div class="slider-handle">
-                        <span class="handle-arrow">&#10094;&#10095;</span>
+                <!-- 2. Overlapping Before/After Comparison Sliders (Grid Layout) -->
+                <div class="slider-grid">
+                    <div class="comparison-slider">
+                        <img class="img-after" src="https://i.imgur.com/Mue08R1.jpg" alt="Coloured Grade 1">
+                        <img class="img-before" src="https://i.imgur.com/kRrD6EF.jpg" alt="Log Image 1">
+                        <div class="slider-handle">
+                            <span class="handle-arrow">&#10094;&#10095;</span>
+                        </div>
+                        <span class="slider-label label-left">Log</span>
+                        <span class="slider-label label-right">Graded</span>
+                        <!-- 75% Graded, 25% Log -->
+                        <input type="range" min="0" max="100" value="25" class="slider-input" oninput="updateComparisonSlider(this)">
+                        <div class="expand-btn" onclick="toggleFullscreen(this)" title="Fullscreen">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
                     </div>
-                    <span class="slider-label label-left">Log</span>
-                    <span class="slider-label label-right">Graded</span>
-                    <input type="range" min="0" max="100" value="50" class="slider-input" oninput="updateComparisonSlider(this)">
-                </div>
 
-                <div class="comparison-slider">
-                    <img class="img-after" src="https://i.imgur.com/Z82T1V9.jpg" alt="Coloured Grade 2">
-                    <img class="img-before" src="https://i.imgur.com/M37D5Zl.jpg" alt="Log Image 2">
-                    <div class="slider-handle">
-                        <span class="handle-arrow">&#10094;&#10095;</span>
+                    <div class="comparison-slider">
+                        <img class="img-after" src="https://i.imgur.com/Z82T1V9.jpg" alt="Coloured Grade 2">
+                        <img class="img-before" src="https://i.imgur.com/M37D5Zl.jpg" alt="Log Image 2">
+                        <div class="slider-handle">
+                            <span class="handle-arrow">&#10094;&#10095;</span>
+                        </div>
+                        <span class="slider-label label-left">Log</span>
+                        <span class="slider-label label-right">Graded</span>
+                        <!-- 50/50 -->
+                        <input type="range" min="0" max="100" value="50" class="slider-input" oninput="updateComparisonSlider(this)">
+                        <div class="expand-btn" onclick="toggleFullscreen(this)" title="Fullscreen">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
                     </div>
-                    <span class="slider-label label-left">Log</span>
-                    <span class="slider-label label-right">Graded</span>
-                    <input type="range" min="0" max="100" value="50" class="slider-input" oninput="updateComparisonSlider(this)">
-                </div>
 
-                <div class="comparison-slider">
-                    <img class="img-after" src="https://i.imgur.com/pwfJOKY.jpg" alt="Coloured Grade 3">
-                    <img class="img-before" src="https://i.imgur.com/gd6lS5r.jpg" alt="Log Image 3">
-                    <div class="slider-handle">
-                        <span class="handle-arrow">&#10094;&#10095;</span>
+                    <div class="comparison-slider">
+                        <img class="img-after" src="https://i.imgur.com/pwfJOKY.jpg" alt="Coloured Grade 3">
+                        <img class="img-before" src="https://i.imgur.com/gd6lS5r.jpg" alt="Log Image 3">
+                        <div class="slider-handle">
+                            <span class="handle-arrow">&#10094;&#10095;</span>
+                        </div>
+                        <span class="slider-label label-left">Log</span>
+                        <span class="slider-label label-right">Graded</span>
+                        <!-- 75% Log, 25% Graded -->
+                        <input type="range" min="0" max="100" value="75" class="slider-input" oninput="updateComparisonSlider(this)">
+                        <div class="expand-btn" onclick="toggleFullscreen(this)" title="Fullscreen">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
                     </div>
-                    <span class="slider-label label-left">Log</span>
-                    <span class="slider-label label-right">Graded</span>
-                    <input type="range" min="0" max="100" value="50" class="slider-input" oninput="updateComparisonSlider(this)">
                 </div>
 
                 <!-- Colour Tech Stack -->
@@ -1257,7 +1325,14 @@
             });
         });
 
-        // Comparison Slider Handler
+        // Initialize sliders on load to match default input values (25%, 50%, 75%)
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.slider-input').forEach(input => {
+                updateComparisonSlider(input);
+            });
+        });
+
+        // Comparison Slider Update Logic
         function updateComparisonSlider(input) {
             const container = input.closest('.comparison-slider');
             const beforeImg = container.querySelector('.img-before');
@@ -1267,6 +1342,54 @@
             beforeImg.style.clipPath = `inset(0 ${100 - val}% 0 0)`;
             handle.style.left = `${val}%`;
         }
+
+        // Fullscreen Toggle Logic
+        function toggleFullscreen(btn) {
+            const container = btn.closest('.comparison-slider');
+            const icon = btn.querySelector('i');
+            
+            if (!container.classList.contains('fullscreen')) {
+                // Enter fullscreen
+                container.classList.add('fullscreen');
+                icon.classList.remove('fa-expand');
+                icon.classList.add('fa-compress');
+                document.body.style.overflow = 'hidden'; // Lock background scrolling
+                
+                // Request native fullscreen for mobile rotation support
+                if (container.requestFullscreen) {
+                    container.requestFullscreen().catch(err => console.log(err));
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                }
+            } else {
+                // Exit fullscreen
+                container.classList.remove('fullscreen');
+                icon.classList.remove('fa-compress');
+                icon.classList.add('fa-expand');
+                document.body.style.overflow = ''; 
+                
+                if (document.fullscreenElement) {
+                    document.exitFullscreen().catch(err => console.log(err));
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                }
+            }
+        }
+
+        // Handle Escape key or native mobile back gestures to reset icon/state
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement) {
+                document.querySelectorAll('.comparison-slider.fullscreen').forEach(slider => {
+                    slider.classList.remove('fullscreen');
+                    const icon = slider.querySelector('.expand-btn i');
+                    if(icon) {
+                        icon.classList.remove('fa-compress');
+                        icon.classList.add('fa-expand');
+                    }
+                });
+                document.body.style.overflow = '';
+            }
+        });
     </script>
 </body>
 </html>
