@@ -298,42 +298,6 @@
             border: none;
         }
 
-        /* Placeholder Video Boxes (Kept in CSS just in case) */
-        .video-box {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: #111111;
-            border: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            font-size: 0.8rem;
-            color: #555;
-            transition: 0.3s;
-            cursor: default;
-        }
-
-        .video-box i {
-            font-size: 1.6rem;
-            margin-bottom: 0.8rem;
-            color: #444;
-            margin-left: 4px;
-            transition: 0.3s ease;
-        }
-
-        .video-box:hover { 
-            border-color: #333; 
-            color: var(--text-dim); 
-        }
-
-        .video-box:hover i {
-            color: var(--accent);
-            transform: scale(1.1);
-        }
-
         /* COMPARISON SLIDERS */
         .comparison-slider {
             position: relative;
@@ -503,6 +467,100 @@
         .titling-item.isolated-view .toggle-indicator .view-isolated { display: none; }
         .titling-item.isolated-view .toggle-indicator .view-context { display: inline; }
 
+        /* TECH STACK LOGOS & TOOLTIPS */
+        .tech-stack {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-stack-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-dim);
+            margin-right: 0.5rem;
+            border-right: 1px solid #333;
+            padding-right: 1.5rem;
+        }
+
+        .tech-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.5;
+            filter: grayscale(100%);
+            transition: 0.3s ease;
+            cursor: default;
+        }
+
+        .tech-item:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+
+        .tech-item img {
+            height: 28px;
+            width: 28px;
+            object-fit: contain;
+        }
+
+        .tech-tooltip {
+            position: absolute;
+            bottom: calc(100% + 12px);
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(15, 15, 15, 0.95);
+            border: 1px solid var(--border);
+            padding: 0.6rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            width: max-content;
+            max-width: 220px;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .tech-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--border) transparent transparent transparent;
+        }
+
+        .tech-item:hover .tech-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .tech-tooltip strong { 
+            color: var(--accent); 
+            font-weight: 700; 
+            letter-spacing: 0.05em; 
+        }
+        
+        .tech-tooltip span { 
+            color: var(--text-dim); 
+            line-height: 1.3; 
+            white-space: normal; 
+        }
+
         /* CONTACT & FOOTER */
         footer { 
             padding: 160px 0 280px; 
@@ -624,7 +682,7 @@
             background: var(--surface);
         }
 
-        /* SCROLL REVEAL (Remaining Sections) */
+        /* SCROLL REVEAL */
         .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -664,6 +722,11 @@
             }
             .social-btn { 
                 justify-content: center; 
+            }
+            .tech-stack-label {
+                border-right: none;
+                width: 100%;
+                margin-bottom: 0.5rem;
             }
         }
     </style>
@@ -763,6 +826,45 @@
                         allowfullscreen>
                     </iframe>
                 </div>
+                <!-- Editing Tech Stack -->
+                <div class="tech-stack">
+                    <span class="tech-stack-label">In-House</span>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/Y7VFkg2.png" alt="DaVinci Resolve">
+                        <div class="tech-tooltip">
+                            <strong>DaVinci Resolve</strong>
+                            <span>Native 4K/8K media handling and precision cutting.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/dGeW2xl.png" alt="Premiere Pro">
+                        <div class="tech-tooltip">
+                            <strong>Premiere Pro</strong>
+                            <span>Adaptable NLE for seamless agency & client handoffs.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/ip2ti3I.png" alt="Frame.io">
+                        <div class="tech-tooltip">
+                            <strong>Frame.io</strong>
+                            <span>Timecoded, frame-accurate client review & feedback.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/0K0FX3r.png" alt="Topaz Video AI">
+                        <div class="tech-tooltip">
+                            <strong>Topaz Video AI</strong>
+                            <span>AI-driven upscaling, interpolation, and artifact reduction.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/6JR3QNJ.png" alt="After Effects">
+                        <div class="tech-tooltip">
+                            <strong>After Effects</strong>
+                            <span>Dynamic motion graphics and VFX compositing.</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- SOUND -->
@@ -778,6 +880,74 @@
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
                     </iframe>
+                </div>
+                <!-- Sound Tech Stack -->
+                <div class="tech-stack">
+                    <span class="tech-stack-label">In-House</span>
+                    <div class="tech-item">
+                        <!-- Placeholder for Pro Tools until you find a transparent logo -->
+                        <img src="https://via.placeholder.com/40x40/111111/444444?text=PT" alt="Pro Tools">
+                        <div class="tech-tooltip">
+                            <strong>Avid Pro Tools</strong>
+                            <span>The industry standard for cinematic mixing & sound design.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/4MxMZ35.png" alt="iZotope RX 12">
+                        <div class="tech-tooltip">
+                            <strong>iZotope RX 12</strong>
+                            <span>Surgical dialogue isolation and audio restoration.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/Y7VFkg2.png" alt="DaVinci Fairlight">
+                        <div class="tech-tooltip">
+                            <strong>DaVinci Fairlight</strong>
+                            <span>Integrated high-fidelity mixing and mastering.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/JgwzQ2d.png" alt="FabFilter">
+                        <div class="tech-tooltip">
+                            <strong>FabFilter Total Bundle</strong>
+                            <span>Premium, surgical EQ and dynamics processing.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/TjNoVqf.png" alt="iZotope Insight">
+                        <div class="tech-tooltip">
+                            <strong>iZotope Insight</strong>
+                            <span>Broadcast-standard audio metering and compliance.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/QTUkSCr.png" alt="Ableton Live">
+                        <div class="tech-tooltip">
+                            <strong>Ableton Live</strong>
+                            <span>Custom sound design, scoring, and rhythmic sequencing.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/qjc2ZbP.png" alt="Serum 2">
+                        <div class="tech-tooltip">
+                            <strong>Serum 2</strong>
+                            <span>Advanced wavetable synthesis for unique soundscapes.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/nGjlwye.png" alt="Valhalla DSP">
+                        <div class="tech-tooltip">
+                            <strong>Valhalla DSP</strong>
+                            <span>Lush, high-end spatial and environmental reverbs.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/WaOgEDV.png" alt="Krotos Studio">
+                        <div class="tech-tooltip">
+                            <strong>Krotos Studio</strong>
+                            <span>Dynamic, performative Foley and sound effect generation.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -829,6 +999,47 @@
                     <span class="slider-label label-left">Log</span>
                     <span class="slider-label label-right">Graded</span>
                     <input type="range" min="0" max="100" value="50" class="slider-input" oninput="updateComparisonSlider(this)">
+                </div>
+
+                <!-- Colour Tech Stack -->
+                <div class="tech-stack">
+                    <span class="tech-stack-label">In-House</span>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/Y7VFkg2.png" alt="DaVinci Resolve">
+                        <div class="tech-tooltip">
+                            <strong>DaVinci Resolve</strong>
+                            <span>Industrial-grade cinematic grading and look development.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <!-- Placeholder for MagicGrade until you find a transparent logo -->
+                        <img src="https://via.placeholder.com/40x40/111111/444444?text=MG" alt="MagicGrade">
+                        <div class="tech-tooltip">
+                            <strong>MagicGrade</strong>
+                            <span>Authentic film emulation built from real film density data.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/E6mtK9k.png" alt="LensNode">
+                        <div class="tech-tooltip">
+                            <strong>LensNode</strong>
+                            <span>GPU-powered simulations for authentic lens distortion and halation.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/E1Dnijx.png" alt="ASUS ProArt Monitor">
+                        <div class="tech-tooltip">
+                            <strong>ASUS ProArt Monitor</strong>
+                            <span>Factory-calibrated, color-accurate reference monitoring.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/jENBN4a.png" alt="Calman Verified">
+                        <div class="tech-tooltip">
+                            <strong>Calman Verified</strong>
+                            <span>Guaranteed Delta E < 2 for broadcast-safe color space management.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -883,6 +1094,46 @@
                         <div class="toggle-indicator">
                             <span class="view-isolated">Isolate</span>
                             <span class="view-context">Context</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design Tech Stack -->
+                <div class="tech-stack">
+                    <span class="tech-stack-label">In-House</span>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/8GMVxRW.png" alt="Adobe Photoshop">
+                        <div class="tech-tooltip">
+                            <strong>Photoshop</strong>
+                            <span>Industry-standard raster graphics and asset manipulation.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/6ifNO4r.png" alt="Adobe Illustrator">
+                        <div class="tech-tooltip">
+                            <strong>Illustrator</strong>
+                            <span>Scalable, vector-based titling and graphic design.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/30prkgL.png" alt="Procreate">
+                        <div class="tech-tooltip">
+                            <strong>Procreate</strong>
+                            <span>Custom, hand-drawn typography and textural elements.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/6JR3QNJ.png" alt="Adobe After Effects">
+                        <div class="tech-tooltip">
+                            <strong>After Effects</strong>
+                            <span>Complex title sequences and dynamic tracking.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://imgur.com/SLVkJND.png" alt="Adobe InDesign">
+                        <div class="tech-tooltip">
+                            <strong>InDesign</strong>
+                            <span>Professional layout design for pitch decks and print.</span>
                         </div>
                     </div>
                 </div>
