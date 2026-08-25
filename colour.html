@@ -1,1 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colour Portfolio | Muk Post</title>
+    
+    <!-- Open Graph / Social Sharing Meta Tags -->
+    <meta property="og:title" content="Muk Post | Colour Portfolio">
+    <meta property="og:description" content="Cinematic colour grading and look development by Muk Post.">
+    <meta property="og:image" content="https://i.imgur.com/p5t4Fk0.png">
+    <meta property="og:url" content="https://mukpost.com/colour">
+    <meta property="og:type" content="website">
 
+    <!-- FontAwesome for Social & Media Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* CORE DESIGN SYSTEM (Matching Index) */
+        :root {
+            --bg: #0a0a0a;
+            --surface: #111111;
+            --surface-hover: #161616;
+            --text-main: #eeeeee;
+            --text-dim: #888888;
+            --accent: #ffffff;
+            --border: #1e1e1e;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img { display: block; max-width: 100%; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; height: 80px;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .nav-logo { width: 44px; height: auto; }
+        .nav-right { display: flex; align-items: center; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; text-transform: uppercase; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; margin-left: 2.5rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-socials { display: flex; gap: 1.2rem; margin-left: 3rem; padding-left: 2rem; border-left: 1px solid #282828; }
+        .nav-socials a { color: var(--text-dim); font-size: 1.1rem; transition: 0.3s; }
+        .nav-socials a:hover { color: var(--accent); transform: translateY(-2px); }
+
+        /* HEADERS */
+        .workflow-headline { font-size: clamp(1.8rem, 4.5vw, 3.2rem); text-transform: uppercase; font-weight: 800; letter-spacing: -0.02em; }
+        .work-cat { margin-bottom: 6rem; }
+        .work-header { margin-bottom: 1.5rem; border-bottom: 1px solid #2a2a2a; padding-bottom: 0.8rem; }
+        .work-header h2 { font-size: clamp(1.2rem, 2.5vw, 1.8rem); text-transform: uppercase; font-weight: 800; letter-spacing: -0.01em; }
+
+        /* 8-COLUMN GRID SYSTEM */
+        .colour-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        @media (min-width: 768px) { .colour-grid { grid-template-columns: repeat(4, 1fr); } }
+        @media (min-width: 1024px) { .colour-grid { grid-template-columns: repeat(8, 1fr); } }
+        
+        .colour-grid img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+        .colour-grid img:hover { border-color: var(--accent); transform: scale(1.03); z-index: 2; position: relative; }
+
+        /* LIGHTBOX GALLERY */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        }
+        .lightbox-close, .lightbox-prev, .lightbox-next {
+            position: absolute;
+            color: #fff;
+            background: rgba(20,20,20,0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+        .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover { background: #fff; color: #000; }
+        .lightbox-close { top: 1.5rem; right: 2rem; width: 44px; height: 44px; font-size: 1.2rem; }
+        .lightbox-prev { left: 2rem; width: 50px; height: 50px; font-size: 1.2rem; }
+        .lightbox-next { right: 2rem; width: 50px; height: 50px; font-size: 1.2rem; }
+
+        /* FOOTER */
+        footer { padding: 120px 0 80px; text-align: center; border-top: 1px solid var(--border); margin-top: 80px; }
+        .footer-logo { width: 55px; margin: 0 auto 2rem; opacity: 0.8; }
+        .footer-socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; }
+        .social-btn { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; display: flex; align-items: center; gap: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; transition: 0.3s; padding: 0.75rem 1.4rem; border: 1px solid var(--border); }
+        .social-btn:hover { color: var(--accent); border-color: #444; background: var(--surface); }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-socials { display: none; }
+            .lightbox-prev { left: 0.5rem; width: 40px; height: 40px; }
+            .lightbox-next { right: 0.5rem; width: 40px; height: 40px; }
+            .lightbox-img { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="index.html">
+                <img src="https://i.imgur.com/0czpN64.png" alt="M Logo" class="nav-logo">
+            </a>
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="index.html#about">Workflow</a>
+                    <a href="index.html#work">Work</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <div class="nav-socials">
+                    <a href="https://www.instagram.com/muk.post/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://x.com/muk_post" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="padding-top: 160px; min-height: 85vh;">
+        <h1 class="workflow-headline" style="text-align: center; margin-bottom: 4rem;">Colour Grading Gallery</h1>
+        
+        <!-- PROJECT 1: Beer League -->
+        <div class="work-cat">
+            <div class="work-header">
+                <h2>Lady Marge — "Beer League"</h2>
+                <p style="color: var(--text-dim); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em;">Music Video | August 2026</p>
+            </div>
+            <div class="colour-grid">
+                <!-- Replace src paths with your actual files -->
+                <img src="your-folder-name/beerleague-01.jpg" alt="Still" onclick="openLightbox(this)">
+                <img src="your-folder-name/beerleague-02.jpg" alt="Still" onclick="openLightbox(this)">
+                <img src="your-folder-name/beerleague-03.jpg" alt="Still" onclick="openLightbox(this)">
+                <img src="your-folder-name/beerleague-04.jpg" alt="Still" onclick="openLightbox(this)">
+                <img src="your-folder-name/beerleague-05.jpg" alt="Still" onclick="openLightbox(this)">
+                <img src="your-folder-name/beerleague-06.jpg" alt="Still" onclick="openLightbox(this)">
+                <img src="your-folder-name/beerleague-07.jpg" alt="Still" onclick="openLightbox(this)">
+                <img src="your-folder-name/beerleague-08.jpg" alt="Still" onclick="openLightbox(this)">
+            </div>
+        </div>
+
+        <!-- PROJECT 2: Need More Time -->
+        <div class="work-cat">
+            <div class="work-header">
+                <h2>Donat Jackson — "Need More Time!"</h2>
+                <p style="color: var(--text-dim); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em;">Music Video | May 2026</p>
+            </div>
+            <div class="colour-grid">
+                <img src="your-folder-name/nmt-01.jpg" alt="Still" onclick="openLightbox(this)">
+                <img src="your-folder-name/nmt-02.jpg" alt="Still" onclick="openLightbox(this)">
+                <img src="your-folder-name/nmt-03.jpg" alt="Still" onclick="openLightbox(this)">
+                <img src="your-folder-name/nmt-04.jpg" alt="Still" onclick="openLightbox(this)">
+                <img src="your-folder-name/nmt-05.jpg" alt="Still" onclick="openLightbox(this)">
+                <img src="your-folder-name/nmt-06.jpg" alt="Still" onclick="openLightbox(this)">
+                <img src="your-folder-name/nmt-07.jpg" alt="Still" onclick="openLightbox(this)">
+                <img src="your-folder-name/nmt-08.jpg" alt="Still" onclick="openLightbox(this)">
+            </div>
+        </div>
+
+    </main>
+
+    <!-- LIGHTBOX OVERLAY -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></div>
+        <div class="lightbox-prev" onclick="changeImage(-1)"><i class="fa-solid fa-chevron-left"></i></div>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="Fullscreen Still">
+        <div class="lightbox-next" onclick="changeImage(1)"><i class="fa-solid fa-chevron-right"></i></div>
+    </div>
+
+    <footer id="contact" class="container">
+        <img src="https://i.imgur.com/0czpN64.png" alt="M Logo" class="footer-logo">
+        <div class="footer-socials">
+            <a href="mailto:contact@mukpost.com" class="social-btn"><i class="fa-regular fa-envelope"></i> contact@mukpost.com</a>
+            <a href="https://www.instagram.com/muk.post/" target="_blank" class="social-btn"><i class="fa-brands fa-instagram"></i> Instagram</a>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX LOGIC -->
+    <script>
+        let currentGallery = [];
+        let currentIndex = 0;
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(imgElement) {
+            const grid = imgElement.closest('.colour-grid');
+            currentGallery = Array.from(grid.querySelectorAll('img'));
+            currentIndex = currentGallery.indexOf(imgElement);
+            lightboxImg.src = imgElement.src;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Lock background scrolling
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = ''; 
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = currentGallery.length - 1;
+            if (currentIndex >= currentGallery.length) currentIndex = 0;
+            lightboxImg.src = currentGallery[currentIndex].src;
+        }
+
+        // Keyboard Controls
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.style.display === 'flex') {
+                if (e.key === 'ArrowRight') changeImage(1);
+                if (e.key === 'ArrowLeft') changeImage(-1);
+                if (e.key === 'Escape') closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
