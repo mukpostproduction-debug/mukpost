@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muk Post | Links</title>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Muk Post | Links">
+    <meta property="og:description" content="Toronto-Based Remote Post-Production House">
+    <meta property="og:image" content="https://i.imgur.com/p5t4Fk0.png">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* MUK POST DESIGN SYSTEM */
+        :root {
+            --bg: #0a0a0a;
+            --surface: #111111;
+            --surface-hover: #161616;
+            --text-main: #eeeeee;
+            --text-dim: #888888;
+            --accent: #ffffff;
+            --border: #1e1e1e;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 3rem 1.5rem;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .links-container {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* HEADER / LOGO */
+        .profile-img {
+            width: 80px;
+            height: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+
+        p.bio {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            line-height: 1.5;
+        }
+
+        /* LINK BUTTONS */
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .link-btn i {
+            position: absolute;
+            left: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            transition: 0.3s;
+        }
+
+        .link-btn:hover {
+            background: var(--accent);
+            color: #000;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .link-btn:hover i {
+            color: #000;
+        }
+
+        /* SOCIAL ICONS */
+        .social-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            color: var(--text-dim);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="links-container">
+        <!-- Logo -->
+        <img src="https://i.imgur.com/0czpN64.png" alt="Muk Post Logo" class="profile-img">
+        
+        <!-- Bio -->
+        <h1>Muk Post</h1>
+        <p class="bio">Toronto-Based Remote Post-Production House<br>Editing • Sound • Colour • Design</p>
+
+        <!-- Links -->
+        <a href="https://mukpost.com" class="link-btn">
+            <i class="fa-solid fa-globe"></i> Main Website
+        </a>
+
+        <a href="https://mukpost.com/colour.html" class="link-btn">
+            <i class="fa-solid fa-palette"></i> Colour Grading Gallery
+        </a>
+
+        <a href="https://mukpost.com/#work" class="link-btn">
+            <i class="fa-solid fa-film"></i> Video Reels
+        </a>
+
+        <a href="https://mukpost.com/#contact" class="link-btn">
+            <i class="fa-solid fa-envelope"></i> Request a Quote
+        </a>
+
+        <!-- Socials -->
+        <div class="social-row">
+            <a href="mailto:contact@mukpost.com" class="social-icon" title="Email"><i class="fa-regular fa-envelope"></i></a>
+            <a href="https://www.instagram.com/muk.post/" target="_blank" class="social-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://x.com/muk_post" target="_blank" class="social-icon" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+    </div>
+
+</body>
+</html>
