@@ -66,7 +66,7 @@
         /* HEADERS */
         .workflow-headline { font-size: clamp(1.8rem, 4.5vw, 3.2rem); text-transform: uppercase; font-weight: 800; letter-spacing: -0.02em; }
         .work-cat { margin-bottom: 6rem; }
-        .work-header { margin-bottom: 1.5rem; border-bottom: 1px solid #2a2a2a; padding-bottom: 0.8rem; }
+        .work-header { margin-bottom: 1.5rem; border-bottom: 1px solid #2a2a2a; padding-bottom: 0.8rem; scroll-margin-top: 100px; }
         .work-header h2 { font-size: clamp(1.2rem, 2.5vw, 1.8rem); text-transform: uppercase; font-weight: 800; letter-spacing: -0.01em; }
 
         /* 8-COLUMN GRID SYSTEM */
@@ -88,6 +88,17 @@
             transition: 0.2s ease;
         }
         .colour-grid img:hover { border-color: var(--accent); transform: scale(1.03); z-index: 2; position: relative; }
+
+        /* SHOW MORE LOGIC */
+        .colour-grid.collapsed img:nth-child(n+17) {
+            display: none;
+        }
+        .show-more-wrapper {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+        .submit-btn { background: var(--accent); color: #000; border: none; padding: 1.1rem 2.8rem; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; cursor: pointer; transition: 0.3s; margin-top: 0.5rem; }
+        .submit-btn:hover { background: #d0d0d0; }
 
         /* LIGHTBOX GALLERY */
         .lightbox {
@@ -166,7 +177,9 @@
                 <h2>insyt. — "360°"</h2>
                 <p style="color: var(--text-dim); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em;">Music Video | June 2026</p>
             </div>
-            <div class="colour-grid">
+            
+            <!-- Notice the 'collapsed' class and the 'id' added to the grid -->
+            <div class="colour-grid collapsed" id="insyt-grid">
                 <img src="stills-insyt360/Still%202026-08-25%20152420_1.12.1%20Large.jpeg" alt="insyt. 360° Still" onclick="openLightbox(this)">
                 <img src="stills-insyt360/Still%202026-08-25%20152420_1.12.2%20Large.jpeg" alt="insyt. 360° Still" onclick="openLightbox(this)">
                 <img src="stills-insyt360/Still%202026-08-25%20152420_1.12.3%20Large.jpeg" alt="insyt. 360° Still" onclick="openLightbox(this)">
@@ -205,21 +218,11 @@
                 <img src="stills-insyt360/Still%202026-08-25%20152420_4.7.6%20Large.jpeg" alt="insyt. 360° Still" onclick="openLightbox(this)">
                 <img src="stills-insyt360/Still%202026-08-25%20152420_4.7.7%20Large.jpeg" alt="insyt. 360° Still" onclick="openLightbox(this)">
             </div>
-        </div>
-
-        <!-- TEMPLATE: Copy and paste this block for your next projects -->
-        <!-- 
-        <div class="work-cat">
-            <div class="work-header">
-                <h2>Project Title Here</h2>
-                <p style="color: var(--text-dim); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em;">Category | Date</p>
-            </div>
-            <div class="colour-grid">
-                <img src="your-new-folder/01.jpg" alt="Still" onclick="openLightbox(this)">
-                <img src="your-new-folder/02.jpg" alt="Still" onclick="openLightbox(this)">
+            
+            <div class="show-more-wrapper">
+                <button class="submit-btn" onclick="toggleGallery('insyt-grid', this)">Show More Stills</button>
             </div>
         </div>
-        -->
 
     </main>
 
@@ -239,8 +242,27 @@
         </div>
     </footer>
 
-    <!-- LIGHTBOX LOGIC -->
+    <!-- LOGIC -->
     <script>
+        // --- Show More / Hide Stills Logic ---
+        function toggleGallery(gridId, btn) {
+            const grid = document.getElementById(gridId);
+            
+            if (grid.classList.contains('collapsed')) {
+                // Expand the grid
+                grid.classList.remove('collapsed');
+                btn.innerText = 'Show Less Stills';
+            } else {
+                // Collapse the grid and scroll back to the header
+                grid.classList.add('collapsed');
+                btn.innerText = 'Show More Stills';
+                
+                const header = grid.previousElementSibling;
+                header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // --- Lightbox Gallery Logic ---
         let currentGallery = [];
         let currentIndex = 0;
         const lightbox = document.getElementById('lightbox');
@@ -248,8 +270,10 @@
 
         function openLightbox(imgElement) {
             const grid = imgElement.closest('.colour-grid');
+            // Grabs all images in the grid, even the hidden ones!
             currentGallery = Array.from(grid.querySelectorAll('img'));
             currentIndex = currentGallery.indexOf(imgElement);
+            
             lightboxImg.src = imgElement.src;
             lightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden'; 
@@ -267,7 +291,6 @@
             lightboxImg.src = currentGallery[currentIndex].src;
         }
 
-        // Keyboard Controls
         document.addEventListener('keydown', (e) => {
             if (lightbox.style.display === 'flex') {
                 if (e.key === 'ArrowRight') changeImage(1);
