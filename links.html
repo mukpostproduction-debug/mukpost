@@ -84,7 +84,7 @@
             border: 1px solid var(--border);
             color: var(--text-main);
             text-decoration: none;
-            padding: 1.2rem;
+            padding: 1.2rem 3rem;
             margin-bottom: 1rem;
             font-size: 0.85rem;
             text-transform: uppercase;
@@ -92,11 +92,14 @@
             font-weight: 600;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
+            text-align: center;
         }
 
         .link-btn i {
             position: absolute;
             left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
             font-size: 1.1rem;
             color: var(--text-dim);
             transition: 0.3s;
@@ -120,29 +123,35 @@
 
         /* Featured / Larger Button Style */
         .link-btn-featured {
-            padding: 1.5rem 1.2rem;
-            border-color: #333333;
+            padding: 1.4rem 3.2rem;
+            border-color: #2e2e2e;
         }
 
         .btn-text-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.25rem;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            gap: 0.35rem;
         }
 
         .btn-main-title {
-            font-size: 0.95rem;
-            letter-spacing: 0.12em;
+            font-size: clamp(0.78rem, 3.2vw, 0.88rem);
+            letter-spacing: 0.08em;
             font-weight: 700;
+            line-height: 1.35;
+            text-align: center;
         }
 
         .btn-subtext {
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             color: var(--text-dim);
             letter-spacing: 0.08em;
             text-transform: uppercase;
             font-weight: 500;
+            text-align: center;
             transition: color 0.3s;
         }
 
@@ -198,7 +207,7 @@
         </a>
 
         <a href="https://youtu.be/zOgTcW_rOoQ?si=IGJrhRt-HWirDR08" target="_blank" class="link-btn yt-btn">
-            <i class="fa-brands fa-youtube"></i> Beer League
+            <i class="fa-brands fa-youtube"></i> Lady Marge - "Beer League"
         </a>
 
         <!-- Site Navigation Links -->
