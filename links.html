@@ -113,16 +113,49 @@
             color: #000;
         }
         
-        /* Specific hover state for the YouTube button */
+        /* YouTube Button Icon Color */
         .yt-btn i {
             color: #ff0000;
+        }
+
+        /* Featured / Larger Button Style */
+        .link-btn-featured {
+            padding: 1.5rem 1.2rem;
+            border-color: #333333;
+        }
+
+        .btn-text-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .btn-main-title {
+            font-size: 0.95rem;
+            letter-spacing: 0.12em;
+            font-weight: 700;
+        }
+
+        .btn-subtext {
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .link-btn-featured:hover .btn-subtext {
+            color: #333333;
         }
 
         /* SOCIAL ICONS */
         .social-row {
             display: flex;
             gap: 1.5rem;
-            margin-top: 2rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
         }
 
         .social-icon {
@@ -146,14 +179,29 @@
         <h1>Muk Post</h1>
         <p class="bio">Toronto-Based Remote Post-Production House<br>Editing • Sound • Colour • Design</p>
 
+        <!-- Featured Release Video Button -->
+        <a href="https://www.youtube.com/watch?v=m3GzM8sJ_V8" target="_blank" class="link-btn yt-btn link-btn-featured">
+            <i class="fa-brands fa-youtube"></i>
+            <div class="btn-text-content">
+                <span class="btn-main-title">Donat Jackson — needmoretime!</span>
+                <span class="btn-subtext">Thursday at Midnight</span>
+            </div>
+        </a>
+
+        <!-- Video Links -->
+        <a href="https://www.youtube.com/watch?v=chQBG5lTCnM" target="_blank" class="link-btn yt-btn">
+            <i class="fa-brands fa-youtube"></i> insyt. — "Toll"
+        </a>
+
         <a href="https://www.youtube.com/watch?v=CKdqD851gQ0" target="_blank" class="link-btn yt-btn">
             <i class="fa-brands fa-youtube"></i> insyt. — "360°"
         </a>
 
         <a href="https://youtu.be/zOgTcW_rOoQ?si=IGJrhRt-HWirDR08" target="_blank" class="link-btn yt-btn">
-            <i class="fa-brands fa-youtube"></i> Recent Project: Beer League
+            <i class="fa-brands fa-youtube"></i> Beer League
         </a>
 
+        <!-- Site Navigation Links -->
         <a href="https://mukpost.com" class="link-btn">
             <i class="fa-solid fa-globe"></i> Main Website
         </a>
@@ -170,6 +218,7 @@
             <i class="fa-solid fa-envelope"></i> Request a Quote
         </a>
 
+        <!-- Social Icons (Directly Under Quote Button) -->
         <div class="social-row">
             <a href="mailto:contact@mukpost.com" class="social-icon" title="Email"><i class="fa-regular fa-envelope"></i></a>
             <a href="https://www.instagram.com/muk.post/" target="_blank" class="social-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
