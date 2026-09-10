@@ -173,17 +173,41 @@
             max-width: 650px;
         }
         
-        .youtube-teaser-img {
+        /* INTERACTIVE ERASER THUMBNAIL */
+        .youtube-teaser-container {
+            position: relative;
             width: 100%;
             max-width: 560px;
             aspect-ratio: 16 / 9;
-            object-fit: cover;
-            border-radius: 12px;
-            filter: blur(14px);
             margin: 0 auto 2rem;
-            display: block;
+            border-radius: 12px;
+            overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             border: 1px solid rgba(255,255,255,0.05);
+            cursor: crosshair;
+        }
+
+        .youtube-teaser-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .blurred-layer {
+            filter: blur(14px);
+            transform: scale(1.05); /* Stops blur edge bleed */
+        }
+
+        .reveal-layer {
+            /* Hides the unblurred image initially via an off-screen mask */
+            -webkit-mask-image: radial-gradient(circle 120px at -200px -200px, black 30%, transparent 80%);
+            mask-image: radial-gradient(circle 120px at -200px -200px, black 30%, transparent 80%);
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
         }
 
         .countdown-timer {
@@ -396,9 +420,11 @@
             .laurels-wrapper { gap: 1.5rem; margin-top: 3rem; }
             .laurels-wrapper img { height: 55px; }
             
-            .youtube-teaser-img {
-                filter: blur(10px); /* Slightly less blur on mobile for performance */
+            .youtube-teaser-container {
                 margin-bottom: 1.5rem;
+            }
+            .blurred-layer {
+                filter: blur(10px); /* Slightly less blur on mobile */
             }
         }
     </style>
@@ -432,7 +458,13 @@
             
             <!-- NEW YOUTUBE VIDEO DROP COUNTDOWN -->
             <div class="drop-countdown-wrapper">
-                <img src="https://i.imgur.com/6RYCnXk.jpg" alt="Donat Jackson Video Teaser" class="youtube-teaser-img">
+                <div class="youtube-teaser-container" id="teaser-container">
+                    <!-- Base Image: Blurred -->
+                    <img src="https://i.imgur.com/6RYCnXk.jpg" alt="Donat Jackson Video Teaser Blurred" class="youtube-teaser-img blurred-layer">
+                    <!-- Reveal Image: Unblurred & Dynamically Masked via JS -->
+                    <img src="https://i.imgur.com/6RYCnXk.jpg" alt="Donat Jackson Video Teaser Revealed" class="youtube-teaser-img reveal-layer" id="reveal-layer">
+                </div>
+
                 <div id="drop-timer" class="countdown-timer">00:00:00</div>
                 <div class="countdown-label">Releasing at Midnight</div>
                 <a href="https://www.youtube.com/watch?v=m3GzM8sJ_V8" target="_blank" class="youtube-drop-btn">
@@ -983,6 +1015,47 @@
             }, 1000);
         })();
         // --- END COUNTDOWN SCRIPT ---
+
+        // --- NEW ERASER REVEAL SCRIPT ---
+        const teaserContainer = document.getElementById('teaser-container');
+        const revealLayer = document.getElementById('reveal-layer');
+
+        if(teaserContainer && revealLayer) {
+            function updateEraser(e) {
+                let clientX, clientY;
+                if (e.touches && e.touches.length > 0) {
+                    clientX = e.touches[0].clientX;
+                    clientY = e.touches[0].clientY;
+                } else {
+                    clientX = e.clientX;
+                    clientY = e.clientY;
+                }
+                
+                const rect = teaserContainer.getBoundingClientRect();
+                const x = clientX - rect.left;
+                const y = clientY - rect.top;
+                
+                // Creates a transparent hole where the cursor is, revealing the clear image
+                revealLayer.style.webkitMaskImage = `radial-gradient(circle 120px at ${x}px ${y}px, black 30%, transparent 80%)`;
+                revealLayer.style.maskImage = `radial-gradient(circle 120px at ${x}px ${y}px, black 30%, transparent 80%)`;
+            }
+
+            function resetEraser() {
+                // Move the hole completely offscreen to hide the clear image again
+                revealLayer.style.webkitMaskImage = `radial-gradient(circle 120px at -200px -200px, black 30%, transparent 80%)`;
+                revealLayer.style.maskImage = `radial-gradient(circle 120px at -200px -200px, black 30%, transparent 80%)`;
+            }
+
+            teaserContainer.addEventListener('mousemove', updateEraser);
+            teaserContainer.addEventListener('touchmove', (e) => {
+                e.preventDefault(); // Prevents the screen from scrolling down when swiping to erase on mobile
+                updateEraser(e);
+            }, { passive: false });
+
+            teaserContainer.addEventListener('mouseleave', resetEraser);
+            teaserContainer.addEventListener('touchend', resetEraser);
+        }
+        // --- END ERASER REVEAL SCRIPT ---
 
         // Scroll Reveal Observer
         const observer = new IntersectionObserver((entries) => {
