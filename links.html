@@ -3,16 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muk Post | Links</title>
     
-    <meta property="og:title" content="Muk Post | Links">
-    <meta property="og:description" content="Toronto-Based Remote Post-Production House">
+    <title>Muk Post | Professional Post-Production</title>
+    
+    <!-- ADD YOUR FAVICON HERE -->
+    <link rel="icon" href="https://i.imgur.com/0czpN64.png" type="image/png">
+        
+    <!-- Open Graph / Social Sharing Meta Tags -->
+    <meta property="og:title" content="Muk Post | Professional Post-Production">
+    <meta property="og:description" content="Toronto-Based Remote Post-Production House specializing in editing, sound, colour, and design.">
     <meta property="og:image" content="https://i.imgur.com/p5t4Fk0.png">
-    
+    <meta property="og:url" content="https://mukpost.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Muk Post | Professional Post-Production">
+    <meta name="twitter:description" content="Toronto-Based Remote Post-Production House specializing in editing, sound, colour, and design.">
+    <meta name="twitter:image" content="https://i.imgur.com/p5t4Fk0.png">
+
+    <!-- FontAwesome for Social & Media Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
+    <!-- Metricool Tracking Script -->
+    <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"94e33d4ae0fb314a9f07b7e43a242b4d"})});</script>
+
     <style>
-        /* MUK POST DESIGN SYSTEM */
+        /* DESIGN SYSTEM */
         :root {
             --bg: #0a0a0a;
             --surface: #111111;
@@ -21,219 +38,1042 @@
             --text-dim: #888888;
             --accent: #ffffff;
             --border: #1e1e1e;
-            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             background-color: var(--bg);
             color: var(--text-main);
             font-family: var(--font);
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 3rem 1.5rem;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
 
-        .links-container {
-            width: 100%;
-            max-width: 500px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        img {
+            image-rendering: -webkit-optimize-contrast;
+            display: block;
+            max-width: 100%;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* HEADER / LOGO */
-        .profile-img {
-            width: 80px;
-            height: auto;
-            margin-bottom: 1.5rem;
-        }
-
-        h1 {
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 0.5rem;
-            font-weight: 800;
-        }
-
-        p.bio {
-            color: var(--text-dim);
-            font-size: 0.85rem;
-            text-align: center;
-            margin-bottom: 2.5rem;
-            line-height: 1.5;
-        }
-
-        /* LINK BUTTONS */
-        .link-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            color: var(--text-main);
-            text-decoration: none;
-            padding: 1.2rem 3rem;
-            margin-bottom: 1rem;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            text-align: center;
-        }
-
-        .link-btn i {
-            position: absolute;
-            left: 1.5rem;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.1rem;
-            color: var(--text-dim);
-            transition: 0.3s;
-        }
-
-        .link-btn:hover {
-            background: var(--accent);
-            color: #000;
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .link-btn:hover i {
-            color: #000;
+        /* LAYOUT & EXPANDED SPACING */
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 2rem; 
         }
         
-        /* YouTube Button Icon Color */
-        .yt-btn i {
-            color: #ff0000;
+        section { 
+            padding: 160px 0; 
+            border-bottom: 1px solid var(--border); 
         }
 
-        /* Featured / Larger Button Style */
-        .link-btn-featured {
-            padding: 1.4rem 3.2rem;
-            border-color: #2e2e2e;
-        }
-
-        .btn-text-content {
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; height: 80px;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            animation: navFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        nav .container {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
             width: 100%;
-            gap: 0.35rem;
         }
 
-        .btn-main-title {
-            font-size: clamp(0.78rem, 3.2vw, 0.88rem);
-            letter-spacing: 0.08em;
-            font-weight: 700;
-            line-height: 1.35;
-            text-align: center;
-        }
+        .nav-logo { width: 44px; height: auto; }
+        .nav-right { display: flex; align-items: center; }
 
-        .btn-subtext {
-            font-size: 0.7rem;
+        .nav-links a {
             color: var(--text-dim);
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            font-weight: 500;
-            text-align: center;
-            transition: color 0.3s;
-        }
-
-        .link-btn-featured:hover .btn-subtext {
-            color: #333333;
-        }
-
-        /* SOCIAL ICONS */
-        .social-row {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .social-icon {
-            color: var(--text-dim);
-            font-size: 1.5rem;
             text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            margin-left: 2.5rem;
             transition: 0.3s;
         }
 
-        .social-icon:hover {
+        .nav-links a:hover { color: var(--accent); }
+
+        .nav-socials {
+            display: flex;
+            gap: 1.2rem;
+            margin-left: 3rem;
+            padding-left: 2rem;
+            border-left: 1px solid #282828;
+        }
+
+        .nav-socials a {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        .nav-socials a:hover { color: var(--accent); transform: translateY(-2px); }
+
+        /* HERO & OPENING ANIMATIONS */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: none;
+            padding: 120px 2rem 80px;
+        }
+
+        .hero-wordmark { 
+            width: 600px; 
+            max-width: 85vw; 
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: scale(0.95);
+            animation: heroFadeScale 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        .hero h1 {
+            font-size: clamp(0.75rem, 2vw, 0.9rem);
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            color: var(--text-dim);
+            font-weight: 400;
+            opacity: 0;
+            transform: translateY(12px);
+            animation: heroSubFade 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.9s;
+        }
+
+        /* NEW DROP COUNTDOWN STYLES */
+        .drop-countdown-wrapper {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(15px);
+            animation: heroSubFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.4s;
+            text-align: center;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 650px;
+        }
+        
+        .youtube-teaser-img {
+            width: 100%;
+            max-width: 560px;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 12px;
+            filter: blur(14px);
+            margin: 0 auto 2rem;
+            display: block;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .countdown-timer {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 800;
             color: var(--accent);
-            transform: scale(1.1);
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 0.02em;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .countdown-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+        }
+
+        .youtube-drop-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            padding: 1.2rem 2.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            border-radius: 4px;
+        }
+
+        .youtube-drop-btn:hover {
+            background: #d0d0d0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(255,255,255,0.1);
+        }
+
+        @keyframes heroFadeScale {
+            0% { opacity: 0; transform: scale(0.94); filter: blur(4px); }
+            100% { opacity: 1; transform: scale(1); filter: blur(0); }
+        }
+
+        @keyframes heroSubFade {
+            0% { opacity: 0; transform: translateY(12px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes navFade {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* CAPABILITIES */
+        .workflow-headline {
+            font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+            text-transform: uppercase;
+            max-width: 850px;
+            line-height: 1.15;
+            margin-bottom: 4.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .caps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .cap-card {
+            padding: 2.5rem 2rem;
+            background: var(--surface);
+            border-top: 1px solid #2a2a2a;
+            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cap-card:hover { 
+            background: var(--surface-hover); 
+            border-top-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .cap-card h3 {
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.05em;
+        }
+
+        .cap-list { list-style: none; padding: 0; margin: 0; }
+        .cap-list li { font-size: 0.85rem; color: var(--text-dim); position: relative; padding-left: 1.2rem; margin-bottom: 0.6rem; line-height: 1.4; }
+        .cap-list li::before { content: "—"; position: absolute; left: 0; color: #444; }
+
+        /* LAURELS */
+        .laurels-wrapper { display: flex; justify-content: center; align-items: center; gap: 2.5rem; margin-top: 4rem; flex-wrap: wrap; }
+        .laurels-wrapper img { height: 75px; width: auto; opacity: 0.85; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); cursor: default; }
+        .laurels-wrapper img:hover { opacity: 1; transform: scale(1.05) translateY(-2px); }
+
+        /* STORAGE BADGE */
+        .storage-wrapper { display: flex; justify-content: center; margin-top: 3rem; margin-bottom: 3.5rem; }
+        .storage-banner { display: inline-flex; align-items: center; gap: 0.75rem; background: rgba(255,255,255,0.02); border: 1px solid #282828; padding: 0.75rem 1.6rem; border-radius: 4px; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
+        .storage-badge-dot { width: 8px; height: 8px; background-color: #00ff88; border-radius: 50%; box-shadow: 0 0 8px #00ff88; flex-shrink: 0; }
+
+        /* PORTFOLIO & WORK CATEGORIES */
+        .work-cat { margin-bottom: 8rem; }
+        .work-cat:last-child { margin-bottom: 0; }
+        .work-header { margin-bottom: 1.8rem; border-bottom: 1px solid #2a2a2a; padding-bottom: 0.8rem; }
+        .work-header h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); text-transform: uppercase; font-weight: 800; letter-spacing: -0.01em; }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; 
+            height: 0;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #121212;
+            margin-bottom: 2rem;
+        }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* COMPARISON SLIDERS */
+        .slider-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
+        @media (min-width: 768px) { .slider-grid { grid-template-columns: repeat(3, 1fr); } }
+        
+        .comparison-slider { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; border: 1px solid #222; background: #111; user-select: none; touch-action: pan-y; transition: all 0.3s ease; }
+        .comparison-slider.fullscreen { position: fixed; top: 0; left: 0; width: 100vw !important; height: 100vh !important; z-index: 10000; margin: 0; border: none; background: #000; display: flex; align-items: center; justify-content: center; aspect-ratio: auto; }
+        .comparison-slider img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; pointer-events: none; }
+        .comparison-slider.fullscreen img { object-fit: contain; }
+        .comparison-slider .img-after { z-index: 1; }
+        .comparison-slider .img-before { clip-path: inset(0 50% 0 0); z-index: 2; }
+        .comparison-slider .slider-handle { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: #ffffff; z-index: 4; transform: translateX(-50%); pointer-events: none; box-shadow: 0 0 10px rgba(0,0,0,0.6); }
+        .comparison-slider .handle-arrow { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 32px; height: 32px; background: #ffffff; color: #000000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; box-shadow: 0 0 12px rgba(0,0,0,0.7); }
+        .comparison-slider .slider-label { position: absolute; bottom: 1rem; padding: 0.3rem 0.8rem; background: rgba(10, 10, 10, 0.75); backdrop-filter: blur(6px); color: #ffffff; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; pointer-events: none; z-index: 3; border: 1px solid rgba(255,255,255,0.15); }
+        .comparison-slider .label-left { left: 1rem; }
+        .comparison-slider .label-right { right: 1rem; }
+        .comparison-slider .slider-input { position: absolute; top: 0; left: 0; appearance: none; -webkit-appearance: none; width: 100%; height: 100%; background: transparent; outline: none; margin: 0; z-index: 5; cursor: ew-resize; }
+        
+        .expand-btn { position: absolute; top: 1rem; right: 1rem; z-index: 10; background: rgba(10,10,10,0.65); backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 0.5rem 0.6rem; cursor: pointer; border-radius: 4px; transition: 0.3s; font-size: 0.9rem; }
+        .expand-btn:hover { background: #fff; color: #000; }
+
+        /* TITLING GRID */
+        .titling-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
+        @media (min-width: 768px) { .titling-grid { grid-template-columns: repeat(2, 1fr); } }
+        .titling-item { position: relative; aspect-ratio: 16/9; cursor: pointer; border: 1px solid #222; background: #000000; overflow: hidden; transition: 0.3s; }
+        .titling-item:hover { border-color: #555; }
+        .titling-item img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.4s ease-in-out; pointer-events: none; }
+        .title-with-bg { z-index: 2; }
+        .title-isolated { z-index: 1; }
+        .titling-item.isolated-view .title-with-bg { opacity: 0; }
+        
+        .toggle-indicator { position: absolute; bottom: 1.5rem; right: 1.5rem; z-index: 3; background: rgba(10, 10, 10, 0.65); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.15); padding: 0.4rem 0.8rem; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-main); pointer-events: none; transition: 0.3s ease; }
+        .titling-item:hover .toggle-indicator { background: rgba(255, 255, 255, 0.9); color: var(--bg); }
+        .toggle-indicator .view-context { display: none; }
+        .titling-item.isolated-view .toggle-indicator .view-isolated { display: none; }
+        .titling-item.isolated-view .toggle-indicator .view-context { display: inline; }
+
+        /* TECH STACK LOGOS & TOOLTIPS */
+        .tech-stack { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .tech-stack-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-dim); margin-right: 0.5rem; border-right: 1px solid #333; padding-right: 1.5rem; }
+        .tech-item { position: relative; display: flex; align-items: center; justify-content: center; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: default; }
+        .tech-item:hover { transform: translateY(-4px) scale(1.08); z-index: 50; }
+        .tech-item img { height: 28px; width: 28px; object-fit: contain; }
+        .tech-tooltip { position: absolute; bottom: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(10px); background: rgba(15, 15, 15, 0.95); border: 1px solid var(--border); padding: 0.6rem 0.8rem; border-radius: 4px; font-size: 0.7rem; width: max-content; max-width: 220px; text-align: center; opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); z-index: 100; display: flex; flex-direction: column; gap: 0.2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+        .tech-tooltip::after { content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border-width: 5px; border-style: solid; border-color: var(--border) transparent transparent transparent; }
+        .tech-item:hover .tech-tooltip { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .tech-tooltip strong { color: var(--accent); font-weight: 700; letter-spacing: 0.05em; }
+        .tech-tooltip span { color: var(--text-dim); line-height: 1.3; white-space: normal; }
+
+        /* CONTACT & FOOTER */
+        footer { padding: 240px 0 400px; text-align: center; }
+        .footer-logo { width: 55px; margin: 0 auto 3.5rem; opacity: 0.8; }
+        .contact-section { background: var(--surface); border: 1px solid var(--border); padding: 3.5rem; margin-top: 3.5rem; text-align: left; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; margin-top: 2rem; }
+        .form-group { display: flex; flex-direction: column; gap: 0.6rem; }
+        .form-group.full-width { grid-column: span 2; }
+        .form-group label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-dim); }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; background: #080808; border: 1px solid #282828; color: var(--text-main); padding: 0.95rem 1rem; font-family: var(--font); font-size: 0.9rem; outline: none; transition: 0.3s; border-radius: 0; -webkit-appearance: none; }
+        .form-group select { background-image: url('data:image/svg+xml;utf8,<svg fill="%23888888" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>'); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1.2rem; cursor: pointer; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent); }
+        
+        .submit-btn { background: var(--accent); color: #000; border: none; padding: 1.1rem 2.8rem; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; cursor: pointer; transition: 0.3s; margin-top: 0.5rem; }
+        .submit-btn:hover { background: #d0d0d0; }
+        
+        .footer-socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; margin-top: 4rem; }
+        .social-btn { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; display: flex; align-items: center; gap: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; transition: 0.3s; padding: 0.75rem 1.4rem; border: 1px solid var(--border); }
+        .social-btn:hover { color: var(--accent); border-color: #444; background: var(--surface); }
+
+        /* SCROLL REVEAL */
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* MOBILE RESPONSIVENESS */
+        @media (max-width: 768px) {
+            .nav-links, .nav-socials { display: none; }
+            .hero-wordmark { width: 85vw; }
+            section { padding: 100px 0; }
+            .work-cat { margin-bottom: 5.5rem; }
+            .workflow-headline { margin-bottom: 3rem; }
+            .contact-section { padding: 2rem 1.2rem; margin-top: 2.5rem; }
+            .form-grid { grid-template-columns: 1fr; gap: 1.3rem; margin-top: 1.5rem; }
+            .form-group.full-width { grid-column: span 1; }
+            .form-group input, .form-group select, .form-group textarea { font-size: 16px; }
+            .submit-btn { width: 100%; padding: 1.1rem; }
+            .footer-socials { flex-direction: column; align-items: stretch; gap: 1rem; }
+            .social-btn { justify-content: center; }
+            .tech-stack-label { border-right: none; width: 100%; margin-bottom: 0.5rem; }
+            .laurels-wrapper { gap: 1.5rem; margin-top: 3rem; }
+            .laurels-wrapper img { height: 55px; }
+            
+            .youtube-teaser-img {
+                filter: blur(10px); /* Slightly less blur on mobile for performance */
+                margin-bottom: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="links-container">
-        <img src="https://i.imgur.com/0czpN64.png" alt="Muk Post Logo" class="profile-img">
-        
-        <h1>Muk Post</h1>
-        <p class="bio">Toronto-Based Remote Post-Production House<br>Editing • Sound • Colour • Design</p>
-
-        <!-- Featured Release Video Button -->
-        <a href="https://www.youtube.com/watch?v=m3GzM8sJ_V8" target="_blank" class="link-btn yt-btn link-btn-featured">
-            <i class="fa-brands fa-youtube"></i>
-            <div class="btn-text-content">
-                <span class="btn-main-title">Donat Jackson — needmoretime!</span>
-                <span class="btn-subtext">Thursday at Midnight</span>
+    <nav>
+        <div class="container">
+            <a href="#">
+                <img src="https://i.imgur.com/0czpN64.png" alt="M Logo" class="nav-logo">
+            </a>
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="#about">Workflow</a>
+                    <a href="#work">Work</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="nav-socials">
+                    <a href="https://www.instagram.com/muk.post/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://x.com/muk_post" target="_blank" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.threads.net/@muk.post" target="_blank" title="Threads"><i class="fa-brands fa-threads"></i></a>
+                    <a href="https://www.linkedin.com/company/muk-post/home/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
             </div>
-        </a>
-
-        <!-- Video Links -->
-        <a href="https://www.youtube.com/watch?v=chQBG5lTCnM" target="_blank" class="link-btn yt-btn">
-            <i class="fa-brands fa-youtube"></i> insyt. — "Toll"
-        </a>
-
-        <a href="https://www.youtube.com/watch?v=CKdqD851gQ0" target="_blank" class="link-btn yt-btn">
-            <i class="fa-brands fa-youtube"></i> insyt. — "360°"
-        </a>
-
-        <a href="https://youtu.be/zOgTcW_rOoQ?si=IGJrhRt-HWirDR08" target="_blank" class="link-btn yt-btn">
-            <i class="fa-brands fa-youtube"></i> Lady Marge — "Beer League"
-        </a>
-
-        <!-- Site Navigation Links -->
-        <a href="https://mukpost.com" class="link-btn">
-            <i class="fa-solid fa-globe"></i> Main Website
-        </a>
-
-        <a href="https://mukpost.com/colour.html" class="link-btn">
-            <i class="fa-solid fa-palette"></i> Colour Grading Gallery
-        </a>
-
-        <a href="https://mukpost.com/#work" class="link-btn">
-            <i class="fa-solid fa-film"></i> Video Reels
-        </a>
-
-        <a href="https://mukpost.com/#contact" class="link-btn">
-            <i class="fa-solid fa-envelope"></i> Request a Quote
-        </a>
-
-        <!-- Social Icons (Directly Under Quote Button) -->
-        <div class="social-row">
-            <a href="mailto:contact@mukpost.com" class="social-icon" title="Email"><i class="fa-regular fa-envelope"></i></a>
-            <a href="https://www.instagram.com/muk.post/" target="_blank" class="social-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://x.com/muk_post" target="_blank" class="social-icon" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
         </div>
-    </div>
+    </nav>
 
+    <main>
+        <!-- HERO -->
+        <section class="hero container">
+            
+            <!-- NEW YOUTUBE VIDEO DROP COUNTDOWN -->
+            <div class="drop-countdown-wrapper">
+                <img src="https://i.imgur.com/6RYCnXk.jpg" alt="Donat Jackson Video Teaser" class="youtube-teaser-img">
+                <div id="drop-timer" class="countdown-timer">00:00:00</div>
+                <div class="countdown-label">Releasing at Midnight</div>
+                <a href="https://www.youtube.com/watch?v=m3GzM8sJ_V8" target="_blank" class="youtube-drop-btn">
+                    <i class="fa-brands fa-youtube" style="margin-right: 0.5rem; color: #ff0000; font-size: 1.1rem;"></i> Watch "Need More Time" by Donat Jackson
+                </a>
+            </div>
+
+            <img src="https://i.imgur.com/MilMt1c.png" alt="MUK POST" class="hero-wordmark">
+            <h1>Toronto-Based Remote Post-Production House</h1>
+        </section>
+
+        <!-- CAPABILITIES -->
+        <section id="about" class="container">
+            <h2 class="workflow-headline reveal">Professional grade integration of sight and sound.</h2>
+            
+            <div class="caps-grid">
+                <div class="cap-card reveal">
+                    <h3>01. Editing</h3>
+                    <ul class="cap-list">
+                        <li>Narrative & commercial precision cutting</li>
+                        <li>Native 4K/8K media handling</li>
+                        <li>DaVinci Resolve studio workflow</li>
+                        <li>Camera raw media management</li>
+                    </ul>
+                </div>
+                <div class="cap-card reveal">
+                    <h3>02. Sound</h3>
+                    <ul class="cap-list">
+                        <li>High-fidelity sound design & mixing</li>
+                        <li>Dialogue cleanup & surgical restoration</li>
+                        <li>Pro Tools and DaVinci Fairlight mixing and mastering</li>
+                    </ul>
+                </div>
+                <div class="cap-card reveal">
+                    <h3>03. Colour</h3>
+                    <ul class="cap-list">
+                        <li>Industrial-grade cinematic grading</li>
+                        <li>Mood alignment & look development</li>
+                        <li>Color space management & LUT creation</li>
+                        <li>Calibrated monitoring delivery</li>
+                    </ul>
+                </div>
+                <div class="cap-card reveal">
+                    <h3>04. Design</h3>
+                    <ul class="cap-list">
+                        <li>Custom film titling & typography</li>
+                        <li>Motion graphics & VFX integration</li>
+                        <li>Intermediate Fusion compositing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- AWARDS & LAURELS -->
+            <div class="laurels-wrapper reveal">
+                <img src="https://i.imgur.com/aZRtwt0.png" alt="Film Laurel 1">
+                <img src="https://i.imgur.com/6oa5xem.png" alt="Film Laurel 2">
+                <img src="https://i.imgur.com/h7HrGeu.png" alt="Film Laurel 3">
+                <img src="https://i.imgur.com/Bs2kTUm.png" alt="Film Laurel 4">
+            </div>
+
+            <!-- In-House Storage Badge -->
+            <div class="storage-wrapper reveal">
+                <div class="storage-banner">
+                    <span class="storage-badge-dot"></span>
+                    <span>15TB+ In-House High-Speed SSD & HDD Storage</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO / SELECTED WORK -->
+        <section id="work" class="container">
+            
+            <!-- EDITING -->
+            <div class="work-cat reveal">
+                <div class="work-header">
+                    <h2>Editing</h2>
+                </div>
+                <!-- Editing Video Reel -->
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/kE3bO4kxMgM?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=kE3bO4kxMgM&cc_load_policy=0" 
+                        title="Editing Reel"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <!-- Editing Tech Stack -->
+                <div class="tech-stack">
+                    <span class="tech-stack-label">In-House</span>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/QbyNOsi.png" alt="DaVinci Resolve">
+                        <div class="tech-tooltip">
+                            <strong>DaVinci Resolve</strong>
+                            <span>Native 4K/8K media handling and precision cutting.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/0t3ivem.png" alt="Premiere Pro">
+                        <div class="tech-tooltip">
+                            <strong>Premiere Pro</strong>
+                            <span>Adaptable NLE for seamless agency & client handoffs.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/bpuzggK.png" alt="Frame.io">
+                        <div class="tech-tooltip">
+                            <strong>Frame.io</strong>
+                            <span>Timecoded, frame-accurate client review & feedback.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/8REtVAp.png" alt="Topaz Video AI">
+                        <div class="tech-tooltip">
+                            <strong>Topaz Video AI</strong>
+                            <span>AI-driven upscaling, interpolation, and artifact reduction.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/XbuAuQ5.png" alt="After Effects">
+                        <div class="tech-tooltip">
+                            <strong>After Effects</strong>
+                            <span>Dynamic motion graphics and VFX compositing.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SOUND -->
+            <div class="work-cat reveal">
+                <div class="work-header">
+                    <h2>Sound</h2>
+                </div>
+                <!-- Sound Video Reel -->
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/9Wv0WVDgzEU?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=9Wv0WVDgzEU&cc_load_policy=0" 
+                        title="Sound Reel"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <!-- Sound Tech Stack -->
+                <div class="tech-stack">
+                    <span class="tech-stack-label">In-House</span>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/fy2T4rG.png" alt="Pro Tools">
+                        <div class="tech-tooltip">
+                            <strong>Avid Pro Tools</strong>
+                            <span>The industry standard for cinematic mixing & sound design.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/ocAbDKq.png" alt="iZotope RX 12">
+                        <div class="tech-tooltip">
+                            <strong>iZotope RX 12</strong>
+                            <span>Surgical dialogue isolation and audio restoration.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/QbyNOsi.png" alt="DaVinci Fairlight">
+                        <div class="tech-tooltip">
+                            <strong>DaVinci Fairlight</strong>
+                            <span>Integrated high-fidelity mixing and mastering.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/eMDKZyM.png" alt="FabFilter">
+                        <div class="tech-tooltip">
+                            <strong>FabFilter Total Bundle</strong>
+                            <span>Premium, surgical EQ and dynamics processing.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/cPshQBi.png" alt="iZotope Insight">
+                        <div class="tech-tooltip">
+                            <strong>iZotope Insight</strong>
+                            <span>Broadcast-standard audio metering and compliance.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/tFMO4D7.png" alt="Ableton Live">
+                        <div class="tech-tooltip">
+                            <strong>Ableton Live</strong>
+                            <span>Custom sound design, scoring, and rhythmic sequencing.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/NE2dUiH.png" alt="Serum 2">
+                        <div class="tech-tooltip">
+                            <strong>Serum 2</strong>
+                            <span>Advanced wavetable synthesis for unique soundscapes.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/c32b8rP.png" alt="Valhalla DSP">
+                        <div class="tech-tooltip">
+                            <strong>Valhalla DSP</strong>
+                            <span>Lush, high-end spatial and environmental reverbs.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/UkbfaSp.png" alt="Krotos Studio">
+                        <div class="tech-tooltip">
+                            <strong>Krotos Studio</strong>
+                            <span>Dynamic, performative Foley and sound effect generation.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLOUR -->
+            <div class="work-cat reveal">
+                <div class="work-header">
+                    <h2>Colour</h2>
+                </div>
+
+                <!-- 1. Colour Video Reel -->
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/yaZ__LsubwY?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=yaZ__LsubwY&cc_load_policy=0" 
+                        title="Colour Reel"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <!-- 2. Overlapping Before/After Comparison Sliders (Grid Layout) -->
+                <div class="slider-grid">
+                    <div class="comparison-slider">
+                        <img class="img-after" src="https://i.imgur.com/Mue08R1.jpg" alt="Coloured Grade 1">
+                        <img class="img-before" src="https://i.imgur.com/kRrD6EF.jpg" alt="Log Image 1">
+                        <div class="slider-handle">
+                            <span class="handle-arrow">&#10094;&#10095;</span>
+                        </div>
+                        <span class="slider-label label-left">Log</span>
+                        <span class="slider-label label-right">Graded</span>
+                        <!-- 75% Graded, 25% Log -->
+                        <input type="range" min="0" max="100" value="25" class="slider-input" oninput="updateComparisonSlider(this)">
+                        <div class="expand-btn" onclick="toggleFullscreen(this)" title="Fullscreen">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
+
+                    <div class="comparison-slider">
+                        <img class="img-after" src="https://i.imgur.com/Z82T1V9.jpg" alt="Coloured Grade 2">
+                        <img class="img-before" src="https://i.imgur.com/M37D5Zl.jpg" alt="Log Image 2">
+                        <div class="slider-handle">
+                            <span class="handle-arrow">&#10094;&#10095;</span>
+                        </div>
+                        <span class="slider-label label-left">Log</span>
+                        <span class="slider-label label-right">Graded</span>
+                        <!-- 50/50 -->
+                        <input type="range" min="0" max="100" value="50" class="slider-input" oninput="updateComparisonSlider(this)">
+                        <div class="expand-btn" onclick="toggleFullscreen(this)" title="Fullscreen">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
+
+                    <div class="comparison-slider">
+                        <img class="img-after" src="https://i.imgur.com/pwfJOKY.jpg" alt="Coloured Grade 3">
+                        <img class="img-before" src="https://i.imgur.com/gd6lS5r.jpg" alt="Log Image 3">
+                        <div class="slider-handle">
+                            <span class="handle-arrow">&#10094;&#10095;</span>
+                        </div>
+                        <span class="slider-label label-left">Log</span>
+                        <span class="slider-label label-right">Graded</span>
+                        <!-- 75% Log, 25% Graded -->
+                        <input type="range" min="0" max="100" value="75" class="slider-input" oninput="updateComparisonSlider(this)">
+                        <div class="expand-btn" onclick="toggleFullscreen(this)" title="Fullscreen">
+                            <i class="fa-solid fa-expand"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colour Tech Stack -->
+                <div class="tech-stack">
+                    <span class="tech-stack-label">In-House</span>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/QbyNOsi.png" alt="DaVinci Resolve">
+                        <div class="tech-tooltip">
+                            <strong>DaVinci Resolve</strong>
+                            <span>Industrial-grade cinematic grading and look development.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/S6wYBLA.png" alt="MagicGrade">
+                        <div class="tech-tooltip">
+                            <strong>MagicGrade</strong>
+                            <span>Authentic film emulation built from real film density data.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/i6ucjjG.png" alt="Magic Grade Film">
+                        <div class="tech-tooltip">
+                            <strong>Magic Grade Film</strong>
+                            <span>Advanced cinematic print film profiles.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/JyoJXCW.png" alt="LensNode">
+                        <div class="tech-tooltip">
+                            <strong>LensNode</strong>
+                            <span>GPU-powered simulations for authentic lens distortion and halation.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/m2XvjMf.png" alt="ASUS ProArt Monitor">
+                        <div class="tech-tooltip">
+                            <strong>ASUS ProArt Monitor</strong>
+                            <span>Factory-calibrated, color-accurate reference monitoring.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/J2Sl742.png" alt="Calman Verified">
+                        <div class="tech-tooltip">
+                            <strong>Calman Verified</strong>
+                            <span>Guaranteed Delta E < 2 for broadcast-safe color space management.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LINK TO NEW DEDICATED COLOUR PAGE -->
+                <div style="text-align: center; margin-top: 4rem;">
+                    <a href="colour.html" class="submit-btn" style="text-decoration: none; display: inline-block;">View Full Colour Portfolio</a>
+                </div>
+
+            </div>
+
+            <!-- TITLING & DESIGN -->
+            <div class="work-cat reveal">
+                <div class="work-header">
+                    <h2>Titling & Design</h2>
+                </div>
+
+                <!-- 1. Graphic Design / Titling Showcase Reel -->
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/9u2EourejMM?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=9u2EourejMM" 
+                        title="Graphic Design Reel"
+                        allow="autoplay; encrypted-media; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <!-- 2. Interactive 2x2 Titling Grid -->
+                <div class="titling-grid">
+                    <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
+                        <img class="title-isolated" src="https://i.imgur.com/CDDqpRU.jpg" alt="Title 1 Isolated">
+                        <img class="title-with-bg" src="https://i.imgur.com/gWEirNW.jpg" alt="Title 1 Context">
+                        <div class="toggle-indicator">
+                            <span class="view-isolated">Isolate</span>
+                            <span class="view-context">Context</span>
+                        </div>
+                    </div>
+
+                    <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
+                        <img class="title-isolated" src="https://i.imgur.com/OYbowMM.jpg" alt="Title 2 Isolated">
+                        <img class="title-with-bg" src="https://i.imgur.com/e6CYyoG.jpg" alt="Title 2 Context">
+                        <div class="toggle-indicator">
+                            <span class="view-isolated">Isolate</span>
+                            <span class="view-context">Context</span>
+                        </div>
+                    </div>
+
+                    <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
+                        <img class="title-isolated" src="https://i.imgur.com/W3iBRIl.jpg" alt="Title 3 Isolated">
+                        <img class="title-with-bg" src="https://i.imgur.com/wQGUuEr.jpg" alt="Title 3 Context">
+                        <div class="toggle-indicator">
+                            <span class="view-isolated">Isolate</span>
+                            <span class="view-context">Context</span>
+                        </div>
+                    </div>
+
+                    <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
+                        <img class="title-isolated" src="https://i.imgur.com/43s9l4k.jpg" alt="Title 4 Isolated">
+                        <img class="title-with-bg" src="https://i.imgur.com/pCZGH7x.jpg" alt="Title 4 Context">
+                        <div class="toggle-indicator">
+                            <span class="view-isolated">Isolate</span>
+                            <span class="view-context">Context</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design Tech Stack -->
+                <div class="tech-stack">
+                    <span class="tech-stack-label">In-House</span>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/DCQxcQR.png" alt="Adobe Photoshop">
+                        <div class="tech-tooltip">
+                            <strong>Photoshop</strong>
+                            <span>Industry-standard raster graphics and asset manipulation.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/48pVUqo.png" alt="Adobe Illustrator">
+                        <div class="tech-tooltip">
+                            <strong>Illustrator</strong>
+                            <span>Scalable, vector-based titling and graphic design.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/OTTzCL4.png" alt="Procreate">
+                        <div class="tech-tooltip">
+                            <strong>Procreate</strong>
+                            <span>Custom, hand-drawn typography and textural elements.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/XbuAuQ5.png" alt="Adobe After Effects">
+                        <div class="tech-tooltip">
+                            <strong>After Effects</strong>
+                            <span>Complex title sequences and dynamic tracking.</span>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <img src="https://i.imgur.com/Ymma1yt.png" alt="Adobe InDesign">
+                        <div class="tech-tooltip">
+                            <strong>InDesign</strong>
+                            <span>Professional layout design for pitch decks and print.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- CONTACT / FOOTER -->
+    <footer id="contact" class="container">
+        <img src="https://i.imgur.com/0czpN64.png" alt="M Logo" class="footer-logo reveal">
+        
+        <div class="reveal">
+            <h2 class="workflow-headline" style="margin: 0 auto 0.5rem; text-align: center;">Request a Project Quote</h2>
+            <p style="color: var(--text-dim); max-width: 580px; margin: 0 auto 2.5rem; font-size: 0.9rem; text-align: center;">Fill out the details below to receive a fast, tailored quote directly to your inbox.</p>
+        </div>
+
+        <!-- Intake Form -->
+        <div class="contact-section reveal">
+            <form action="https://formspree.io/f/xrpzyngg" method="POST" class="form-grid">
+                
+                <input type="hidden" name="_subject" value="[Muk Post] New Project Quote Request">
+
+                <div class="form-group">
+                    <label for="name">Your Name / Company</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe / Studio" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="_replyto" placeholder="client@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="project_type">Project Type</label>
+                    <select id="project_type" name="project_type" required>
+                        <option value="" disabled selected>Select project type</option>
+                        <option value="Music Video">Music Video</option>
+                        <option value="Narrative Film / Short">Narrative Film / Short</option>
+                        <option value="Commercial / Brand">Commercial / Brand</option>
+                        <option value="Documentary">Documentary</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="services">Services Required</label>
+                    <select id="services" name="services" required>
+                        <option value="" disabled selected>Select primary service</option>
+                        <option value="Full Post-Production Package">Full Post (Editing, Sound, Colour, Titles)</option>
+                        <option value="Editing Only">Editing Only</option>
+                        <option value="Sound Design & Mix Only">Sound Design & Mix Only</option>
+                        <option value="Colour Grading Only">Colour Grading Only</option>
+                        <option value="Titling & Graphic Design">Titling & Graphic Design</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="timeline">Target Delivery Date / Timeline</label>
+                    <input type="text" id="timeline" name="timeline" placeholder="e.g. 2 weeks / Oct 15th">
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Estimated Budget (CAD/USD)</label>
+                    <input type="text" id="budget" name="budget" placeholder="e.g. $2,000 - $5,000">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="links">Raw Footage / Project Reference Links</label>
+                    <input type="text" id="links" name="project_links" placeholder="Google Drive, Dropbox, Frame.io links">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="message">Project Overview & Specifics</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell us about the vision, camera specs, number of deliverables..." required></textarea>
+                </div>
+
+                <div class="form-group full-width" style="text-align: right;">
+                    <button type="submit" class="submit-btn">Send Quote Request</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="footer-socials reveal">
+            <a href="mailto:contact@mukpost.com" class="social-btn">
+                <i class="fa-regular fa-envelope"></i> contact@mukpost.com
+            </a>
+            <a href="https://www.instagram.com/muk.post/" target="_blank" class="social-btn">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="https://x.com/muk_post" target="_blank" class="social-btn">
+                <i class="fa-brands fa-x-twitter"></i> X / Twitter
+            </a>
+            <a href="https://www.threads.net/@muk.post" target="_blank" class="social-btn">
+                <i class="fa-brands fa-threads"></i> Threads
+            </a>
+            <a href="https://www.linkedin.com/company/muk-post/home/" target="_blank" class="social-btn">
+                <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // --- NEW YOUTUBE VIDEO COUNTDOWN SCRIPT ---
+        (function() {
+            // Target date configured to midnight tonight 
+            const targetDate = new Date();
+            targetDate.setHours(24, 0, 0, 0); 
+            
+            const timerElement = document.getElementById("drop-timer");
+            
+            const updateTimer = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = targetDate.getTime() - now;
+                
+                if (distance < 0) {
+                    clearInterval(updateTimer);
+                    timerElement.innerHTML = "OUT NOW!";
+                    return;
+                }
+                
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                timerElement.innerHTML = 
+                    String(hours).padStart(2, '0') + ":" + 
+                    String(minutes).padStart(2, '0') + ":" + 
+                    String(seconds).padStart(2, '0');
+            }, 1000);
+        })();
+        // --- END COUNTDOWN SCRIPT ---
+
+        // Scroll Reveal Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth Scrolling Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Initialize sliders on load to match default input values (25%, 50%, 75%)
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.slider-input').forEach(input => {
+                updateComparisonSlider(input);
+            });
+        });
+
+        // Comparison Slider Update Logic
+        function updateComparisonSlider(input) {
+            const container = input.closest('.comparison-slider');
+            const beforeImg = container.querySelector('.img-before');
+            const handle = container.querySelector('.slider-handle');
+            const val = input.value;
+            
+            beforeImg.style.clipPath = `inset(0 ${100 - val}% 0 0)`;
+            handle.style.left = `${val}%`;
+        }
+
+        // Fullscreen Toggle Logic
+        function toggleFullscreen(btn) {
+            const container = btn.closest('.comparison-slider');
+            const icon = btn.querySelector('i');
+            
+            if (!container.classList.contains('fullscreen')) {
+                // Enter fullscreen
+                container.classList.add('fullscreen');
+                icon.classList.remove('fa-expand');
+                icon.classList.add('fa-compress');
+                document.body.style.overflow = 'hidden'; // Lock background scrolling
+                
+                // Request native fullscreen for mobile rotation support
+                if (container.requestFullscreen) {
+                    container.requestFullscreen().catch(err => console.log(err));
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                }
+            } else {
+                // Exit fullscreen
+                container.classList.remove('fullscreen');
+                icon.classList.remove('fa-compress');
+                icon.classList.add('fa-expand');
+                document.body.style.overflow = ''; 
+                
+                if (document.fullscreenElement) {
+                    document.exitFullscreen().catch(err => console.log(err));
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                }
+            }
+        }
+
+        // Handle Escape key or native mobile back gestures to reset icon/state
+        document.addEventListener('fullscreenchange', () => {
+            if (!document.fullscreenElement) {
+                document.querySelectorAll('.comparison-slider.fullscreen').forEach(slider => {
+                    slider.classList.remove('fullscreen');
+                    const icon = slider.querySelector('.expand-btn i');
+                    if(icon) {
+                        icon.classList.remove('fa-compress');
+                        icon.classList.add('fa-expand');
+                    }
+                });
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
 </body>
 </html>
