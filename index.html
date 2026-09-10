@@ -7,7 +7,7 @@
     <title>Muk Post | Professional Post-Production</title>
     
     <!-- ADD YOUR FAVICON HERE -->
-    <link rel="icon" href="https://i.imgur.com/0czpN64.png" type="image/png"
+    <link rel="icon" href="https://i.imgur.com/0czpN64.png" type="image/png">
         
     <!-- Open Graph / Social Sharing Meta Tags -->
     <meta property="og:title" content="Muk Post | Professional Post-Production">
@@ -154,6 +154,59 @@
             transform: translateY(12px);
             animation: heroSubFade 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             animation-delay: 0.9s;
+        }
+
+        /* NEW DROP COUNTDOWN STYLES */
+        .drop-countdown-wrapper {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(15px);
+            animation: heroSubFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.4s;
+            text-align: center;
+            padding: 2.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .countdown-timer {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 800;
+            color: var(--accent);
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 0.02em;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .countdown-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+        }
+
+        .youtube-drop-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            padding: 1.2rem 2.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            border-radius: 4px;
+        }
+
+        .youtube-drop-btn:hover {
+            background: #d0d0d0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(255,255,255,0.1);
         }
 
         @keyframes heroFadeScale {
@@ -356,6 +409,16 @@
     <main>
         <!-- HERO -->
         <section class="hero container">
+            
+            <!-- NEW YOUTUBE VIDEO DROP COUNTDOWN -->
+            <div class="drop-countdown-wrapper">
+                <div id="drop-timer" class="countdown-timer">00:00:00</div>
+                <div class="countdown-label">Releasing at Midnight</div>
+                <a href="https://www.youtube.com/watch?v=m3GzM8sJ_V8" target="_blank" class="youtube-drop-btn">
+                    <i class="fa-brands fa-youtube" style="margin-right: 0.5rem; color: #ff0000; font-size: 1.1rem;"></i> Watch "Need More Time" by Donut Jackson
+                </a>
+            </div>
+
             <img src="https://i.imgur.com/MilMt1c.png" alt="MUK POST" class="hero-wordmark">
             <h1>Toronto-Based Remote Post-Production House</h1>
         </section>
@@ -870,6 +933,36 @@
     </footer>
 
     <script>
+        // --- NEW YOUTUBE VIDEO COUNTDOWN SCRIPT ---
+        (function() {
+            // Target date configured to midnight tonight 
+            const targetDate = new Date();
+            targetDate.setHours(24, 0, 0, 0); 
+            
+            const timerElement = document.getElementById("drop-timer");
+            
+            const updateTimer = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = targetDate.getTime() - now;
+                
+                if (distance < 0) {
+                    clearInterval(updateTimer);
+                    timerElement.innerHTML = "OUT NOW!";
+                    return;
+                }
+                
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                timerElement.innerHTML = 
+                    String(hours).padStart(2, '0') + ":" + 
+                    String(minutes).padStart(2, '0') + ":" + 
+                    String(seconds).padStart(2, '0');
+            }, 1000);
+        })();
+        // --- END COUNTDOWN SCRIPT ---
+
         // Scroll Reveal Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
