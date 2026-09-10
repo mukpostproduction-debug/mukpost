@@ -169,6 +169,21 @@
             border: 1px solid var(--border);
             border-radius: 8px;
             backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 650px;
+        }
+        
+        .youtube-teaser-img {
+            width: 100%;
+            max-width: 560px;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 12px;
+            filter: blur(14px);
+            margin: 0 auto 2rem;
+            display: block;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
         .countdown-timer {
@@ -380,6 +395,11 @@
             .tech-stack-label { border-right: none; width: 100%; margin-bottom: 0.5rem; }
             .laurels-wrapper { gap: 1.5rem; margin-top: 3rem; }
             .laurels-wrapper img { height: 55px; }
+            
+            .youtube-teaser-img {
+                filter: blur(10px); /* Slightly less blur on mobile for performance */
+                margin-bottom: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -412,10 +432,11 @@
             
             <!-- NEW YOUTUBE VIDEO DROP COUNTDOWN -->
             <div class="drop-countdown-wrapper">
+                <img src="https://i.imgur.com/6RYCnXk.jpg" alt="Donat Jackson Video Teaser" class="youtube-teaser-img">
                 <div id="drop-timer" class="countdown-timer">00:00:00</div>
                 <div class="countdown-label">Releasing at Midnight</div>
                 <a href="https://www.youtube.com/watch?v=m3GzM8sJ_V8" target="_blank" class="youtube-drop-btn">
-                    <i class="fa-brands fa-youtube" style="margin-right: 0.5rem; color: #ff0000; font-size: 1.1rem;"></i> Watch "Need More Time" by Donut Jackson
+                    <i class="fa-brands fa-youtube" style="margin-right: 0.5rem; color: #ff0000; font-size: 1.1rem;"></i> Watch "Need More Time" by Donat Jackson
                 </a>
             </div>
 
