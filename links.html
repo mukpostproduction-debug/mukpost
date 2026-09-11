@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muk Post | Links & Resources</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.imgur.com/0czpN64.png" type="image/png">
+    
+    <!-- Open Graph / Social Meta Tags -->
+    <meta property="og:title" content="Muk Post | Links & Resources">
+    <meta property="og:description" content="Toronto-Based Remote Post-Production House specializing in editing, sound, colour, and design.">
+    <meta property="og:image" content="https://i.imgur.com/p5t4Fk0.png">
+    <meta property="og:url" content="https://mukpost.com/links">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Muk Post | Links & Resources">
+    <meta name="twitter:description" content="Toronto-Based Remote Post-Production House specializing in editing, sound, colour, and design.">
+    <meta name="twitter:image" content="https://i.imgur.com/p5t4Fk0.png">
+
+    <!-- FontAwesome for Social & Navigation Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Metricool Tracking Script -->
+    <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"94e33d4ae0fb314a9f07b7e43a242b4d"})});</script>
+
+    <style>
+        /* MUK POST DESIGN SYSTEM */
+        :root {
+            --bg: #0a0a0a;
+            --surface: #111111;
+            --surface-hover: #171717;
+            --surface-active: #1e1e1e;
+            --text-main: #eeeeee;
+            --text-dim: #888888;
+            --accent: #ffffff;
+            --border: #1e1e1e;
+            --border-hover: #333333;
+            --badge-green: #00ff88;
+            --badge-red: #ff3333;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font);
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 3.5rem 1.25rem 4rem;
+            -webkit-font-smoothing: antialiased;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 60%),
+                radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+        }
+
+        .links-container {
+            width: 100%;
+            max-width: 540px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* HEADER / BRANDING */
+        .profile-logo-wrap {
+            position: relative;
+            margin-bottom: 1.25rem;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-logo-wrap:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-logo {
+            width: 72px;
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.8));
+        }
+
+        .hero-wordmark {
+            width: 220px;
+            max-width: 80vw;
+            height: auto;
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
+        }
+
+        h1 {
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            margin-bottom: 0.4rem;
+            font-weight: 800;
+        }
+
+        p.bio {
+            color: var(--text-dim);
+            font-size: 0.82rem;
+            text-align: center;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+            letter-spacing: 0.02em;
+        }
+
+        /* CAPABILITY PILLS */
+        .pillars-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .pillar-tag {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #a0a0a0;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid #222;
+            padding: 0.28rem 0.65rem;
+            border-radius: 3px;
+        }
+
+        /* SECTION LABELS */
+        .section-label {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin: 1.6rem 0 0.85rem;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 700;
+            color: #666;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #1b1b1b;
+        }
+
+        /* FEATURED CARDS WITH MEDIA THUMBNAILS */
+        .featured-card {
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .featured-card:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 255, 255, 0.05);
+        }
+
+        /* OUT NOW VIDEO CARD */
+        .video-card-thumb {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .video-card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .featured-card:hover .video-card-thumb img {
+            transform: scale(1.04);
+        }
+
+        .video-play-badge {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.35);
+            transition: background 0.3s ease;
+        }
+
+        .featured-card:hover .video-play-badge {
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        .play-icon-box {
+            width: 58px;
+            height: 40px;
+            background: rgba(12, 12, 12, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--badge-red);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+        }
+
+        .featured-card:hover .play-icon-box {
+            background: var(--badge-red);
+            color: #ffffff;
+            transform: scale(1.12);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.5);
+        }
+
+        .status-pill {
+            position: absolute;
+            top: 0.85rem;
+            left: 0.85rem;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.25rem 0.65rem;
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border-radius: 3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            color: #fff;
+            z-index: 2;
+        }
+
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--badge-red);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--badge-red);
+            animation: blink 1.8s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(0.85); }
+        }
+
+        .card-body {
+            padding: 1.15rem 1.4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+        }
+
+        .card-body-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .card-headline {
+            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .card-subtext {
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .card-cta-arrow {
+            color: var(--text-dim);
+            font-size: 1rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .featured-card:hover .card-cta-arrow {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        /* STORE TEMPLATE CARD */
+        .store-card {
+            border-color: #2e2838;
+            background: linear-gradient(145deg, #121217 0%, #0d0d10 100%);
+        }
+
+        .store-pill {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.4);
+            color: #00ff88;
+            font-size: 0.62rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            padding: 0.25rem 0.6rem;
+            border-radius: 3px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .store-pill::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #00ff88;
+            border-radius: 50%;
+            box-shadow: 0 0 6px #00ff88;
+        }
+
+        /* STANDARD BUTTON LINKS */
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 1.15rem 1.4rem;
+            margin-bottom: 0.75rem;
+            border-radius: 5px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .btn-left {
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+        }
+
+        .btn-left i {
+            font-size: 1.15rem;
+            color: var(--text-dim);
+            width: 22px;
+            text-align: center;
+            transition: color 0.3s;
+        }
+
+        .btn-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+            text-align: left;
+        }
+
+        .btn-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-main);
+            transition: color 0.3s;
+        }
+
+        .btn-hint {
+            font-size: 0.68rem;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .btn-arrow {
+            font-size: 0.85rem;
+            color: #444;
+            transition: all 0.3s ease;
+        }
+
+        .link-btn:hover {
+            background: var(--surface-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+        }
+
+        .link-btn:hover .btn-title {
+            color: var(--accent);
+        }
+
+        .link-btn:hover .btn-left i {
+            color: var(--accent);
+        }
+
+        .link-btn:hover .btn-arrow {
+            color: var(--accent);
+            transform: translateX(3px);
+        }
+
+        /* PRIMARY CTA (REQUEST A QUOTE) */
+        .link-btn-quote {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+            margin-top: 0.35rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.08);
+        }
+
+        .link-btn-quote .btn-title {
+            color: #000000;
+            font-weight: 800;
+        }
+
+        .link-btn-quote .btn-hint {
+            color: #555555;
+            font-weight: 600;
+        }
+
+        .link-btn-quote .btn-left i {
+            color: #000000;
+        }
+
+        .link-btn-quote .btn-arrow {
+            color: #000000;
+        }
+
+        .link-btn-quote:hover {
+            background: #e2e2e2;
+            border-color: #e2e2e2;
+            color: #000000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 28px rgba(255, 255, 255, 0.18);
+        }
+
+        .link-btn-quote:hover .btn-title,
+        .link-btn-quote:hover .btn-left i,
+        .link-btn-quote:hover .btn-arrow {
+            color: #000000;
+        }
+
+        /* YOUTUBE CATALOG / RECENT RELEASES ACCORDION */
+        .video-list-dropdown {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            background: var(--surface);
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+        }
+
+        .dropdown-trigger {
+            width: 100%;
+            padding: 1.15rem 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-family: inherit;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dropdown-trigger:hover {
+            background: var(--surface-hover);
+        }
+
+        .dropdown-trigger .dropdown-chevron {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            transition: transform 0.3s ease;
+        }
+
+        .video-list-dropdown.open .dropdown-chevron {
+            transform: rotate(180deg);
+            color: var(--accent);
+        }
+
+        .dropdown-content {
+            display: none;
+            flex-direction: column;
+            background: #090909;
+            border-top: 1px solid var(--border);
+        }
+
+        .video-list-dropdown.open .dropdown-content {
+            display: flex;
+        }
+
+        .dropdown-item {
+            padding: 0.95rem 1.4rem 0.95rem 3.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            border-bottom: 1px solid #161616;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item i.item-icon {
+            position: absolute;
+            left: 1.4rem;
+            color: #ff3333;
+            font-size: 0.95rem;
+        }
+
+        .dropdown-item:hover {
+            background: #121212;
+            color: var(--accent);
+            padding-left: 3.6rem;
+        }
+
+        .item-tag {
+            font-size: 0.65rem;
+            color: #666;
+            letter-spacing: 0.1em;
+        }
+
+        /* STORAGE BADGE */
+        .pipeline-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid #202020;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-size: 0.68rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+            background-color: var(--badge-green);
+            border-radius: 50%;
+            box-shadow: 0 0 6px var(--badge-green);
+            flex-shrink: 0;
+        }
+
+        /* SOCIAL MEDIA ROW */
+        .social-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin-top: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icon {
+            color: var(--text-dim);
+            font-size: 1.25rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .social-icon:hover {
+            color: var(--accent);
+            border-color: #555;
+            background: var(--surface-hover);
+            transform: translateY(-3px) scale(1.08);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #555;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 1rem;
+        }
+
+        footer a {
+            color: #777;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        /* MOBILE OPTIMIZATION */
+        @media (max-width: 480px) {
+            body {
+                padding: 2.5rem 1rem 3rem;
+            }
+
+            .card-body {
+                padding: 1rem 1.15rem;
+            }
+
+            .card-headline {
+                font-size: 0.88rem;
+            }
+
+            .link-btn {
+                padding: 1rem 1.15rem;
+            }
+
+            .btn-title {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="links-container">
+        
+        <!-- LOGO & BRANDING -->
+        <a href="https://mukpost.com" class="profile-logo-wrap" aria-label="Muk Post Homepage">
+            <img src="https://i.imgur.com/0czpN64.png" alt="Muk Post Logo" class="profile-logo">
+        </a>
+        
+        <h1>Muk Post</h1>
+        <p class="bio">Toronto-Based Remote Post-Production House<br>Cinema-Grade Turnkey Sight & Sound</p>
+
+        <!-- CAPABILITY PILLS -->
+        <div class="pillars-row">
+            <span class="pillar-tag">Editing</span>
+            <span class="pillar-tag">Sound Design & Mix</span>
+            <span class="pillar-tag">Colour Grading</span>
+            <span class="pillar-tag">Film Titling</span>
+        </div>
+
+        <!-- 1. OUT NOW: LATEST FEATURED PROJECT -->
+        <div class="section-label">Latest Release</div>
+        
+        <a href="https://www.youtube.com/watch?v=m3GzM8sJ_V8" target="_blank" rel="noopener noreferrer" class="featured-card">
+            <div class="video-card-thumb">
+                <div class="status-pill">
+                    <span class="pulse-dot"></span>
+                    <span>Out Now</span>
+                </div>
+                <img src="https://i.imgur.com/6RYCnXk.jpg" alt="Donat Jackson - Need More Time Music Video">
+                <div class="video-play-badge">
+                    <div class="play-icon-box">
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-body-text">
+                    <span class="card-headline">Donat Jackson — "Need More Time"</span>
+                    <span class="card-subtext">Official Music Video • Watch on YouTube</span>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square card-cta-arrow"></i>
+            </div>
+        </a>
+
+        <!-- 2. DIGITAL STORE / TEMPLATE PROMOTION -->
+        <div class="section-label">Digital Products & Presets</div>
+
+        <a href="https://mukpost.com/store.html" class="featured-card store-card">
+            <div class="card-body" style="padding: 1.25rem 1.4rem; border-top: none;">
+                <div class="card-body-text" style="gap: 0.4rem;">
+                    <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
+                        <span class="card-headline" style="font-size: 0.92rem;">Ultimate DaVinci Resolve Studio Template</span>
+                        <span class="store-pill">100% Off Code: MUKSEP26</span>
+                    </div>
+                    <span class="card-subtext" style="color: #999;">12-Node DWG Pipeline • 16-Track Fairlight • Media Pool Architecture</span>
+                </div>
+                <i class="fa-solid fa-chevron-right card-cta-arrow"></i>
+            </div>
+        </a>
+
+        <!-- 3. PORTFOLIO & WORK EXPLORATION -->
+        <div class="section-label">Explore Portfolio</div>
+
+        <!-- Dedicated Colour Portfolio -->
+        <a href="https://mukpost.com/colour.html" class="link-btn">
+            <div class="btn-left">
+                <i class="fa-solid fa-palette"></i>
+                <div class="btn-details">
+                    <span class="btn-title">Colour Grading Gallery</span>
+                    <span class="btn-hint">High-Res Stills • Log vs Graded • Projects</span>
+                </div>
+            </div>
+            <i class="fa-solid fa-chevron-right btn-arrow"></i>
+        </a>
+
+        <!-- Video Showreels Section -->
+        <a href="https://mukpost.com/#work" class="link-btn">
+            <div class="btn-left">
+                <i class="fa-solid fa-film"></i>
+                <div class="btn-details">
+                    <span class="btn-title">Showreels & Selected Work</span>
+                    <span class="btn-hint">Editing, Sound, Colour & Titling Reels</span>
+                </div>
+            </div>
+            <i class="fa-solid fa-chevron-right btn-arrow"></i>
+        </a>
+
+        <!-- Full Website -->
+        <a href="https://mukpost.com" class="link-btn">
+            <div class="btn-left">
+                <i class="fa-solid fa-globe"></i>
+                <div class="btn-details">
+                    <span class="btn-title">Main Website</span>
+                    <span class="btn-hint">Interactive Comparison Sliders & Tech Stack</span>
+                </div>
+            </div>
+            <i class="fa-solid fa-chevron-right btn-arrow"></i>
+        </a>
+
+        <!-- 4. MUSIC VIDEOS & CLIENT RELEASES CATALOG -->
+        <div class="video-list-dropdown" id="videoDropdown">
+            <button class="dropdown-trigger" type="button" onclick="toggleDropdown()" aria-expanded="false">
+                <div class="btn-left">
+                    <i class="fa-brands fa-youtube" style="color: #ff3333;"></i>
+                    <div class="btn-details">
+                        <span class="btn-title">More Music Videos & Projects</span>
+                        <span class="btn-hint">Watch Recent Post-Production Credits</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-down dropdown-chevron"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="https://www.youtube.com/watch?v=m3GzM8sJ_V8" target="_blank" rel="noopener noreferrer" class="dropdown-item">
+                    <i class="fa-brands fa-youtube item-icon"></i>
+                    <span>Donat Jackson — "Need More Time"</span>
+                    <span class="item-tag">Sep 2026</span>
+                </a>
+                <a href="https://youtu.be/zOgTcW_rOoQ?si=IGJrhRt-HWirDR08" target="_blank" rel="noopener noreferrer" class="dropdown-item">
+                    <i class="fa-brands fa-youtube item-icon"></i>
+                    <span>Lady Marge — "Beer League"</span>
+                    <span class="item-tag">Live Session</span>
+                </a>
+                <a href="https://www.youtube.com/watch?v=chQBG5lTCnM" target="_blank" rel="noopener noreferrer" class="dropdown-item">
+                    <i class="fa-brands fa-youtube item-icon"></i>
+                    <span>insyt. — "Toll"</span>
+                    <span class="item-tag">Music Video</span>
+                </a>
+                <a href="https://www.youtube.com/watch?v=CKdqD851gQ0" target="_blank" rel="noopener noreferrer" class="dropdown-item">
+                    <i class="fa-brands fa-youtube item-icon"></i>
+                    <span>insyt. — "360°"</span>
+                    <span class="item-tag">Music Video</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 5. INTAKE & DIRECT HIRE (HIGH CONVERSION CTA) -->
+        <div class="section-label">Book Post-Production</div>
+
+        <a href="https://mukpost.com/#contact" class="link-btn link-btn-quote">
+            <div class="btn-left">
+                <i class="fa-solid fa-bolt"></i>
+                <div class="btn-details">
+                    <span class="btn-title">Request a Project Quote</span>
+                    <span class="btn-hint">Direct Intake Form • Fast Estimates</span>
+                </div>
+            </div>
+            <i class="fa-solid fa-arrow-right btn-arrow"></i>
+        </a>
+
+        <!-- PIPELINE STATUS BADGE -->
+        <div class="pipeline-badge">
+            <span class="badge-dot"></span>
+            <span>15TB+ High-Speed SSD/HDD • Ready For Projects</span>
+        </div>
+
+        <!-- SOCIALS -->
+        <div class="social-row">
+            <a href="mailto:contact@mukpost.com" class="social-icon" title="Email Us" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+            <a href="https://www.instagram.com/muk.post/" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://x.com/muk_post" target="_blank" rel="noopener noreferrer" class="social-icon" title="X (Twitter)" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.threads.net/@muk.post" target="_blank" rel="noopener noreferrer" class="social-icon" title="Threads" aria-label="Threads"><i class="fa-brands fa-threads"></i></a>
+            <a href="https://www.linkedin.com/company/muk-post/home/" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            &copy; 2026 <a href="https://mukpost.com">Muk Post</a>. All rights reserved.
+        </footer>
+
+    </div>
+
+    <!-- INTERACTIVE ACCORDION SCRIPT -->
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('videoDropdown');
+            const trigger = dropdown.querySelector('.dropdown-trigger');
+            const isOpen = dropdown.classList.toggle('open');
+            trigger.setAttribute('aria-expanded', isOpen);
+        }
+    </script>
+</body>
+</html>
