@@ -18,14 +18,14 @@
     <style>
         /* CORE DESIGN SYSTEM */
         :root {
-            --bg: #0a0a0c;
-            --surface: #121215;
-            --surface-hover: #18181c;
+            --bg: #060608;
+            --surface: #0f0f13;
+            --surface-hover: #16161c;
             --text-main: #f4f4f5;
             --text-dim: #71717a;
             --accent: #ffffff;
-            --border: #27272a;
-            --border-light: #3f3f46;
+            --border: #1a1a22;
+            --border-light: #2c2c38;
             --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Inter", sans-serif;
             --blue-folder: #5bc0de;
         }
@@ -47,9 +47,9 @@
         /* NAV */
         nav {
             position: fixed; top: 0; width: 100%; height: 80px;
-            background: rgba(10, 10, 12, 0.85); backdrop-filter: blur(20px);
+            background: rgba(6, 6, 8, 0.85); backdrop-filter: blur(24px);
             z-index: 1000; display: flex; align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
         }
         nav .container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
         .nav-logo { width: 42px; height: auto; }
@@ -114,12 +114,12 @@
         .price-badge {
             font-size: 0.65rem;
             padding: 0.35rem 0.75rem;
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-light);
             border-radius: 2px;
             letter-spacing: 0.15em;
             text-transform: uppercase;
             color: #a1a1aa;
-            background: #18181b;
+            background: #0f0f13;
         }
 
         .trial-badge {
@@ -158,174 +158,62 @@
             box-shadow: 0 10px 30px rgba(255,255,255,0.18);
         }
 
-        /* 3D PACKAGING ENGINE */
+        /* PREMIUM MOCKUP STAGED CONTAINER */
         .product-visual {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 540px;
-            perspective: 1400px;
+            height: 560px;
+            position: relative;
+            perspective: 1600px;
         }
 
-        .box-container {
-            width: 290px;
-            height: 410px;
+        /* INTERACTIVE PERSPECTIVE MOVEMENT */
+        .box-stage {
+            width: 380px;
             position: relative;
             transform-style: preserve-3d;
-            animation: spinBox 16s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
+            transform: rotateY(-8deg) rotateX(4deg);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            cursor: pointer;
+        }
+        .box-stage:hover {
+            transform: rotateY(-18deg) rotateX(8deg) scale(1.025);
         }
 
-        .box-face {
+        /* TEXTURED MOCKUP IMAGE */
+        .box-mockup-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 6px;
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.9),
+                0 0 40px rgba(255, 255, 255, 0.015);
+            filter: contrast(1.04) brightness(0.96);
+        }
+
+        /* HIGH-END SPECULAR & GLOW EFFECTS */
+        .stage-backdrop-light {
             position: absolute;
-            background: #0d0d10;
-            border: 1px solid #27272a;
-            box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.95);
-            text-transform: uppercase;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .box-face::before {
-            content: '';
-            position: absolute;
-            top: -60%;
-            left: -60%;
-            width: 220%;
-            height: 220%;
-            background: 
-                linear-gradient(130deg, 
-                    rgba(255,255,255,0.0) 0%, 
-                    rgba(255,255,255,0.0) 40%, 
-                    rgba(255,255,255,0.22) 48%, 
-                    rgba(255,255,255,0.36) 50%, 
-                    rgba(255,255,255,0.08) 54%, 
-                    rgba(255,255,255,0.0) 65%
-                ),
-                repeating-linear-gradient(
-                    -45deg,
-                    rgba(255,255,255,0.02) 0px,
-                    rgba(255,255,255,0.02) 3px,
-                    rgba(0,0,0,0.04) 3px,
-                    rgba(0,0,0,0.04) 7px
-                );
-            pointer-events: none;
-            mix-blend-mode: screen;
-            opacity: 0.92;
-            z-index: 10;
-        }
-
-        .box-face::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: 
-                radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.18) 0%, transparent 45%),
-                radial-gradient(ellipse at 20% 90%, rgba(255,255,255,0.12) 0%, transparent 35%);
-            pointer-events: none;
-            z-index: 11;
-        }
-
-        .box-front  { width: 290px; height: 410px; transform: translateZ(44px); padding: 26px; }
-        .box-back   { width: 290px; height: 410px; transform: rotateY(180deg) translateZ(44px); padding: 26px; background: #09090b; }
-        .box-left   { width: 88px;  height: 410px; transform: rotateY(-90deg) translateZ(44px); padding: 24px 10px; background: #0c0c0e; border-left: 2px solid #3f3f46; }
-        .box-right  { width: 88px;  height: 410px; transform: rotateY(90deg) translateZ(246px); background: #09090b; }
-        .box-top    { width: 290px; height: 88px;  transform: rotateX(90deg) translateZ(44px); background: #131316; }
-        .box-bottom { width: 290px; height: 88px;  transform: rotateX(-90deg) translateZ(366px); background: #050507; box-shadow: 0 0 50px rgba(0,0,0,1); }
-
-        .pack-meta-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.65rem;
-            font-weight: 800;
-            letter-spacing: 0.2em;
-            color: #a1a1aa;
-            border-bottom: 1.5px solid #27272a;
-            padding-bottom: 8px;
-        }
-        .pack-title-core {
-            font-size: 2.15rem;
-            font-weight: 900;
-            line-height: 0.92;
-            letter-spacing: -0.04em;
-            color: #ffffff;
-            margin: 18px 0 10px 0;
-        }
-        .pack-badges-row {
-            display: flex;
-            gap: 6px;
-            margin-top: 10px;
-        }
-        .pack-badge {
-            font-size: 0.55rem;
-            font-weight: 900;
-            padding: 3px 6px;
-            background: #ffffff;
-            color: #000000;
-            letter-spacing: 0.1em;
-        }
-        .pack-badge-dim {
-            font-size: 0.55rem;
-            font-weight: 800;
-            padding: 3px 6px;
-            border: 1px solid #3f3f46;
-            color: #d4d4d8;
-            letter-spacing: 0.1em;
-        }
-        .pack-specs {
-            border-top: 1px solid #1f1f23;
-            padding-top: 14px;
-            font-size: 0.62rem;
-            color: #71717a;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            line-height: 1.6;
-        }
-        .pack-barcode {
-            height: 22px;
-            background: repeating-linear-gradient(
-                90deg,
-                #fff 0px, #fff 2px,
-                transparent 2px, transparent 4px,
-                #fff 4px, #fff 5px,
-                transparent 5px, transparent 8px,
-                #fff 8px, #fff 11px
-            );
-            opacity: 0.65;
-            margin-top: 10px;
-        }
-
-        .spine-title {
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-            font-size: 0.72rem;
-            font-weight: 900;
-            letter-spacing: 0.28em;
-            color: #e4e4e7;
-            margin: auto 0;
-            text-align: center;
-            white-space: nowrap;
-        }
-
-        .box-glow {
-            position: absolute;
-            bottom: -60px;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%) rotateX(90deg);
-            width: 320px;
-            height: 320px;
-            background: radial-gradient(circle, rgba(255,255,255,0.09) 0%, rgba(0,0,0,0) 70%);
+            transform: translate(-50%, -50%) translateZ(-80px);
+            width: 460px;
+            height: 460px;
+            background: radial-gradient(circle, rgba(255,255,255,0.075) 0%, rgba(255,255,255,0.01) 50%, transparent 70%);
             pointer-events: none;
+            filter: blur(20px);
         }
-
-        @keyframes spinBox {
-            0%   { transform: rotateY(-18deg) rotateX(4deg); }
-            45%  { transform: rotateY(165deg) rotateX(-5deg); }
-            55%  { transform: rotateY(195deg) rotateX(-5deg); }
-            95%  { transform: rotateY(342deg) rotateX(4deg); }
-            100% { transform: rotateY(342deg) rotateX(4deg); }
+        .stage-backdrop-ground-glow {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%) rotateX(85deg);
+            width: 340px;
+            height: 120px;
+            background: radial-gradient(ellipse, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 40%, transparent 80%);
+            pointer-events: none;
         }
 
         @keyframes fadeUp {
@@ -345,7 +233,7 @@
         .feature-card h3 { font-size: 1.05rem; text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 0.05em; font-weight: 800; }
         .feature-card p { font-size: 0.88rem; color: var(--text-dim); line-height: 1.65; }
 
-        /* HANDBOOK SHOWCASE */
+        /* HANDBOOK DEEP-DIVE SHOWCASE */
         .handbook-showcase {
             padding: 80px 0 120px;
         }
@@ -371,7 +259,7 @@
         }
 
         .handbook-module {
-            background: #0f0f13;
+            background: #09090c;
             border: 2px solid var(--border);
             padding: 3rem;
             margin-bottom: 4rem;
@@ -417,7 +305,7 @@
             gap: 1.5rem;
         }
         .bin-col-card {
-            background: #070709;
+            background: #050507;
             border: 1px solid var(--border);
             padding: 1.5rem;
         }
@@ -429,7 +317,7 @@
             font-weight: 900;
             color: #fff;
             margin-bottom: 1rem;
-            border-bottom: 1px solid #1f1f24;
+            border-bottom: 1px solid #14141a;
             padding-bottom: 8px;
             letter-spacing: 0.05em;
         }
@@ -450,7 +338,7 @@
         }
         .bin-col-list li::before {
             content: "├─ ";
-            color: #3f3f46;
+            color: #27272a;
         }
         .bin-col-list li:last-child::before {
             content: "└─ ";
@@ -469,8 +357,8 @@
             gap: 8px;
         }
         .node-cell {
-            background: #070709;
-            border: 1px solid #1f1f24;
+            background: #050507;
+            border: 1px solid #14141a;
             padding: 10px;
             position: relative;
         }
@@ -484,7 +372,7 @@
         .node-idx {
             font-size: 1rem;
             font-weight: 900;
-            color: #52525b;
+            color: #3f3f46;
             line-height: 1;
         }
         .node-fn {
@@ -579,7 +467,7 @@
             letter-spacing: 0.15em;
         }
         .track-mixer-table td {
-            background: #070709;
+            background: #050507;
             font-weight: 700;
             letter-spacing: 0.03em;
         }
@@ -589,11 +477,11 @@
             font-weight: 900;
             padding: 2px 6px;
             border: 1px solid var(--border-light);
-            background: #18181c;
+            background: #0f0f13;
             color: #fff;
         }
         .bus-summary-card {
-            background: #070709;
+            background: #050507;
             border: 1px solid var(--border);
             padding: 1.5rem;
             display: flex;
@@ -609,7 +497,7 @@
             letter-spacing: 0.1em;
             margin-bottom: 0.9rem;
             padding-bottom: 0.9rem;
-            border-bottom: 1px solid #1a1a20;
+            border-bottom: 1px solid #14141a;
         }
         .bus-led::before {
             content: '';
@@ -627,7 +515,7 @@
             gap: 1.5rem;
         }
         .check-card {
-            background: #070709;
+            background: #050507;
             border: 1px solid var(--border);
             padding: 1.6rem;
             display: flex;
@@ -708,67 +596,14 @@
                 </a>
             </div>
 
-            <!-- 3D CELLOPHANE WRAPPED PACKAGING -->
+            <!-- PREMIUM PACKAGING ENGINE (HIGH-RES MOCKUP DISPLAY) -->
             <div class="product-visual">
-                <div class="box-container">
-                    <div class="box-glow"></div>
-
-                    <!-- FRONT FACE -->
-                    <div class="box-face box-front">
-                        <div>
-                            <div class="pack-meta-header">
-                                <span>SYS // POST-CORE</span>
-                                <span>STUDIO ONLY</span>
-                            </div>
-                            <div class="pack-title-core">
-                                MUK POST<br>MASTER<br>TEMPLATE
-                            </div>
-                            <div class="pack-badges-row">
-                                <span class="pack-badge">STUDIO</span>
-                                <span class="pack-badge-dim">DWG PIPE</span>
-                                <span class="pack-badge-dim">FAIRLIGHT</span>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="pack-specs">
-                                01. EDIT ARCHITECTURE<br>
-                                02. 12-NODE DWG WORKFLOW<br>
-                                03. 16-TRACK AUDIO MATRIX<br>
-                                04. STANDARDIZED EXPORT
-                            </div>
-                            <div class="pack-barcode"></div>
-                        </div>
-                    </div>
-
-                    <!-- SPINE (LEFT FACE) -->
-                    <div class="box-face box-left">
-                        <span style="font-size:0.65rem; font-weight:900; text-align:center;">MUK</span>
-                        <div class="spine-title">MUK POST : MASTER TEMPLATE</div>
-                        <span style="font-size:0.5rem; color:#71717a; text-align:center;">DRP // 21.1+</span>
-                    </div>
-
-                    <!-- BACK FACE -->
-                    <div class="box-face box-back">
-                        <div class="pack-meta-header">
-                            <span>SPECIFICATION</span>
-                            <span>RESOLVE 21.1+ STUDIO</span>
-                        </div>
-                        <div style="font-size: 0.65rem; color: #a1a1aa; line-height: 1.6; margin: 20px 0; font-weight: 700;">
-                            ENGINEERED FOR EDITORS, COLORISTS, AND FINISHERS SEEKING MAXIMUM RIGOR AND ZERO SETUP OVERHEAD.
-                        </div>
-                        <div>
-                            <div class="pack-specs">
-                                BUILT IN TORONTO, ON<br>
-                                MUKPOST.COM // ARCHIVAL GRADE
-                            </div>
-                            <div class="pack-barcode"></div>
-                        </div>
-                    </div>
-
-                    <!-- TOP / BOTTOM / RIGHT EDGES -->
-                    <div class="box-face box-right"></div>
-                    <div class="box-face box-top"></div>
-                    <div class="box-face box-bottom"></div>
+                <div class="stage-backdrop-light"></div>
+                <div class="stage-backdrop-ground-glow"></div>
+                
+                <!-- INTERACTIVE PRESENCE TRANSFORM (STAGES ROTATION CONTROLLER) -->
+                <div class="box-stage" id="mockupStage">
+                    <img src="image_15.png" alt="Muk Post Ultimate Master Template Physical Packaging Mockup" class="box-mockup-img">
                 </div>
             </div>
         </section>
@@ -1026,8 +861,9 @@
         <p style="color: var(--text-dim); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700;">&copy; 2026 Muk Post. All Rights Reserved.</p>
     </footer>
 
-    <!-- INTERACTIVE BEFORE/AFTER SLIDER SCRIPT -->
+    <!-- INTERACTIVE SCRIPTS -->
     <script>
+        /* BEFORE/AFTER COMPARISON SLIDER */
         const slider = document.getElementById('compareRange');
         const gradedImage = document.getElementById('gradedImage');
         const sliderLine = document.getElementById('sliderLine');
@@ -1036,6 +872,25 @@
             const val = e.target.value;
             gradedImage.style.clipPath = `polygon(0 0, ${val}% 0, ${val}% 100%, 0 100%)`;
             sliderLine.style.left = `${val}%`;
+        });
+
+        /* DYNAMIC MOCKUP MOTION EFFECT (3D TILT PARALLAX) */
+        const mockupStage = document.getElementById('mockupStage');
+        mockupStage.addEventListener('mousemove', (e) => {
+            const rect = mockupStage.getBoundingClientRect();
+            const x = e.clientX - rect.left; // x-coordinate within the element
+            const y = e.clientY - rect.top;  // y-coordinate within the element
+            
+            // Calculate rotational strength offsets based on bounding center
+            const xRot = -1 * ((y - (rect.height / 2)) / (rect.height / 2)) * 12; // cap rotation at 12deg
+            const yRot = ((x - (rect.width / 2)) / (rect.width / 2)) * 16;
+            
+            mockupStage.style.transform = `rotateY(${yRot - 8}deg) rotateX(${xRot + 4}deg) scale(1.02)`;
+        });
+
+        mockupStage.addEventListener('mouseleave', () => {
+            // Smooth natural reset on leave
+            mockupStage.style.transform = `rotateY(-8deg) rotateX(4deg) scale(1)`;
         });
     </script>
 </body>
