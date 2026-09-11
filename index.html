@@ -1,3 +1,16 @@
+Ran command: `pwd && ls -la`
+
+Here is the updated, full code for your **`index.html`**. 
+
+### Summary of Changes:
+1. **Added Store Link**: Inserted `<a href="/store.html">Store</a>` into the top navigation menu.
+2. **Replaced Countdown & Eraser**: Replaced the countdown timer and eraser layers with a clean, unblurred thumbnail (`https://i.imgur.com/6RYCnXk.jpg`) inside an interactive video box.
+3. **Pulsing Click Animation**: Added a subtle breathing/pulsing animation (`@keyframes clickPulse`) to the video box that gently moves in and out to draw clicks, pausing smoothly on hover.
+4. **Clickable Video Box & Play Overlay**: Clicking anywhere on the video box opens the YouTube video in a new tab, complete with a custom YouTube play icon and overlay effect.
+5. **Retained "OUT NOW" Text**: Prominently featured the **OUT NOW** heading right above the video box.
+6. **Code Cleanup**: Removed the now-obsolete countdown and scratch-eraser JavaScript and CSS.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -156,8 +169,8 @@
             animation-delay: 0.9s;
         }
 
-        /* NEW DROP COUNTDOWN STYLES */
-        .drop-countdown-wrapper {
+        /* FEATURED YOUTUBE VIDEO DROP */
+        .featured-drop-wrapper {
             margin-bottom: 4rem;
             opacity: 0;
             transform: translateY(15px);
@@ -172,60 +185,104 @@
             width: 100%;
             max-width: 650px;
         }
+
+        .out-now-title {
+            font-size: clamp(2.2rem, 6vw, 3.5rem);
+            font-weight: 800;
+            color: var(--accent);
+            letter-spacing: 0.08em;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
         
-        /* INTERACTIVE ERASER THUMBNAIL */
-        .youtube-teaser-container {
+        /* PULSING YOUTUBE VIDEO BOX */
+        .youtube-video-box {
             position: relative;
+            display: block;
             width: 100%;
             max-width: 560px;
             aspect-ratio: 16 / 9;
-            margin: 0 auto 2rem;
+            margin: 0 auto 1.8rem;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.05);
-            cursor: crosshair;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+            text-decoration: none;
+            animation: clickPulse 2.6s ease-in-out infinite;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
-        .youtube-teaser-img {
-            position: absolute;
-            top: 0;
-            left: 0;
+        /* Breathing pulse animation inviting the user to click */
+        @keyframes clickPulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 rgba(255, 255, 255, 0);
+            }
+            50% {
+                transform: scale(1.025);
+                box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 255, 255, 0.12);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+
+        .youtube-video-box:hover {
+            animation-play-state: paused;
+            transform: scale(1.04);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 255, 255, 0.2);
+        }
+
+        .youtube-box-thumb {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            pointer-events: none;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .blurred-layer {
-            filter: blur(14px);
-            transform: scale(1.05); /* Stops blur edge bleed */
+        .youtube-video-box:hover .youtube-box-thumb {
+            transform: scale(1.06);
         }
 
-        .reveal-layer {
-            /* Hides the unblurred image initially via an off-screen mask */
-            -webkit-mask-image: radial-gradient(circle 120px at -200px -200px, black 30%, transparent 80%);
-            mask-image: radial-gradient(circle 120px at -200px -200px, black 30%, transparent 80%);
-            -webkit-mask-repeat: no-repeat;
-            mask-repeat: no-repeat;
+        .video-box-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.25);
+            transition: background 0.3s ease;
         }
 
-        .countdown-timer {
-            font-size: clamp(3rem, 8vw, 5.5rem);
-            font-weight: 800;
-            color: var(--accent);
-            font-variant-numeric: tabular-nums;
-            letter-spacing: 0.02em;
-            line-height: 1;
-            margin-bottom: 0.5rem;
+        .youtube-video-box:hover .video-box-overlay {
+            background: rgba(0, 0, 0, 0.1);
         }
 
-        .countdown-label {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            color: var(--text-dim);
-            margin-bottom: 2rem;
+        .youtube-play-icon {
+            width: 68px;
+            height: 48px;
+            background: rgba(15, 15, 15, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff0000;
+            font-size: 2rem;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+
+        .youtube-video-box:hover .youtube-play-icon {
+            background: #ff0000;
+            color: #ffffff;
+            transform: scale(1.15);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.45);
         }
 
         .youtube-drop-btn {
@@ -420,11 +477,8 @@
             .laurels-wrapper { gap: 1.5rem; margin-top: 3rem; }
             .laurels-wrapper img { height: 55px; }
             
-            .youtube-teaser-container {
+            .youtube-video-box {
                 margin-bottom: 1.5rem;
-            }
-            .blurred-layer {
-                filter: blur(10px); /* Slightly less blur on mobile */
             }
         }
     </style>
@@ -440,6 +494,7 @@
                 <div class="nav-links">
                     <a href="#about">Workflow</a>
                     <a href="#work">Work</a>
+                    <a href="/store.html">Store</a>
                     <a href="#contact">Contact</a>
                 </div>
                 <div class="nav-socials">
@@ -456,18 +511,21 @@
         <!-- HERO -->
         <section class="hero container">
             
-            <!-- NEW YOUTUBE VIDEO DROP COUNTDOWN -->
-            <div class="drop-countdown-wrapper">
-                <div class="youtube-teaser-container" id="teaser-container">
-                    <!-- Base Image: Blurred -->
-                    <img src="https://i.imgur.com/6RYCnXk.jpg" alt="Donat Jackson Video Teaser Blurred" class="youtube-teaser-img blurred-layer">
-                    <!-- Reveal Image: Unblurred & Dynamically Masked via JS -->
-                    <img src="https://i.imgur.com/6RYCnXk.jpg" alt="Donat Jackson Video Teaser Revealed" class="youtube-teaser-img reveal-layer" id="reveal-layer">
-                </div>
+            <!-- FEATURED YOUTUBE VIDEO DROP -->
+            <div class="featured-drop-wrapper">
+                <div class="out-now-title">OUT NOW</div>
+                
+                <!-- Pulsing Clickable YouTube Video Box -->
+                <a href="https://www.youtube.com/watch?v=m3GzM8sJ_V8" target="_blank" rel="noopener noreferrer" class="youtube-video-box" aria-label="Watch Need More Time by Donat Jackson on YouTube">
+                    <img src="https://i.imgur.com/6RYCnXk.jpg" alt="Donat Jackson - Need More Time" class="youtube-box-thumb">
+                    <div class="video-box-overlay">
+                        <div class="youtube-play-icon">
+                            <i class="fa-brands fa-youtube"></i>
+                        </div>
+                    </div>
+                </a>
 
-                <div id="drop-timer" class="countdown-timer">00:00:00</div>
-                <div class="countdown-label">Releasing at Midnight</div>
-                <a href="https://www.youtube.com/watch?v=m3GzM8sJ_V8" target="_blank" class="youtube-drop-btn">
+                <a href="https://www.youtube.com/watch?v=m3GzM8sJ_V8" target="_blank" rel="noopener noreferrer" class="youtube-drop-btn">
                     <i class="fa-brands fa-youtube" style="margin-right: 0.5rem; color: #ff0000; font-size: 1.1rem;"></i> Watch "Need More Time" by Donat Jackson
                 </a>
             </div>
@@ -986,77 +1044,6 @@
     </footer>
 
     <script>
-        // --- NEW YOUTUBE VIDEO COUNTDOWN SCRIPT ---
-        (function() {
-            // Target date configured to midnight tonight 
-            const targetDate = new Date();
-            targetDate.setHours(24, 0, 0, 0); 
-            
-            const timerElement = document.getElementById("drop-timer");
-            
-            const updateTimer = setInterval(function() {
-                const now = new Date().getTime();
-                const distance = targetDate.getTime() - now;
-                
-                if (distance < 0) {
-                    clearInterval(updateTimer);
-                    timerElement.innerHTML = "OUT NOW!";
-                    return;
-                }
-                
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
-                timerElement.innerHTML = 
-                    String(hours).padStart(2, '0') + ":" + 
-                    String(minutes).padStart(2, '0') + ":" + 
-                    String(seconds).padStart(2, '0');
-            }, 1000);
-        })();
-        // --- END COUNTDOWN SCRIPT ---
-
-        // --- NEW ERASER REVEAL SCRIPT ---
-        const teaserContainer = document.getElementById('teaser-container');
-        const revealLayer = document.getElementById('reveal-layer');
-
-        if(teaserContainer && revealLayer) {
-            function updateEraser(e) {
-                let clientX, clientY;
-                if (e.touches && e.touches.length > 0) {
-                    clientX = e.touches[0].clientX;
-                    clientY = e.touches[0].clientY;
-                } else {
-                    clientX = e.clientX;
-                    clientY = e.clientY;
-                }
-                
-                const rect = teaserContainer.getBoundingClientRect();
-                const x = clientX - rect.left;
-                const y = clientY - rect.top;
-                
-                // Creates a transparent hole where the cursor is, revealing the clear image
-                revealLayer.style.webkitMaskImage = `radial-gradient(circle 120px at ${x}px ${y}px, black 30%, transparent 80%)`;
-                revealLayer.style.maskImage = `radial-gradient(circle 120px at ${x}px ${y}px, black 30%, transparent 80%)`;
-            }
-
-            function resetEraser() {
-                // Move the hole completely offscreen to hide the clear image again
-                revealLayer.style.webkitMaskImage = `radial-gradient(circle 120px at -200px -200px, black 30%, transparent 80%)`;
-                revealLayer.style.maskImage = `radial-gradient(circle 120px at -200px -200px, black 30%, transparent 80%)`;
-            }
-
-            teaserContainer.addEventListener('mousemove', updateEraser);
-            teaserContainer.addEventListener('touchmove', (e) => {
-                e.preventDefault(); // Prevents the screen from scrolling down when swiping to erase on mobile
-                updateEraser(e);
-            }, { passive: false });
-
-            teaserContainer.addEventListener('mouseleave', resetEraser);
-            teaserContainer.addEventListener('touchend', resetEraser);
-        }
-        // --- END ERASER REVEAL SCRIPT ---
-
         // Scroll Reveal Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1150,3 +1137,4 @@
     </script>
 </body>
 </html>
+```
