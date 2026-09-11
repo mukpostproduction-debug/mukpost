@@ -25,7 +25,9 @@
             --text-dim: #71717a;
             --accent: #ffffff;
             --border: #27272a;
+            --border-light: #3f3f46;
             --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Inter", sans-serif;
+            --blue-folder: #5bc0de;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -185,7 +187,6 @@
             justify-content: space-between;
         }
 
-        /* Plastic / Cellophane Gloss Layer */
         .box-face::before {
             content: '';
             position: absolute;
@@ -215,7 +216,6 @@
             z-index: 10;
         }
 
-        /* Cellophane Crease Overlays */
         .box-face::after {
             content: '';
             position: absolute;
@@ -227,7 +227,6 @@
             z-index: 11;
         }
 
-        /* 3D Spatial Orientation */
         .box-front  { width: 290px; height: 410px; transform: translateZ(44px); padding: 26px; }
         .box-back   { width: 290px; height: 410px; transform: rotateY(180deg) translateZ(44px); padding: 26px; background: #09090b; }
         .box-left   { width: 88px;  height: 410px; transform: rotateY(-90deg) translateZ(44px); padding: 24px 10px; background: #0c0c0e; border-left: 2px solid #3f3f46; }
@@ -235,7 +234,6 @@
         .box-top    { width: 290px; height: 88px;  transform: rotateX(90deg) translateZ(44px); background: #131316; }
         .box-bottom { width: 290px; height: 88px;  transform: rotateX(-90deg) translateZ(366px); background: #050507; box-shadow: 0 0 50px rgba(0,0,0,1); }
 
-        /* Packaging Graphic Elements */
         .pack-meta-header {
             display: flex;
             justify-content: space-between;
@@ -299,7 +297,6 @@
             margin-top: 10px;
         }
 
-        /* Spine Layout */
         .spine-title {
             writing-mode: vertical-rl;
             transform: rotate(180deg);
@@ -312,7 +309,6 @@
             white-space: nowrap;
         }
 
-        /* Shadow & Under-Glow */
         .box-glow {
             position: absolute;
             bottom: -60px;
@@ -337,8 +333,8 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* FEATURES GRID */
-        .features-section { padding: 120px 0; border-top: 1px solid var(--border); }
+        /* FEATURES OVERVIEW */
+        .features-section { padding: 120px 0 60px; border-top: 1px solid var(--border); }
         .features-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 4rem;
         }
@@ -348,6 +344,316 @@
         .feature-card:hover { border-top-color: var(--accent); transform: translateY(-4px); background: var(--surface-hover); }
         .feature-card h3 { font-size: 1.05rem; text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 0.05em; font-weight: 800; }
         .feature-card p { font-size: 0.88rem; color: var(--text-dim); line-height: 1.65; }
+
+        /* =======================================================
+           HANDBOOK DEEP-DIVE SHOWCASE (STORY / BRUTALIST STYLE)
+        ======================================================= */
+        .handbook-showcase {
+            padding: 80px 0 120px;
+        }
+
+        .showcase-header {
+            text-align: center;
+            max-width: 780px;
+            margin: 0 auto 5rem;
+        }
+        .showcase-header h2 {
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+        .showcase-header p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .handbook-module {
+            background: #0f0f13;
+            border: 2px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .module-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 900;
+            letter-spacing: 0.2em;
+            padding: 4px 10px;
+            background: var(--accent);
+            color: #000;
+            margin-bottom: 1.5rem;
+        }
+
+        .module-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .module-head h3 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+        .module-head span {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--text-dim);
+        }
+
+        /* 01. EDIT UI ARCHITECTURE */
+        .bin-visual-tree {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .bin-col-card {
+            background: #070709;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+        }
+        .bin-col-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #1f1f24;
+            padding-bottom: 8px;
+            letter-spacing: 0.05em;
+        }
+        .folder-dot {
+            width: 12px;
+            height: 9px;
+            background: var(--blue-folder);
+            display: inline-block;
+            border-radius: 1px;
+        }
+        .bin-col-list {
+            list-style: none;
+            font-size: 0.75rem;
+            color: #a1a1aa;
+            font-weight: 600;
+            line-height: 2;
+            letter-spacing: 0.03em;
+        }
+        .bin-col-list li::before {
+            content: "├─ ";
+            color: #3f3f46;
+        }
+        .bin-col-list li:last-child::before {
+            content: "└─ ";
+        }
+
+        /* 02. COLOR NODE FLOW & INTERACTIVE SLIDER */
+        .color-pipeline-preview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .node-matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+        .node-cell {
+            background: #070709;
+            border: 1px solid #1f1f24;
+            padding: 10px;
+            position: relative;
+        }
+        .node-cell.accent-node {
+            background: #ffffff;
+            color: #000;
+            border-color: #fff;
+        }
+        .node-cell.accent-node .node-idx { color: #555; }
+        .node-cell.accent-node .node-fn { color: #000; font-weight: 900; }
+        .node-idx {
+            font-size: 1rem;
+            font-weight: 900;
+            color: #52525b;
+            line-height: 1;
+        }
+        .node-fn {
+            font-size: 0.7rem;
+            font-weight: 800;
+            margin-top: 4px;
+            letter-spacing: 0.04em;
+        }
+        .node-tag {
+            font-size: 0.6rem;
+            color: #71717a;
+            margin-top: 2px;
+        }
+
+        /* Interactive Comparison Slider */
+        .compare-slider-container {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            border: 2px solid var(--border);
+            overflow: hidden;
+            background: #000;
+        }
+        .compare-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+        .compare-img.graded {
+            clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+            transition: clip-path 0.05s ease-out;
+        }
+        .slider-label {
+            position: absolute;
+            bottom: 12px;
+            padding: 4px 8px;
+            font-size: 0.62rem;
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            background: rgba(0,0,0,0.75);
+            border: 1px solid rgba(255,255,255,0.2);
+            z-index: 5;
+        }
+        .label-left { left: 12px; }
+        .label-right { right: 12px; }
+        .slider-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: ew-resize;
+            z-index: 10;
+        }
+        .slider-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: #ffffff;
+            pointer-events: none;
+            z-index: 6;
+            box-shadow: 0 0 10px rgba(0,0,0,0.8);
+        }
+
+        /* 03. SOUND FAIRLIGHT ROUTING */
+        .fairlight-routing-board {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+        .track-mixer-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.78rem;
+        }
+        .track-mixer-table th, .track-mixer-table td {
+            border: 1px solid var(--border);
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .track-mixer-table th {
+            background: #000;
+            color: #a1a1aa;
+            font-size: 0.68rem;
+            letter-spacing: 0.15em;
+        }
+        .track-mixer-table td {
+            background: #070709;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+        .bus-badge {
+            display: inline-block;
+            font-size: 0.62rem;
+            font-weight: 900;
+            padding: 2px 6px;
+            border: 1px solid var(--border-light);
+            background: #18181c;
+            color: #fff;
+        }
+        .bus-summary-card {
+            background: #070709;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .bus-led {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.9rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid #1a1a20;
+        }
+        .bus-led::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 8px #22c55e;
+        }
+
+        /* 04. DELIVERY ARCHIVAL CHECKLIST */
+        .delivery-check-matrix {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .check-card {
+            background: #070709;
+            border: 1px solid var(--border);
+            padding: 1.6rem;
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+        }
+        .check-square {
+            width: 24px;
+            height: 24px;
+            border: 2.5px solid #ffffff;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .check-card h4 {
+            font-size: 0.95rem;
+            font-weight: 900;
+            margin-bottom: 0.3rem;
+            letter-spacing: 0.02em;
+        }
+        .check-card p {
+            font-size: 0.78rem;
+            color: #a1a1aa;
+            line-height: 1.5;
+        }
 
         /* FOOTER */
         footer { padding: 120px 0 80px; text-align: center; border-top: 1px solid var(--border); margin-top: 80px; }
@@ -359,6 +665,10 @@
             .product-desc { margin: 0 auto 2.5rem; }
             .product-price { justify-content: center; }
             .product-visual { height: 460px; margin-top: 1rem; }
+            .bin-visual-tree { grid-template-columns: 1fr; }
+            .color-pipeline-preview { grid-template-columns: 1fr; }
+            .fairlight-routing-board { grid-template-columns: 1fr; }
+            .delivery-check-matrix { grid-template-columns: 1fr; }
             .nav-links { display: none; }
         }
     </style>
@@ -466,26 +776,251 @@
             </div>
         </section>
 
-        <!-- WHAT'S INCLUDED (ALIGNED PRECISELY WITH THE 4-PILLAR HANDBOOK) -->
+        <!-- WHAT'S INCLUDED OVERVIEW -->
         <section class="features-section container">
-            <h2 style="font-size: 2rem; text-transform: uppercase; font-weight: 900; letter-spacing: -0.03em; text-align: center;">What's Included in the Template</h2>
+            <h2 style="font-size: 2rem; text-transform: uppercase; font-weight: 900; letter-spacing: -0.03em; text-align: center;">Core Pipeline Overview</h2>
             
             <div class="features-grid">
                 <div class="feature-card">
-                    <h3>01. Edit & Media Pool Architecture</h3>
-                    <p>Standardized, multi-tier bin hierarchy engineered for rapid drop-in organization: 01_FOOTAGE (A/B/C-Cam & Stock), 02_AUDIO, 03_TIMELINES (Sync, Rough, Fine, Finishing Stems), 04_PROXIES, and 05_GRAPHICS & VFX.</p>
+                    <h3>01. Edit Architecture</h3>
+                    <p>Standardized, multi-tier bin hierarchy engineered for rapid drop-in organization: Footage (A/B/C-Cam), Audio, Timelines, Proxies, and Graphics.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>02. 12-Node DWG Color Pipeline</h3>
-                    <p>Non-destructive CST-sandwiched grading tree operating inside DaVinci Wide Gamut / Intermediate. Dedicated serial/parallel operations for Noise Reduction, Exposure, Balance, Contrast, Skin Isolation, Look, Grain, and Lens Optics.</p>
+                    <h3>02. 12-Node DWG Pipeline</h3>
+                    <p>Non-destructive CST-sandwiched grading tree operating inside DaVinci Wide Gamut / Intermediate with dedicated tonal and look branches.</p>
                 </div>
                 <div class="feature-card">
                     <h3>03. 16-Track Fairlight Matrix</h3>
-                    <p>Pre-routed audio post environment with 16 discrete tracks (DX Dialogue, SFX, BG Ambience, MX Music), 6 sub-mix buses (DX, SFX, BG, MX, REV Aux), FabFilter Pro-Q 3 / RX 11 chains, and an ITU-R BS.1770-4 master bus limiter.</p>
+                    <p>Pre-routed audio post environment with 16 discrete tracks, 6 sub-mix buses, dynamic EQ routing, and an ITU-R BS.1770-4 master limiter.</p>
                 </div>
                 <div class="feature-card">
-                    <h3>04. Standardized Delivery Presets</h3>
-                    <p>Pre-configured render jobs ready for client review and archival handoff: Master Archival Export (ProRes 422 HQ / H.265), Commercial Web Master (Rec.709 4K UHD), 9:16 Social Vertical, and discrete multi-stem audio passes.</p>
+                    <h3>04. Delivery Presets</h3>
+                    <p>Pre-configured render jobs ready for client review and archival handoff: Master Archival Export, Commercial Web Master, and Discrete Stems.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =======================================================
+             HANDBOOK BREAKDOWN SHOWCASE (STORY / BRUTALIST STYLE)
+        ======================================================= -->
+        <section class="handbook-showcase container">
+            <div class="showcase-header">
+                <h2>Inside the User Handbook</h2>
+                <p>A visual breakdown of the post-production architecture included in your template download.</p>
+            </div>
+
+            <!-- MODULE 01: EDIT ARCHITECTURE -->
+            <div class="handbook-module">
+                <div class="module-badge">PILLAR 01 // EDIT</div>
+                <div class="module-head">
+                    <h3>01. Media Pool Architecture</h3>
+                    <span>PROJECT TREE HIERARCHY</span>
+                </div>
+
+                <div class="bin-visual-tree">
+                    <div class="bin-col-card">
+                        <div class="bin-col-title"><span class="folder-dot"></span> 01_FOOTAGE</div>
+                        <ul class="bin-col-list">
+                            <li>01_A_CAM (RAW & ROLLS)</li>
+                            <li>02_B_CAM (SECONDARY)</li>
+                            <li>03_C_CAM_AND_SPECIALTY</li>
+                            <li>04_ARCHIVAL_AND_STOCK</li>
+                        </ul>
+                    </div>
+
+                    <div class="bin-col-card">
+                        <div class="bin-col-title"><span class="folder-dot"></span> 02_AUDIO</div>
+                        <ul class="bin-col-list">
+                            <li>01_PRODUCTION_SOUND</li>
+                            <li>02_VOICE_OVER (SCRATCH/VO)</li>
+                            <li>03_ADR_AND_FOLEY</li>
+                            <li>04_SOUND_EFFECTS (HARD/RISERS)</li>
+                            <li>05_MUSIC_BEDS (STEMS/CUES)</li>
+                        </ul>
+                    </div>
+
+                    <div class="bin-col-card">
+                        <div class="bin-col-title"><span class="folder-dot"></span> 03_TIMELINES</div>
+                        <ul class="bin-col-list">
+                            <li>01_SYNC_SEQUENCES</li>
+                            <li>02_ROUGH_CUTS (STRINGOUTS)</li>
+                            <li>03_FINE_CUTS (LOCKED CUTS)</li>
+                            <li>04_FINISHING_STEMS</li>
+                            <li>05_ARCHIVE_TIMELINES</li>
+                        </ul>
+                    </div>
+
+                    <div class="bin-col-card">
+                        <div class="bin-col-title"><span class="folder-dot"></span> 04_PROXIES</div>
+                        <ul class="bin-col-list">
+                            <li>01_PROXY_MEDIA (TIMECODE MATCH)</li>
+                        </ul>
+                    </div>
+
+                    <div class="bin-col-card">
+                        <div class="bin-col-title"><span class="folder-dot"></span> 05_GRAPHICS & VFX</div>
+                        <ul class="bin-col-list">
+                            <li>01_TITLES_AND_LOWER_THIRDS</li>
+                            <li>02_MOGRT_AND_MACROS</li>
+                            <li>03_ELEMENTS_AND_TEXTURES</li>
+                            <li>04_LOGOS_AND_BRANDING</li>
+                        </ul>
+                    </div>
+
+                    <div class="bin-col-card">
+                        <div class="bin-col-title"><span class="folder-dot"></span> 06_PROJECT_DOCS</div>
+                        <ul class="bin-col-list">
+                            <li>01_SCRIPTS_AND_STORYBOARDS</li>
+                            <li>02_MUSIC_LICENSES</li>
+                            <li>03_NOTES (EDIT LOGS)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 02: COLOR PIPELINE WITH COMPARISON SLIDER -->
+            <div class="handbook-module">
+                <div class="module-badge">PILLAR 02 // COLOR</div>
+                <div class="module-head">
+                    <h3>02. 12-Node DWG Pipeline</h3>
+                    <span>CST SANDWICHED SIGNAL FLOW</span>
+                </div>
+
+                <div class="color-pipeline-preview">
+                    <div>
+                        <p style="font-size: 0.85rem; color: #a1a1aa; margin-bottom: 1.5rem; line-height: 1.6;">
+                            Non-destructive scene-referred color architecture. Transforms camera raw into DaVinci Wide Gamut / Intermediate to maximize latitude across tonal adjustments, before outputting to Rec.709.
+                        </p>
+                        <div class="node-matrix-grid">
+                            <div class="node-cell"><div class="node-idx">01</div><div class="node-fn">CST IN</div><div class="node-tag">RAW ➔ DWG</div></div>
+                            <div class="node-cell"><div class="node-idx">02</div><div class="node-fn">NOISE RED.</div><div class="node-tag">CLEAN CHROMA</div></div>
+                            <div class="node-cell"><div class="node-idx">03</div><div class="node-fn">EXPOSURE</div><div class="node-tag">OFFSET / HDR</div></div>
+                            <div class="node-cell"><div class="node-idx">04</div><div class="node-fn">BALANCE</div><div class="node-tag">TEMP / TINT</div></div>
+                            <div class="node-cell"><div class="node-idx">05</div><div class="node-fn">CONTRAST</div><div class="node-tag">S-CURVE & PIVOT</div></div>
+                            <div class="node-cell"><div class="node-idx">06</div><div class="node-fn">SATURATION</div><div class="node-tag">COLOR BOOST</div></div>
+                            <div class="node-cell"><div class="node-idx">07</div><div class="node-fn">SKIN ISO.</div><div class="node-tag">SECONDARY QUAL.</div></div>
+                            <div class="node-cell"><div class="node-idx">08</div><div class="node-fn">SHARPNESS</div><div class="node-tag">MIDTONE DETAIL</div></div>
+                            <div class="node-cell"><div class="node-idx">09</div><div class="node-fn">LOOK</div><div class="node-tag">FILM PRINT / LUT</div></div>
+                            <div class="node-cell"><div class="node-idx">10</div><div class="node-fn">GRAIN</div><div class="node-tag">35MM / 16MM</div></div>
+                            <div class="node-cell"><div class="node-idx">11</div><div class="node-fn">LENS</div><div class="node-tag">HALATION / BLOOM</div></div>
+                            <div class="node-cell accent-node"><div class="node-idx">12</div><div class="node-fn">CST OUT</div><div class="node-tag" style="color:#222;">➔ REC.709 G2.4</div></div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Grade Comparison Slider -->
+                    <div>
+                        <div class="compare-slider-container" id="compareContainer">
+                            <img src="ColourNodeTreeScreenShot_BRAW.jpg" alt="Source Log / BRAW" class="compare-img">
+                            <img src="ColourNodeTreeScreenShot_Graded.jpg" alt="Final Master Grade" class="compare-img graded" id="gradedImage">
+                            <div class="slider-line" id="sliderLine"></div>
+                            <span class="slider-label label-left">SOURCE // BRAW</span>
+                            <span class="slider-label label-right">FINAL // GRADED</span>
+                            <input type="range" min="0" max="100" value="50" class="slider-input" id="compareRange">
+                        </div>
+                        <p style="font-size: 0.65rem; color: #71717a; text-align: center; margin-top: 10px; letter-spacing: 0.1em; text-transform: uppercase;">
+                            DRAG SLIDER TO REVEAL 12-NODE DWG GRADE
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 03: SOUND ROUTING MATRIX -->
+            <div class="handbook-module">
+                <div class="module-badge">PILLAR 03 // SOUND</div>
+                <div class="module-head">
+                    <h3>03. 16-Track Fairlight Matrix</h3>
+                    <span>BROADCAST BUS ROUTING & INSERTS</span>
+                </div>
+
+                <div class="fairlight-routing-board">
+                    <table class="track-mixer-table">
+                        <thead>
+                            <tr>
+                                <th>TRACK IDENTIFIER</th>
+                                <th>INSERTS & CHANNEL PLUGINS</th>
+                                <th>SUB-MIX BUS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A1-A4: DIALOGUE (DX BOOM, LAV, ADR, VO)</td>
+                                <td>FabFilter Pro-Q 3, RX 11 Voice De-Noise, Pro-C 2</td>
+                                <td><span class="bus-badge">B2 (DX BUS)</span></td>
+                            </tr>
+                            <tr>
+                                <td>A5-A10: SOUND FX (SPOTS, IMPACTS, RISERS, FOLEY)</td>
+                                <td>FabFilter Pro-Q 3</td>
+                                <td><span class="bus-badge">B3 (SFX BUS)</span></td>
+                            </tr>
+                            <tr>
+                                <td>A11-A13: AMBIENCE (ROOM TONE, EXTERIORS, NATURE)</td>
+                                <td>FabFilter Pro-Q 3</td>
+                                <td><span class="bus-badge">B4 (BG BUS)</span></td>
+                            </tr>
+                            <tr>
+                                <td>A14-A16: MUSIC (SCORE MASTER, STEMS, STINGERS)</td>
+                                <td>FabFilter Pro-Q 3</td>
+                                <td><span class="bus-badge">B5 (MX BUS)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="bus-summary-card">
+                        <div>
+                            <div class="bus-led">B1: ST OUT (iZotope Insight 2 Master Limiting)</div>
+                            <div class="bus-led">B2: DX BUS (Dialogue Sub-Master)</div>
+                            <div class="bus-led">B3: SFX BUS (Effects Sub-Master)</div>
+                            <div class="bus-led">B4: BG BUS (Ambience Bed)</div>
+                            <div class="bus-led">B5: MX BUS (Music Master)</div>
+                            <div class="bus-led">B6: REV (Valhalla Stereo Aux Space)</div>
+                        </div>
+                        <p style="font-size: 0.65rem; color: #71717a; margin-top: 10px; letter-spacing: 0.05em;">
+                            ITU-R BS.1770-4 COMPLIANT // BROADCAST & WEB SAFE
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODULE 04: DELIVERY SPECIFICATIONS -->
+            <div class="handbook-module" style="margin-bottom: 0;">
+                <div class="module-badge">PILLAR 04 // DELIVERY</div>
+                <div class="module-head">
+                    <h3>04. Standardized Delivery</h3>
+                    <span>PRE-CONFIGURED RENDER JOBS</span>
+                </div>
+
+                <div class="delivery-check-matrix">
+                    <div class="check-card">
+                        <div class="check-square"></div>
+                        <div>
+                            <h4>MASTER ARCHIVAL EXPORT</h4>
+                            <p>ProRes 422 HQ / H.265 Master with full bit-depth preservation matching project color management.</p>
+                        </div>
+                    </div>
+
+                    <div class="check-card">
+                        <div class="check-square"></div>
+                        <div>
+                            <h4>COMMERCIAL WEB MASTER</h4>
+                            <p>Rec.709 H.264 / H.265 4K UHD export optimized for Vimeo, YouTube, and Frame.io client review sign-off.</p>
+                        </div>
+                    </div>
+
+                    <div class="check-card">
+                        <div class="check-square"></div>
+                        <div>
+                            <h4>SOCIAL DELIVERY (9:16)</h4>
+                            <p>1080x1920 vertical format crop profile configured for high-bitrate Reels, TikTok, and YouTube Shorts.</p>
+                        </div>
+                    </div>
+
+                    <div class="check-card">
+                        <div class="check-square"></div>
+                        <div>
+                            <h4>DISCRETE AUDIO STEMS</h4>
+                            <p>Pre-mapped export jobs for discrete DX, MX, SFX, and Full Composite 24-bit 48kHz WAV passes.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -496,5 +1031,17 @@
         <p style="color: var(--text-dim); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700;">&copy; 2026 Muk Post. All Rights Reserved.</p>
     </footer>
 
+    <!-- INTERACTIVE BEFORE/AFTER SLIDER SCRIPT -->
+    <script>
+        const slider = document.getElementById('compareRange');
+        const gradedImage = document.getElementById('gradedImage');
+        const sliderLine = document.getElementById('sliderLine');
+
+        slider.addEventListener('input', (e) => {
+            const val = e.target.value;
+            gradedImage.style.clipPath = `polygon(0 0, ${val}% 0, ${val}% 100%, 0 100%)`;
+            sliderLine.style.left = `${val}%`;
+        });
+    </script>
 </body>
 </html>
