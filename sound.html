@@ -632,8 +632,13 @@
             <!-- VIDEO VIEWPORT -->
             <div class="video-container">
                 <video id="filmVideo" playsinline preload="metadata">
+                    <source src="cerberus_web_under25mb.mp4" type="video/mp4">
+                    <source src="cerberus_1080p.mp4" type="video/mp4">
+                    <source src="cerberus_web.mp4" type="video/mp4">
+                    <source src="stem-mixer/cerberus_web_under25mb.mp4" type="video/mp4">
                     <source src="stem-mixer/cerberus_1080p.mp4" type="video/mp4">
                     <source src="stem-mixer/cerberus_web.mp4" type="video/mp4">
+                    <source src="Cerberus_-14Lufs_1080p_AudioFullMix.mov" type="video/quicktime">
                     <source src="stem-mixer/Cerberus_-14Lufs_1080p_AudioFullMix.mov" type="video/quicktime">
                 </video>
                 <div class="video-overlay-badge" id="videoTcBadge">TC 01:00:00:00</div>
@@ -821,15 +826,21 @@
 
     <!-- HIDDEN AUDIO ELEMENTS (STREAMING SEAMLESSLY) -->
     <audio id="audioDx" preload="auto">
+        <source src="cerberus-dx.m4a" type="audio/mp4">
         <source src="stem-mixer/cerberus-dx.m4a" type="audio/mp4">
+        <source src="cerberus-dx.wav" type="audio/wav">
         <source src="stem-mixer/cerberus-dx.wav" type="audio/wav">
     </audio>
     <audio id="audioMx" preload="auto">
+        <source src="cerberus-mx.m4a" type="audio/mp4">
         <source src="stem-mixer/cerberus-mx.m4a" type="audio/mp4">
+        <source src="cerberus-mx.wav" type="audio/wav">
         <source src="stem-mixer/cerberus-mx.wav" type="audio/wav">
     </audio>
     <audio id="audioSfx" preload="auto">
+        <source src="cerberus-sfx.m4a" type="audio/mp4">
         <source src="stem-mixer/cerberus-sfx.m4a" type="audio/mp4">
+        <source src="cerberus-sfx.wav" type="audio/wav">
         <source src="stem-mixer/cerberus-sfx.wav" type="audio/wav">
     </audio>
 
