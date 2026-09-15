@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Portfolio & Stem Breakdown Mixer | Muk Post</title>
+    
+    <link rel="icon" href="https://i.imgur.com/0czpN64.png" type="image/png">
+    
+    <meta property="og:title" content="Muk Post | Sound Portfolio & Stem Breakdown Mixer">
+    <meta property="og:description" content="Interactive 3-channel stem breakdown mixer for Cerberus. Solo and mute Dialogue, Music, and Sound Effects with real-time waveform visualization.">
+    <meta property="og:image" content="https://i.imgur.com/p5t4Fk0.png">
+    <meta property="og:url" content="https://mukpost.com/sound">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #111111;
+            --surface-hover: #161616;
+            --surface-active: #1c1c1c;
+            --text-main: #eeeeee;
+            --text-dim: #888888;
+            --accent: #ffffff;
+            --border: #1e1e1e;
+            --border-hover: #333333;
+            
+            /* RX12 Stem Color Palette */
+            --voice-blue: #3b82f6;
+            --voice-bg: #0c182e;
+            --music-orange: #f97316;
+            --music-bg: #271409;
+            --fx-magenta: #d946ef;
+            --fx-bg: #260c29;
+            
+            --solo-yellow: #facc15;
+            --mute-red: #ef4444;
+            --playhead-yellow: #fde047;
+            
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img { display: block; max-width: 100%; }
+
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 2rem; 
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; height: 80px;
+            background: rgba(10, 10, 10, 0.88);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        nav .container {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            width: 100%;
+        }
+
+        .nav-logo { width: 44px; height: auto; }
+        .nav-right { display: flex; align-items: center; }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            margin-left: 2.5rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+        .nav-socials {
+            display: flex;
+            gap: 1.2rem;
+            margin-left: 3rem;
+            padding-left: 2rem;
+            border-left: 1px solid #282828;
+        }
+
+        .nav-socials a {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+        .nav-socials a:hover { color: var(--accent); transform: translateY(-2px); }
+
+        /* HEADERS */
+        .workflow-headline {
+            font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+            text-transform: uppercase;
+            line-height: 1.15;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .work-header {
+            border-bottom: 1px solid #2a2a2a;
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .work-header h2 {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        /* STEM MIXER HERO RACK */
+        .mixer-rack {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 5rem;
+            box-shadow: 0 25px 50px -15px rgba(0,0,0,0.8);
+        }
+
+        /* VIDEO VIEWPORT */
+        .video-container {
+            position: relative;
+            width: 100%;
+            background: #000000;
+            aspect-ratio: 16 / 9;
+            max-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        video#filmVideo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+        }
+
+        .video-overlay-badge {
+            position: absolute;
+            top: 18px;
+            left: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.82rem;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(8px);
+            padding: 5px 12px;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #e2e8f0;
+            letter-spacing: 1px;
+            pointer-events: none;
+        }
+
+        .mix-state-tag {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            color: var(--accent);
+            pointer-events: none;
+        }
+
+        /* PRESET BUTTONS */
+        .preset-bar {
+            padding: 14px 24px;
+            background: #0d0d0d;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .preset-title {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-dim);
+            font-weight: 700;
+            margin-right: 8px;
+        }
+
+        .preset-btn {
+            background: #171717;
+            border: 1px solid #282828;
+            color: #a0a0a0;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .preset-btn:hover { background: #222; color: #fff; border-color: #444; }
+        .preset-btn.active {
+            background: var(--accent);
+            color: #000;
+            border-color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* RX12 MULTITRACK WAVEFORM CANVAS RACK */
+        .rx-multitrack-area {
+            position: relative;
+            background: #08090d;
+            border-bottom: 1px solid var(--border);
+            user-select: none;
+        }
+
+        /* MINI OVERVIEW TIMELINE */
+        .timeline-overview {
+            position: relative;
+            width: 100%;
+            height: 32px;
+            background: #050608;
+            border-bottom: 1px solid #1a1e28;
+            cursor: pointer;
+        }
+        #overviewCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* STEM LANES CONTAINER */
+        .stem-lanes {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            background: #141720;
+            position: relative;
+        }
+
+        .stem-lane {
+            display: grid;
+            grid-template-columns: 140px 1fr 180px;
+            background: #080a0e;
+            height: 110px;
+            position: relative;
+        }
+        @media (max-width: 820px) {
+            .stem-lane { grid-template-columns: 90px 1fr 130px; height: 95px; }
+        }
+
+        /* LEFT TRACK LABEL */
+        .track-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #ffffff;
+            border-right: 1px solid #1a1e28;
+            position: relative;
+            cursor: pointer;
+        }
+        .track-badge.voice { background: #132238; border-left: 4px solid var(--voice-blue); }
+        .track-badge.music { background: #28160c; border-left: 4px solid var(--music-orange); }
+        .track-badge.effects { background: #260e28; border-left: 4px solid var(--fx-magenta); }
+
+        /* CENTER WAVEFORM CANVAS */
+        .lane-waveform-wrap {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .lane-waveform-wrap canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* RIGHT CHANNEL STRIP (SOLO / MUTE / FADER / METER) */
+        .channel-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            background: #0b0d13;
+            border-left: 1px solid #1a1e28;
+            gap: 10px;
+        }
+
+        .sm-col {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .btn-sm {
+            width: 30px;
+            height: 28px;
+            border-radius: 3px;
+            border: 1px solid #282828;
+            background: #181818;
+            font-size: 0.75rem;
+            font-weight: 800;
+            cursor: pointer;
+            color: #888;
+            transition: all 0.15s;
+        }
+        .btn-sm.solo.active {
+            background: var(--solo-yellow);
+            color: #000;
+            border-color: var(--solo-yellow);
+            box-shadow: 0 0 10px rgba(250, 204, 21, 0.4);
+        }
+        .btn-sm.mute.active {
+            background: var(--mute-red);
+            color: #fff;
+            border-color: var(--mute-red);
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+        }
+
+        .fader-box {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+        .fader-box input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            background: #252832;
+            border-radius: 2px;
+            outline: none;
+        }
+        .fader-box input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+        }
+        .gain-num {
+            font-family: monospace;
+            font-size: 0.68rem;
+            color: var(--text-dim);
+        }
+
+        /* VU METER */
+        .vu-track {
+            width: 8px;
+            height: 60px;
+            background: #050608;
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #1e222d;
+        }
+        .vu-bar {
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 0%;
+            background: linear-gradient(to top, #10b981 65%, #facc15 85%, #ef4444 100%);
+            transition: height 0.05s ease-out;
+        }
+
+        /* PLAYHEAD SCRUBBER */
+        .playhead-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--playhead-yellow);
+            box-shadow: 0 0 8px rgba(253, 224, 71, 0.8);
+            pointer-events: none;
+            z-index: 10;
+            transform: translateX(-50%);
+            left: 0%;
+        }
+        .playhead-pin {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: var(--playhead-yellow);
+            clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+        }
+
+        /* TRANSPORT BAR */
+        .transport-bar {
+            padding: 16px 24px;
+            background: #0a0c10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .left-transport {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .play-btn {
+            background: var(--accent);
+            color: #000;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            cursor: pointer;
+            transition: transform 0.15s, background 0.15s;
+        }
+        .play-btn:hover { background: #d0d0d0; transform: scale(1.04); }
+
+        .timecode-box {
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .transport-meta {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        /* COMING SOON CAPABILITY CARDS */
+        .caps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 7rem;
+        }
+
+        .cap-card {
+            padding: 2.5rem 2rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-top: 1px solid #2a2a2a;
+            transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .cap-card:hover { 
+            background: var(--surface-hover); 
+            border-top-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .card-badge {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--text-dim);
+            background: rgba(255,255,255,0.04);
+            border: 1px solid #262626;
+            padding: 3px 10px;
+            border-radius: 3px;
+            margin-bottom: 1rem;
+            align-self: flex-start;
+        }
+
+        .cap-card h3 {
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        .cap-card p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.8rem;
+            flex-grow: 1;
+        }
+
+        .coming-soon-btn {
+            display: inline-block;
+            color: #666;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            border: 1px dashed #333;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-align: center;
+            cursor: not-allowed;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 120px 0 80px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer-logo { width: 50px; margin: 0 auto 2rem; }
+        .submit-btn {
+            background: var(--accent);
+            color: #000;
+            border: none;
+            padding: 1.1rem 2.8rem;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .submit-btn:hover { background: #d0d0d0; }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 3.5rem;
+        }
+        .social-btn {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .social-btn:hover { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <!-- MUK POST NAVBAR -->
+    <nav>
+        <div class="container">
+            <a href="https://mukpost.com">
+                <img src="https://i.imgur.com/0czpN64.png" alt="M Logo" class="nav-logo">
+            </a>
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="https://mukpost.com#about">Workflow</a>
+                    <a href="https://mukpost.com#work">Work</a>
+                    <a href="https://mukpost.com/colour">Colour</a>
+                    <a href="sound.html" class="active">Sound</a>
+                    <a href="https://mukpost.com/store.html">Store</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="nav-socials">
+                    <a href="https://www.instagram.com/muk.post/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://x.com/muk_post" target="_blank" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.threads.net/@muk.post" target="_blank" title="Threads"><i class="fa-brands fa-threads"></i></a>
+                    <a href="https://www.linkedin.com/company/muk-post/home/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container" style="padding-top: 160px;">
+
+        <!-- HERO HEADER -->
+        <div style="text-align: center; margin-bottom: 3.5rem;">
+            <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.35em; color: var(--text-dim); margin-bottom: 0.8rem; font-weight: 700;">
+                Post-Production Sound & Re-Recording Mixing
+            </div>
+            <h1 class="workflow-headline" style="margin-bottom: 1.2rem;">Stem Breakdown Mixer</h1>
+            <p style="color: var(--text-dim); max-width: 720px; margin: 0 auto; font-size: 0.95rem; line-height: 1.6;">
+                Featuring an action scene from <b>Cerberus</b>. Click anywhere along the multi-track waveforms to scrub through the 5-minute scene. Solo <b>[S]</b> or mute <b>[M]</b> Voice, Music, and Effects to experience how the theatrical soundscape was constructed from scratch.
+            </p>
+        </div>
+
+        <!-- 1. THE HERO STEM MIXER RACK -->
+        <div class="mixer-rack">
+            
+            <!-- VIDEO VIEWPORT -->
+            <div class="video-container">
+                <video id="filmVideo" playsinline preload="metadata">
+                    <source src="stem-mixer/cerberus_1080p.mp4" type="video/mp4">
+                    <source src="stem-mixer/cerberus_web.mp4" type="video/mp4">
+                    <source src="stem-mixer/Cerberus_-14Lufs_1080p_AudioFullMix.mov" type="video/quicktime">
+                </video>
+                <div class="video-overlay-badge" id="videoTcBadge">TC 01:00:00:00</div>
+                <div class="mix-state-tag" id="mixStateTag">FULL 5.1 THEATRICAL MIX</div>
+            </div>
+
+            <!-- PRESET BUTTONS -->
+            <div class="preset-bar">
+                <span class="preset-title">Mix Presets:</span>
+                <button class="preset-btn active" id="btnPreFull">Full Re-Recording Mix</button>
+                <button class="preset-btn" id="btnPreDialogue">Dialogue Only</button>
+                <button class="preset-btn" id="btnPreFx">Foley & SFX Only</button>
+                <button class="preset-btn" id="btnPreMusic">Score & Music Only</button>
+            </div>
+
+            <!-- RX12 MULTITRACK WAVEFORM SECTION -->
+            <div class="rx-multitrack-area" id="multitrackArea">
+                
+                <!-- TOP OVERVIEW SCRUBBER -->
+                <div class="timeline-overview" id="overviewScrubber" title="Click to scrub scene">
+                    <canvas id="overviewCanvas"></canvas>
+                </div>
+
+                <!-- 3 STEM LANES -->
+                <div class="stem-lanes">
+                    <!-- LANE 1: VOICE (DX) -->
+                    <div class="stem-lane" data-stem="dx">
+                        <div class="track-badge voice" onclick="toggleSolo('dx')" title="Click to solo Voice">
+                            <span>Voice</span>
+                        </div>
+                        <div class="lane-waveform-wrap" onclick="seekFromEvent(event)">
+                            <canvas id="canvas-dx"></canvas>
+                        </div>
+                        <div class="channel-controls">
+                            <div class="sm-col">
+                                <button class="btn-sm solo" onclick="toggleSolo('dx')">S</button>
+                                <button class="btn-sm mute" onclick="toggleMute('dx')">M</button>
+                            </div>
+                            <div class="fader-box">
+                                <input type="range" min="0" max="100" value="85" oninput="setGain('dx', this.value)">
+                                <span class="gain-num" id="gain-val-dx">0.0 dB</span>
+                            </div>
+                            <div class="vu-track"><div class="vu-bar" id="vu-dx"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- LANE 2: MUSIC (MX) -->
+                    <div class="stem-lane" data-stem="mx">
+                        <div class="track-badge music" onclick="toggleSolo('mx')" title="Click to solo Music">
+                            <span>Music</span>
+                        </div>
+                        <div class="lane-waveform-wrap" onclick="seekFromEvent(event)">
+                            <canvas id="canvas-mx"></canvas>
+                        </div>
+                        <div class="channel-controls">
+                            <div class="sm-col">
+                                <button class="btn-sm solo" onclick="toggleSolo('mx')">S</button>
+                                <button class="btn-sm mute" onclick="toggleMute('mx')">M</button>
+                            </div>
+                            <div class="fader-box">
+                                <input type="range" min="0" max="100" value="80" oninput="setGain('mx', this.value)">
+                                <span class="gain-num" id="gain-val-mx">-0.6 dB</span>
+                            </div>
+                            <div class="vu-track"><div class="vu-bar" id="vu-mx"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- LANE 3: EFFECTS (SFX) -->
+                    <div class="stem-lane" data-stem="sfx">
+                        <div class="track-badge effects" onclick="toggleSolo('sfx')" title="Click to solo Effects">
+                            <span>Effects</span>
+                        </div>
+                        <div class="lane-waveform-wrap" onclick="seekFromEvent(event)">
+                            <canvas id="canvas-sfx"></canvas>
+                        </div>
+                        <div class="channel-controls">
+                            <div class="sm-col">
+                                <button class="btn-sm solo" onclick="toggleSolo('sfx')">S</button>
+                                <button class="btn-sm mute" onclick="toggleMute('sfx')">M</button>
+                            </div>
+                            <div class="fader-box">
+                                <input type="range" min="0" max="100" value="80" oninput="setGain('sfx', this.value)">
+                                <span class="gain-num" id="gain-val-sfx">-0.6 dB</span>
+                            </div>
+                            <div class="vu-track"><div class="vu-bar" id="vu-sfx"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- YELLOW PLAYHEAD SWEEPER -->
+                    <div class="playhead-line" id="playheadLine">
+                        <div class="playhead-pin"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- TRANSPORT CONTROLS -->
+            <div class="transport-bar">
+                <div class="left-transport">
+                    <button class="play-btn" id="playBtn" title="Play/Pause">▶</button>
+                    <div class="timecode-box" id="timecodeDisplay">00:00:00 / 05:10:12</div>
+                </div>
+                <div class="transport-meta">
+                    Master Output: <b>3-Stem Phase-Locked Audio Engine</b>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. SPECIALIZED SUITES (COMING SOON AS REQUESTED) -->
+        <div class="work-header">
+            <h2>Specialized Restoration & Dynamics Suites</h2>
+        </div>
+
+        <div class="caps-grid">
+            <!-- RX12 CARD -->
+            <div class="cap-card">
+                <div>
+                    <span class="card-badge">Coming Soon</span>
+                    <h3>iZotope RX 12 Advanced</h3>
+                    <p>
+                        Surgical spectral repair, dialogue isolation, 60Hz de-hum, and wind noise attenuation. Dedicated sample-accurate A/B player with real-time waterfall spectrogram.
+                    </p>
+                </div>
+                <div class="coming-soon-btn">Suite In Prep</div>
+            </div>
+
+            <!-- ACCENTIZE CARD -->
+            <div class="cap-card">
+                <div>
+                    <span class="card-badge" style="color: #06b6d4;">Coming Soon</span>
+                    <h3>Accentize dxRevive Pro</h3>
+                    <p>
+                        Next-generation neural speech enhancement and spectral balance restoration. Continuous dial control to hear boxy room boom transform into studio vocal presence.
+                    </p>
+                </div>
+                <div class="coming-soon-btn">Suite In Prep</div>
+            </div>
+
+            <!-- SIDECHAIN CARD -->
+            <div class="cap-card">
+                <div>
+                    <span class="card-badge">Coming Soon</span>
+                    <h3>Sidechain Dialogue Ducking</h3>
+                    <p>
+                        Precision lookahead frequency ducking. Toggle compression on and off to hear how high-energy music cues carve out transparent space for dialogue.
+                    </p>
+                </div>
+                <div class="coming-soon-btn">Suite In Prep</div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="container">
+        <img src="https://i.imgur.com/0czpN64.png" alt="M Logo" class="footer-logo">
+        
+        <div>
+            <h2 class="workflow-headline" style="margin: 0 auto 0.5rem; text-align: center;">Request a Project Quote</h2>
+            <p style="color: var(--text-dim); max-width: 580px; margin: 0 auto 2.5rem; font-size: 0.9rem; text-align: center;">Fill out the details below to receive a fast, tailored quote directly to your inbox.</p>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <a href="https://mukpost.com#contact" class="submit-btn">Open Main Quote Intake Form</a>
+        </div>
+
+        <div class="footer-socials">
+            <a href="mailto:contact@mukpost.com" class="social-btn">
+                <i class="fa-regular fa-envelope"></i> contact@mukpost.com
+            </a>
+            <a href="https://www.instagram.com/muk.post/" target="_blank" class="social-btn">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="https://x.com/muk_post" target="_blank" class="social-btn">
+                <i class="fa-brands fa-x-twitter"></i> X / Twitter
+            </a>
+            <a href="https://www.threads.net/@muk.post" target="_blank" class="social-btn">
+                <i class="fa-brands fa-threads"></i> Threads
+            </a>
+            <a href="https://www.linkedin.com/company/muk-post/home/" target="_blank" class="social-btn">
+                <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+            </a>
+        </div>
+    </footer>
+
+    <!-- HIDDEN AUDIO ELEMENTS (STREAMING SEAMLESSLY) -->
+    <audio id="audioDx" preload="auto">
+        <source src="stem-mixer/cerberus-dx.m4a" type="audio/mp4">
+        <source src="stem-mixer/cerberus-dx.wav" type="audio/wav">
+    </audio>
+    <audio id="audioMx" preload="auto">
+        <source src="stem-mixer/cerberus-mx.m4a" type="audio/mp4">
+        <source src="stem-mixer/cerberus-mx.wav" type="audio/wav">
+    </audio>
+    <audio id="audioSfx" preload="auto">
+        <source src="stem-mixer/cerberus-sfx.m4a" type="audio/mp4">
+        <source src="stem-mixer/cerberus-sfx.wav" type="audio/wav">
+    </audio>
+
+    <!-- TRUE CERBERUS WAVEFORM DATA EMBEDDED -->
+    <script>
+        const TRUE_WAVEFORMS = {
+            dx: [0.0003, 0.0004, 0.0, 0.0001, 0.0, 0.0001, 0.0, 0.0, 0.0, 0.0001, 0.0775, 0.0431, 0.0008, 0.0008, 0.0009, 0.0009, 0.0009, 0.0007, 0.0027, 0.0062, 0.0132, 0.0119, 0.0163, 0.0107, 0.0123, 0.0097, 0.0079, 0.0085, 0.0094, 0.0068, 0.0061, 0.0077, 0.0054, 0.0083, 0.0065, 0.005, 0.0057, 0.0043, 0.0019, 0.0007, 0.0001, 0.0, 0.0, 0.0, 0.0, 0.0001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0001, 0.0, 0.0658, 0.1981, 0.1039, 0.1596, 0.1572, 0.1911, 0.1653, 0.1555, 0.085, 0.1913, 0.0095, 0.0012, 0.0036, 0.1849, 0.0598, 0.1247, 0.1575, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0007, 0.0001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0002, 0.0003, 0.0031, 0.004, 0.0014, 0.0009, 0.0006, 0.0002, 0.0003, 0.0004, 0.0007, 0.0005, 0.0006, 0.0003, 0.0002, 0.0003, 0.0003, 0.0002, 0.0004, 0.0003, 0.0002, 0.0001, 0.0001, 0.0, 0.0001, 0.0001, 0.0, 0.0, 0.0, 0.0001, 0.0004, 0.0005, 0.0005, 0.0004, 0.0007, 0.0002, 0.0009, 0.0015, 0.0007, 0.0003, 0.0002, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0004, 0.001, 0.0002, 0.0004, 0.0005, 0.0019, 0.012, 0.0015, 0.0021, 0.0008, 0.0006, 0.0006, 0.0008, 0.0009, 0.0008, 0.0006, 0.0006, 0.0103, 0.0117, 0.0016, 0.001, 0.0008, 0.0009, 0.0008, 0.0011, 0.0068, 0.0022, 0.0006, 0.0043, 0.0024, 0.0009, 0.0006, 0.0007, 0.004, 0.0006, 0.001, 0.0005, 0.0007, 0.0009, 0.0005, 0.0006, 0.0007, 0.0006, 0.0015, 0.0007, 0.0004, 0.0001, 0.0005, 0.0003, 0.0003, 0.0018, 0.0015, 0.0034, 0.0001, 0.0004, 0.0003, 0.0004, 0.0001, 0.0003, 0.0003, 0.0004, 0.0004, 0.0002, 0.0002, 0.0001, 0.0001, 0.0007, 0.0019, 0.0156, 0.0094, 0.0064, 0.0029, 0.0007, 0.0027, 0.0062, 0.0154, 0.0081, 0.0086, 0.0008, 0.0002, 0.0001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0001, 0.0002, 0.0001, 0.0001, 0.0001, 0.0, 0.0001, 0.0, 0.0001, 0.0001, 0.0004, 0.0001, 0.0001, 0.0001, 0.0001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0001, 0.0, 0.0001, 0.0, 0.0, 0.0001, 0.0001, 0.0013, 0.6837, 0.6796, 0.6253, 0.3823, 0.5116, 0.6023, 0.407, 0.2486, 0.0156, 0.0002, 0.0001, 0.0038, 0.0027, 0.0011, 0.0019, 0.0032, 0.0029, 0.0074, 0.0043, 0.0025, 0.002, 0.0039, 0.0009, 0.0033, 0.0059, 0.0083, 0.0048, 0.0079, 0.0104, 0.0066, 0.0033, 0.005, 0.0004, 0.0002, 0.0001, 0.0, 0.0001, 0.0002, 0.0, 0.0, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0008, 0.0001, 0.0002, 0.0003, 0.0002, 0.0002, 0.0003, 0.0007, 0.0009, 0.0005, 0.0001, 0.0002, 0.0004, 0.0, 0.0006, 0.0025, 0.0044, 0.0017, 0.0003, 0.0001, 0.0002, 0.0001, 0.0007, 0.0001, 0.0001, 0.0001, 0.0, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0003, 0.001, 0.0024, 0.0001, 0.0001, 0.0002, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0, 0.0, 0.0, 0.0001, 0.0003, 0.0005, 0.0007, 0.0008, 0.0009, 0.001, 0.001, 0.0011, 0.0011, 0.0013, 0.0011, 0.0011, 0.0011, 0.001, 0.0013, 0.0012, 0.0011, 0.0019, 0.0012, 0.0006, 0.0003, 0.0008, 0.0, 0.0, 0.0, 0.0001, 0.0, 0.0, 0.0, 0.0544, 0.0002, 0.0, 0.0, 0.0691, 0.0768, 0.0001, 0.0468, 0.0002, 0.0, 0.0, 0.0, 0.0001, 0.0001, 0.003, 0.0011, 0.0001, 0.5323, 0.0001, 0.0, 0.0, 0.5899, 0.6115, 0.0476, 0.0278, 0.0631, 0.3963, 0.0834, 0.0304, 0.0587, 0.4555, 0.001, 0.028, 0.6106, 0.4693, 0.0439, 0.1554, 0.1721, 0.6142, 0.1122, 0.0083, 0.0004, 0.0355, 0.0016, 0.0005, 0.0001, 0.0001, 0.0001, 0.0001, 0.1924, 0.0386, 0.0012, 0.1444, 0.1946, 0.2249, 0.2129, 0.1401, 0.1294, 0.1261, 0.1973, 0.2183, 0.1251, 0.1796, 0.195, 0.0003, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0002, 0.0002, 0.0001, 0.0001, 0.0004, 0.0004, 0.0002, 0.0004, 0.0002, 0.0009, 0.0005, 0.0001, 0.0001, 0.0001, 0.0, 0.0, 0.0, 0.0, 0.0004, 0.0005, 0.0007, 0.0004, 0.0005, 0.0008, 0.0022, 0.0038, 0.0041, 0.0176, 0.0179, 0.0135, 0.0025, 0.0057, 0.0082, 0.0157, 0.004, 0.0826, 0.0157, 0.0815, 0.0208, 0.0242, 0.0503, 0.0101, 0.1122, 0.0154, 0.015, 0.0009, 0.0007, 0.0019, 0.0007, 0.087, 0.0227, 0.0014, 0.0007, 0.0058, 0.0043, 0.0067, 0.0136, 0.0052, 0.0083, 0.0025, 0.0019, 0.0013, 0.0103, 0.0051, 0.0011, 0.001, 0.006, 0.0052, 0.0005, 0.0001, 0.0, 0.0, 0.0, 0.0069, 0.0033, 0.0035, 0.0037, 0.0038, 0.0002, 0.0004, 0.0, 0.0, 0.0075, 0.0017, 0.0001, 0.0002, 0.0067, 0.0268, 0.0015, 0.0002, 0.0239, 0.0057, 0.0114, 0.0044, 0.0017, 0.0242, 0.0045, 0.0021, 0.0028, 0.0019, 0.0021, 0.0293, 0.0012, 0.0006, 0.0249, 0.0009, 0.0003, 0.0005, 0.0004, 0.0001, 0.0001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0001, 0.1763, 0.0066, 0.0038, 0.0206, 0.0125, 0.0092, 0.0274, 0.0155, 0.0109, 0.0297, 0.0088, 0.0032, 0.0223, 0.0162, 0.0206, 0.0339, 0.0079, 0.0057, 0.0293, 0.0031, 0.0029, 0.0013, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0001, 0.1512, 0.1618, 0.2765, 0.0123, 0.0006, 0.0, 0.0, 0.0001, 0.047, 0.1709, 0.1363, 0.1073, 0.1228, 0.1042, 0.0754, 0.1221, 0.0776, 0.0563, 0.0483, 0.0441, 0.1523, 0.0922, 0.1287, 0.0858, 0.0825, 0.0741, 0.0638, 0.0462, 0.0556, 0.0472, 0.0215, 0.032, 0.0013, 0.0036, 0.0142, 0.0076, 0.0153, 0.0175, 0.0024, 0.0083, 0.0043, 0.0495, 0.093, 0.1668, 0.0081, 0.0328, 0.0296, 0.0274, 0.021, 0.0196, 0.0148, 0.0345, 0.1053, 0.0548, 0.0881, 0.0298, 0.0237, 0.0015, 0.1261, 0.1218, 0.0456, 0.0553, 0.096, 0.0417, 0.1183, 0.0005, 0.0001, 0.0017, 0.1062, 0.0663, 0.1581, 0.2107, 0.1954, 0.1471, 0.086, 0.1622, 0.1793, 0.0809, 0.0003, 0.1813, 0.119, 0.0831, 0.1064, 0.1695, 0.1843, 0.0417, 0.1202, 0.2009, 0.0511, 0.14, 0.1442, 0.0715, 0.1993, 0.1703, 0.1729, 0.165, 0.186, 0.0135, 0.033, 0.0035, 0.0026, 0.0003, 0.0001, 0.0004, 0.0, 0.0, 0.0, 0.0002, 0.0005, 0.0002, 0.0001, 0.0, 0.0006, 0.0016, 0.0001, 0.0002, 0.0006, 0.0028, 0.0001, 0.0005, 0.0002, 0.0048, 0.0105, 0.0003, 0.0011, 0.0, 0.0001, 0.0, 0.0001, 0.0001, 0.0002, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0002, 0.1191, 0.2708, 0.2895, 0.3826, 0.4012, 0.4139, 0.3935, 0.0002, 0.124, 0.1448, 0.4128, 0.3778, 0.3905, 0.2413, 0.256, 0.0745, 0.0001, 0.0001, 0.0002, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0002, 0.0002, 0.0021, 0.2379, 0.1829, 0.1121, 0.2014, 0.0896, 0.1926, 0.2086, 0.1644, 0.2083, 0.117, 0.1605, 0.1674, 0.0025, 0.0006, 0.0022, 0.0012, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0492, 0.1189, 0.6292, 0.5811, 0.4069, 0.1411, 0.0001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0231, 0.1497, 0.1194, 0.048, 0.0002, 0.0002, 0.0001, 0.0002, 0.0507, 0.3265, 0.2926, 0.0105, 0.0004, 0.0002, 0.0002, 0.0001, 0.0002, 0.0004, 0.0015, 0.0027, 0.0025, 0.0008, 0.0015, 0.0006, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0152, 0.0157, 0.0034, 0.0002, 0.0001, 0.0005, 0.0055, 0.0018, 0.0015, 0.0079, 0.002, 0.0002, 0.0, 0.0, 0.0, 0.0008, 0.0151, 0.0248, 0.0276, 0.0181, 0.0012, 0.0001, 0.0016, 0.0135, 0.0354, 0.0436, 0.0561, 0.0546, 0.0428, 0.0322, 0.0228, 0.0173, 0.0112, 0.0127, 0.0063, 0.0144, 0.0093, 0.0025, 0.0031, 0.0027, 0.0013, 0.0004, 0.0001, 0.0001, 0.0001, 0.0, 0.0001, 0.0009, 0.0002, 0.0001, 0.0001, 0.0615, 0.0589, 0.0127, 0.0255, 0.0007, 0.0688, 0.0251, 0.003, 0.0025, 0.0078, 0.0571, 0.0051, 0.0075, 0.025, 0.0521, 0.0, 0.0002, 0.0572, 0.0091, 0.0001, 0.0, 0.0, 0.0574, 0.0011, 0.0, 0.0001, 0.0003, 0.0004, 0.0001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0074, 0.1229, 0.097, 0.1103, 0.1043, 0.1408, 0.1242, 0.131, 0.1121, 0.1088, 0.1271, 0.1165, 0.0799, 0.1135, 0.11, 0.1293, 0.1373, 0.1233, 0.0669, 0.0401, 0.0515, 0.1602, 0.1226, 0.1271, 0.098, 0.1419, 0.1451, 0.1298, 0.1401, 0.1195, 0.1042, 0.1324, 0.1435, 0.1617, 0.1463, 0.1451, 0.1602, 0.145, 0.1105, 0.0238, 0.1154, 0.1383, 0.1077, 0.1366, 0.133, 0.1243, 0.1463, 0.1346, 0.1545, 0.1362, 0.1524, 0.1377, 0.1349, 0.128, 0.137, 0.1488, 0.1393, 0.1465, 0.0814, 0.0239, 0.0201, 0.107, 0.1167, 0.1498, 0.0993, 0.1197, 0.1147, 0.1288, 0.1158, 0.098, 0.1483, 0.0919, 0.0735, 0.1211, 0.1047, 0.0861, 0.0984, 0.087, 0.0592, 0.0058, 0.0196, 0.1567, 0.1494, 0.1102, 0.1115, 0.13, 0.163, 0.1388, 0.156, 0.1467, 0.1132, 0.16, 0.134, 0.0944, 0.1219, 0.1255, 0.1411, 0.143, 0.1044, 0.0485, 0.0516, 0.1267, 0.1084, 0.1436, 0.0934, 0.1314, 0.1441, 0.1333, 0.1328, 0.1247, 0.1055, 0.095, 0.1346, 0.1354, 0.1279, 0.1304, 0.1377, 0.1256, 0.118, 0.0426, 0.1171, 0.1283, 0.1098, 0.1455, 0.1365, 0.1401, 0.1446, 0.134, 0.1543, 0.1226, 0.1147, 0.1557, 0.1034, 0.1048, 0.122, 0.126, 0.1259, 0.1313, 0.091, 0.0311, 0.03, 0.0889, 0.1013, 0.0996, 0.103, 0.1317, 0.096, 0.132, 0.119, 0.0908, 0.1047, 0.1067, 0.1158, 0.1093, 0.0922, 0.0896, 0.1015, 0.0811, 0.0716, 0.0734, 0.0668, 0.0553, 0.0388, 0.0957, 0.1209, 0.1023, 0.1057, 0.0811, 0.1266, 0.1125, 0.1167, 0.1152, 0.1072, 0.0929, 0.115, 0.1081, 0.0875, 0.0877, 0.1095, 0.1199, 0.1398, 0.1263, 0.1187, 0.1128, 0.1082, 0.1155, 0.0624, 0.0504, 0.1042, 0.1026, 0.0976, 0.0981, 0.0879, 0.0984, 0.0886, 0.0655, 0.0753, 0.0674, 0.0722, 0.066, 0.0629, 0.0749, 0.0672, 0.0659, 0.066, 0.0425, 0.044, 0.0254, 0.0196, 0.0189, 0.0159, 0.0154, 0.0147, 0.0128, 0.0076, 0.003, 0.0003, 0.0001, 0.0, 0.0, 0.0, 0.0, 0.0085, 0.0061, 0.004, 0.0032, 0.0004, 0.0, 0.0],
+            mx: [0.0291, 0.0243, 0.0207, 0.0234, 0.019, 0.0185, 0.0222, 0.019, 0.0185, 0.0184, 0.021, 0.0196, 0.0218, 0.0206, 0.0224, 0.0209, 0.0221, 0.0208, 0.0214, 0.0239, 0.0289, 0.0283, 0.029, 0.0356, 0.0356, 0.0302, 0.0406, 0.0346, 0.0388, 0.0321, 0.0414, 0.0489, 0.0455, 0.0591, 0.0645, 0.0405, 0.045, 0.043, 0.0425, 0.0397, 0.0313, 0.0336, 0.0269, 0.0275, 0.0275, 0.0332, 0.0185, 0.018, 0.0142, 0.0091, 0.006, 0.005, 0.0055, 0.0048, 0.0061, 0.0082, 0.0115, 0.0086, 0.0085, 0.0083, 0.0087, 0.0107, 0.0151, 0.0175, 0.0177, 0.0148, 0.026, 0.0175, 0.016, 0.014, 0.0222, 0.0539, 0.0653, 0.1123, 0.0818, 0.0895, 0.081, 0.0794, 0.095, 0.0889, 0.0869, 0.1094, 0.0898, 0.0986, 0.0809, 0.0782, 0.0666, 0.1177, 0.073, 0.0704, 0.0787, 0.0968, 0.0673, 0.0818, 0.0747, 0.0743, 0.0886, 0.0672, 0.0703, 0.0736, 0.0768, 0.06, 0.0673, 0.0778, 0.0776, 0.0817, 0.0766, 0.0997, 0.0923, 0.0829, 0.0654, 0.0756, 0.0958, 0.0763, 0.0801, 0.1049, 0.107, 0.1365, 0.1282, 0.1224, 0.1065, 0.0997, 0.1036, 0.1164, 0.1226, 0.1287, 0.1303, 0.1443, 0.1444, 0.1275, 0.1399, 0.1275, 0.1233, 0.1335, 0.1047, 0.1156, 0.1522, 0.1018, 0.1237, 0.1259, 0.1614, 0.1352, 0.1274, 0.1077, 0.1323, 0.1152, 0.1093, 0.1108, 0.1271, 0.1114, 0.1078, 0.1088, 0.239, 0.1649, 0.1089, 0.1061, 0.1468, 0.1228, 0.1219, 0.1093, 0.1013, 0.1004, 0.0961, 0.1385, 0.1125, 0.1256, 0.0919, 0.1555, 0.11, 0.1047, 0.0839, 0.1307, 0.1174, 0.1009, 0.1084, 0.1232, 0.1036, 0.1769, 0.1664, 0.1641, 0.1643, 0.1355, 0.1348, 0.1423, 0.1807, 0.2147, 0.2197, 0.2807, 0.2748, 0.2581, 0.2598, 0.2783, 0.2751, 0.2471, 0.2583, 0.2317, 0.2748, 0.2493, 0.2517, 0.228, 0.2149, 0.2656, 0.2193, 0.2838, 0.3561, 0.2027, 0.2207, 0.296, 0.2703, 0.2928, 0.2849, 0.3189, 0.2745, 0.2304, 0.2414, 0.3455, 0.342, 0.2802, 0.3041, 0.2979, 0.3013, 0.2797, 0.2787, 0.2648, 0.3172, 0.3175, 0.2843, 0.3116, 0.3427, 0.2689, 0.2777, 0.3163, 0.3673, 0.3204, 0.31, 0.3107, 0.2815, 0.2814, 0.2956, 0.3462, 0.2997, 0.2736, 0.3023, 0.365, 0.2973, 0.2789, 0.2965, 0.2637, 0.3013, 0.2447, 0.278, 0.1642, 0.1644, 0.2979, 0.2441, 0.3454, 0.466, 0.4726, 0.4927, 0.5105, 0.4938, 0.539, 0.5714, 0.0143, 0.0178, 0.0157, 0.0196, 0.0185, 0.0154, 0.0148, 0.0173, 0.0183, 0.0155, 0.0202, 0.0181, 0.0208, 0.0177, 0.0173, 0.0165, 0.0215, 0.0212, 0.0219, 0.0181, 0.0235, 0.0325, 0.0348, 0.0284, 0.0285, 0.0341, 0.0333, 0.0269, 0.0335, 0.0287, 0.0353, 0.0266, 0.038, 0.0342, 0.0319, 0.0378, 0.0375, 0.0398, 0.0338, 0.0353, 0.0303, 0.032, 0.0307, 0.028, 0.0296, 0.0291, 0.0304, 0.0289, 0.0249, 0.0288, 0.028, 0.0228, 0.0248, 0.0226, 0.0211, 0.0225, 0.0221, 0.0187, 0.0186, 0.0167, 0.0189, 0.0181, 0.0161, 0.0198, 0.0179, 0.018, 0.0181, 0.0157, 0.0151, 0.0159, 0.0148, 0.0178, 0.0166, 0.0187, 0.0171, 0.0146, 0.0181, 0.0153, 0.0174, 0.0219, 0.0176, 0.0253, 0.02, 0.0179, 0.0225, 0.0201, 0.0211, 0.023, 0.0239, 0.0225, 0.0259, 0.0263, 0.0232, 0.0256, 0.0239, 0.0252, 0.0247, 0.025, 0.0242, 0.0257, 0.0284, 0.0313, 0.0224, 0.0234, 0.0238, 0.0241, 0.023, 0.0298, 0.0264, 0.0352, 0.0262, 0.0285, 0.0233, 0.0256, 0.023, 0.0216, 0.025, 0.0237, 0.0228, 0.0221, 0.0249, 0.022, 0.0295, 0.0255, 0.0306, 0.0251, 0.027, 0.0214, 0.0411, 0.0637, 0.1462, 0.1578, 0.1628, 0.2416, 0.2139, 0.2627, 0.263, 0.1737, 0.0499, 0.0504, 0.0221, 0.0256, 0.0213, 0.0264, 0.0209, 0.0276, 0.0182, 0.0173, 0.0295, 0.0211, 0.0247, 0.022, 0.0187, 0.0188, 0.0198, 0.0222, 0.0226, 0.0236, 0.0234, 0.025, 0.0222, 0.0228, 0.0285, 0.0188, 0.0214, 0.0243, 0.0207, 0.0199, 0.02, 0.023, 0.02, 0.0249, 0.0247, 0.0789, 0.1177, 0.1623, 0.1664, 0.1936, 0.156, 0.1898, 0.1888, 0.1647, 0.2978, 0.1954, 0.1913, 0.2169, 0.1692, 0.169, 0.1916, 0.2881, 0.1934, 0.6162, 0.4511, 0.2011, 0.0809, 0.0582, 0.0398, 0.0323, 0.0237, 0.0256, 0.0208, 0.0229, 0.0219, 0.0218, 0.022, 0.0277, 0.0234, 0.027, 0.0256, 0.0245, 0.0278, 0.0274, 0.0301, 0.0278, 0.0254, 0.0278, 0.0271, 0.0256, 0.028, 0.0258, 0.0234, 0.0365, 0.0282, 0.0267, 0.0225, 0.0236, 0.0269, 0.0326, 0.0266, 0.0286, 0.0281, 0.031, 0.0235, 0.0295, 0.0256, 0.0283, 0.0266, 0.0309, 0.0268, 0.0282, 0.0264, 0.0229, 0.019, 0.0109, 0.0049, 0.0003, 0.0, 0.0, 0.0001, 0.0, 0.0052, 0.01, 0.0122, 0.0151, 0.0154, 0.0148, 0.0165, 0.0229, 0.0169, 0.0214, 0.0208, 0.028, 0.0387, 0.041, 0.0391, 0.0362, 0.0416, 0.0387, 0.0412, 0.0335, 0.0523, 0.0592, 0.0689, 0.0541, 0.0651, 0.0527, 0.065, 0.0585, 0.0446, 0.0469, 0.0558, 0.057, 0.0747, 0.0842, 0.0858, 0.061, 0.0816, 0.0639, 0.0767, 0.0579, 0.0916, 0.104, 0.0675, 0.1171, 0.0985, 0.0875, 0.0851, 0.0852, 0.0841, 0.0729, 0.0804, 0.0891, 0.0897, 0.1252, 0.1303, 0.1271, 0.1045, 0.1092, 0.1106, 0.0802, 0.1142, 0.1324, 0.0924, 0.1407, 0.1203, 0.1211, 0.1103, 0.1031, 0.1085, 0.1051, 0.109, 0.1335, 0.1202, 0.1556, 0.1378, 0.1363, 0.137, 0.1463, 0.1607, 0.1516, 0.146, 0.1764, 0.1713, 0.1614, 0.1609, 0.1504, 0.1592, 0.1451, 0.1397, 0.1327, 0.1477, 0.1433, 0.1743, 0.1454, 0.1551, 0.1517, 0.1431, 0.206, 0.1855, 0.1875, 0.1729, 0.181, 0.1677, 0.1802, 0.2003, 0.1629, 0.1572, 0.3045, 0.2754, 0.1567, 0.1701, 0.1914, 0.235, 0.1577, 0.2343, 0.1585, 0.1888, 0.1897, 0.2135, 0.1605, 0.1684, 0.1598, 0.1672, 0.2159, 0.1456, 0.1764, 0.2303, 0.2395, 0.2013, 0.2358, 0.2797, 0.2407, 0.2146, 0.2632, 0.1723, 0.1663, 0.1984, 0.1556, 0.165, 0.1542, 0.3264, 0.2401, 0.3081, 0.2589, 0.3193, 0.3406, 0.2983, 0.2905, 0.1571, 0.2376, 0.3943, 0.1812, 0.2832, 0.294, 0.3651, 0.1713, 0.2528, 0.185, 0.1675, 0.1822, 0.2247, 0.1686, 0.1354, 0.2391, 0.153, 0.1832, 0.1849, 0.1469, 0.1532, 0.1958, 0.186, 0.1894, 0.1483, 0.182, 0.1548, 0.1506, 0.1572, 0.1332, 0.1365, 0.1227, 0.1274, 0.1024, 0.1402, 0.1105, 0.1302, 0.152, 0.16, 0.1415, 0.1471, 0.1597, 0.1698, 0.1573, 0.1536, 0.1523, 0.1465, 0.1414, 0.1186, 0.1341, 0.1592, 0.1634, 0.1404, 0.147, 0.1196, 0.1256, 0.1261, 0.1145, 0.1501, 0.1487, 0.1677, 0.159, 0.2313, 0.1693, 0.1937, 0.148, 0.165, 0.1485, 0.1287, 0.1577, 0.1555, 0.1455, 0.1654, 0.1489, 0.1392, 0.1492, 0.1797, 0.143, 0.1451, 0.1588, 0.1529, 0.1549, 0.1393, 0.1387, 0.1545, 0.1486, 0.1511, 0.1591, 0.1428, 0.1625, 0.1553, 0.146, 0.1616, 0.1503, 0.1357, 0.1608, 0.1818, 0.191, 0.1595, 0.1524, 0.1398, 0.1569, 0.1303, 0.1503, 0.1471, 0.1502, 0.1476, 0.1369, 0.1275, 0.1251, 0.1253, 0.117, 0.1691, 0.1428, 0.1398, 0.1543, 0.2174, 0.2728, 0.2946, 0.2522, 0.2539, 0.2448, 0.2521, 0.2656, 0.2373, 0.2302, 0.2204, 0.221, 0.2493, 0.3153, 0.2034, 0.2656, 0.27, 0.2218, 0.2526, 0.3798, 0.1956, 0.2214, 0.2787, 0.2678, 0.2867, 0.2981, 0.2753, 0.2399, 0.2889, 0.2315, 0.2655, 0.3062, 0.2601, 0.3331, 0.5085, 0.2696, 0.2106, 0.3201, 0.202, 0.2415, 0.2382, 0.2383, 0.2446, 0.2827, 0.3001, 0.3095, 0.2978, 0.4258, 0.2896, 0.3384, 0.2564, 0.3169, 0.3327, 0.3122, 0.2875, 0.2968, 0.2857, 0.2799, 0.2579, 0.2917, 0.2718, 0.3248, 0.2239, 0.267, 0.2744, 0.2519, 0.1955, 0.2401, 0.2557, 0.2571, 0.1957, 0.2359, 0.2895, 0.2531, 0.2054, 0.2853, 0.619, 0.2875, 0.3037, 0.3335, 0.2974, 0.2815, 0.3489, 0.3866, 0.393, 0.3568, 0.3582, 0.209, 0.2078, 0.2012, 0.2104, 0.1791, 0.2561, 0.2115, 0.2093, 0.3231, 0.2451, 0.2451, 0.2062, 0.2335, 0.243, 0.29, 0.2771, 0.2939, 0.3082, 0.288, 0.3033, 0.2993, 0.2997, 0.2455, 0.2176, 0.3476, 0.2709, 0.2936, 0.3545, 0.2488, 0.2449, 0.1952, 0.2491, 0.2387, 0.1942, 0.1984, 0.2042, 0.2142, 0.1856, 0.1656, 0.1568, 0.1364, 0.1035, 0.1178, 0.1732, 0.1772, 0.1449, 0.1378, 0.183, 0.1951, 0.1831, 0.1331, 0.2924, 0.1963, 0.1507, 0.186, 0.1338, 0.1637, 0.186, 0.1692, 0.2013, 0.1709, 0.1794, 0.1736, 0.062, 0.056, 0.0438, 0.0331, 0.0376, 0.0246, 0.0717, 0.0432, 0.0311, 0.0408, 0.0406, 0.0605, 0.0385, 0.0353, 0.035, 0.0571, 0.0451, 0.0855, 0.0468, 0.0365, 0.0637, 0.052, 0.0381, 0.0403, 0.0394, 0.0343, 0.0395, 0.0473, 0.0364, 0.0339, 0.0497, 0.0901, 0.0546, 0.0754, 0.0913, 0.0753, 0.1275, 0.0994, 0.1189, 0.1143, 0.1603, 0.1218, 0.1392, 0.1543, 0.1656, 0.1523, 0.1407, 0.1389, 0.1936, 0.1634, 0.1365, 0.1139, 0.1411, 0.1691, 0.1704, 0.1641, 0.1583, 0.1621, 0.1752, 0.1534, 0.1397, 0.1649, 0.1769, 0.2222, 0.2016, 0.1876, 0.162, 0.1548, 0.1802, 0.1294, 0.1656, 0.1498, 0.0905, 0.1479, 0.1805, 0.2341, 0.1147, 0.1082, 0.1468, 0.1346, 0.1368, 0.1858, 0.1249, 0.2248, 0.1852, 0.1483, 0.1387, 0.1044, 0.1248, 0.1294, 0.1577, 0.1381, 0.1014, 0.1474, 0.1508, 0.1381, 0.1426, 0.1127, 0.1833, 0.1498, 0.1416, 0.1367, 0.1628, 0.2132, 0.2206, 0.2168, 0.1383, 0.0916, 0.1403, 0.1654, 0.1746, 0.1347, 0.1139, 0.1695, 0.1361, 0.1753, 0.1908, 0.1207, 0.1998, 0.2138, 0.1762, 0.1557, 0.1778, 0.2055, 0.1699, 0.1558, 0.1213, 0.1466, 0.1741, 0.171, 0.1274, 0.1358, 0.1353, 0.125, 0.1467, 0.1394, 0.1399, 0.1475, 0.1753, 0.1521, 0.1798, 0.1295, 0.1656, 0.1679, 0.1567, 0.1824, 0.1539, 0.1613, 0.1663, 0.1441, 0.1428, 0.1294, 0.1054, 0.1254, 0.1375, 0.1461, 0.1362, 0.143, 0.1268, 0.1405, 0.1718, 0.1332, 0.2024, 0.1743, 0.1848, 0.1625, 0.1291, 0.1364, 0.1342, 0.1466, 0.1344, 0.1393, 0.1243, 0.1198, 0.1295, 0.131, 0.1212, 0.1963, 0.1574, 0.1388, 0.1317, 0.131, 0.1826, 0.1906, 0.155, 0.1833, 0.1402, 0.1703, 0.1333, 0.1837, 0.1539, 0.1417, 0.19, 0.1488, 0.1204, 0.2315, 0.1586, 0.1631, 0.1595, 0.1752, 0.1317, 0.1157, 0.1551, 0.1059, 0.1576, 0.143, 0.1204, 0.1247, 0.1703, 0.141, 0.1882, 0.1444, 0.1621, 0.1164, 0.2029, 0.1571, 0.1262, 0.226, 0.1712, 0.0984, 0.1837, 0.1422, 0.1713, 0.1194, 0.133, 0.1319, 0.1259, 0.1138, 0.1156, 0.1044, 0.1611, 0.1773, 0.1406, 0.0999, 0.1293, 0.1398, 0.0828, 0.1103, 0.0954, 0.1176, 0.1192, 0.1266, 0.1303, 0.1099, 0.0706, 0.0973, 0.079, 0.0781, 0.0609, 0.0747, 0.087, 0.0747, 0.0779, 0.0457, 0.08, 0.0559, 0.0625, 0.0639, 0.0492, 0.0619, 0.0551, 0.0346, 0.0307, 0.0199, 0.0285, 0.0265, 0.014, 0.0086, 0.0075, 0.0046, 0.0007, 0.0, 0.0],
+            sfx: [0.0078, 0.0082, 0.1512, 0.1004, 0.1034, 0.1265, 0.0578, 0.0403, 0.042, 0.0381, 0.1103, 0.3774, 0.0343, 0.0367, 0.0293, 0.0306, 0.1222, 0.059, 0.0344, 0.0265, 0.018, 0.0121, 0.0103, 0.01, 0.0108, 0.011, 0.0116, 0.0099, 0.0116, 0.0156, 0.017, 0.0157, 0.0214, 0.0225, 0.0253, 0.035, 0.0267, 0.019, 0.0147, 0.0162, 0.0175, 0.0158, 0.012, 0.0092, 0.0096, 0.011, 0.0104, 0.0223, 0.0374, 0.054, 0.0985, 0.1184, 0.1027, 0.0879, 0.1018, 0.0946, 0.0838, 0.0691, 0.0548, 0.0454, 0.0542, 0.0423, 0.0329, 0.0277, 0.0269, 0.0231, 0.0173, 0.0163, 0.0131, 0.0109, 0.0193, 0.0083, 0.0131, 0.0134, 0.0139, 0.0162, 0.0146, 0.0141, 0.0147, 0.014, 0.0185, 0.0149, 0.017, 0.0167, 0.0181, 0.0212, 0.0211, 0.0228, 0.0206, 0.0152, 0.0135, 0.0128, 0.0148, 0.0119, 0.014, 0.0127, 0.0087, 0.0072, 0.0086, 0.0076, 0.0082, 0.0079, 0.0081, 0.0074, 0.0067, 0.007, 0.0075, 0.0089, 0.008, 0.0075, 0.0083, 0.0067, 0.0067, 0.0078, 0.007, 0.0078, 0.0076, 0.0084, 0.0094, 0.0092, 0.0105, 0.0123, 0.015, 0.0165, 0.0169, 0.0189, 0.0229, 0.0231, 0.021, 0.0214, 0.0182, 0.0209, 0.0219, 0.0206, 0.0241, 0.0195, 0.0255, 0.0163, 0.0238, 0.0216, 0.0207, 0.0193, 0.0178, 0.0141, 0.0134, 0.0148, 0.0153, 0.0155, 0.0176, 0.0149, 0.0165, 0.0152, 0.0161, 0.0138, 0.0173, 0.0169, 0.016, 0.0195, 0.0165, 0.02, 0.0267, 0.0263, 0.0218, 0.0218, 0.0232, 0.0219, 0.0232, 0.0211, 0.0218, 0.0221, 0.0218, 0.0265, 0.0243, 0.0248, 0.0282, 0.0222, 0.0202, 0.0218, 0.0201, 0.0184, 0.0222, 0.0193, 0.0203, 0.022, 0.0173, 0.0163, 0.0178, 0.0186, 0.0182, 0.0162, 0.0187, 0.0182, 0.0148, 0.013, 0.0121, 0.0139, 0.0131, 0.0128, 0.0137, 0.0127, 0.0112, 0.012, 0.0124, 0.011, 0.0491, 0.0969, 0.0376, 0.0231, 0.0216, 0.0173, 0.014, 0.0132, 0.0161, 0.0157, 0.0122, 0.0069, 0.0049, 0.0042, 0.0037, 0.0048, 0.0043, 0.0043, 0.0017, 0.0021, 0.0026, 0.0013, 0.0029, 0.003, 0.0033, 0.0032, 0.0023, 0.002, 0.0022, 0.0016, 0.0069, 0.0127, 0.0206, 0.0045, 0.0069, 0.0275, 0.0178, 0.0187, 0.0173, 0.0281, 0.0169, 0.014, 0.0213, 0.0156, 0.0229, 0.0268, 0.0569, 0.0426, 0.0045, 0.0056, 0.2472, 0.2943, 0.2457, 0.245, 0.3267, 0.2283, 0.0425, 0.0234, 0.455, 0.1357, 0.0006, 0.0003, 0.0004, 0.0176, 0.0013, 0.0002, 0.0002, 0.0011, 0.0003, 0.0079, 0.0002, 0.0015, 0.0002, 0.0002, 0.0011, 0.0012, 0.0012, 0.0012, 0.0029, 0.0454, 0.006, 0.0066, 0.0062, 0.0724, 0.0196, 0.0159, 0.0029, 0.0095, 0.0061, 0.0054, 0.0104, 0.0048, 0.0178, 0.0056, 0.0019, 0.0167, 0.0178, 0.0032, 0.0011, 0.0007, 0.0301, 0.0223, 0.0018, 0.0207, 0.0334, 0.0012, 0.0005, 0.004, 0.0026, 0.0017, 0.005, 0.0055, 0.0068, 0.0119, 0.0104, 0.0091, 0.0063, 0.1024, 0.0455, 0.0158, 0.0186, 0.0214, 0.0261, 0.033, 0.0062, 0.0118, 0.3588, 0.1101, 0.0247, 0.0637, 0.0178, 0.1608, 0.079, 0.0396, 0.033, 0.0474, 0.0421, 0.0255, 0.033, 0.0211, 0.0302, 0.0253, 0.0289, 0.0134, 0.0265, 0.0114, 0.0235, 0.0117, 0.0253, 0.0131, 0.0107, 0.0268, 0.0116, 0.0257, 0.0115, 0.0291, 0.0136, 0.0261, 0.0138, 0.0213, 0.0139, 0.0102, 0.0182, 0.0125, 0.0139, 0.016, 0.0167, 0.0141, 0.0155, 0.0178, 0.0197, 0.0183, 0.0147, 0.0206, 0.0182, 0.0155, 0.0173, 0.0152, 0.018, 0.0184, 0.0609, 0.0205, 0.0142, 0.098, 0.0646, 0.0412, 0.0586, 0.0158, 0.0185, 0.0186, 0.0526, 0.0529, 0.0195, 0.011, 0.01, 0.0115, 0.011, 0.0173, 0.0113, 0.0204, 0.0104, 0.0205, 0.0179, 0.0121, 0.0106, 0.057, 0.1035, 0.0199, 0.0124, 0.0171, 0.0122, 0.0121, 0.0283, 0.0211, 0.0179, 0.024, 0.0338, 0.02, 0.0496, 0.0276, 0.0498, 0.027, 0.0974, 0.1935, 0.056, 0.1679, 0.1309, 0.0961, 0.1587, 0.1694, 0.0301, 0.4929, 0.184, 0.207, 0.1832, 0.2946, 0.1865, 0.4134, 0.1589, 0.1532, 0.2571, 0.1482, 0.1556, 0.3501, 0.22, 0.4257, 0.406, 0.228, 0.2634, 0.3049, 0.2902, 0.1188, 0.0055, 0.0046, 0.0207, 0.0275, 0.0062, 0.1305, 0.0097, 0.0419, 0.0139, 0.0533, 0.0702, 0.0855, 0.0177, 0.01, 0.0058, 0.0634, 0.0703, 0.0129, 0.0337, 0.004, 0.0116, 0.0114, 0.0006, 0.0013, 0.0063, 0.0031, 0.0499, 0.0087, 0.0385, 0.0073, 0.0032, 0.0032, 0.0446, 0.0683, 0.0085, 0.0716, 0.0665, 0.0087, 0.0036, 0.0164, 0.0275, 0.0062, 0.0022, 0.0014, 0.0224, 0.0131, 0.0019, 0.0081, 0.0114, 0.0185, 0.0206, 0.0272, 0.029, 0.0331, 0.0248, 0.0297, 0.0281, 0.0298, 0.0279, 0.0266, 0.0313, 0.0324, 0.0347, 0.0257, 0.0281, 0.0242, 0.0252, 0.0241, 0.0246, 0.0241, 0.0281, 0.024, 0.028, 0.0284, 0.027, 0.0277, 0.0296, 0.028, 0.0285, 0.0236, 0.0281, 0.0295, 0.0277, 0.027, 0.0271, 0.0268, 0.0227, 0.0236, 0.0244, 0.0254, 0.0258, 0.0248, 0.0215, 0.0243, 0.0214, 0.0256, 0.0241, 0.0224, 0.0254, 0.0253, 0.0246, 0.0194, 0.0207, 0.0242, 0.0246, 0.0234, 0.0227, 0.0267, 0.022, 0.0252, 0.0216, 0.0223, 0.0218, 0.0205, 0.0229, 0.0198, 0.02, 0.0184, 0.013, 0.01, 0.0036, 0.0017, 0.0007, 0.0008, 0.0007, 0.0009, 0.0031, 0.0025, 0.001, 0.0147, 0.0151, 0.0251, 0.0165, 0.0085, 0.0928, 0.0246, 0.0015, 0.0809, 0.1636, 0.0569, 0.0385, 0.0493, 0.1596, 0.0524, 0.0597, 0.0785, 0.0533, 0.0294, 0.0997, 0.033, 0.0291, 0.0261, 0.0476, 0.0004, 0.0153, 0.0349, 0.0035, 0.021, 0.0003, 0.0008, 0.0007, 0.0003, 0.0007, 0.0691, 0.0069, 0.0886, 0.0295, 0.0012, 0.054, 0.003, 0.0901, 0.0389, 0.0121, 0.0842, 0.0737, 0.0644, 0.1198, 0.1129, 0.1375, 0.2347, 0.0614, 0.0874, 0.0441, 0.0549, 0.0376, 0.0959, 0.1205, 0.0706, 0.1327, 0.0959, 0.081, 0.0836, 0.1064, 0.0799, 0.1095, 0.0676, 0.0868, 0.0818, 0.0594, 0.0644, 0.1801, 0.169, 0.0947, 0.1534, 0.1825, 0.0676, 0.1539, 0.0453, 0.0994, 0.1881, 0.2141, 0.1982, 0.2061, 0.2071, 0.1807, 0.2244, 0.1038, 0.1637, 0.1817, 0.1175, 0.1619, 0.0682, 0.0945, 0.15, 0.1914, 0.2302, 0.1847, 0.19, 0.1591, 0.1817, 0.1484, 0.145, 0.0972, 0.054, 0.06, 0.0425, 0.056, 0.0455, 0.0385, 0.1375, 0.0983, 0.0616, 0.0504, 0.0381, 0.0265, 0.0082, 0.0894, 0.001, 0.0673, 0.0237, 0.0038, 0.0496, 0.0251, 0.0011, 0.0548, 0.0586, 0.016, 0.0319, 0.0289, 0.0359, 0.0738, 0.0325, 0.173, 0.1652, 0.1736, 0.1532, 0.0491, 0.0075, 0.0063, 0.0076, 0.0097, 0.0098, 0.0116, 0.0052, 0.0089, 0.0086, 0.0113, 0.0083, 0.0113, 0.0116, 0.0086, 0.0106, 0.0142, 0.0111, 0.0089, 0.0078, 0.0112, 0.0385, 0.0071, 0.0097, 0.0078, 0.0147, 0.0113, 0.1621, 0.3337, 0.1325, 0.2324, 0.2546, 0.3563, 0.3241, 0.2231, 0.0722, 0.1643, 0.0988, 0.0711, 0.0377, 0.0058, 0.0669, 0.0053, 0.0095, 0.0108, 0.0046, 0.0092, 0.008, 0.005, 0.0259, 0.1298, 0.3538, 0.4158, 0.5373, 0.1046, 0.0448, 0.08, 0.1426, 0.1345, 0.5296, 0.5183, 0.0315, 0.2614, 0.1291, 0.0922, 0.0411, 0.0102, 0.0101, 0.0046, 0.1037, 0.1325, 0.0043, 0.0055, 0.0429, 0.5035, 0.6496, 0.096, 0.1219, 0.2208, 0.0072, 0.2684, 0.1876, 0.2005, 0.0915, 0.0594, 0.17, 0.0555, 0.0325, 0.0612, 0.0851, 0.0852, 0.4227, 0.4022, 0.3693, 0.0861, 0.0466, 0.3008, 0.1363, 0.2086, 0.0565, 0.1336, 0.082, 0.0754, 0.0257, 0.0212, 0.1016, 0.3912, 0.3133, 0.085, 0.3154, 0.1499, 0.04, 0.0442, 0.0449, 0.0296, 0.0277, 0.0429, 0.0366, 0.0132, 0.0587, 0.005, 0.0038, 0.0191, 0.0166, 0.0032, 0.0033, 0.0164, 0.0017, 0.0043, 0.0102, 0.0096, 0.0083, 0.0062, 0.0094, 0.0033, 0.0049, 0.0055, 0.0046, 0.0056, 0.0047, 0.0043, 0.0027, 0.0028, 0.0029, 0.0025, 0.0022, 0.0059, 0.0098, 0.0145, 0.0276, 0.0099, 0.006, 0.006, 0.008, 0.0082, 0.0049, 0.0093, 0.0142, 0.0168, 0.0293, 0.018, 0.0234, 0.0237, 0.0268, 0.0407, 0.0181, 0.0687, 0.0494, 0.0321, 0.0064, 0.0053, 0.0094, 0.0055, 0.0197, 0.0167, 0.0194, 0.0053, 0.005, 0.0038, 0.0049, 0.0114, 0.0474, 0.0595, 0.0957, 0.1382, 0.1177, 0.0904, 0.1297, 0.1151, 0.1301, 0.0764, 0.0711, 0.0414, 0.1168, 0.0443, 0.1538, 0.1223, 0.0698, 0.0906, 0.0644, 0.0346, 0.0254, 0.0115, 0.0069, 0.0185, 0.0272, 0.0522, 0.0287, 0.0235, 0.0172, 0.0196, 0.1238, 0.0233, 0.009, 0.0144, 0.0223, 0.0106, 0.01, 0.0058, 0.0062, 0.0092, 0.0075, 0.0148, 0.0041, 0.0083, 0.006, 0.0062, 0.0182, 0.0125, 0.0192, 0.0135, 0.0056, 0.0274, 0.0234, 0.0096, 0.0062, 0.0084, 0.0251, 0.0057, 0.0073, 0.0073, 0.0056, 0.0138, 0.0066, 0.015, 0.0061, 0.0084, 0.0087, 0.0083, 0.0099, 0.0062, 0.0112, 0.0199, 0.0108, 0.0237, 0.0265, 0.0386, 0.0298, 0.034, 0.0163, 0.0314, 0.022, 0.0199, 0.0241, 0.014, 0.027, 0.0154, 0.0144, 0.0164, 0.0207, 0.0184, 0.019, 0.0165, 0.0197, 0.0135, 0.0243, 0.0186, 0.017, 0.0178, 0.0122, 0.0157, 0.013, 0.0199, 0.0229, 0.0157, 0.0145, 0.0226, 0.0163, 0.0302, 0.0161, 0.0394, 0.015, 0.019, 0.019, 0.0091, 0.0375, 0.0104, 0.0047, 0.036, 0.005, 0.0488, 0.022, 0.0043, 0.0044, 0.0022, 0.0018, 0.0016, 0.0019, 0.0009, 0.001, 0.0026, 0.003, 0.0011, 0.0005, 0.0012, 0.0025, 0.0027, 0.0028, 0.002, 0.0049, 0.0034, 0.0026, 0.0022, 0.0014, 0.0009, 0.0013, 0.0014, 0.0014, 0.0017, 0.0013, 0.0013, 0.001, 0.0013, 0.0005, 0.0005, 0.0008, 0.0014, 0.0023, 0.0028, 0.0027, 0.0059, 0.0075, 0.0079, 0.0066, 0.0035, 0.0028, 0.0031, 0.0029, 0.0022, 0.0027, 0.0073, 0.0047, 0.0059, 0.003, 0.0029, 0.0044, 0.0021, 0.0026, 0.0029, 0.0022, 0.0029, 0.0032, 0.0044, 0.005, 0.0039, 0.0041, 0.0054, 0.0051, 0.0037, 0.0049, 0.0061, 0.0069, 0.0088, 0.0069, 0.0066, 0.0088, 0.0068, 0.009, 0.0036, 0.0033, 0.0032, 0.003, 0.0031, 0.0023, 0.0018, 0.0018, 0.0018, 0.003, 0.0054, 0.0044, 0.0035, 0.0024, 0.0013, 0.0011, 0.0013, 0.0006, 0.0006, 0.0007, 0.0005, 0.0007, 0.0006, 0.0007, 0.0007, 0.0012, 0.0011, 0.0008, 0.001, 0.0011, 0.0019, 0.0006, 0.0003, 0.0002, 0.0004, 0.0004, 0.0003, 0.0004, 0.0006, 0.0006, 0.0004, 0.0005, 0.0004, 0.0004, 0.0005, 0.0006, 0.0004, 0.0053, 0.0017, 0.0006, 0.0005, 0.0005, 0.0007, 0.0012, 0.0006, 0.001, 0.0004, 0.0003, 0.0003, 0.0004, 0.0003, 0.0009, 0.0017, 0.0003, 0.0003, 0.0002, 0.0001, 0.0064, 0.0018, 0.0015, 0.0004, 0.001, 0.0019, 0.0045, 0.0004, 0.0008, 0.0004, 0.0002, 0.0009, 0.0006, 0.0005, 0.0003, 0.0001, 0.0001, 0.0002, 0.0001, 0.0, 0.0001, 0.0002, 0.0001, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        };
+        const TOTAL_DURATION = 310.125; // exact duration in seconds
+    </script>
+
+    <!-- CORE ENGINE JAVASCRIPT -->
+    <script>
+        let audioCtx = null;
+        let isPlaying = false;
+        
+        const video = document.getElementById("filmVideo");
+        const audios = {
+            dx: document.getElementById("audioDx"),
+            mx: document.getElementById("audioMx"),
+            sfx: document.getElementById("audioSfx")
+        };
+
+        const stemState = {
+            dx: { gainNode: null, analyser: null, vol: 0.85, solo: false, mute: false },
+            mx: { gainNode: null, analyser: null, vol: 0.80, solo: false, mute: false },
+            sfx: { gainNode: null, analyser: null, vol: 0.80, solo: false, mute: false }
+        };
+
+        // Initialize Web Audio graph
+        function initWebAudio() {
+            if (audioCtx) return;
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+            for (const key in audios) {
+                const el = audios[key];
+                try {
+                    const src = audioCtx.createMediaElementSource(el);
+                    const gainNode = audioCtx.createGain();
+                    const analyser = audioCtx.createAnalyser();
+                    analyser.fftSize = 256;
+
+                    gainNode.gain.value = stemState[key].vol;
+                    src.connect(gainNode);
+                    gainNode.connect(analyser);
+                    analyser.connect(audioCtx.destination);
+
+                    stemState[key].gainNode = gainNode;
+                    stemState[key].analyser = analyser;
+                } catch (e) {
+                    console.warn("WebAudio init error for " + key, e);
+                }
+            }
+            syncAcoustics();
+        }
+
+        function syncAcoustics() {
+            if (!audioCtx) return;
+            const hasAnySolo = Object.values(stemState).some(s => s.solo);
+
+            for (const key in stemState) {
+                const s = stemState[key];
+                let audible = true;
+                if (hasAnySolo) {
+                    audible = s.solo;
+                } else if (s.mute) {
+                    audible = false;
+                }
+
+                const target = audible ? s.vol : 0.0;
+                if (s.gainNode) {
+                    s.gainNode.gain.setTargetAtTime(target, audioCtx.currentTime, 0.025);
+                } else {
+                    audios[key].volume = target;
+                }
+            }
+        }
+
+        window.toggleSolo = function(key) {
+            initWebAudio();
+            stemState[key].solo = !stemState[key].solo;
+            const lane = document.querySelector(`.stem-lane[data-stem="${key}"]`);
+            lane.querySelector('.solo').classList.toggle('active', stemState[key].solo);
+            document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+            updateStateTag();
+            syncAcoustics();
+        };
+
+        window.toggleMute = function(key) {
+            initWebAudio();
+            stemState[key].mute = !stemState[key].mute;
+            const lane = document.querySelector(`.stem-lane[data-stem="${key}"]`);
+            lane.querySelector('.mute').classList.toggle('active', stemState[key].mute);
+            document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+            updateStateTag();
+            syncAcoustics();
+        };
+
+        window.setGain = function(key, val) {
+            initWebAudio();
+            const pct = parseFloat(val) / 100;
+            stemState[key].vol = pct;
+            const db = pct > 0.001 ? (20 * Math.log10(pct)).toFixed(1) + " dB" : "-inf";
+            document.getElementById(`gain-val-${key}`).textContent = db;
+            syncAcoustics();
+        };
+
+        const mixStateTag = document.getElementById("mixStateTag");
+        function updateStateTag() {
+            const activeSolos = Object.keys(stemState).filter(k => stemState[k].solo);
+            if (activeSolos.length > 0) {
+                mixStateTag.textContent = "SOLO: " + activeSolos.map(k => k.toUpperCase()).join(" + ");
+            } else {
+                mixStateTag.textContent = "CUSTOM STEM BALANCE";
+            }
+        }
+
+        // Presets
+        document.getElementById("btnPreFull").addEventListener("click", function() {
+            initWebAudio();
+            document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            for (const k in stemState) {
+                stemState[k].solo = false;
+                stemState[k].mute = false;
+                document.querySelector(`.stem-lane[data-stem="${k}"] .solo`).classList.remove('active');
+                document.querySelector(`.stem-lane[data-stem="${k}"] .mute`).classList.remove('active');
+            }
+            mixStateTag.textContent = "FULL 5.1 THEATRICAL MIX";
+            syncAcoustics();
+        });
+
+        document.getElementById("btnPreDialogue").addEventListener("click", function() {
+            initWebAudio();
+            document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            for (const k in stemState) {
+                stemState[k].solo = (k === 'dx');
+                stemState[k].mute = false;
+                document.querySelector(`.stem-lane[data-stem="${k}"] .solo`).classList.toggle('active', stemState[k].solo);
+                document.querySelector(`.stem-lane[data-stem="${k}"] .mute`).classList.remove('active');
+            }
+            mixStateTag.textContent = "SOLO: DIALOGUE ONLY";
+            syncAcoustics();
+        });
+
+        document.getElementById("btnPreFx").addEventListener("click", function() {
+            initWebAudio();
+            document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            for (const k in stemState) {
+                stemState[k].solo = (k === 'sfx');
+                stemState[k].mute = false;
+                document.querySelector(`.stem-lane[data-stem="${k}"] .solo`).classList.toggle('active', stemState[k].solo);
+                document.querySelector(`.stem-lane[data-stem="${k}"] .mute`).classList.remove('active');
+            }
+            mixStateTag.textContent = "SOLO: FOLEY & SFX ONLY";
+            syncAcoustics();
+        });
+
+        document.getElementById("btnPreMusic").addEventListener("click", function() {
+            initWebAudio();
+            document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            for (const k in stemState) {
+                stemState[k].solo = (k === 'mx');
+                stemState[k].mute = false;
+                document.querySelector(`.stem-lane[data-stem="${k}"] .solo`).classList.toggle('active', stemState[k].solo);
+                document.querySelector(`.stem-lane[data-stem="${k}"] .mute`).classList.remove('active');
+            }
+            mixStateTag.textContent = "SOLO: SCORE & MUSIC ONLY";
+            syncAcoustics();
+        });
+
+        // Transport: Master Play / Pause
+        const playBtn = document.getElementById("playBtn");
+        function togglePlay() {
+            initWebAudio();
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            if (video.paused) {
+                // Mute video audio track so stems handle the sound cleanly
+                video.muted = true;
+                video.play().catch(e => console.log(e));
+                
+                // Align audio stems exactly
+                for (const k in audios) {
+                    audios[k].currentTime = video.currentTime;
+                    audios[k].play().catch(e => console.log(e));
+                }
+                isPlaying = true;
+                playBtn.textContent = "⏸";
+            } else {
+                video.pause();
+                for (const k in audios) {
+                    audios[k].pause();
+                }
+                isPlaying = false;
+                playBtn.textContent = "▶";
+            }
+        }
+
+        playBtn.addEventListener("click", togglePlay);
+        video.addEventListener("click", togglePlay);
+
+        // Keep stems in sync if video buffers
+        video.addEventListener("seeked", () => {
+            for (const k in audios) {
+                audios[k].currentTime = video.currentTime;
+            }
+        });
+
+        // Scrubbing function
+        function seekFromEvent(e) {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const pct = Math.max(0, Math.min(1, clickX / rect.width));
+            const targetTime = pct * (video.duration || TOTAL_DURATION);
+
+            video.currentTime = targetTime;
+            for (const k in audios) {
+                audios[k].currentTime = targetTime;
+            }
+        }
+
+        document.getElementById("overviewScrubber").addEventListener("click", (e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const pct = Math.max(0, Math.min(1, clickX / rect.width));
+            const targetTime = pct * (video.duration || TOTAL_DURATION);
+            video.currentTime = targetTime;
+            for (const k in audios) {
+                audios[k].currentTime = targetTime;
+            }
+        });
+
+        // --- DRAWING TRUE RX12 WAVEFORMS ---
+        const canvases = {
+            dx: document.getElementById("canvas-dx"),
+            mx: document.getElementById("canvas-mx"),
+            sfx: document.getElementById("canvas-sfx"),
+            overview: document.getElementById("overviewCanvas")
+        };
+
+        function resizeCanvases() {
+            for (const k in canvases) {
+                const c = canvases[k];
+                c.width = c.parentElement.clientWidth;
+                c.height = c.parentElement.clientHeight;
+            }
+            drawAllWaveforms();
+        }
+        window.addEventListener("resize", resizeCanvases);
+
+        // Styling palettes matching RX12 screenshot
+        const stemStyles = {
+            dx: {
+                glow: "rgba(59, 130, 246, 0.28)",
+                specBase: "rgba(37, 99, 235, 0.45)",
+                waveColor: "#ffffff",
+                lineColor: "rgba(96, 165, 250, 0.35)"
+            },
+            mx: {
+                glow: "rgba(249, 115, 22, 0.28)",
+                specBase: "rgba(234, 88, 12, 0.45)",
+                waveColor: "#fff8f0",
+                lineColor: "rgba(251, 146, 60, 0.35)"
+            },
+            sfx: {
+                glow: "rgba(217, 70, 239, 0.28)",
+                specBase: "rgba(192, 38, 211, 0.45)",
+                waveColor: "#fff0f8",
+                lineColor: "rgba(232, 121, 249, 0.35)"
+            }
+        };
+
+        function drawWaveform(key) {
+            const c = canvases[key];
+            if (!c) return;
+            const ctx = c.getContext("2d");
+            const w = c.width;
+            const h = c.height;
+            const data = TRUE_WAVEFORMS[key] || [];
+            const style = stemStyles[key];
+
+            // 1. Dark background
+            ctx.fillStyle = "#07090e";
+            ctx.fillRect(0, 0, w, h);
+
+            // 2. Simulated Spectrogram Underlay (Glowing vertical spectral bands based on peak density)
+            const numBins = data.length;
+            const colW = w / numBins;
+            for (let i = 0; i < numBins; i++) {
+                const val = data[i];
+                if (val > 0.05) {
+                    const x = i * colW;
+                    const specGrad = ctx.createLinearGradient(0, 0, 0, h);
+                    specGrad.addColorStop(0, "transparent");
+                    specGrad.addColorStop(0.5, style.specBase);
+                    specGrad.addColorStop(1, "rgba(0,0,0,0.8)");
+                    ctx.fillStyle = specGrad;
+                    ctx.globalAlpha = Math.min(1, val * 1.5);
+                    ctx.fillRect(x, 0, colW + 1, h);
+                }
+            }
+            ctx.globalAlpha = 1.0;
+
+            // 3. Center zero-line
+            ctx.strokeStyle = style.lineColor;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(0, h / 2);
+            ctx.lineTo(w, h / 2);
+            ctx.stroke();
+
+            // 4. Draw True White Waveform
+            ctx.strokeStyle = style.waveColor;
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            for (let i = 0; i < numBins; i++) {
+                const x = (i / numBins) * w;
+                const amp = Math.pow(data[i], 0.8) * (h * 0.44); // non-linear scaling for visual clarity
+                ctx.moveTo(x, h / 2 - amp);
+                ctx.lineTo(x, h / 2 + amp);
+            }
+            ctx.stroke();
+        }
+
+        function drawOverview() {
+            const c = canvases.overview;
+            if (!c) return;
+            const ctx = c.getContext("2d");
+            const w = c.width;
+            const h = c.height;
+
+            ctx.fillStyle = "#050608";
+            ctx.fillRect(0, 0, w, h);
+
+            const lanes = ['dx', 'mx', 'sfx'];
+            const colors = [stemStyles.dx.specBase, stemStyles.mx.specBase, stemStyles.sfx.specBase];
+            const laneH = h / 3;
+
+            lanes.forEach((key, lIdx) => {
+                const data = TRUE_WAVEFORMS[key] || [];
+                const yBase = lIdx * laneH + laneH / 2;
+                ctx.strokeStyle = colors[lIdx];
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                for (let i = 0; i < data.length; i += 2) {
+                    const x = (i / data.length) * w;
+                    const amp = data[i] * (laneH * 0.45);
+                    ctx.moveTo(x, yBase - amp);
+                    ctx.lineTo(x, yBase + amp);
+                }
+                ctx.stroke();
+            });
+        }
+
+        function drawAllWaveforms() {
+            drawWaveform('dx');
+            drawWaveform('mx');
+            drawWaveform('sfx');
+            drawOverview();
+        }
+
+        // Format helper
+        function formatTime(sec) {
+            const s = Math.floor(sec || 0);
+            const m = Math.floor(s / 60);
+            const remS = s % 60;
+            const f = Math.floor(((sec || 0) % 1) * 24);
+            return String(m).padStart(2, '0') + ":" + String(remS).padStart(2, '0') + ":" + String(f).padStart(2, '0');
+        }
+
+        // Animation Loop: Playhead & Live VU Meters
+        const playheadLine = document.getElementById("playheadLine");
+        const videoTcBadge = document.getElementById("videoTcBadge");
+        const timecodeDisplay = document.getElementById("timecodeDisplay");
+
+        function renderEngine() {
+            requestAnimationFrame(renderEngine);
+
+            const curTime = video.currentTime || 0;
+            const dur = video.duration || TOTAL_DURATION;
+            const pct = Math.max(0, Math.min(1, curTime / dur));
+
+            // Move yellow playhead line across the waveform lanes
+            // Account for the 140px left badge width on desktop (or 90px on mobile)
+            const trackBadgeWidth = document.querySelector(".track-badge") ? document.querySelector(".track-badge").offsetWidth : 140;
+            const laneWaveformWidth = document.querySelector(".lane-waveform-wrap") ? document.querySelector(".lane-waveform-wrap").offsetWidth : 800;
+            const playheadPx = trackBadgeWidth + (pct * laneWaveformWidth);
+            playheadLine.style.left = playheadPx + "px";
+
+            // Update Timecode Displays
+            const tcStr = "TC 01:" + formatTime(curTime);
+            videoTcBadge.textContent = tcStr;
+            timecodeDisplay.textContent = formatTime(curTime) + " / " + formatTime(dur);
+
+            // Animate VU meters from real analyser nodes if playing
+            for (const k in stemState) {
+                const meter = document.getElementById(`vu-${k}`);
+                if (meter) {
+                    let level = 0;
+                    if (isPlaying && stemState[k].analyser && stemState[k].gainNode) {
+                        const arr = new Uint8Array(stemState[k].analyser.frequencyBinCount);
+                        stemState[k].analyser.getByteFrequencyData(arr);
+                        let sum = 0;
+                        for (let i = 0; i < arr.length; i++) sum += arr[i];
+                        level = (sum / arr.length) / 255;
+                    }
+                    meter.style.height = (level * 100) + "%";
+                }
+            }
+        }
+
+        // Initial launch
+        setTimeout(() => {
+            resizeCanvases();
+            renderEngine();
+        }, 100);
+    </script>
+</body>
+</html>
