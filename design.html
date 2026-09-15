@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic & Motion Design Portfolio | Muk Post</title>
+    
+    <link rel="icon" href="https://i.imgur.com/0czpN64.png" type="image/png">
+    
+    <meta property="og:title" content="Muk Post | Graphic & Motion Design Portfolio">
+    <meta property="og:description" content="Custom title cards, credit sequence design, calligraphy, and album artwork crafted for music videos, films, and recording artists by Jackson McMurdo.">
+    <meta property="og:image" content="https://i.imgur.com/p5t4Fk0.png">
+    <meta property="og:url" content="https://mukpost.com/design">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #111111;
+            --surface-hover: #161616;
+            --surface-active: #1c1c1c;
+            --text-main: #eeeeee;
+            --text-dim: #888888;
+            --accent: #ffffff;
+            --border: #222222;
+            --border-light: #2e2e2e;
+            --font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: var(--font);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img, video { display: block; max-width: 100%; }
+
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 2rem; }
+        
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; height: 80px;
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .nav-logo { width: 44px; height: auto; }
+        .nav-right { display: flex; align-items: center; }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { 
+            color: var(--text-dim); 
+            text-decoration: none; 
+            text-transform: uppercase; 
+            font-size: 0.75rem; 
+            font-weight: 600; 
+            letter-spacing: 0.15em; 
+            margin-left: 2.2rem; 
+            transition: 0.3s; 
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .nav-socials { display: flex; gap: 1.2rem; margin-left: 2.5rem; padding-left: 2rem; border-left: 1px solid #282828; }
+        .nav-socials a { color: var(--text-dim); font-size: 1.1rem; transition: 0.3s; }
+        .nav-socials a:hover { color: var(--accent); transform: translateY(-2px); }
+
+        /* MOBILE NAV DRAWER */
+        .mobile-menu-btn {
+            display: none !important;
+            background: transparent;
+            border: 1px solid #333;
+            color: #eee;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 0.45rem 0.65rem;
+            border-radius: 4px;
+            margin-left: 1rem;
+            transition: 0.3s;
+        }
+        .mobile-menu-btn:hover { border-color: #fff; color: #fff; }
+
+        .mobile-drawer {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.98);
+            border-bottom: 1px solid #222;
+            backdrop-filter: blur(25px);
+            flex-direction: column;
+            padding: 1.8rem 2rem;
+            gap: 1.2rem;
+            z-index: 999;
+        }
+        .mobile-drawer.open { display: flex !important; }
+        .mobile-links { display: flex; flex-direction: column; gap: 1rem; }
+        .mobile-links a {
+            color: #999;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            transition: 0.2s;
+        }
+        .mobile-links a:hover, .mobile-links a.active { color: #fff; }
+        .mobile-socials {
+            display: flex;
+            gap: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #222;
+            margin-top: 0.5rem;
+        }
+        .mobile-socials a { color: #888; font-size: 1.2rem; text-decoration: none; }
+        .mobile-socials a:hover { color: #fff; }
+
+        @media (max-width: 900px) {
+            .nav-links, .nav-socials { display: none !important; }
+            .mobile-menu-btn { display: inline-flex !important; }
+        }
+
+        /* HERO & FILTER */
+        .page-hero {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+        .workflow-headline { 
+            font-size: clamp(2rem, 5vw, 3.4rem); 
+            text-transform: uppercase; 
+            font-weight: 800; 
+            letter-spacing: -0.02em; 
+            margin-bottom: 0.8rem;
+        }
+        .hero-desc {
+            color: var(--text-dim);
+            max-width: 680px;
+            margin: 0 auto 2rem auto;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* FILTER TABS */
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 3.5rem;
+        }
+        .filter-btn {
+            background: #111;
+            border: 1px solid #282828;
+            color: #888;
+            padding: 0.55rem 1.3rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+        .filter-btn:hover {
+            color: #fff;
+            border-color: #444;
+        }
+        .filter-btn.active {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        /* SECTION STYLING */
+        .section-block {
+            margin-bottom: 5.5rem;
+            scroll-margin-top: 100px;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 1px solid #222;
+            padding-bottom: 0.8rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+        }
+        .section-subtitle {
+            color: var(--text-dim);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        /* ALBUM ART GRID (4-COLUMN SQUARE CARDS) */
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.5rem;
+        }
+        @media (min-width: 600px) { .album-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .album-grid { grid-template-columns: repeat(4, 1fr); } }
+
+        .album-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+        .album-card:hover {
+            border-color: #444;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+        }
+        .album-img-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background: #000;
+            cursor: pointer;
+        }
+        .album-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .album-card:hover .album-img-wrap img {
+            transform: scale(1.04);
+        }
+        .album-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: 0.25s ease;
+        }
+        .album-card:hover .album-overlay {
+            opacity: 1;
+        }
+        .inspect-badge {
+            background: rgba(20,20,20,0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 0.45rem 0.9rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .album-info {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .album-tag {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-dim);
+            margin-bottom: 0.35rem;
+            font-weight: 600;
+        }
+        .album-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.3rem;
+            color: #fff;
+        }
+        .album-desc {
+            font-size: 0.8rem;
+            color: #999;
+            line-height: 1.45;
+            margin-top: auto;
+            padding-top: 0.5rem;
+        }
+
+        /* TITLE CARDS & MOTION GRID */
+        .titlecards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+        @media (min-width: 900px) {
+            .titlecards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .titlecard-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s;
+        }
+        .titlecard-item:hover {
+            border-color: #383838;
+        }
+        .titlecard-media {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #050505;
+            overflow: hidden;
+        }
+        .titlecard-media.aspect-4-3 {
+            aspect-ratio: 4/3;
+        }
+        .titlecard-media img, .titlecard-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .compare-toggle-bar {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            z-index: 10;
+            display: flex;
+            background: rgba(12, 12, 12, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .compare-btn {
+            background: transparent;
+            border: none;
+            color: #aaa;
+            padding: 0.35rem 0.75rem;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .compare-btn:hover { color: #fff; }
+        .compare-btn.active {
+            background: #fff;
+            color: #000;
+        }
+
+        .titlecard-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #ddd;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            padding: 0.25rem 0.6rem;
+            pointer-events: none;
+        }
+
+        .titlecard-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .tc-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .tc-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: #fff;
+        }
+        .tc-category {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-dim);
+            font-weight: 600;
+        }
+        .tc-credits {
+            font-size: 0.8rem;
+            color: #999;
+            line-height: 1.5;
+            border-top: 1px solid #1e1e1e;
+            padding-top: 0.7rem;
+            margin-top: 0.2rem;
+        }
+        .tc-credits b {
+            color: #ccc;
+            font-weight: 600;
+        }
+
+        /* FULLSCREEN LIGHTBOX */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.96);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(12px);
+            padding: 2rem;
+        }
+        .lightbox-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 92vw;
+            max-height: 92vh;
+        }
+        .lightbox-img {
+            max-width: 88vw;
+            max-height: 80vh;
+            object-fit: contain;
+            box-shadow: 0 0 40px rgba(0,0,0,0.9);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .lightbox-caption {
+            margin-top: 1rem;
+            text-align: center;
+            color: #eee;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .lightbox-caption span {
+            display: block;
+            font-size: 0.75rem;
+            color: #888;
+            font-weight: 400;
+            margin-top: 0.2rem;
+        }
+        .lightbox-close, .lightbox-prev, .lightbox-next {
+            position: absolute;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(20,20,20,0.7);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%;
+            transition: 0.2s;
+            user-select: none;
+        }
+        .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.08);
+        }
+        .lightbox-close { top: 25px; right: 25px; }
+        .lightbox-prev { left: 25px; top: 50%; transform: translateY(-50%); }
+        .lightbox-next { right: 25px; top: 50%; transform: translateY(-50%); }
+        .lightbox-prev:hover { transform: translateY(-50%) scale(1.08); }
+        .lightbox-next:hover { transform: translateY(-50%) scale(1.08); }
+
+        /* FOOTER */
+        footer {
+            margin-top: 6rem;
+            padding: 4rem 0 3rem 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .footer-logo { width: 36px; opacity: 0.5; transition: 0.3s; }
+        .footer-logo:hover { opacity: 1; }
+        .footer-socials { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+        .social-btn {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .social-btn:hover { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <!-- STICKY TOP NAVBAR -->
+    <nav>
+        <div class="container">
+            <a href="index.html#">
+                <img src="https://i.imgur.com/0czpN64.png" alt="Muk Post Logo" class="nav-logo">
+            </a>
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="index.html#about">Workflow</a>
+                    <a href="index.html#work">Work</a>
+                    <a href="colour.html">Colour</a>
+                    <a href="sound.html">Sound</a>
+                    <a href="design.html" class="active">Design</a>
+                    <a href="store.html">Store</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <div class="nav-socials">
+                    <a href="https://www.instagram.com/muk.post/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://x.com/muk_post" target="_blank" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.threads.net/@muk.post" target="_blank" title="Threads"><i class="fa-brands fa-threads"></i></a>
+                    <a href="https://www.linkedin.com/company/muk-post/home/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- MOBILE DRAWER -->
+        <div class="mobile-drawer" id="mobileDrawer">
+            <div class="mobile-links">
+                <a href="index.html#about">Workflow</a>
+                <a href="index.html#work">Work</a>
+                <a href="colour.html">Colour</a>
+                <a href="sound.html">Sound</a>
+                <a href="design.html" class="active">Design</a>
+                <a href="store.html">Store</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="mobile-socials">
+                <a href="https://www.instagram.com/muk.post/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://x.com/muk_post" target="_blank" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.threads.net/@muk.post" target="_blank" title="Threads"><i class="fa-brands fa-threads"></i></a>
+                <a href="https://www.linkedin.com/company/muk-post/home/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="container" style="padding-top: 150px; min-height: 85vh;">
+        
+        <!-- HERO -->
+        <div class="page-hero">
+            <h1 class="workflow-headline">Graphic & Motion Design</h1>
+            <p class="hero-desc">
+                Custom title card typography, credit sequence layouts, calligraphy, and album artwork created for independent films, music videos, and recording artists.
+            </p>
+
+            <!-- CATEGORY FILTER BUTTONS -->
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="filterGallery('all', this)">All Work</button>
+                <button class="filter-btn" onclick="filterGallery('album-art', this)">Album Artwork</button>
+                <button class="filter-btn" onclick="filterGallery('title-cards', this)">Title Cards & Motion</button>
+            </div>
+        </div>
+
+        <!-- SECTION 1: ALBUM ARTWORK -->
+        <section class="section-block" id="sec-album-art" data-category="album-art">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Album Artwork & Single Covers</h2>
+                    <p class="section-subtitle">Cover Design · Typography · Visual Identity</p>
+                </div>
+                <span style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">4 Releases</span>
+            </div>
+
+            <div class="album-grid">
+                <!-- 1. Insyt - 360 -->
+                <div class="album-card">
+                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/360albumartV4.jpg', 'Insyt. — 360°', 'Single Artwork · Hand-Drawn Circular Typography')">
+                        <img src="design-assets/album-art/360albumartV4.jpg" alt="Insyt. - 360 Album Art">
+                        <div class="album-overlay">
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Artwork</div>
+                        </div>
+                    </div>
+                    <div class="album-info">
+                        <span class="album-tag">Single Artwork</span>
+                        <h3 class="album-title">Insyt. — "360°"</h3>
+                        <p class="album-desc">Circular script calligraphy and custom eagle emblem overlaid on 35mm film still.</p>
+                    </div>
+                </div>
+
+                <!-- 2. Donat Jackson - needmoretime! -->
+                <div class="album-card">
+                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/needmoretime_coverartV3.jpg', 'Donat Jackson — needmoretime!', 'Single Artwork · Distressed Typography & Clock Composite')">
+                        <img src="design-assets/album-art/needmoretime_coverartV3.jpg" alt="Donat Jackson - needmoretime! Cover Art">
+                        <div class="album-overlay">
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Artwork</div>
+                        </div>
+                    </div>
+                    <div class="album-info">
+                        <span class="album-tag">Single Artwork</span>
+                        <h3 class="album-title">Donat Jackson — "needmoretime!"</h3>
+                        <p class="album-desc">Custom distressed serif typography with clock face graphic overlay across pedestrian overpass bridge.</p>
+                    </div>
+                </div>
+
+                <!-- 3. Insyt - TOLL -->
+                <div class="album-card">
+                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/TOLL_INSYT_SINGLECOVER_DRAFT8.jpg', 'Insyt. — TOLL', 'Single Artwork · Cyan Grid & Halftone Vector')">
+                        <img src="design-assets/album-art/TOLL_INSYT_SINGLECOVER_DRAFT8.jpg" alt="Insyt. - TOLL Single Cover">
+                        <div class="album-overlay">
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Artwork</div>
+                        </div>
+                    </div>
+                    <div class="album-info">
+                        <span class="album-tag">Single Artwork</span>
+                        <h3 class="album-title">Insyt. — "TOLL"</h3>
+                        <p class="album-desc">Cyan tile grid texture, halftone vehicle composite, and bold outlined type with raven silhouette.</p>
+                    </div>
+                </div>
+
+                <!-- 4. Swear to God -->
+                <div class="album-card">
+                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/sweartogodcover.jpg', 'Swear to God!', 'Single Artwork · Toronto CN Tower Stencil Lettering')">
+                        <img src="design-assets/album-art/sweartogodcover.jpg" alt="Swear to God! Cover">
+                        <div class="album-overlay">
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Artwork</div>
+                        </div>
+                    </div>
+                    <div class="album-info">
+                        <span class="album-tag">Single Artwork</span>
+                        <h3 class="album-title">"swear to God!"</h3>
+                        <p class="album-desc">35mm flame still featuring custom distressed stencil typography integrated with the Toronto CN Tower.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: TITLE CARDS & MOTION DESIGN -->
+        <section class="section-block" id="sec-title-cards" data-category="title-cards">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Title Cards & Credit Sequences</h2>
+                    <p class="section-subtitle">On-Screen Titles · Credit Layouts · Calligraphy · Motion Graphics</p>
+                </div>
+                <span style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">Interactive Plates</span>
+            </div>
+
+            <div class="titlecards-grid">
+                
+                <!-- 1. Donat Jackson - needmoretime! Credit Wire Layout -->
+                <div class="titlecard-item">
+                    <div class="titlecard-media aspect-4-3" id="media-needmoretime">
+                        <img id="img-needmoretime" 
+                             src="design-assets/title-cards/Still 2026-07-08 112752_7.1.1.jpg" 
+                             alt="Donat Jackson needmoretime! Credits"
+                             data-designed="design-assets/title-cards/Still 2026-07-08 112752_7.1.1.jpg"
+                             data-plate="design-assets/title-cards/Still 2026-07-08 112752_7.1.2.jpg"
+                             onclick="openLightboxFromElement(this, 'Donat Jackson — needmoretime!', 'Credit Wire Layout Design')">
+                        <div class="titlecard-badge">Custom Typography & Layout</div>
+                        <div class="compare-toggle-bar">
+                            <button class="compare-btn active" onclick="switchCompare('needmoretime', 'designed', this)">Design</button>
+                            <button class="compare-btn" onclick="switchCompare('needmoretime', 'plate', this)">Clean Plate</button>
+                        </div>
+                    </div>
+                    <div class="titlecard-info">
+                        <div class="tc-header-row">
+                            <h3 class="tc-title">Donat Jackson — "needmoretime!"</h3>
+                            <span class="tc-category">Credit Sequence Design</span>
+                        </div>
+                        <p class="tc-credits">
+                            <b>Concept:</b> Hand-drawn vintage telephone poles with multi-strand wires organically routing into individual department credits.<br>
+                            <b>Credits:</b> Edit · Colour · Graphic · DIT: Jackson McMurdo | Directed by: Mason Cline | DOP: Dario Butera | Producer: James Silveira
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2. Insyt. - 360 Circular Title Sequence -->
+                <div class="titlecard-item">
+                    <div class="titlecard-media" id="media-360">
+                        <img id="img-360" 
+                             src="design-assets/title-cards/Still 2026-07-08 112959_3.2.1.jpg" 
+                             alt="Insyt 360 Title Sequence"
+                             data-designed="design-assets/title-cards/Still 2026-07-08 112959_3.2.1.jpg"
+                             data-plate="design-assets/title-cards/Still 2026-07-08 112959_3.2.2.jpg"
+                             onclick="openLightboxFromElement(this, 'Insyt. — 360°', 'Circular Typographic Title Card')">
+                        <div class="titlecard-badge">Circular Typographic Layout</div>
+                        <div class="compare-toggle-bar">
+                            <button class="compare-btn active" onclick="switchCompare('360', 'designed', this)">Design</button>
+                            <button class="compare-btn" onclick="switchCompare('360', 'plate', this)">Clean Plate</button>
+                        </div>
+                    </div>
+                    <div class="titlecard-info">
+                        <div class="tc-header-row">
+                            <h3 class="tc-title">Insyt. — "360°"</h3>
+                            <span class="tc-category">Motion Title Sequence</span>
+                        </div>
+                        <p class="tc-credits">
+                            <b>Concept:</b> Dynamic circular credit wreath tracking the profile of Insyt, framing the golden central 360° bird illustration.<br>
+                            <b>Credits:</b> Graphics · Colourist · Co-Editor: Jackson McMurdo | Directed by: Mason Cline | Produced by: Declan McKenna
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 3. Kai Banks - Maze Subway Typography -->
+                <div class="titlecard-item">
+                    <div class="titlecard-media" id="media-maze">
+                        <img id="img-maze" 
+                             src="design-assets/title-cards/Still 2026-07-08 113605_1.60.1.jpg" 
+                             alt="Kai Banks Maze Title Card"
+                             data-designed="design-assets/title-cards/Still 2026-07-08 113605_1.60.1.jpg"
+                             data-plate="design-assets/title-cards/Still 2026-07-08 113605_1.60.2.jpg"
+                             data-isolated="design-assets/title-cards/Still 2026-07-08 113605_2.4.1.jpg"
+                             onclick="openLightboxFromElement(this, 'Kai Banks — Maze', 'Custom Script Calligraphy & Title Card')">
+                        <div class="titlecard-badge">Custom Red Script Lettering</div>
+                        <div class="compare-toggle-bar">
+                            <button class="compare-btn active" onclick="switchCompare('maze', 'designed', this)">Scene</button>
+                            <button class="compare-btn" onclick="switchCompare('maze', 'isolated', this)">Type Only</button>
+                            <button class="compare-btn" onclick="switchCompare('maze', 'plate', this)">Clean</button>
+                        </div>
+                    </div>
+                    <div class="titlecard-info">
+                        <div class="tc-header-row">
+                            <h3 class="tc-title">Kai Banks — "Maze"</h3>
+                            <span class="tc-category">Title Card & Calligraphy</span>
+                        </div>
+                        <p class="tc-credits">
+                            <b>Concept:</b> Flowing crimson bevel-embossed cursive typography composited in-camera against the NYC transit car aesthetic.<br>
+                            <b>Design:</b> Custom Title & Typography Design: Jackson McMurdo
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 4. Insyt. + Mileena + Jay Versace - HEAL Motion Title Card -->
+                <div class="titlecard-item">
+                    <div class="titlecard-media" id="media-heal">
+                        <video id="video-heal" autoplay loop muted playsinline poster="design-assets/title-cards/Still 2026-07-08 113605_2.2.1.jpg" style="width:100%; height:100%; object-fit:cover;">
+                            <source src="design-assets/title-cards/heal-title-preview.mp4" type="video/mp4">
+                        </video>
+                        <img id="img-heal" 
+                             src="design-assets/title-cards/Still 2026-07-08 113605_2.2.1.jpg" 
+                             alt="HEAL Title Card"
+                             style="display:none;"
+                             data-designed="design-assets/title-cards/Still 2026-07-08 113605_2.2.1.jpg"
+                             data-plate="design-assets/title-cards/Still 2026-07-08 113605_2.2.2.jpg">
+                        <div class="titlecard-badge">Motion Graphics & Title Layout</div>
+                        <div class="compare-toggle-bar">
+                            <button class="compare-btn active" onclick="toggleHealMode('video', this)">Motion Loop</button>
+                            <button class="compare-btn" onclick="toggleHealMode('still', this)">Still Design</button>
+                            <button class="compare-btn" onclick="toggleHealMode('plate', this)">Clean Plate</button>
+                        </div>
+                    </div>
+                    <div class="titlecard-info">
+                        <div class="tc-header-row">
+                            <h3 class="tc-title">Insyt. + Mileena + Jay Versace — "HEAL"</h3>
+                            <span class="tc-category">Motion Title Card</span>
+                        </div>
+                        <p class="tc-credits">
+                            <b>Concept:</b> Distressed neon-pink bubbly typeface with peace emblem watermark and full opening credit lockup.<br>
+                            <b>Credits:</b> Graphic Design: Jackson McMurdo | Directed by: Mason Cline & Declan McKenna | DOP: Dario Butera
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 5. Insyt - Puppet Strings Calligraphy -->
+                <div class="titlecard-item">
+                    <div class="titlecard-media" style="background: #000;">
+                        <img id="img-puppet" 
+                             src="design-assets/title-cards/Still 2026-07-08 113605_2.3.1.jpg" 
+                             alt="Insyt Puppet Strings Calligraphy"
+                             data-designed="design-assets/title-cards/Still 2026-07-08 113605_2.3.1.jpg"
+                             onclick="openLightboxFromElement(this, 'Insyt. — Puppet Strings', 'Gold Script Typography & Calligraphy')">
+                        <div class="titlecard-badge">Hand-Drawn Calligraphy</div>
+                    </div>
+                    <div class="titlecard-info">
+                        <div class="tc-header-row">
+                            <h3 class="tc-title">Insyt. — "Puppet Strings"</h3>
+                            <span class="tc-category">Calligraphy & Typography</span>
+                        </div>
+                        <p class="tc-credits">
+                            <b>Concept:</b> Elegant gold scripted lettering designed for title card compositing and single branding.<br>
+                            <b>Design:</b> Typography Design: Jackson McMurdo
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FULLSCREEN LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="handleLightboxBackdrop(event)">
+        <div class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></div>
+        <div class="lightbox-prev" onclick="navLightbox(-1)"><i class="fa-solid fa-chevron-left"></i></div>
+        <div class="lightbox-content">
+            <img class="lightbox-img" id="lightbox-img" src="" alt="Fullscreen Display">
+            <div class="lightbox-caption" id="lightbox-caption">
+                Title
+                <span>Details</span>
+            </div>
+        </div>
+        <div class="lightbox-next" onclick="navLightbox(1)"><i class="fa-solid fa-chevron-right"></i></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="container">
+        <a href="index.html#">
+            <img src="https://i.imgur.com/0czpN64.png" alt="Muk Post Logo" class="footer-logo">
+        </a>
+        <div class="footer-socials">
+            <a href="mailto:contact@mukpost.com" class="social-btn"><i class="fa-regular fa-envelope"></i> contact@mukpost.com</a>
+            <a href="https://www.instagram.com/muk.post/" target="_blank" class="social-btn"><i class="fa-brands fa-instagram"></i> Instagram</a>
+            <a href="https://x.com/muk_post" target="_blank" class="social-btn"><i class="fa-brands fa-x-twitter"></i> X / Twitter</a>
+            <a href="https://www.threads.net/@muk.post" target="_blank" class="social-btn"><i class="fa-brands fa-threads"></i> Threads</a>
+            <a href="https://www.linkedin.com/company/muk-post/home/" target="_blank" class="social-btn"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        // MOBILE DRAWER
+        document.addEventListener("DOMContentLoaded", function() {
+            const btn = document.getElementById("mobileMenuBtn");
+            const drawer = document.getElementById("mobileDrawer");
+            if (btn && drawer) {
+                btn.addEventListener("click", function(e) {
+                    e.stopPropagation();
+                    drawer.classList.toggle("open");
+                });
+                document.addEventListener("click", function(e) {
+                    if (!drawer.contains(e.target) && !btn.contains(e.target)) {
+                        drawer.classList.remove("open");
+                    }
+                });
+            }
+        });
+
+        // CATEGORY FILTER
+        function filterGallery(category, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const secAlbum = document.getElementById('sec-album-art');
+            const secTitles = document.getElementById('sec-title-cards');
+
+            if (category === 'all') {
+                secAlbum.style.display = 'block';
+                secTitles.style.display = 'block';
+            } else if (category === 'album-art') {
+                secAlbum.style.display = 'block';
+                secTitles.style.display = 'none';
+            } else if (category === 'title-cards') {
+                secAlbum.style.display = 'none';
+                secTitles.style.display = 'block';
+            }
+        }
+
+        // BEFORE / AFTER TOGGLES
+        function switchCompare(key, mode, btn) {
+            const img = document.getElementById('img-' + key);
+            if (!img) return;
+
+            const targetSrc = img.getAttribute('data-' + mode);
+            if (targetSrc) {
+                img.src = targetSrc;
+            }
+
+            const bar = btn.parentElement;
+            bar.querySelectorAll('.compare-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        // HEAL MOTION VS STILL TOGGLE
+        function toggleHealMode(mode, btn) {
+            const video = document.getElementById('video-heal');
+            const img = document.getElementById('img-heal');
+            const bar = btn.parentElement;
+            bar.querySelectorAll('.compare-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            if (mode === 'video') {
+                video.style.display = 'block';
+                img.style.display = 'none';
+                video.play().catch(() => {});
+            } else if (mode === 'still') {
+                video.pause();
+                video.style.display = 'none';
+                img.style.display = 'block';
+                img.src = img.getAttribute('data-designed');
+            } else if (mode === 'plate') {
+                video.pause();
+                video.style.display = 'none';
+                img.style.display = 'block';
+                img.src = img.getAttribute('data-plate');
+            }
+        }
+
+        // FULLSCREEN LIGHTBOX LOGIC
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+
+        const lightboxItems = [
+            { src: 'design-assets/album-art/360albumartV4.jpg', title: 'Insyt. — "360°"', sub: 'Single Artwork · Hand-Drawn Circular Typography' },
+            { src: 'design-assets/album-art/needmoretime_coverartV3.jpg', title: 'Donat Jackson — "needmoretime!"', sub: 'Single Artwork · Distressed Typography & Clock Composite' },
+            { src: 'design-assets/album-art/TOLL_INSYT_SINGLECOVER_DRAFT8.jpg', title: 'Insyt. — "TOLL"', sub: 'Single Artwork · Cyan Grid & Halftone Vector' },
+            { src: 'design-assets/album-art/sweartogodcover.jpg', title: '"swear to God!"', sub: 'Single Artwork · Toronto CN Tower Stencil Lettering' },
+            { src: 'design-assets/title-cards/Still 2026-07-08 112752_7.1.1.jpg', title: 'Donat Jackson — "needmoretime!"', sub: 'Credit Wire Layout Design' },
+            { src: 'design-assets/title-cards/Still 2026-07-08 112959_3.2.1.jpg', title: 'Insyt. — "360°"', sub: 'Circular Typographic Title Card' },
+            { src: 'design-assets/title-cards/Still 2026-07-08 113605_1.60.1.jpg', title: 'Kai Banks — "Maze"', sub: 'Subway Title Card Composite' },
+            { src: 'design-assets/title-cards/Still 2026-07-08 113605_2.4.1.jpg', title: 'Kai Banks — "Maze"', sub: 'Embossed Red Script Lettering' },
+            { src: 'design-assets/title-cards/Still 2026-07-08 113605_2.2.1.jpg', title: 'Insyt. + Mileena + Jay Versace — "HEAL"', sub: 'Neon Pink Title Card Layout' },
+            { src: 'design-assets/title-cards/Still 2026-07-08 113605_2.3.1.jpg', title: 'Insyt. — "Puppet Strings"', sub: 'Gold Script Calligraphy on Black' }
+        ];
+
+        let currentIndex = 0;
+
+        function openLightboxImage(src, title, sub) {
+            const idx = lightboxItems.findIndex(item => item.src === src);
+            if (idx !== -1) {
+                currentIndex = idx;
+            } else {
+                lightboxItems.push({ src, title, sub });
+                currentIndex = lightboxItems.length - 1;
+            }
+            updateLightbox();
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openLightboxFromElement(el, title, sub) {
+            openLightboxImage(el.src, title, sub);
+        }
+
+        function updateLightbox() {
+            const item = lightboxItems[currentIndex];
+            if (!item) return;
+            lightboxImg.src = item.src;
+            lightboxCaption.innerHTML = `${item.title}<span>${item.sub}</span>`;
+        }
+
+        function navLightbox(dir) {
+            currentIndex = (currentIndex + dir + lightboxItems.length) % lightboxItems.length;
+            updateLightbox();
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function handleLightboxBackdrop(e) {
+            if (e.target === lightbox || e.target.classList.contains('lightbox-content')) {
+                closeLightbox();
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (lightbox.style.display === 'flex') {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') navLightbox(-1);
+                if (e.key === 'ArrowRight') navLightbox(1);
+            }
+        });
+    </script>
+</body>
+</html>
