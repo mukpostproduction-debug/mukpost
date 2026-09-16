@@ -608,8 +608,8 @@
             <div class="album-grid">
                 <!-- 1. Insyt - 360 -->
                 <div class="album-card">
-                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/360albumartV4.jpg', 'Insyt. — 360°', 'Single Artwork · Hand-Drawn Circular Typography')">
-                        <img src="design-assets/album-art/360albumartV4.jpg" alt="Insyt. - 360 Album Art">
+                    <div class="album-img-wrap" onclick="openLightboxImage('art-360.jpg', 'Insyt. — 360°', 'Single Artwork · Hand-Drawn Circular Typography')">
+                        <img src="art-360.jpg" onerror="handleImgError(this)" alt="Insyt. - 360 Album Art">
                         <div class="album-overlay">
                             <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Artwork</div>
                         </div>
@@ -623,8 +623,8 @@
 
                 <!-- 2. Donat Jackson - needmoretime! -->
                 <div class="album-card">
-                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/needmoretime_coverartV3.jpg', 'Donat Jackson — needmoretime!', 'Single Artwork · Distressed Typography & Clock Composite')">
-                        <img src="design-assets/album-art/needmoretime_coverartV3.jpg" alt="Donat Jackson - needmoretime! Cover Art">
+                    <div class="album-img-wrap" onclick="openLightboxImage('art-needmoretime.jpg', 'Donat Jackson — needmoretime!', 'Single Artwork · Distressed Typography & Clock Composite')">
+                        <img src="art-needmoretime.jpg" onerror="handleImgError(this)" alt="Donat Jackson - needmoretime! Cover Art">
                         <div class="album-overlay">
                             <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Artwork</div>
                         </div>
@@ -638,8 +638,8 @@
 
                 <!-- 3. Insyt - TOLL -->
                 <div class="album-card">
-                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/TOLL_INSYT_SINGLECOVER_DRAFT8.jpg', 'Insyt. — TOLL', 'Single Artwork · Cyan Grid & Halftone Vector')">
-                        <img src="design-assets/album-art/TOLL_INSYT_SINGLECOVER_DRAFT8.jpg" alt="Insyt. - TOLL Single Cover">
+                    <div class="album-img-wrap" onclick="openLightboxImage('art-toll.jpg', 'Insyt. — TOLL', 'Single Artwork · Cyan Grid & Halftone Vector')">
+                        <img src="art-toll.jpg" onerror="handleImgError(this)" alt="Insyt. - TOLL Single Cover">
                         <div class="album-overlay">
                             <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Artwork</div>
                         </div>
@@ -653,8 +653,8 @@
 
                 <!-- 4. Swear to God -->
                 <div class="album-card">
-                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/sweartogodcover.jpg', 'Swear to God!', 'Single Artwork · Toronto CN Tower Stencil Lettering')">
-                        <img src="design-assets/album-art/sweartogodcover.jpg" alt="Swear to God! Cover">
+                    <div class="album-img-wrap" onclick="openLightboxImage('art-sweartogod.jpg', 'Swear to God!', 'Single Artwork · Toronto CN Tower Stencil Lettering')">
+                        <img src="art-sweartogod.jpg" onerror="handleImgError(this)" alt="Swear to God! Cover">
                         <div class="album-overlay">
                             <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Artwork</div>
                         </div>
@@ -684,10 +684,11 @@
                 <div class="titlecard-item">
                     <div class="titlecard-media aspect-4-3" id="media-needmoretime">
                         <img id="img-needmoretime" 
-                             src="design-assets/title-cards/Still 2026-07-08 112752_7.1.1.jpg" 
+                             src="tc-needmoretime-design.jpg" 
+                             onerror="handleImgError(this)"
                              alt="Donat Jackson needmoretime! Credits"
-                             data-designed="design-assets/title-cards/Still 2026-07-08 112752_7.1.1.jpg"
-                             data-plate="design-assets/title-cards/Still 2026-07-08 112752_7.1.2.jpg"
+                             data-designed="tc-needmoretime-design.jpg"
+                             data-plate="tc-needmoretime-plate.jpg"
                              onclick="openLightboxFromElement(this, 'Donat Jackson — needmoretime!', 'Credit Wire Layout Design')">
                         <div class="titlecard-badge">Custom Typography & Layout</div>
                         <div class="compare-toggle-bar">
@@ -711,10 +712,11 @@
                 <div class="titlecard-item">
                     <div class="titlecard-media" id="media-360">
                         <img id="img-360" 
-                             src="design-assets/title-cards/Still 2026-07-08 112959_3.2.1.jpg" 
+                             src="tc-360-design.jpg" 
+                             onerror="handleImgError(this)"
                              alt="Insyt 360 Title Sequence"
-                             data-designed="design-assets/title-cards/Still 2026-07-08 112959_3.2.1.jpg"
-                             data-plate="design-assets/title-cards/Still 2026-07-08 112959_3.2.2.jpg"
+                             data-designed="tc-360-design.jpg"
+                             data-plate="tc-360-plate.jpg"
                              onclick="openLightboxFromElement(this, 'Insyt. — 360°', 'Circular Typographic Title Card')">
                         <div class="titlecard-badge">Circular Typographic Layout</div>
                         <div class="compare-toggle-bar">
@@ -738,11 +740,12 @@
                 <div class="titlecard-item">
                     <div class="titlecard-media" id="media-maze">
                         <img id="img-maze" 
-                             src="design-assets/title-cards/Still 2026-07-08 113605_1.60.1.jpg" 
+                             src="tc-maze-scene.jpg" 
+                             onerror="handleImgError(this)"
                              alt="Kai Banks Maze Title Card"
-                             data-designed="design-assets/title-cards/Still 2026-07-08 113605_1.60.1.jpg"
-                             data-plate="design-assets/title-cards/Still 2026-07-08 113605_1.60.2.jpg"
-                             data-isolated="design-assets/title-cards/Still 2026-07-08 113605_2.4.1.jpg"
+                             data-designed="tc-maze-scene.jpg"
+                             data-plate="tc-maze-plate.jpg"
+                             data-isolated="tc-maze-type.jpg"
                              onclick="openLightboxFromElement(this, 'Kai Banks — Maze', 'Custom Script Calligraphy & Title Card')">
                         <div class="titlecard-badge">Custom Red Script Lettering</div>
                         <div class="compare-toggle-bar">
@@ -766,15 +769,17 @@
                 <!-- 4. Insyt. + Mileena + Jay Versace - HEAL Motion Title Card -->
                 <div class="titlecard-item">
                     <div class="titlecard-media" id="media-heal">
-                        <video id="video-heal" autoplay loop muted playsinline poster="design-assets/title-cards/Still 2026-07-08 113605_2.2.1.jpg" style="width:100%; height:100%; object-fit:cover;">
-                            <source src="design-assets/title-cards/heal-title-preview.mp4" type="video/mp4">
+                        <video id="video-heal" autoplay loop muted playsinline poster="tc-heal-design.jpg" style="width:100%; height:100%; object-fit:cover;">
+                            <source src="tc-heal-video.mp4" type="video/mp4">
+                            <source src="design-assets/tc-heal-video.mp4" type="video/mp4">
                         </video>
                         <img id="img-heal" 
-                             src="design-assets/title-cards/Still 2026-07-08 113605_2.2.1.jpg" 
+                             src="tc-heal-design.jpg" 
+                             onerror="handleImgError(this)"
                              alt="HEAL Title Card"
                              style="display:none;"
-                             data-designed="design-assets/title-cards/Still 2026-07-08 113605_2.2.1.jpg"
-                             data-plate="design-assets/title-cards/Still 2026-07-08 113605_2.2.2.jpg">
+                             data-designed="tc-heal-design.jpg"
+                             data-plate="tc-heal-plate.jpg">
                         <div class="titlecard-badge">Motion Graphics & Title Layout</div>
                         <div class="compare-toggle-bar">
                             <button class="compare-btn active" onclick="toggleHealMode('video', this)">Motion Loop</button>
@@ -798,9 +803,10 @@
                 <div class="titlecard-item">
                     <div class="titlecard-media" style="background: #000;">
                         <img id="img-puppet" 
-                             src="design-assets/title-cards/Still 2026-07-08 113605_2.3.1.jpg" 
+                             src="tc-puppet-strings.jpg" 
+                             onerror="handleImgError(this)"
                              alt="Insyt Puppet Strings Calligraphy"
-                             data-designed="design-assets/title-cards/Still 2026-07-08 113605_2.3.1.jpg"
+                             data-designed="tc-puppet-strings.jpg"
                              onclick="openLightboxFromElement(this, 'Insyt. — Puppet Strings', 'Gold Script Typography & Calligraphy')">
                         <div class="titlecard-badge">Hand-Drawn Calligraphy</div>
                     </div>
@@ -826,7 +832,7 @@
         <div class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></div>
         <div class="lightbox-prev" onclick="navLightbox(-1)"><i class="fa-solid fa-chevron-left"></i></div>
         <div class="lightbox-content">
-            <img class="lightbox-img" id="lightbox-img" src="" alt="Fullscreen Display">
+            <img class="lightbox-img" id="lightbox-img" src="" onerror="handleImgError(this)" alt="Fullscreen Display">
             <div class="lightbox-caption" id="lightbox-caption">
                 Title
                 <span>Details</span>
@@ -851,6 +857,19 @@
 
     <!-- INTERACTIVE SCRIPTS -->
     <script>
+        // SMART ASSET FALLBACK (Supports root flat uploads and design-assets/ folder)
+        function handleImgError(img) {
+            if (!img.dataset.failedOnce) {
+                img.dataset.failedOnce = "true";
+                const filename = img.src.split('/').pop();
+                if (!img.src.includes('design-assets/')) {
+                    img.src = 'design-assets/' + filename;
+                } else {
+                    img.src = filename;
+                }
+            }
+        }
+
         // MOBILE DRAWER
         document.addEventListener("DOMContentLoaded", function() {
             const btn = document.getElementById("mobileMenuBtn");
@@ -934,22 +953,22 @@
         const lightboxCaption = document.getElementById('lightbox-caption');
 
         const lightboxItems = [
-            { src: 'design-assets/album-art/360albumartV4.jpg', title: 'Insyt. — "360°"', sub: 'Single Artwork · Hand-Drawn Circular Typography' },
-            { src: 'design-assets/album-art/needmoretime_coverartV3.jpg', title: 'Donat Jackson — "needmoretime!"', sub: 'Single Artwork · Distressed Typography & Clock Composite' },
-            { src: 'design-assets/album-art/TOLL_INSYT_SINGLECOVER_DRAFT8.jpg', title: 'Insyt. — "TOLL"', sub: 'Single Artwork · Cyan Grid & Halftone Vector' },
-            { src: 'design-assets/album-art/sweartogodcover.jpg', title: '"swear to God!"', sub: 'Single Artwork · Toronto CN Tower Stencil Lettering' },
-            { src: 'design-assets/title-cards/Still 2026-07-08 112752_7.1.1.jpg', title: 'Donat Jackson — "needmoretime!"', sub: 'Credit Wire Layout Design' },
-            { src: 'design-assets/title-cards/Still 2026-07-08 112959_3.2.1.jpg', title: 'Insyt. — "360°"', sub: 'Circular Typographic Title Card' },
-            { src: 'design-assets/title-cards/Still 2026-07-08 113605_1.60.1.jpg', title: 'Kai Banks — "Maze"', sub: 'Subway Title Card Composite' },
-            { src: 'design-assets/title-cards/Still 2026-07-08 113605_2.4.1.jpg', title: 'Kai Banks — "Maze"', sub: 'Embossed Red Script Lettering' },
-            { src: 'design-assets/title-cards/Still 2026-07-08 113605_2.2.1.jpg', title: 'Insyt. + Mileena + Jay Versace — "HEAL"', sub: 'Neon Pink Title Card Layout' },
-            { src: 'design-assets/title-cards/Still 2026-07-08 113605_2.3.1.jpg', title: 'Insyt. — "Puppet Strings"', sub: 'Gold Script Calligraphy on Black' }
+            { src: 'art-360.jpg', title: 'Insyt. — "360°"', sub: 'Single Artwork · Hand-Drawn Circular Typography' },
+            { src: 'art-needmoretime.jpg', title: 'Donat Jackson — "needmoretime!"', sub: 'Single Artwork · Distressed Typography & Clock Composite' },
+            { src: 'art-toll.jpg', title: 'Insyt. — "TOLL"', sub: 'Single Artwork · Cyan Grid & Halftone Vector' },
+            { src: 'art-sweartogod.jpg', title: '"swear to God!"', sub: 'Single Artwork · Toronto CN Tower Stencil Lettering' },
+            { src: 'tc-needmoretime-design.jpg', title: 'Donat Jackson — "needmoretime!"', sub: 'Credit Wire Layout Design' },
+            { src: 'tc-360-design.jpg', title: 'Insyt. — "360°"', sub: 'Circular Typographic Title Card' },
+            { src: 'tc-maze-scene.jpg', title: 'Kai Banks — "Maze"', sub: 'Subway Title Card Composite' },
+            { src: 'tc-maze-type.jpg', title: 'Kai Banks — "Maze"', sub: 'Embossed Red Script Lettering' },
+            { src: 'tc-heal-design.jpg', title: 'Insyt. + Mileena + Jay Versace — "HEAL"', sub: 'Neon Pink Title Card Layout' },
+            { src: 'tc-puppet-strings.jpg', title: 'Insyt. — "Puppet Strings"', sub: 'Gold Script Calligraphy on Black' }
         ];
 
         let currentIndex = 0;
 
         function openLightboxImage(src, title, sub) {
-            const idx = lightboxItems.findIndex(item => item.src === src);
+            const idx = lightboxItems.findIndex(item => item.src === src || item.src.split('/').pop() === src.split('/').pop());
             if (idx !== -1) {
                 currentIndex = idx;
             } else {
@@ -962,7 +981,7 @@
         }
 
         function openLightboxFromElement(el, title, sub) {
-            openLightboxImage(el.src, title, sub);
+            openLightboxImage(el.src.split('/').pop(), title, sub);
         }
 
         function updateLightbox() {
