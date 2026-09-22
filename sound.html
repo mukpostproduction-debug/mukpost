@@ -923,11 +923,17 @@
             aspect-ratio: 16/9;
             background: #000;
         }
-        .video-modal-iframe-wrap iframe {
+        .video-modal-iframe-wrap iframe,
+        .video-modal-iframe-wrap video {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
+            border: 0;
+        }
+        .video-modal-iframe-wrap video {
+            object-fit: contain;
+            background: #000;
         }
         .video-modal-footer {
             padding: 1.25rem 1.5rem;
@@ -948,6 +954,12 @@
             font-size: 0.8rem;
             color: #888;
         }
+        .video-modal-actions {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
         .video-ext-btn {
             display: inline-flex;
             align-items: center;
@@ -967,6 +979,11 @@
         .video-ext-btn:hover {
             background: #ff0000;
             border-color: #ff0000;
+            color: #fff;
+        }
+        .video-ext-btn.ig-btn:hover {
+            background: #E1306C;
+            border-color: #E1306C;
             color: #fff;
         }
     </style>
@@ -1212,10 +1229,10 @@
                 <div>
                     <span class="works-eyebrow">// PORTFOLIO DIRECTORY</span>
                     <h2 class="works-title">Sound Design & Mix &bull; Selected Works</h2>
-                    <p class="works-subtitle">Experience finished films and audio mixes engineered at Muk Post.</p>
+                    <p class="works-subtitle">Experience finished films, campaigns, and audio mixes engineered at Muk Post.</p>
                 </div>
                 <div class="works-badge">
-                    <i class="fa-brands fa-youtube" style="color: #ff0000;"></i> 4 Full Projects
+                    <i class="fa-solid fa-compact-disc" style="color: var(--accent);"></i> 11 Selected Works
                 </div>
             </div>
 
@@ -1237,8 +1254,76 @@
                     </div>
                 </div>
 
+                <!-- Holy Vexation Pt 1 -->
+                <div class="work-video-card" onclick="openVideoModal('portfolio-assets/videos/holy-vexation-pt1.mp4', 'Holy Vexation — 1/3: Frustration', 'Sound Editor &bull; Directed by Declan McKenna &bull; DP Dario Butera &bull; Shot on 16mm Kodak', '', 'https://www.instagram.com/p/DRK4xGxEhjg/')">
+                    <div class="work-thumb-wrap">
+                        <img src="portfolio-assets/thumbs/holy-vexation-pt1.jpg" alt="Holy Vexation — Part 1" loading="lazy">
+                        <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
+                        <span class="work-duration">16mm Film</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-top">
+                            <span class="work-role-tag">Sound Editor</span>
+                            <span class="work-year">2026</span>
+                        </div>
+                        <div class="work-card-title">Holy Vexation — 1/3: Frustration</div>
+                        <div class="work-meta">Short Film &bull; Shot on 16mm Kodak &bull; Dir. Declan McKenna</div>
+                    </div>
+                </div>
+
+                <!-- Holy Vexation Pt 2 -->
+                <div class="work-video-card" onclick="openVideoModal('portfolio-assets/videos/holy-vexation-pt2.mp4', 'Holy Vexation — 2/3: Contemplation', 'Sound Editor &bull; Directed by Declan McKenna &bull; DP Dario Butera &bull; Shot on 16mm Kodak', '', 'https://www.instagram.com/p/DRQCsekEjv5/')">
+                    <div class="work-thumb-wrap">
+                        <img src="portfolio-assets/thumbs/holy-vexation-pt2.jpg" alt="Holy Vexation — Part 2" loading="lazy">
+                        <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
+                        <span class="work-duration">16mm Film</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-top">
+                            <span class="work-role-tag">Sound Editor</span>
+                            <span class="work-year">2026</span>
+                        </div>
+                        <div class="work-card-title">Holy Vexation — 2/3: Contemplation</div>
+                        <div class="work-meta">Short Film &bull; Shot on 16mm Kodak &bull; Dir. Declan McKenna</div>
+                    </div>
+                </div>
+
+                <!-- Holy Vexation Pt 3 -->
+                <div class="work-video-card" onclick="openVideoModal('portfolio-assets/videos/holy-vexation-pt3.mp4', 'Holy Vexation — 3/3: Reconciliation', 'Sound Editor &bull; Directed by Declan McKenna &bull; DP Dario Butera &bull; Shot on 16mm Kodak', '', 'https://www.instagram.com/p/DRVRi7jEuqd/')">
+                    <div class="work-thumb-wrap">
+                        <img src="portfolio-assets/thumbs/holy-vexation-pt3.jpg" alt="Holy Vexation — Part 3" loading="lazy">
+                        <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
+                        <span class="work-duration">16mm Film</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-top">
+                            <span class="work-role-tag">Sound Editor</span>
+                            <span class="work-year">2026</span>
+                        </div>
+                        <div class="work-card-title">Holy Vexation — 3/3: Reconciliation</div>
+                        <div class="work-meta">Short Film &bull; Shot on 16mm Kodak &bull; Dir. Declan McKenna</div>
+                    </div>
+                </div>
+
+                <!-- Côté Ibis - Draft Night -->
+                <div class="work-video-card" onclick="openVideoModal('portfolio-assets/videos/draft-night.mp4', 'C&ocirc;t&eacute; Ibis — &ldquo;Draft Night&rdquo;', 'Sound Design &amp; Mix &bull; Colourist &bull; Directed by Mason Cline &bull; Prod. Pylon Collective', '', 'https://www.instagram.com/p/DQw_MU9kczC/')">
+                    <div class="work-thumb-wrap">
+                        <img src="portfolio-assets/thumbs/draft-night.jpg" alt="Côté Ibis — Draft Night" loading="lazy">
+                        <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
+                        <span class="work-duration">Campaign</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-top">
+                            <span class="work-role-tag">Sound Design &bull; Mix</span>
+                            <span class="work-year">2026</span>
+                        </div>
+                        <div class="work-card-title">Côté Ibis — "Draft Night"</div>
+                        <div class="work-meta">Commercial &bull; Fitted Hat Campaign &bull; Dir. Mason Cline</div>
+                    </div>
+                </div>
+
                 <!-- Donat Jackson - Need More Time -->
-                <div class="work-video-card" onclick="openVideoModal('m3GzM8sJ_V8', 'Donat Jackson — needmoretime!', 'Post-Production Audio • Sound Design', 'https://www.youtube.com/watch?v=m3GzM8sJ_V8')">
+                <div class="work-video-card" onclick="openVideoModal('m3GzM8sJ_V8', 'Donat Jackson — needmoretime!', 'Post-Production Audio &bull; Sound Design &bull; Direction', 'https://www.youtube.com/watch?v=m3GzM8sJ_V8')">
                     <div class="work-thumb-wrap">
                         <img src="https://img.youtube.com/vi/m3GzM8sJ_V8/hqdefault.jpg" alt="Donat Jackson — Need More Time" loading="lazy">
                         <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
@@ -1255,7 +1340,7 @@
                 </div>
 
                 <!-- insyt. - 360° -->
-                <div class="work-video-card" onclick="openVideoModal('CKdqD851gQ0', 'insyt. — 360°', 'Sound Design • Dialogue Clean & FX', 'https://www.youtube.com/watch?v=CKdqD851gQ0')">
+                <div class="work-video-card" onclick="openVideoModal('CKdqD851gQ0', 'insyt. — 360°', 'Sound Design &bull; Dialogue Clean &amp; FX', 'https://www.youtube.com/watch?v=CKdqD851gQ0')">
                     <div class="work-thumb-wrap">
                         <img src="https://img.youtube.com/vi/CKdqD851gQ0/hqdefault.jpg" alt="insyt. — 360°" loading="lazy">
                         <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
@@ -1272,7 +1357,7 @@
                 </div>
 
                 <!-- insyt. - Toll -->
-                <div class="work-video-card" onclick="openVideoModal('chQBG5lTCnM', 'insyt. — Toll', 'Sound Design & Transitions', 'https://www.youtube.com/watch?v=chQBG5lTCnM')">
+                <div class="work-video-card" onclick="openVideoModal('chQBG5lTCnM', 'insyt. — Toll', 'Sound Design &amp; Transitions', 'https://www.youtube.com/watch?v=chQBG5lTCnM')">
                     <div class="work-thumb-wrap">
                         <img src="https://img.youtube.com/vi/chQBG5lTCnM/hqdefault.jpg" alt="insyt. — Toll" loading="lazy">
                         <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
@@ -1287,6 +1372,57 @@
                         <div class="work-meta">Music Video &bull; Sound Atmosphere & Hits</div>
                     </div>
                 </div>
+
+                <!-- AKUA - RTR (Older) -->
+                <div class="work-video-card" onclick="openVideoModal('T0hl1cGvbKg', 'AKUA — &ldquo;RTR&rdquo;', 'Sound Design &amp; Mix &bull; Colourist &bull; DIT &bull; Directed by Declan McKenna', 'https://www.youtube.com/watch?v=T0hl1cGvbKg', 'https://www.instagram.com/p/DEDYYTWJk8l/')">
+                    <div class="work-thumb-wrap">
+                        <img src="portfolio-assets/thumbs/akua-rtr.jpg" alt="AKUA — RTR" loading="lazy">
+                        <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
+                        <span class="work-duration">Music Video</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-top">
+                            <span class="work-role-tag">Sound Design &bull; Mix &bull; Colour</span>
+                            <span class="work-year">2024</span>
+                        </div>
+                        <div class="work-card-title">AKUA — "RTR"</div>
+                        <div class="work-meta">Music Video &bull; Directed by Declan McKenna</div>
+                    </div>
+                </div>
+
+                <!-- Pylon Collective - BTS: AKUA RTR (Older) -->
+                <div class="work-video-card" onclick="openVideoModal('V2NjhuePlm0', 'Pylon Collective — BTS: AKUA &ldquo;RTR&rdquo;', 'Directed, Filmed, Edited &amp; Audio by Jackson McMurdo &bull; Pylon Collective', 'https://www.youtube.com/watch?v=V2NjhuePlm0')">
+                    <div class="work-thumb-wrap">
+                        <img src="portfolio-assets/thumbs/pylon-rtr-bts.jpg" alt="Pylon Collective — BTS: AKUA RTR" loading="lazy">
+                        <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
+                        <span class="work-duration">Mini-Doc</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-top">
+                            <span class="work-role-tag">Director &bull; Editor &bull; Audio</span>
+                            <span class="work-year">2024</span>
+                        </div>
+                        <div class="work-card-title">Pylon Collective — BTS: AKUA "RTR"</div>
+                        <div class="work-meta">Behind The Scenes &bull; Directed &amp; Edited by Jackson McMurdo</div>
+                    </div>
+                </div>
+
+                <!-- Kimb0 - BB (Older) -->
+                <div class="work-video-card" onclick="openVideoModal('n-l1SZy5ktA', 'Kimb0 — &ldquo;BB&rdquo;', 'Sound Design &amp; Mix &bull; Colourist &bull; VFX &bull; Directed by Declan McKenna', 'https://www.youtube.com/watch?v=n-l1SZy5ktA', 'https://www.instagram.com/p/C_tpXWbJPy3/')">
+                    <div class="work-thumb-wrap">
+                        <img src="portfolio-assets/thumbs/bb-kimbo.jpg" alt="Kimb0 — BB" loading="lazy">
+                        <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
+                        <span class="work-duration">Music Video</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-top">
+                            <span class="work-role-tag">Sound &bull; Colour &bull; VFX</span>
+                            <span class="work-year">2024</span>
+                        </div>
+                        <div class="work-card-title">Kimb0 — "BB"</div>
+                        <div class="work-meta">Music Video &bull; Directed by Declan McKenna &bull; DP Dario Butera</div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1298,15 +1434,21 @@
             <button class="video-modal-close" onclick="closeVideoModal()" aria-label="Close video player"><i class="fa-solid fa-xmark"></i></button>
             <div class="video-modal-iframe-wrap">
                 <iframe id="videoModalIframe" src="" title="Muk Post Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <video id="videoModalVideo" controls playsinline preload="metadata" style="display: none;"></video>
             </div>
             <div class="video-modal-footer">
                 <div class="video-modal-meta">
                     <h3 id="videoModalTitle">Video Title</h3>
                     <p id="videoModalRole">Credits & Role</p>
                 </div>
-                <a id="videoModalExternalBtn" href="#" target="_blank" class="video-ext-btn">
-                    <i class="fa-brands fa-youtube"></i> Watch on YouTube
-                </a>
+                <div class="video-modal-actions">
+                    <a id="videoModalExternalBtn" href="#" target="_blank" class="video-ext-btn" style="display: none;">
+                        <i class="fa-brands fa-youtube"></i> Watch on YouTube
+                    </a>
+                    <a id="videoModalIgBtn" href="#" target="_blank" class="video-ext-btn ig-btn" style="display: none;">
+                        <i class="fa-brands fa-instagram" style="color: #E1306C;"></i> View on Instagram
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -1810,26 +1952,63 @@
         // --- Video Theater Modal Logic ---
         const videoModal = document.getElementById('videoModal');
         const videoModalIframe = document.getElementById('videoModalIframe');
+        const videoModalVideo = document.getElementById('videoModalVideo');
         const videoModalTitle = document.getElementById('videoModalTitle');
         const videoModalRole = document.getElementById('videoModalRole');
         const videoModalExternalBtn = document.getElementById('videoModalExternalBtn');
+        const videoModalIgBtn = document.getElementById('videoModalIgBtn');
 
-        function openVideoModal(ytId, title, role, externalUrl) {
+        function openVideoModal(source, title, role, externalUrl, igUrl) {
             // Pause local stem video if playing
-            if (isPlaying) {
+            if (typeof isPlaying !== 'undefined' && isPlaying && typeof togglePlay === 'function') {
                 togglePlay();
             }
-            videoModalTitle.textContent = title;
+            videoModalTitle.innerHTML = title;
             videoModalRole.innerHTML = role;
-            videoModalExternalBtn.href = externalUrl;
-            videoModalIframe.src = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0&modestbranding=1&color=white`;
+
+            if (externalUrl && externalUrl.trim() !== '') {
+                videoModalExternalBtn.href = externalUrl;
+                videoModalExternalBtn.style.display = 'inline-flex';
+            } else {
+                videoModalExternalBtn.style.display = 'none';
+            }
+
+            if (igUrl && igUrl.trim() !== '') {
+                videoModalIgBtn.href = igUrl;
+                videoModalIgBtn.style.display = 'inline-flex';
+            } else {
+                videoModalIgBtn.style.display = 'none';
+            }
+
+            if (source.endsWith('.mp4') || source.startsWith('portfolio-assets/')) {
+                videoModalIframe.style.display = 'none';
+                videoModalIframe.src = '';
+                videoModalVideo.style.display = 'block';
+                videoModalVideo.src = source;
+                videoModalVideo.play().catch(function() {});
+            } else {
+                videoModalVideo.style.display = 'none';
+                videoModalVideo.pause();
+                videoModalVideo.src = '';
+                videoModalIframe.style.display = 'block';
+                videoModalIframe.src = 'https://www.youtube.com/embed/' + source + '?autoplay=1&rel=0&modestbranding=1&color=white';
+            }
+
             videoModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
         function closeVideoModal() {
             videoModal.style.display = 'none';
-            videoModalIframe.src = '';
+            if (videoModalIframe) {
+                videoModalIframe.src = '';
+                videoModalIframe.style.display = 'none';
+            }
+            if (videoModalVideo) {
+                videoModalVideo.pause();
+                videoModalVideo.src = '';
+                videoModalVideo.style.display = 'none';
+            }
             document.body.style.overflow = '';
         }
 
