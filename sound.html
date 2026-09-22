@@ -720,6 +720,255 @@
             font-size: 0.8rem;
         }
 
+        /* WORKS CATALOG & VIDEO SHOWCASE */
+        .works-catalog-section {
+            margin-top: 5rem;
+            padding-top: 3.5rem;
+            border-top: 1px solid var(--border);
+        }
+        .works-catalog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        .works-eyebrow {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: #00ff66;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            display: block;
+        }
+        .works-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #fff;
+        }
+        .works-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-top: 0.25rem;
+        }
+        .works-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #111;
+            border: 1px solid #222;
+            padding: 0.45rem 0.9rem;
+            border-radius: 3px;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #ddd;
+            font-weight: 600;
+        }
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .work-video-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .work-video-card:hover {
+            transform: translateY(-4px);
+            border-color: #444;
+        }
+        .work-thumb-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            overflow: hidden;
+        }
+        .work-thumb-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease, opacity 0.3s ease;
+        }
+        .work-video-card:hover .work-thumb-wrap img {
+            transform: scale(1.04);
+            opacity: 0.85;
+        }
+        .work-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.75);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1rem;
+            transition: 0.3s ease;
+        }
+        .work-video-card:hover .work-play-btn {
+            background: #00ff66;
+            color: #000;
+            border-color: #00ff66;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        .work-duration {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0,0,0,0.85);
+            padding: 0.2rem 0.5rem;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            color: #eee;
+            border-radius: 2px;
+        }
+        .work-card-info {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .work-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .work-role-tag {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #00ff66;
+            font-weight: 700;
+        }
+        .work-year {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+        }
+        .work-card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .work-meta {
+            font-size: 0.78rem;
+            color: #888;
+        }
+
+        /* VIDEO MODAL */
+        .video-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(12px);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        .video-modal-dialog {
+            width: 100%;
+            max-width: 960px;
+            background: #111;
+            border: 1px solid #282828;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        }
+        .video-modal-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 36px;
+            height: 36px;
+            background: rgba(0,0,0,0.8);
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            z-index: 10;
+            transition: 0.2s;
+        }
+        .video-modal-close:hover {
+            background: #ff3333;
+            border-color: #ff3333;
+        }
+        .video-modal-iframe-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+        }
+        .video-modal-iframe-wrap iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .video-modal-footer {
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            border-top: 1px solid #1f1f1f;
+            flex-wrap: wrap;
+        }
+        .video-modal-meta h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.2rem;
+        }
+        .video-modal-meta p {
+            font-size: 0.8rem;
+            color: #888;
+        }
+        .video-ext-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #1c1c1c;
+            border: 1px solid #333;
+            color: #eee;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            border-radius: 3px;
+            transition: 0.2s;
+        }
+        .video-ext-btn:hover {
+            background: #ff0000;
+            border-color: #ff0000;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -957,7 +1206,110 @@
             </div>
         </div>
 
+        <!-- SELECTED WORKS & FULL FINISHED SOUND RELEASES -->
+        <section class="works-catalog-section" id="sound-works">
+            <div class="works-catalog-header">
+                <div>
+                    <span class="works-eyebrow">// PORTFOLIO DIRECTORY</span>
+                    <h2 class="works-title">Sound Design & Mix &bull; Selected Works</h2>
+                    <p class="works-subtitle">Experience finished films and audio mixes engineered at Muk Post.</p>
+                </div>
+                <div class="works-badge">
+                    <i class="fa-brands fa-youtube" style="color: #ff0000;"></i> 4 Full Projects
+                </div>
+            </div>
+
+            <div class="works-grid">
+                <!-- Johnny Tsatsos - Cerberus -->
+                <div class="work-video-card" onclick="document.querySelector('.mixer-rack').scrollIntoView({behavior: 'smooth'})">
+                    <div class="work-thumb-wrap">
+                        <img src="https://img.youtube.com/vi/9Wv0WVDgzEU/hqdefault.jpg" alt="Johnny Tsatsos — Cerberus" loading="lazy">
+                        <div class="work-play-btn"><i class="fa-solid fa-sliders"></i></div>
+                        <span class="work-duration">Interactive Stem Mixer</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-top">
+                            <span class="work-role-tag">Original Mix &bull; Sound Design</span>
+                            <span class="work-year">2026</span>
+                        </div>
+                        <div class="work-card-title">Johnny Tsatsos — "Cerberus"</div>
+                        <div class="work-meta">A film by Johnny Tsatsos &bull; Multi-Track DX / MX / SFX</div>
+                    </div>
+                </div>
+
+                <!-- Donat Jackson - Need More Time -->
+                <div class="work-video-card" onclick="openVideoModal('m3GzM8sJ_V8', 'Donat Jackson — needmoretime!', 'Post-Production Audio • Sound Design', 'https://www.youtube.com/watch?v=m3GzM8sJ_V8')">
+                    <div class="work-thumb-wrap">
+                        <img src="https://img.youtube.com/vi/m3GzM8sJ_V8/hqdefault.jpg" alt="Donat Jackson — Need More Time" loading="lazy">
+                        <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
+                        <span class="work-duration">Full Video</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-top">
+                            <span class="work-role-tag">Post-Production Audio</span>
+                            <span class="work-year">2026</span>
+                        </div>
+                        <div class="work-card-title">Donat Jackson — "needmoretime!"</div>
+                        <div class="work-meta">Music Video &bull; Directed by Jackson McMurdo</div>
+                    </div>
+                </div>
+
+                <!-- insyt. - 360° -->
+                <div class="work-video-card" onclick="openVideoModal('CKdqD851gQ0', 'insyt. — 360°', 'Sound Design • Dialogue Clean & FX', 'https://www.youtube.com/watch?v=CKdqD851gQ0')">
+                    <div class="work-thumb-wrap">
+                        <img src="https://img.youtube.com/vi/CKdqD851gQ0/hqdefault.jpg" alt="insyt. — 360°" loading="lazy">
+                        <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
+                        <span class="work-duration">Full Video</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-top">
+                            <span class="work-role-tag">Sound Design</span>
+                            <span class="work-year">2026</span>
+                        </div>
+                        <div class="work-card-title">insyt. — "360°"</div>
+                        <div class="work-meta">Music Video &bull; High-Impact Transition FX</div>
+                    </div>
+                </div>
+
+                <!-- insyt. - Toll -->
+                <div class="work-video-card" onclick="openVideoModal('chQBG5lTCnM', 'insyt. — Toll', 'Sound Design & Transitions', 'https://www.youtube.com/watch?v=chQBG5lTCnM')">
+                    <div class="work-thumb-wrap">
+                        <img src="https://img.youtube.com/vi/chQBG5lTCnM/hqdefault.jpg" alt="insyt. — Toll" loading="lazy">
+                        <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
+                        <span class="work-duration">Full Video</span>
+                    </div>
+                    <div class="work-card-info">
+                        <div class="work-card-top">
+                            <span class="work-role-tag">Sound Design</span>
+                            <span class="work-year">2026</span>
+                        </div>
+                        <div class="work-card-title">insyt. — "Toll"</div>
+                        <div class="work-meta">Music Video &bull; Sound Atmosphere & Hits</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
+
+    <!-- VIDEO THEATER MODAL -->
+    <div class="video-modal" id="videoModal" onclick="handleVideoModalBackdrop(event)">
+        <div class="video-modal-dialog">
+            <button class="video-modal-close" onclick="closeVideoModal()" aria-label="Close video player"><i class="fa-solid fa-xmark"></i></button>
+            <div class="video-modal-iframe-wrap">
+                <iframe id="videoModalIframe" src="" title="Muk Post Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="video-modal-footer">
+                <div class="video-modal-meta">
+                    <h3 id="videoModalTitle">Video Title</h3>
+                    <p id="videoModalRole">Credits & Role</p>
+                </div>
+                <a id="videoModalExternalBtn" href="#" target="_blank" class="video-ext-btn">
+                    <i class="fa-brands fa-youtube"></i> Watch on YouTube
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- FOOTER -->
     <footer id="contact" class="container">
@@ -1454,6 +1806,44 @@
             resizeCanvases();
             renderEngine();
         }, 100);
+
+        // --- Video Theater Modal Logic ---
+        const videoModal = document.getElementById('videoModal');
+        const videoModalIframe = document.getElementById('videoModalIframe');
+        const videoModalTitle = document.getElementById('videoModalTitle');
+        const videoModalRole = document.getElementById('videoModalRole');
+        const videoModalExternalBtn = document.getElementById('videoModalExternalBtn');
+
+        function openVideoModal(ytId, title, role, externalUrl) {
+            // Pause local stem video if playing
+            if (isPlaying) {
+                togglePlay();
+            }
+            videoModalTitle.textContent = title;
+            videoModalRole.innerHTML = role;
+            videoModalExternalBtn.href = externalUrl;
+            videoModalIframe.src = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0&modestbranding=1&color=white`;
+            videoModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeVideoModal() {
+            videoModal.style.display = 'none';
+            videoModalIframe.src = '';
+            document.body.style.overflow = '';
+        }
+
+        function handleVideoModalBackdrop(event) {
+            if (event.target === videoModal) {
+                closeVideoModal();
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (videoModal && videoModal.style.display === 'flex') {
+                if (e.key === 'Escape') closeVideoModal();
+            }
+        });
     </script>
 </body>
 </html>
