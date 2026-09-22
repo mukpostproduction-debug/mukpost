@@ -368,6 +368,7 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 2.5rem;
+            align-items: start;
         }
         @media (min-width: 900px) {
             .titlecards-grid {
@@ -396,6 +397,9 @@
         }
         .titlecard-media.aspect-4-3 {
             aspect-ratio: 4/3;
+        }
+        .titlecard-media.aspect-puppet {
+            aspect-ratio: 1648 / 1080;
         }
         .titlecard-media img, .titlecard-media video {
             width: 100%;
@@ -1152,11 +1156,11 @@
 
             <div class="titlecards-grid">
                 
-                <!-- 1. Donat Jackson - Need More Time -->
+                <!-- 1. Donat Jackson - Need More Time (4:3) -->
                 <div class="titlecard-item">
                     <div class="titlecard-media aspect-4-3" id="media-needmoretime">
                         <img id="img-needmoretime" 
-                             src="design-assets/title-cards/tc-needmoretime-design.jpg" 
+                             src="design-assets/title-cards/tc-needmoretime-plate.jpg" 
                              onerror="handleImgError(this)"
                              alt="Need More Time — Donat Jackson"
                              data-designed="design-assets/title-cards/tc-needmoretime-design.jpg"
@@ -1164,18 +1168,38 @@
                              onclick="openLightboxFromElement(this, 'Need More Time — Donat Jackson')">
                         <div class="titlecard-badge">Need More Time — Donat Jackson</div>
                         <div class="compare-toggle-bar">
-                            <button class="compare-btn active" onclick="switchCompare('needmoretime', 'designed', this)">Design</button>
-                            <button class="compare-btn" onclick="switchCompare('needmoretime', 'plate', this)">Clean Plate</button>
+                            <button class="compare-btn active" onclick="switchCompare('needmoretime', 'plate', this)">Clean Plate</button>
+                            <button class="compare-btn" onclick="switchCompare('needmoretime', 'designed', this)">Design</button>
                             <button class="compare-btn zoom-quick-btn" onclick="zoomCurrentTitleCard('needmoretime', 'Need More Time — Donat Jackson', event)" title="Zoom into High-Res Textures"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom 4K</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- 2. Insyt - 360 -->
+                <!-- 2. Kai Banks - Maze (4:3) -->
+                <div class="titlecard-item">
+                    <div class="titlecard-media aspect-4-3" id="media-maze">
+                        <img id="img-maze" 
+                             src="design-assets/title-cards/tc-maze-plate.jpg" 
+                             onerror="handleImgError(this)"
+                             alt="Maze — Kai Banks"
+                             data-designed="design-assets/title-cards/tc-maze-scene.jpg"
+                             data-plate="design-assets/title-cards/tc-maze-plate.jpg"
+                             data-isolated="design-assets/title-cards/tc-maze-plate.jpg"
+                             onclick="openLightboxFromElement(this, 'Maze — Kai Banks')">
+                        <div class="titlecard-badge">Maze — Kai Banks</div>
+                        <div class="compare-toggle-bar">
+                            <button class="compare-btn active" onclick="switchCompare('maze', 'plate', this)">Clean Plate</button>
+                            <button class="compare-btn" onclick="switchCompare('maze', 'designed', this)">Design</button>
+                            <button class="compare-btn zoom-quick-btn" onclick="zoomCurrentTitleCard('maze', 'Maze — Kai Banks', event)" title="Zoom into High-Res Textures"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom 4K</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Insyt - 360 (16:9) -->
                 <div class="titlecard-item">
                     <div class="titlecard-media" id="media-360">
                         <img id="img-360" 
-                             src="design-assets/title-cards/tc-360-design.jpg" 
+                             src="design-assets/title-cards/tc-360-plate.jpg" 
                              onerror="handleImgError(this)"
                              alt="360 — Insyt"
                              data-designed="design-assets/title-cards/tc-360-design.jpg"
@@ -1183,71 +1207,53 @@
                              onclick="openLightboxFromElement(this, '360 — Insyt')">
                         <div class="titlecard-badge">360 — Insyt</div>
                         <div class="compare-toggle-bar">
-                            <button class="compare-btn active" onclick="switchCompare('360', 'designed', this)">Design</button>
-                            <button class="compare-btn" onclick="switchCompare('360', 'plate', this)">Clean Plate</button>
+                            <button class="compare-btn active" onclick="switchCompare('360', 'plate', this)">Clean Plate</button>
+                            <button class="compare-btn" onclick="switchCompare('360', 'designed', this)">Design</button>
                             <button class="compare-btn zoom-quick-btn" onclick="zoomCurrentTitleCard('360', '360 — Insyt', event)" title="Zoom into High-Res Textures"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom 4K</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- 3. Kai Banks - Maze -->
-                <div class="titlecard-item">
-                    <div class="titlecard-media" id="media-maze">
-                        <img id="img-maze" 
-                             src="design-assets/title-cards/tc-maze-scene.jpg" 
-                             onerror="handleImgError(this)"
-                             alt="Maze — Kai Banks"
-                             data-designed="design-assets/title-cards/tc-maze-scene.jpg"
-                             data-isolated="design-assets/title-cards/tc-maze-type.jpg"
-                             onclick="openLightboxFromElement(this, 'Maze — Kai Banks')">
-                        <div class="titlecard-badge">Maze — Kai Banks</div>
-                        <div class="compare-toggle-bar">
-                            <button class="compare-btn active" onclick="switchCompare('maze', 'designed', this)">Scene</button>
-                            <button class="compare-btn" onclick="switchCompare('maze', 'isolated', this)">Type Only</button>
-                            <button class="compare-btn zoom-quick-btn" onclick="zoomCurrentTitleCard('maze', 'Maze — Kai Banks', event)" title="Zoom into High-Res Textures"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom 4K</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. Insyt - HEAL -->
+                <!-- 4. Insyt - HEAL (16:9) -->
                 <div class="titlecard-item">
                     <div class="titlecard-media" id="media-heal">
-                        <video id="video-heal" autoplay loop muted playsinline poster="design-assets/title-cards/tc-heal-design.jpg" style="width:100%; height:100%; object-fit:cover;">
+                        <video id="video-heal" loop muted playsinline poster="design-assets/title-cards/tc-heal-design.jpg" style="width:100%; height:100%; object-fit:cover; display:none;">
                             <source src="design-assets/title-cards/tc-heal-video.mp4" type="video/mp4">
                             <source src="tc-heal-video.mp4" type="video/mp4">
                         </video>
                         <img id="img-heal" 
-                             src="design-assets/title-cards/tc-heal-design.jpg" 
+                             src="design-assets/title-cards/tc-heal-plate.jpg" 
                              onerror="handleImgError(this)"
                              alt="HEAL — Insyt"
-                             style="display:none;"
+                             style="display:block;"
                              data-designed="design-assets/title-cards/tc-heal-design.jpg"
                              data-plate="design-assets/title-cards/tc-heal-plate.jpg"
                              onclick="openLightboxFromElement(this, 'HEAL — Insyt')">
                         <div class="titlecard-badge">HEAL — Insyt</div>
                         <div class="compare-toggle-bar">
-                            <button class="compare-btn active" onclick="toggleHealMode('video', this)">Motion Loop</button>
-                            <button class="compare-btn" onclick="toggleHealMode('still', this)">Still Design</button>
-                            <button class="compare-btn" onclick="toggleHealMode('plate', this)">Clean Plate</button>
+                            <button class="compare-btn active" onclick="toggleHealMode('plate', this)">Clean Plate</button>
+                            <button class="compare-btn" onclick="toggleHealMode('still', this)">Design</button>
+                            <button class="compare-btn" onclick="toggleHealMode('video', this)">Motion Loop</button>
                             <button class="compare-btn zoom-quick-btn" onclick="zoomCurrentTitleCard('heal', 'HEAL — Insyt', event)" title="Zoom into High-Res Textures"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom 4K</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- 5. Insyt - Puppet Strings -->
+                <!-- 5. Insyt - Puppet Strings (Super 35 / 1.53:1 Native) -->
                 <div class="titlecard-item">
-                    <div class="titlecard-media" id="media-puppet" style="background: #000;">
+                    <div class="titlecard-media aspect-puppet" id="media-puppet">
                         <img id="img-puppet" 
-                             src="design-assets/title-cards/tc-puppet-strings-scene.jpg" 
+                             src="design-assets/title-cards/tc-puppet-strings.jpg" 
                              onerror="handleImgError(this)"
                              alt="Puppet Strings — Insyt"
                              data-designed="design-assets/title-cards/tc-puppet-strings-scene.jpg"
+                             data-plate="design-assets/title-cards/tc-puppet-strings.jpg"
                              data-isolated="design-assets/title-cards/tc-puppet-strings.jpg"
                              onclick="openLightboxFromElement(this, 'Puppet Strings — Insyt')">
                         <div class="titlecard-badge">Puppet Strings — Insyt</div>
                         <div class="compare-toggle-bar">
-                            <button class="compare-btn active" onclick="switchCompare('puppet', 'designed', this)">Scene</button>
-                            <button class="compare-btn" onclick="switchCompare('puppet', 'isolated', this)">Calligraphy</button>
+                            <button class="compare-btn active" onclick="switchCompare('puppet', 'plate', this)">Clean Plate</button>
+                            <button class="compare-btn" onclick="switchCompare('puppet', 'designed', this)">Design</button>
                             <button class="compare-btn zoom-quick-btn" onclick="zoomCurrentTitleCard('puppet', 'Puppet Strings — Insyt', event)" title="Zoom into High-Res Textures"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom 4K</button>
                         </div>
                     </div>
@@ -1505,17 +1511,17 @@
             { src: 'design-assets/album-art/art-needmoretime.jpg', title: 'Donat Jackson — "needmoretime!"' },
             { src: 'design-assets/album-art/art-toll.jpg', title: 'Insyt. — "TOLL"' },
             { src: 'design-assets/album-art/art-sweartogod.jpg', title: '"swear to God!"' },
-            // Title Cards & Clean Plates
-            { src: 'design-assets/title-cards/tc-needmoretime-design.jpg', title: 'Need More Time — Donat Jackson' },
+            // Title Cards & Clean Plates (4:3 first, then widescreen)
             { src: 'design-assets/title-cards/tc-needmoretime-plate.jpg', title: 'Need More Time (Clean Plate) — Donat Jackson' },
-            { src: 'design-assets/title-cards/tc-360-design.jpg', title: '360 — Insyt' },
-            { src: 'design-assets/title-cards/tc-360-plate.jpg', title: '360 (Clean Plate) — Insyt' },
+            { src: 'design-assets/title-cards/tc-needmoretime-design.jpg', title: 'Need More Time — Donat Jackson' },
+            { src: 'design-assets/title-cards/tc-maze-plate.jpg', title: 'Maze (Clean Plate) — Kai Banks' },
             { src: 'design-assets/title-cards/tc-maze-scene.jpg', title: 'Maze — Kai Banks' },
-            { src: 'design-assets/title-cards/tc-maze-type.jpg', title: 'Maze (Type Only) — Kai Banks' },
-            { src: 'design-assets/title-cards/tc-heal-design.jpg', title: 'HEAL — Insyt' },
+            { src: 'design-assets/title-cards/tc-360-plate.jpg', title: '360 (Clean Plate) — Insyt' },
+            { src: 'design-assets/title-cards/tc-360-design.jpg', title: '360 — Insyt' },
             { src: 'design-assets/title-cards/tc-heal-plate.jpg', title: 'HEAL (Clean Plate) — Insyt' },
-            { src: 'design-assets/title-cards/tc-puppet-strings-scene.jpg', title: 'Puppet Strings — Insyt' },
-            { src: 'design-assets/title-cards/tc-puppet-strings.jpg', title: 'Puppet Strings (Calligraphy) — Insyt' }
+            { src: 'design-assets/title-cards/tc-heal-design.jpg', title: 'HEAL — Insyt' },
+            { src: 'design-assets/title-cards/tc-puppet-strings.jpg', title: 'Puppet Strings (Clean Plate) — Insyt' },
+            { src: 'design-assets/title-cards/tc-puppet-strings-scene.jpg', title: 'Puppet Strings — Insyt' }
         ];
 
         let currentIndex = 0;
@@ -1576,10 +1582,8 @@
             }
             const currentSrc = img.getAttribute('src') || img.src;
             let displayTitle = title;
-            if (currentSrc.includes('-plate')) {
+            if (currentSrc.includes('-plate') || currentSrc.includes('puppet-strings.jpg') || currentSrc.includes('maze-type')) {
                 displayTitle = title.replace(' — ', ' (Clean Plate) — ');
-            } else if (currentSrc.includes('-isolated') || currentSrc.includes('-type')) {
-                displayTitle = title.replace(' — ', ' (Type Only) — ');
             }
             openLightboxImage(currentSrc, displayTitle, true);
         }
