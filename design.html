@@ -991,127 +991,13 @@
             <!-- CATEGORY FILTER BUTTONS -->
             <div class="filter-bar">
                 <button class="filter-btn active" onclick="filterGallery('all', this)">All Work</button>
-                <button class="filter-btn" onclick="filterGallery('posters', this)">Posters</button>
-                <button class="filter-btn" onclick="filterGallery('album-art', this)">Album Artwork</button>
                 <button class="filter-btn" onclick="filterGallery('title-cards', this)">Title Cards & Motion</button>
+                <button class="filter-btn" onclick="filterGallery('album-art', this)">Album Artwork</button>
+                <button class="filter-btn" onclick="filterGallery('posters', this)">Posters</button>
             </div>
         </div>
 
-        <!-- SECTION 1: POSTERS & KEY ART -->
-        <section class="section-block" id="sec-posters" data-category="posters">
-            <div class="section-header">
-                <div>
-                    <h2 class="section-title">Posters & Key Art</h2>
-                    <p class="section-subtitle">Movie Posters · Concert & Event Bills · Tour Art</p>
-                </div>
-                <span style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">4 Prints</span>
-            </div>
-
-            <div class="posters-grid">
-                <!-- 1. Last Night -->
-                <div class="poster-card">
-                    <div class="poster-img-wrap" onclick="openLightboxImage('design-assets/posters/poster-last-night.jpg', 'Last Night — Directed by Jackson McMurdo')">
-                        <img src="design-assets/posters/poster-last-night.jpg" onerror="handleImgError(this)" alt="Last Night Movie Poster">
-                        <div class="poster-overlay">
-                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Last Night</div>
-                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Poster</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2. Bystander -->
-                <div class="poster-card">
-                    <div class="poster-img-wrap" onclick="openLightboxImage('design-assets/posters/poster-bystander.jpg', 'Bystander — Directed by Declan McKenna')">
-                        <img src="design-assets/posters/poster-bystander.jpg" onerror="handleImgError(this)" alt="Bystander Movie Poster">
-                        <div class="poster-overlay">
-                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Bystander</div>
-                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Poster</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3. Rite of Passage (Insyt) -->
-                <div class="poster-card">
-                    <div class="poster-img-wrap" onclick="openLightboxImage('design-assets/posters/poster-insyt-release.jpg', 'Rite of Passage — Insyt Release Show')">
-                        <img src="design-assets/posters/poster-insyt-release.jpg" onerror="handleImgError(this)" alt="Rite of Passage Insyt Release Show Poster">
-                        <div class="poster-overlay">
-                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Rite of Passage (Insyt)</div>
-                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Poster</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. Nick Bordman - Gussapolooza -->
-                <div class="poster-card">
-                    <div class="poster-img-wrap" onclick="openLightboxImage('design-assets/posters/poster-gussapolooza.jpg', 'Nick Bordman — Gussapolooza Music Festival')">
-                        <img src="design-assets/posters/poster-gussapolooza.jpg" onerror="handleImgError(this)" alt="Nick Bordman Gussapolooza Poster">
-                        <div class="poster-overlay">
-                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Nick Bordman — Gussapolooza</div>
-                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Poster</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 2: ALBUM ARTWORK -->
-        <section class="section-block" id="sec-album-art" data-category="album-art">
-            <div class="section-header">
-                <div>
-                    <h2 class="section-title">Album Artwork & Single Covers</h2>
-                    <p class="section-subtitle">Cover Design · Typography · Visual Identity</p>
-                </div>
-                <span style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">4 Releases</span>
-            </div>
-
-            <div class="album-grid">
-                <!-- 1. Insyt - 360 -->
-                <div class="album-card">
-                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/art-360.jpg', 'Insyt. — 360°')">
-                        <img src="design-assets/album-art/art-360.jpg" onerror="handleImgError(this)" alt="Insyt. - 360 Album Art">
-                        <div class="album-overlay">
-                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Insyt. — "360°"</div>
-                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Artwork</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2. Donat Jackson - needmoretime! -->
-                <div class="album-card">
-                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/art-needmoretime.jpg', 'Donat Jackson — needmoretime!')">
-                        <img src="design-assets/album-art/art-needmoretime.jpg" onerror="handleImgError(this)" alt="Donat Jackson - needmoretime! Cover Art">
-                        <div class="album-overlay">
-                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Donat Jackson — "needmoretime!"</div>
-                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Artwork</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3. Insyt - TOLL -->
-                <div class="album-card">
-                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/art-toll.jpg', 'Insyt. — TOLL')">
-                        <img src="design-assets/album-art/art-toll.jpg" onerror="handleImgError(this)" alt="Insyt. - TOLL Single Cover">
-                        <div class="album-overlay">
-                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Insyt. — "TOLL"</div>
-                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Artwork</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 4. Swear to God -->
-                <div class="album-card">
-                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/art-sweartogod.jpg', 'swear to God!')">
-                        <img src="design-assets/album-art/art-sweartogod.jpg" onerror="handleImgError(this)" alt="Swear to God! Cover">
-                        <div class="album-overlay">
-                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">"swear to God!"</div>
-                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Artwork</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 3: TITLE CARDS & MOTION DESIGN -->
+        <!-- SECTION 1: TITLE CARDS & CREDIT SEQUENCES -->
         <section class="section-block" id="sec-title-cards" data-category="title-cards">
             <div class="section-header">
                 <div>
@@ -1226,6 +1112,120 @@
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- SECTION 2: ALBUM ARTWORK -->
+        <section class="section-block" id="sec-album-art" data-category="album-art">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Album Artwork & Single Covers</h2>
+                    <p class="section-subtitle">Cover Design · Typography · Visual Identity</p>
+                </div>
+                <span style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">4 Releases</span>
+            </div>
+
+            <div class="album-grid">
+                <!-- 1. Insyt - 360 -->
+                <div class="album-card">
+                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/art-360.jpg', 'Insyt. — 360°')">
+                        <img src="design-assets/album-art/art-360.jpg" onerror="handleImgError(this)" alt="Insyt. - 360 Album Art">
+                        <div class="album-overlay">
+                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Insyt. — "360°"</div>
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Artwork</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Donat Jackson - needmoretime! -->
+                <div class="album-card">
+                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/art-needmoretime.jpg', 'Donat Jackson — needmoretime!')">
+                        <img src="design-assets/album-art/art-needmoretime.jpg" onerror="handleImgError(this)" alt="Donat Jackson - needmoretime! Cover Art">
+                        <div class="album-overlay">
+                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Donat Jackson — "needmoretime!"</div>
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Artwork</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Insyt - TOLL -->
+                <div class="album-card">
+                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/art-toll.jpg', 'Insyt. — TOLL')">
+                        <img src="design-assets/album-art/art-toll.jpg" onerror="handleImgError(this)" alt="Insyt. - TOLL Single Cover">
+                        <div class="album-overlay">
+                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Insyt. — "TOLL"</div>
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Artwork</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Swear to God -->
+                <div class="album-card">
+                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/art-sweartogod.jpg', 'swear to God!')">
+                        <img src="design-assets/album-art/art-sweartogod.jpg" onerror="handleImgError(this)" alt="Swear to God! Cover">
+                        <div class="album-overlay">
+                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">"swear to God!"</div>
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Artwork</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: POSTERS & KEY ART -->
+        <section class="section-block" id="sec-posters" data-category="posters">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Posters & Key Art</h2>
+                    <p class="section-subtitle">Movie Posters · Concert & Event Bills · Tour Art</p>
+                </div>
+                <span style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">4 Prints</span>
+            </div>
+
+            <div class="posters-grid">
+                <!-- 1. Last Night -->
+                <div class="poster-card">
+                    <div class="poster-img-wrap" onclick="openLightboxImage('design-assets/posters/poster-last-night.jpg', 'Last Night — Directed by Jackson McMurdo')">
+                        <img src="design-assets/posters/poster-last-night.jpg" onerror="handleImgError(this)" alt="Last Night Movie Poster">
+                        <div class="poster-overlay">
+                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Last Night</div>
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Poster</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Bystander -->
+                <div class="poster-card">
+                    <div class="poster-img-wrap" onclick="openLightboxImage('design-assets/posters/poster-bystander.jpg', 'Bystander — Directed by Declan McKenna')">
+                        <img src="design-assets/posters/poster-bystander.jpg" onerror="handleImgError(this)" alt="Bystander Movie Poster">
+                        <div class="poster-overlay">
+                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Bystander</div>
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Poster</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Rite of Passage (Insyt) -->
+                <div class="poster-card">
+                    <div class="poster-img-wrap" onclick="openLightboxImage('design-assets/posters/poster-insyt-release.jpg', 'Rite of Passage — Insyt Release Show')">
+                        <img src="design-assets/posters/poster-insyt-release.jpg" onerror="handleImgError(this)" alt="Rite of Passage Insyt Release Show Poster">
+                        <div class="poster-overlay">
+                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Rite of Passage (Insyt)</div>
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Poster</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Nick Bordman - Gussapolooza -->
+                <div class="poster-card">
+                    <div class="poster-img-wrap" onclick="openLightboxImage('design-assets/posters/poster-gussapolooza.jpg', 'Nick Bordman — Gussapolooza Music Festival')">
+                        <img src="design-assets/posters/poster-gussapolooza.jpg" onerror="handleImgError(this)" alt="Nick Bordman Gussapolooza Poster">
+                        <div class="poster-overlay">
+                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Nick Bordman — Gussapolooza</div>
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Poster</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1465,16 +1465,6 @@
         let isZoomed = false;
 
         const lightboxItems = [
-            // Posters
-            { src: 'design-assets/posters/poster-last-night.jpg', title: 'Last Night — Directed by Jackson McMurdo' },
-            { src: 'design-assets/posters/poster-bystander.jpg', title: 'Bystander — Directed by Declan McKenna' },
-            { src: 'design-assets/posters/poster-insyt-release.jpg', title: 'Rite of Passage — Insyt Release Show' },
-            { src: 'design-assets/posters/poster-gussapolooza.jpg', title: 'Nick Bordman — Gussapolooza Music Festival' },
-            // Album Artwork
-            { src: 'design-assets/album-art/art-360.jpg', title: 'Insyt. — "360°"' },
-            { src: 'design-assets/album-art/art-needmoretime.jpg', title: 'Donat Jackson — "needmoretime!"' },
-            { src: 'design-assets/album-art/art-toll.jpg', title: 'Insyt. — "TOLL"' },
-            { src: 'design-assets/album-art/art-sweartogod.jpg', title: '"swear to God!"' },
             // Title Cards & Clean Plates (4:3 first, then widescreen)
             { src: 'design-assets/title-cards/tc-needmoretime-plate.jpg', title: 'Need More Time (Clean Plate) — Donat Jackson' },
             { src: 'design-assets/title-cards/tc-needmoretime-design.jpg', title: 'Need More Time — Donat Jackson' },
@@ -1485,7 +1475,17 @@
             { src: 'design-assets/title-cards/tc-heal-plate.jpg', title: 'HEAL (Clean Plate) — Insyt' },
             { src: 'design-assets/title-cards/tc-heal-design.jpg', title: 'HEAL — Insyt' },
             { src: 'design-assets/title-cards/tc-puppet-strings.jpg', title: 'Puppet Strings (Clean Plate) — Insyt' },
-            { src: 'design-assets/title-cards/tc-puppet-strings-scene.jpg', title: 'Puppet Strings — Insyt' }
+            { src: 'design-assets/title-cards/tc-puppet-strings-scene.jpg', title: 'Puppet Strings — Insyt' },
+            // Album Artwork
+            { src: 'design-assets/album-art/art-360.jpg', title: 'Insyt. — "360°"' },
+            { src: 'design-assets/album-art/art-needmoretime.jpg', title: 'Donat Jackson — "needmoretime!"' },
+            { src: 'design-assets/album-art/art-toll.jpg', title: 'Insyt. — "TOLL"' },
+            { src: 'design-assets/album-art/art-sweartogod.jpg', title: '"swear to God!"' },
+            // Posters
+            { src: 'design-assets/posters/poster-last-night.jpg', title: 'Last Night — Directed by Jackson McMurdo' },
+            { src: 'design-assets/posters/poster-bystander.jpg', title: 'Bystander — Directed by Declan McKenna' },
+            { src: 'design-assets/posters/poster-insyt-release.jpg', title: 'Rite of Passage — Insyt Release Show' },
+            { src: 'design-assets/posters/poster-gussapolooza.jpg', title: 'Nick Bordman — Gussapolooza Music Festival' }
         ];
 
         let currentIndex = 0;
