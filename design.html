@@ -248,6 +248,64 @@
         .album-card:hover .album-img-wrap img {
             transform: scale(1.04);
         }
+
+        /* POSTERS GRID */
+        .posters-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.8rem;
+        }
+        @media (min-width: 600px) { .posters-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 900px) { .posters-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (min-width: 1200px) { .posters-grid { grid-template-columns: repeat(4, 1fr); } }
+
+        .poster-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+        .poster-card:hover {
+            border-color: #444;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+        }
+        .poster-img-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            overflow: hidden;
+            background: #000;
+            cursor: pointer;
+        }
+        .poster-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .poster-card:hover .poster-img-wrap img {
+            transform: scale(1.03);
+        }
+        .poster-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: 0.25s ease;
+            text-align: center;
+            padding: 1rem;
+        }
+        .poster-card:hover .poster-overlay {
+            opacity: 1;
+        }
         .album-overlay {
             position: absolute;
             inset: 0;
@@ -447,31 +505,31 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            max-width: 92vw;
-            max-height: 92vh;
+            justify-content: center;
+            max-width: 94vw;
+            max-height: 94vh;
         }
         .lightbox-img {
-            max-width: 88vw;
-            max-height: 80vh;
+            max-width: 90vw;
+            max-height: 82vh;
+            width: auto;
+            height: auto;
             object-fit: contain;
-            box-shadow: 0 0 40px rgba(0,0,0,0.9);
-            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 50px rgba(0,0,0,0.95);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 2px;
         }
         .lightbox-caption {
-            margin-top: 1rem;
+            margin-top: 1.1rem;
             text-align: center;
             color: #eee;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
         }
         .lightbox-caption span {
-            display: block;
-            font-size: 0.75rem;
-            color: #888;
-            font-weight: 400;
-            margin-top: 0.2rem;
+            display: none;
         }
         .lightbox-close, .lightbox-prev, .lightbox-next {
             position: absolute;
@@ -840,12 +898,103 @@
             <!-- CATEGORY FILTER BUTTONS -->
             <div class="filter-bar">
                 <button class="filter-btn active" onclick="filterGallery('all', this)">All Work</button>
+                <button class="filter-btn" onclick="filterGallery('posters', this)">Posters</button>
                 <button class="filter-btn" onclick="filterGallery('album-art', this)">Album Artwork</button>
                 <button class="filter-btn" onclick="filterGallery('title-cards', this)">Title Cards & Motion</button>
             </div>
         </div>
 
-        <!-- SECTION 1: ALBUM ARTWORK -->
+        <!-- SECTION 1: POSTERS & KEY ART -->
+        <section class="section-block" id="sec-posters" data-category="posters">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Posters & Key Art</h2>
+                    <p class="section-subtitle">Movie Posters · Concert & Event Bills · Tour Art</p>
+                </div>
+                <span style="color: #666; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">7 Prints</span>
+            </div>
+
+            <div class="posters-grid">
+                <!-- 1. Last Night -->
+                <div class="poster-card">
+                    <div class="poster-img-wrap" onclick="openLightboxImage('design-assets/posters/poster-last-night.jpg', 'Last Night — Directed by Jackson McMurdo')">
+                        <img src="design-assets/posters/poster-last-night.jpg" onerror="handleImgError(this)" alt="Last Night Movie Poster">
+                        <div class="poster-overlay">
+                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Last Night</div>
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Poster</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Bystander -->
+                <div class="poster-card">
+                    <div class="poster-img-wrap" onclick="openLightboxImage('design-assets/posters/poster-bystander.jpg', 'Bystander — Directed by Declan McKenna')">
+                        <img src="design-assets/posters/poster-bystander.jpg" onerror="handleImgError(this)" alt="Bystander Movie Poster">
+                        <div class="poster-overlay">
+                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Bystander</div>
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Poster</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Buddies -->
+                <div class="poster-card">
+                    <div class="poster-img-wrap" onclick="openLightboxImage('design-assets/posters/poster-buddies.jpg', 'Buddies — Official Film Poster')">
+                        <img src="design-assets/posters/poster-buddies.jpg" onerror="handleImgError(this)" alt="Buddies Film Poster">
+                        <div class="poster-overlay">
+                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Buddies</div>
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Poster</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Rite of Passage (Insyt) -->
+                <div class="poster-card">
+                    <div class="poster-img-wrap" onclick="openLightboxImage('design-assets/posters/poster-insyt-release.jpg', 'Rite of Passage — Insyt Release Show')">
+                        <img src="design-assets/posters/poster-insyt-release.jpg" onerror="handleImgError(this)" alt="Rite of Passage Insyt Release Show Poster">
+                        <div class="poster-overlay">
+                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Rite of Passage (Insyt)</div>
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Poster</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Nick Bordman - Gussapolooza -->
+                <div class="poster-card">
+                    <div class="poster-img-wrap" onclick="openLightboxImage('design-assets/posters/poster-gussapolooza.jpg', 'Nick Bordman — Gussapolooza Music Festival')">
+                        <img src="design-assets/posters/poster-gussapolooza.jpg" onerror="handleImgError(this)" alt="Nick Bordman Gussapolooza Poster">
+                        <div class="poster-overlay">
+                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Nick Bordman — Gussapolooza</div>
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Poster</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Runaway Tour -->
+                <div class="poster-card">
+                    <div class="poster-img-wrap" onclick="openLightboxImage('design-assets/posters/poster-runaway-tour.jpg', 'Runaway Tour — Concert Poster')">
+                        <img src="design-assets/posters/poster-runaway-tour.jpg" onerror="handleImgError(this)" alt="Runaway Tour Poster">
+                        <div class="poster-overlay">
+                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Runaway Tour</div>
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Poster</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Here Right Now Tour -->
+                <div class="poster-card">
+                    <div class="poster-img-wrap" onclick="openLightboxImage('design-assets/posters/poster-here-right-now.jpg', 'Here Right Now Tour — Concert Poster')">
+                        <img src="design-assets/posters/poster-here-right-now.jpg" onerror="handleImgError(this)" alt="Here Right Now Tour Poster">
+                        <div class="poster-overlay">
+                            <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Here Right Now Tour</div>
+                            <div class="inspect-badge"><i class="fa-solid fa-expand"></i> View Poster</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: ALBUM ARTWORK -->
         <section class="section-block" id="sec-album-art" data-category="album-art">
             <div class="section-header">
                 <div>
@@ -858,7 +1007,7 @@
             <div class="album-grid">
                 <!-- 1. Insyt - 360 -->
                 <div class="album-card">
-                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/art-360.jpg', 'Insyt. — 360°', 'Single Artwork · Hand-Drawn Circular Typography')">
+                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/art-360.jpg', 'Insyt. — 360°')">
                         <img src="design-assets/album-art/art-360.jpg" onerror="handleImgError(this)" alt="Insyt. - 360 Album Art">
                         <div class="album-overlay">
                             <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Insyt. — "360°"</div>
@@ -869,7 +1018,7 @@
 
                 <!-- 2. Donat Jackson - needmoretime! -->
                 <div class="album-card">
-                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/art-needmoretime.jpg', 'Donat Jackson — needmoretime!', 'Single Artwork · Distressed Typography & Clock Composite')">
+                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/art-needmoretime.jpg', 'Donat Jackson — needmoretime!')">
                         <img src="design-assets/album-art/art-needmoretime.jpg" onerror="handleImgError(this)" alt="Donat Jackson - needmoretime! Cover Art">
                         <div class="album-overlay">
                             <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Donat Jackson — "needmoretime!"</div>
@@ -880,7 +1029,7 @@
 
                 <!-- 3. Insyt - TOLL -->
                 <div class="album-card">
-                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/art-toll.jpg', 'Insyt. — TOLL', 'Single Artwork · Cyan Grid & Halftone Vector')">
+                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/art-toll.jpg', 'Insyt. — TOLL')">
                         <img src="design-assets/album-art/art-toll.jpg" onerror="handleImgError(this)" alt="Insyt. - TOLL Single Cover">
                         <div class="album-overlay">
                             <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">Insyt. — "TOLL"</div>
@@ -891,7 +1040,7 @@
 
                 <!-- 4. Swear to God -->
                 <div class="album-card">
-                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/art-sweartogod.jpg', 'Swear to God!', 'Single Artwork · Toronto CN Tower Stencil Lettering')">
+                    <div class="album-img-wrap" onclick="openLightboxImage('design-assets/album-art/art-sweartogod.jpg', 'swear to God!')">
                         <img src="design-assets/album-art/art-sweartogod.jpg" onerror="handleImgError(this)" alt="Swear to God! Cover">
                         <div class="album-overlay">
                             <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem; color: #fff;">"swear to God!"</div>
@@ -902,7 +1051,7 @@
             </div>
         </section>
 
-        <!-- SECTION 2: TITLE CARDS & MOTION DESIGN -->
+        <!-- SECTION 3: TITLE CARDS & MOTION DESIGN -->
         <section class="section-block" id="sec-title-cards" data-category="title-cards">
             <div class="section-header">
                 <div>
@@ -923,7 +1072,7 @@
                              alt="Need More Time — Donat Jackson"
                              data-designed="design-assets/title-cards/tc-needmoretime-design.jpg"
                              data-plate="design-assets/title-cards/tc-needmoretime-plate.jpg"
-                             onclick="openLightboxFromElement(this, 'Need More Time — Donat Jackson', 'Credit Wire Layout Design')">
+                             onclick="openLightboxFromElement(this, 'Need More Time — Donat Jackson')">
                         <div class="titlecard-badge">Need More Time — Donat Jackson</div>
                         <div class="compare-toggle-bar">
                             <button class="compare-btn active" onclick="switchCompare('needmoretime', 'designed', this)">Design</button>
@@ -941,7 +1090,7 @@
                              alt="360 — Insyt"
                              data-designed="design-assets/title-cards/tc-360-design.jpg"
                              data-plate="design-assets/title-cards/tc-360-plate.jpg"
-                             onclick="openLightboxFromElement(this, '360 — Insyt', 'Circular Typographic Title Card')">
+                             onclick="openLightboxFromElement(this, '360 — Insyt')">
                         <div class="titlecard-badge">360 — Insyt</div>
                         <div class="compare-toggle-bar">
                             <button class="compare-btn active" onclick="switchCompare('360', 'designed', this)">Design</button>
@@ -959,7 +1108,7 @@
                              alt="Maze — Kai Banks"
                              data-designed="design-assets/title-cards/tc-maze-scene.jpg"
                              data-isolated="design-assets/title-cards/tc-maze-type.jpg"
-                             onclick="openLightboxFromElement(this, 'Maze — Kai Banks', 'Custom Red Script Lettering')">
+                             onclick="openLightboxFromElement(this, 'Maze — Kai Banks')">
                         <div class="titlecard-badge">Maze — Kai Banks</div>
                         <div class="compare-toggle-bar">
                             <button class="compare-btn active" onclick="switchCompare('maze', 'designed', this)">Scene</button>
@@ -982,7 +1131,7 @@
                              style="display:none;"
                              data-designed="design-assets/title-cards/tc-heal-design.jpg"
                              data-plate="design-assets/title-cards/tc-heal-plate.jpg"
-                             onclick="openLightboxFromElement(this, 'HEAL — Insyt', 'Motion Graphics & Title Layout')">
+                             onclick="openLightboxFromElement(this, 'HEAL — Insyt')">
                         <div class="titlecard-badge">HEAL — Insyt</div>
                         <div class="compare-toggle-bar">
                             <button class="compare-btn active" onclick="toggleHealMode('video', this)">Motion Loop</button>
@@ -1001,7 +1150,7 @@
                              alt="Puppet Strings — Insyt"
                              data-designed="design-assets/title-cards/tc-puppet-strings-scene.jpg"
                              data-isolated="design-assets/title-cards/tc-puppet-strings.jpg"
-                             onclick="openLightboxFromElement(this, 'Puppet Strings — Insyt', 'Hand-Drawn Gold Script Calligraphy')">
+                             onclick="openLightboxFromElement(this, 'Puppet Strings — Insyt')">
                         <div class="titlecard-badge">Puppet Strings — Insyt</div>
                         <div class="compare-toggle-bar">
                             <button class="compare-btn active" onclick="switchCompare('puppet', 'designed', this)">Scene</button>
@@ -1136,6 +1285,8 @@
                 const filename = img.src.split('/').pop();
                 if (filename.startsWith('tc-') || filename.startsWith('Still')) {
                     img.src = 'design-assets/title-cards/' + filename;
+                } else if (filename.startsWith('poster-')) {
+                    img.src = 'design-assets/posters/' + filename;
                 } else if (filename.startsWith('art-') || filename.includes('albumart') || filename.includes('coverart') || filename.includes('sweartogod') || filename.includes('SINGLECOVER')) {
                     img.src = 'design-assets/album-art/' + filename;
                 } else {
@@ -1170,18 +1321,26 @@
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
 
+            const secPosters = document.getElementById('sec-posters');
             const secAlbum = document.getElementById('sec-album-art');
             const secTitles = document.getElementById('sec-title-cards');
 
             if (category === 'all') {
-                secAlbum.style.display = 'block';
-                secTitles.style.display = 'block';
+                if (secPosters) secPosters.style.display = 'block';
+                if (secAlbum) secAlbum.style.display = 'block';
+                if (secTitles) secTitles.style.display = 'block';
+            } else if (category === 'posters') {
+                if (secPosters) secPosters.style.display = 'block';
+                if (secAlbum) secAlbum.style.display = 'none';
+                if (secTitles) secTitles.style.display = 'none';
             } else if (category === 'album-art') {
-                secAlbum.style.display = 'block';
-                secTitles.style.display = 'none';
+                if (secPosters) secPosters.style.display = 'none';
+                if (secAlbum) secAlbum.style.display = 'block';
+                if (secTitles) secTitles.style.display = 'none';
             } else if (category === 'title-cards') {
-                secAlbum.style.display = 'none';
-                secTitles.style.display = 'block';
+                if (secPosters) secPosters.style.display = 'none';
+                if (secAlbum) secAlbum.style.display = 'none';
+                if (secTitles) secTitles.style.display = 'block';
             }
         }
 
@@ -1231,28 +1390,39 @@
         const lightboxCaption = document.getElementById('lightbox-caption');
 
         const lightboxItems = [
-            { src: 'design-assets/album-art/art-360.jpg', title: '360 — Insyt', sub: 'Single Artwork · Hand-Drawn Circular Typography' },
-            { src: 'design-assets/album-art/art-needmoretime.jpg', title: 'Need More Time — Donat Jackson', sub: 'Single Artwork · Distressed Typography & Clock Composite' },
-            { src: 'design-assets/album-art/art-toll.jpg', title: 'TOLL — Insyt', sub: 'Single Artwork · Cyan Grid & Halftone Vector' },
-            { src: 'design-assets/album-art/art-sweartogod.jpg', title: 'swear to God!', sub: 'Single Artwork · Toronto CN Tower Stencil Lettering' },
-            { src: 'design-assets/title-cards/tc-needmoretime-design.jpg', title: 'Need More Time — Donat Jackson', sub: 'Credit Wire Layout Design' },
-            { src: 'design-assets/title-cards/tc-360-design.jpg', title: '360 — Insyt', sub: 'Circular Typographic Title Card' },
-            { src: 'design-assets/title-cards/tc-maze-scene.jpg', title: 'Maze — Kai Banks', sub: 'Subway Title Card Composite' },
-            { src: 'design-assets/title-cards/tc-maze-type.jpg', title: 'Maze — Kai Banks', sub: 'Embossed Red Script Lettering' },
-            { src: 'design-assets/title-cards/tc-heal-design.jpg', title: 'HEAL — Insyt', sub: 'Neon Pink Title Card Layout & Motion' },
-            { src: 'design-assets/title-cards/tc-puppet-strings-scene.jpg', title: 'Puppet Strings — Insyt', sub: 'Hand-Drawn Gold Calligraphy with Background' },
-            { src: 'design-assets/title-cards/tc-puppet-strings.jpg', title: 'Puppet Strings — Insyt', sub: 'Gold Script Calligraphy on Black' }
+            // Posters
+            { src: 'design-assets/posters/poster-last-night.jpg', title: 'Last Night — Directed by Jackson McMurdo' },
+            { src: 'design-assets/posters/poster-bystander.jpg', title: 'Bystander — Directed by Declan McKenna' },
+            { src: 'design-assets/posters/poster-buddies.jpg', title: 'Buddies — Official Film Poster' },
+            { src: 'design-assets/posters/poster-insyt-release.jpg', title: 'Rite of Passage — Insyt Release Show' },
+            { src: 'design-assets/posters/poster-gussapolooza.jpg', title: 'Nick Bordman — Gussapolooza Music Festival' },
+            { src: 'design-assets/posters/poster-runaway-tour.jpg', title: 'Runaway Tour — Concert Poster' },
+            { src: 'design-assets/posters/poster-here-right-now.jpg', title: 'Here Right Now Tour — Concert Poster' },
+            // Album Artwork
+            { src: 'design-assets/album-art/art-360.jpg', title: 'Insyt. — "360°"' },
+            { src: 'design-assets/album-art/art-needmoretime.jpg', title: 'Donat Jackson — "needmoretime!"' },
+            { src: 'design-assets/album-art/art-toll.jpg', title: 'Insyt. — "TOLL"' },
+            { src: 'design-assets/album-art/art-sweartogod.jpg', title: '"swear to God!"' },
+            // Title Cards & Motion
+            { src: 'design-assets/title-cards/tc-needmoretime-design.jpg', title: 'Need More Time — Donat Jackson' },
+            { src: 'design-assets/title-cards/tc-360-design.jpg', title: '360 — Insyt' },
+            { src: 'design-assets/title-cards/tc-maze-scene.jpg', title: 'Maze — Kai Banks' },
+            { src: 'design-assets/title-cards/tc-maze-type.jpg', title: 'Maze (Type Only) — Kai Banks' },
+            { src: 'design-assets/title-cards/tc-heal-design.jpg', title: 'HEAL — Insyt' },
+            { src: 'design-assets/title-cards/tc-puppet-strings-scene.jpg', title: 'Puppet Strings — Insyt' },
+            { src: 'design-assets/title-cards/tc-puppet-strings.jpg', title: 'Puppet Strings (Calligraphy) — Insyt' }
         ];
 
         let currentIndex = 0;
 
-        function openLightboxImage(src, title, sub) {
+        function openLightboxImage(src, title) {
             const filename = src.split('/').pop();
             const idx = lightboxItems.findIndex(item => item.src === src || item.src.split('/').pop() === filename);
             if (idx !== -1) {
                 currentIndex = idx;
+                if (title) lightboxItems[currentIndex].title = title;
             } else {
-                lightboxItems.push({ src, title, sub });
+                lightboxItems.push({ src, title: title || filename });
                 currentIndex = lightboxItems.length - 1;
             }
             updateLightbox();
@@ -1260,16 +1430,16 @@
             document.body.style.overflow = 'hidden';
         }
 
-        function openLightboxFromElement(el, title, sub) {
+        function openLightboxFromElement(el, title) {
             const currentSrc = el.getAttribute('src') || el.src;
-            openLightboxImage(currentSrc, title, sub);
+            openLightboxImage(currentSrc, title);
         }
 
         function updateLightbox() {
             const item = lightboxItems[currentIndex];
             if (!item) return;
             lightboxImg.src = item.src;
-            lightboxCaption.innerHTML = `${item.title}<span>${item.sub}</span>`;
+            lightboxCaption.textContent = item.title;
         }
 
         function navLightbox(dir) {
