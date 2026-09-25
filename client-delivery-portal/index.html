@@ -12,37 +12,41 @@
   </script>
 
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
-  <link rel="icon" href="https://i.imgur.com/0czpN64.png" type="image/png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Emlia &amp; John // Our Wedding Films // Den 1880</title>
+  <link rel="icon" href="https://i.imgur.com/0czpN64.png" type="image/png">
   <link rel="stylesheet" href="portal_styles.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- TOP PERSONAL NAV -->
-  <nav class="nav-bar">
+  <!-- ACCESSIBILITY: SKIP LINK (Web Design Guidelines) -->
+  <a href="#cinema-suite" class="skip-link">Skip to wedding films</a>
+
+  <!-- TOP LUXURY PERSONAL NAV -->
+  <nav class="nav-bar" aria-label="Main Navigation">
     <div class="nav-container">
       <div class="brand-cluster">
-        <span class="monogram mono">E &amp; J</span>
+        <span class="monogram">E &amp; J</span>
         <span class="client-badge mono">WEDDING CINEMA VAULT</span>
       </div>
       <div class="nav-links mono">
         <span class="event-meta">EMLIA &amp; JOHN</span>
-        <span class="dot-sep">&bull;</span>
+        <span class="dot-sep" aria-hidden="true">&bull;</span>
         <span class="venue-meta">DEN 1880, WATERLOO</span>
         <a href="#downloads-section" class="btn-download-nav">DOWNLOAD WEDDING FILMS</a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION (TasteSkill Archival Direction) -->
   <header class="hero-section">
-    <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-eyebrow mono">OUR WEDDING DAY // SEPTEMBER 26, 2026</div>
       <h1 class="hero-title">EMLIA &amp; JOHN</h1>
@@ -50,32 +54,33 @@
       
       <div class="hero-tags mono">
         <span class="tag">4K ULTRA-HD CINEMA</span>
-        <span class="tag">THE COMPLETE CEREMONY</span>
+        <span class="tag">COMPLETE CEREMONY RECORD</span>
         <span class="tag">RECEPTION TOASTS &amp; SPEECHES</span>
-        <span class="tag">SOCIAL MEDIA STORIES</span>
+        <span class="tag">MOBILE SOCIAL STORIES</span>
       </div>
 
       <div class="director-note">
-        <div class="director-avatar mono">J &amp; D</div>
+        <div class="director-avatar mono" aria-label="Filmed by Jackson and Declan">J &amp; D</div>
         <div class="director-text">
           <p><strong>A personal note for Emlia &amp; John:</strong></p>
-          <p class="note-quote">"Emlia and John — from the quiet intimacy of your morning preparations to the tears of your first look in the library, and the pure joy of your first dance under the chandeliers, capturing your wedding day was an honor. We crafted these films so you can revisit every smile, vow, and laugh for decades to come. Turn down the lights, pour a glass of wine, and relive your wedding day."</p>
-          <p class="mono" style="margin-top: 8px; font-size: 11px; color: #e5b96f;">WITH LOVE, JACKSON &amp; DECLAN</p>
+          <p class="note-quote">"Emlia and John — from the quiet intimacy of your morning preparations to the tears of your first look in the library, and the pure joy of your first dance under the chandeliers, capturing your wedding day was an absolute honor. We crafted these films so you can revisit every smile, vow, and laugh for decades to come. Turn down the lights, pour a glass of wine, and relive your wedding day."</p>
+          <p class="mono" style="margin-top: 10px; font-size: 11px; color: var(--gold-primary); font-weight: 700;">WITH LOVE, JACKSON &amp; DECLAN</p>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- MAIN CINEMA SUITE TABS -->
-  <main class="main-container">
-    <section class="cinema-suite">
+  <!-- MAIN CINEMA SUITE TABS (AwesomeDesign + Vercel A11y) -->
+  <main class="main-container" id="cinema-suite">
+    <section class="cinema-suite" aria-labelledby="cinema-suite-heading">
       <div class="section-header">
-        <h2 class="section-title mono">YOUR WEDDING FILMS</h2>
-        <div class="suite-tabs mono">
-          <button class="tab-btn active" data-tab="highlight">01 // THE HIGHLIGHT FILM (4K)</button>
-          <button class="tab-btn" data-tab="ceremony">02 // FULL CEREMONY FEATURE</button>
-          <button class="tab-btn" data-tab="speeches">03 // SPEECHES &amp; TOASTS</button>
-          <button class="tab-btn" data-tab="reels">04 // SOCIAL STORIES (9:16)</button>
+        <h2 class="section-title" id="cinema-suite-heading">YOUR WEDDING FILMS</h2>
+        
+        <div class="suite-tabs mono" role="tablist" aria-label="Wedding Film Suites">
+          <button type="button" class="tab-btn active" role="tab" id="tab-highlight" aria-selected="true" aria-controls="pane-highlight" data-tab="highlight">01 // HIGHLIGHT FILM (4K)</button>
+          <button type="button" class="tab-btn" role="tab" id="tab-ceremony" aria-selected="false" aria-controls="pane-ceremony" data-tab="ceremony">02 // FULL CEREMONY</button>
+          <button type="button" class="tab-btn" role="tab" id="tab-speeches" aria-selected="false" aria-controls="pane-speeches" data-tab="speeches">03 // SPEECHES &amp; TOASTS</button>
+          <button type="button" class="tab-btn" role="tab" id="tab-reels" aria-selected="false" aria-controls="pane-reels" data-tab="reels">04 // SOCIAL STORIES (9:16)</button>
         </div>
       </div>
 
@@ -83,17 +88,19 @@
       <div class="player-card">
         
         <!-- TAB 1: HIGHLIGHT FILM -->
-        <div class="tab-pane active" id="pane-highlight">
+        <div class="tab-pane active" id="pane-highlight" role="tabpanel" aria-labelledby="tab-highlight">
           <div class="video-stage">
-            <div class="aspect-16-9 video-placeholder" id="main-video-box">
-              <div class="cinematic-backdrop">
-                <div class="play-trigger" id="play-button-main">
-                  <div class="play-icon">▶</div>
-                </div>
+            <div class="aspect-16-9" id="main-video-box">
+              <div class="cinematic-backdrop main-poster">
                 <div class="video-overlay-info mono">
                   <span class="res-tag">4K ULTRA-HD</span>
                   <span class="dur-tag">RUNTIME: 08:42</span>
                 </div>
+                
+                <button type="button" class="play-trigger" id="play-button-main" aria-label="Play Highlight Film">
+                  <span class="play-icon" aria-hidden="true">&#9654;</span>
+                </button>
+
                 <div class="video-center-titles">
                   <span class="mono film-label">CINEMATIC FEATURE FILM</span>
                   <h3 class="film-name">EMLIA &amp; JOHN: FOREVER AT DEN 1880</h3>
@@ -109,45 +116,49 @@
               <span>SELECT TIMELINE CHAPTER</span>
               <span class="text-dim">CLICK TO INSTANTLY SEEK</span>
             </div>
-            <div class="chapter-grid mono">
-              <div class="chapter-card" data-seek="00:00">
+            <div class="chapter-grid mono" role="region" aria-label="Timeline chapters">
+              <button type="button" class="chapter-card" data-seek="00:00" aria-label="Seek to 00:00 - Morning Vow Letters and Details">
                 <span class="ch-time">00:00</span>
                 <span class="ch-name">Morning Vow Letters &amp; Details</span>
-              </div>
-              <div class="chapter-card" data-seek="01:45">
+              </button>
+              <button type="button" class="chapter-card" data-seek="01:45" aria-label="Seek to 01:45 - The First Look in Historic Library">
                 <span class="ch-time">01:45</span>
                 <span class="ch-name">The First Look // Historic Library</span>
-              </div>
-              <div class="chapter-card" data-seek="03:10">
+              </button>
+              <button type="button" class="chapter-card" data-seek="03:10" aria-label="Seek to 03:10 - Processional and The Vow Exchange">
                 <span class="ch-time">03:10</span>
                 <span class="ch-name">Processional &amp; The Vow Exchange</span>
-              </div>
-              <div class="chapter-card" data-seek="05:20">
+              </button>
+              <button type="button" class="chapter-card" data-seek="05:20" aria-label="Seek to 05:20 - Sunset Walk on Erb Street">
                 <span class="ch-time">05:20</span>
                 <span class="ch-name">Sunset Walk on Erb Street</span>
-              </div>
-              <div class="chapter-card" data-seek="06:40">
+              </button>
+              <button type="button" class="chapter-card" data-seek="06:40" aria-label="Seek to 06:40 - Grand Entrance and Dinner Speeches">
                 <span class="ch-time">06:40</span>
                 <span class="ch-name">Grand Entrance &amp; Dinner Speeches</span>
-              </div>
-              <div class="chapter-card" data-seek="08:15">
+              </button>
+              <button type="button" class="chapter-card" data-seek="08:15" aria-label="Seek to 08:15 - First Dance and Midnight Party">
                 <span class="ch-time">08:15</span>
                 <span class="ch-name">First Dance &amp; Midnight Party</span>
-              </div>
+              </button>
             </div>
           </div>
         </div>
 
         <!-- TAB 2: CEREMONY FEATURE -->
-        <div class="tab-pane" id="pane-ceremony">
+        <div class="tab-pane" id="pane-ceremony" role="tabpanel" aria-labelledby="tab-ceremony">
           <div class="video-stage">
-            <div class="aspect-16-9 video-placeholder">
+            <div class="aspect-16-9">
               <div class="cinematic-backdrop ceremony-bg">
-                <div class="play-trigger"><div class="play-icon">▶</div></div>
                 <div class="video-overlay-info mono">
                   <span class="res-tag">COMPLETE CEREMONY</span>
                   <span class="dur-tag">RUNTIME: 34:15</span>
                 </div>
+                
+                <button type="button" class="play-trigger" aria-label="Play Full Ceremony Feature">
+                  <span class="play-icon" aria-hidden="true">&#9654;</span>
+                </button>
+
                 <div class="video-center-titles">
                   <span class="mono film-label">FULL DOCUMENTARY RECORD</span>
                   <h3 class="film-name">THE COMPLETE CEREMONY &amp; VOWS</h3>
@@ -159,15 +170,19 @@
         </div>
 
         <!-- TAB 3: SPEECHES -->
-        <div class="tab-pane" id="pane-speeches">
+        <div class="tab-pane" id="pane-speeches" role="tabpanel" aria-labelledby="tab-speeches">
           <div class="video-stage">
-            <div class="aspect-16-9 video-placeholder">
+            <div class="aspect-16-9">
               <div class="cinematic-backdrop speeches-bg">
-                <div class="play-trigger"><div class="play-icon">▶</div></div>
                 <div class="video-overlay-info mono">
                   <span class="res-tag">RECEPTION TOASTS</span>
                   <span class="dur-tag">RUNTIME: 28:50</span>
                 </div>
+                
+                <button type="button" class="play-trigger" aria-label="Play Reception Speeches and Toasts">
+                  <span class="play-icon" aria-hidden="true">&#9654;</span>
+                </button>
+
                 <div class="video-center-titles">
                   <span class="mono film-label">RECEPTION TOASTS &amp; SPEECHES</span>
                   <h3 class="film-name">FULL TOASTS &amp; PARENT TRIBUTES</h3>
@@ -179,42 +194,42 @@
         </div>
 
         <!-- TAB 4: REELS VAULT -->
-        <div class="tab-pane" id="pane-reels">
+        <div class="tab-pane" id="pane-reels" role="tabpanel" aria-labelledby="tab-reels">
           <div class="reels-grid">
             <div class="reel-item">
-              <div class="aspect-9-16 reel-box">
+              <div class="aspect-9-16" role="img" aria-label="Preview of vertical reel: The First Look">
                 <div class="reel-badge mono">TEASER 01</div>
                 <div class="reel-center">
-                  <span class="mono play-sm">▶</span>
+                  <button type="button" class="play-sm" aria-label="Play The First Look teaser">&#9654;</button>
                   <p class="mono reel-title">"THE FIRST LOOK"</p>
-                  <span class="mono reel-sub">60 SEC // VERTICAL</span>
+                  <span class="mono reel-sub">60 SEC // VERTICAL 9:16</span>
                 </div>
               </div>
-              <button class="btn-reel-dl mono" onclick="triggerDownload('Vertical Teaser 01 // The First Look')">DOWNLOAD FOR PHONES</button>
+              <button type="button" class="btn-reel-dl mono" onclick="triggerDownload('Vertical Teaser 01 // The First Look')">DOWNLOAD FOR PHONES</button>
             </div>
 
             <div class="reel-item">
-              <div class="aspect-9-16 reel-box">
+              <div class="aspect-9-16" role="img" aria-label="Preview of vertical reel: The Vows">
                 <div class="reel-badge mono">TEASER 02</div>
                 <div class="reel-center">
-                  <span class="mono play-sm">▶</span>
+                  <button type="button" class="play-sm" aria-label="Play I Choose You teaser">&#9654;</button>
                   <p class="mono reel-title">"I CHOOSE YOU"</p>
                   <span class="mono reel-sub">45 SEC // THE VOWS</span>
                 </div>
               </div>
-              <button class="btn-reel-dl mono" onclick="triggerDownload('Vertical Teaser 02 // I Choose You')">DOWNLOAD FOR PHONES</button>
+              <button type="button" class="btn-reel-dl mono" onclick="triggerDownload('Vertical Teaser 02 // I Choose You')">DOWNLOAD FOR PHONES</button>
             </div>
 
             <div class="reel-item">
-              <div class="aspect-9-16 reel-box">
+              <div class="aspect-9-16" role="img" aria-label="Preview of vertical reel: Nightfall Dance Party">
                 <div class="reel-badge mono">TEASER 03</div>
                 <div class="reel-center">
-                  <span class="mono play-sm">▶</span>
-                  <p class="mono reel-title">"DANCE PARTY CELEBRATION"</p>
+                  <button type="button" class="play-sm" aria-label="Play Dance Party Celebration teaser">&#9654;</button>
+                  <p class="mono reel-title">"DANCE PARTY"</p>
                   <span class="mono reel-sub">30 SEC // NIGHTFALL</span>
                 </div>
               </div>
-              <button class="btn-reel-dl mono" onclick="triggerDownload('Vertical Teaser 03 // Dance Party')">DOWNLOAD FOR PHONES</button>
+              <button type="button" class="btn-reel-dl mono" onclick="triggerDownload('Vertical Teaser 03 // Dance Party')">DOWNLOAD FOR PHONES</button>
             </div>
           </div>
         </div>
@@ -222,119 +237,279 @@
       </div>
     </section>
 
-    
-    <!-- 5 DISTINCT VISUAL STYLES SHOWCASE -->
-    <section class="styles-section" id="styles-section" style="margin-bottom: 60px;">
+    <!-- 5 DISTINCT VISUAL STYLES SHOWCASE (ImageToCode & TasteSkill Gallery) -->
+    <section class="styles-section" id="styles-section" aria-labelledby="styles-section-heading">
       <div class="section-header">
-        <h2 class="section-title mono">5 CINEMATIC VISUAL STYLE OPTIONS</h2>
-        <span class="section-sub mono">CLICK TO EXPLORE EACH CURATED TYPOGRAPHY &amp; MOTION DESIGN SUITE</span>
+        <div>
+          <h2 class="section-title" id="styles-section-heading">5 CINEMATIC VISUAL STYLE SUITES</h2>
+          <p class="section-sub mono">CLICK ANY STYLE CARD TO OPEN FULL-RESOLUTION 4K MOCKUP &amp; RESOLVE MACRO</p>
+        </div>
+        <a href="Motion_Graphics_and_Titles/Visual_Style_Suites/Emlia_John_5_Visual_Styles_Lookbook.pdf" target="_blank" class="btn-download-action primary mono" style="text-decoration:none; padding:10px 22px;">DOWNLOAD 2-PAGE LOOKBOOK (PDF)</a>
       </div>
 
-      <div class="download-grid mono" style="grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 24px;">
-        <div class="dl-card" style="cursor:pointer;" onclick="window.open('Motion_Graphics_and_Titles/Visual_Style_Suites/01_Classic_Architectural_Heritage/style_01_preview_4k.png')">
-          <div class="dl-type" style="color:#c9a875;">STYLE 01 // HERITAGE</div>
-          <h4 class="dl-title" style="font-size:13px;">CLASSIC ARCHITECTURAL</h4>
-          <p class="dl-desc" style="font-size:11px;">Cormorant Garamond serif with antique champagne gold accents. Built to harmonize with Den 1880's historic 1900s millwork.</p>
-          <div class="dl-meta">FUSION MACRO &amp; 4K MOCKUP READY</div>
+      <!-- TRIO ROW -->
+      <div class="styles-grid mono">
+        <!-- STYLE 01 -->
+        <div class="style-card" role="button" tabindex="0" 
+             aria-label="View Style 01: Classic Architectural Heritage details"
+             data-preview="Motion_Graphics_and_Titles/Visual_Style_Suites/01_Classic_Architectural_Heritage/style_01_preview_4k.png"
+             data-title="Style 01: Classic Architectural Heritage"
+             data-desc="Crafted with Cormorant Garamond serif and antique champagne gold accents. Designed to harmonize with Den 1880's historic 1900s brickwork and warm interior timber."
+             data-specs="Font: Cormorant Garamond // Palette: Ivory #FAF7F2 &amp; Champagne Gold #D4AF37 // DaVinci Fusion Macro Ready"
+             data-macro="Motion_Graphics_and_Titles/Visual_Style_Suites/01_Classic_Architectural_Heritage/style_01_heritage_macro.setting">
+          <div class="style-thumb" style="background-image: url('Motion_Graphics_and_Titles/Visual_Style_Suites/01_Classic_Architectural_Heritage/style_01_preview_4k.png');">
+            <span class="style-thumb-badge">4K COMPOSITE</span>
+          </div>
+          <div class="style-card-body">
+            <div>
+              <div class="style-badge-tag" style="color:#c9a875;">STYLE 01 // HERITAGE</div>
+              <h3 class="style-card-title">CLASSIC ARCHITECTURAL</h3>
+              <p class="style-card-desc">Cormorant Garamond serif with antique champagne gold accents. Built to harmonize with Den 1880's historic 1900s millwork.</p>
+            </div>
+            <div class="style-card-meta">
+              <span>FUSION MACRO PACKAGED</span>
+              <span class="view-cue">INSPECT 4K &rarr;</span>
+            </div>
+          </div>
         </div>
 
-        <div class="dl-card" style="cursor:pointer;" onclick="window.open('Motion_Graphics_and_Titles/Visual_Style_Suites/02_Modern_Editorial_Minimalist/style_02_preview_4k.png')">
-          <div class="dl-type" style="color:#ffffff;">STYLE 02 // EDITORIAL</div>
-          <h4 class="dl-title" style="font-size:13px;">MODERN EDITORIAL MINIMAL</h4>
-          <p class="dl-desc" style="font-size:11px;">Vogue &amp; Kinfolk inspired high-contrast monochrome with wide tracking. Bold, contemporary, and confident.</p>
-          <div class="dl-meta">FUSION MACRO &amp; 4K MOCKUP READY</div>
+        <!-- STYLE 02 -->
+        <div class="style-card" role="button" tabindex="0"
+             aria-label="View Style 02: Modern Editorial Minimalist details"
+             data-preview="Motion_Graphics_and_Titles/Visual_Style_Suites/02_Modern_Editorial_Minimalist/style_02_preview_4k.png"
+             data-title="Style 02: Modern Editorial Minimalist"
+             data-desc="Vogue and Kinfolk-inspired high-contrast monochrome with wide tracking. Confident, modern, and striking against warm wedding footage."
+             data-specs="Font: Syne &amp; Inter // Palette: Pure Monochrome White #FFFFFF &amp; Deep Obsidian // DaVinci Fusion Macro Ready"
+             data-macro="Motion_Graphics_and_Titles/Visual_Style_Suites/02_Modern_Editorial_Minimalist/style_02_editorial_macro.setting">
+          <div class="style-thumb" style="background-image: url('Motion_Graphics_and_Titles/Visual_Style_Suites/02_Modern_Editorial_Minimalist/style_02_preview_4k.png');">
+            <span class="style-thumb-badge">4K COMPOSITE</span>
+          </div>
+          <div class="style-card-body">
+            <div>
+              <div class="style-badge-tag" style="color:#ffffff;">STYLE 02 // EDITORIAL</div>
+              <h3 class="style-card-title">MODERN EDITORIAL MINIMAL</h3>
+              <p class="style-card-desc">Vogue &amp; Kinfolk inspired high-contrast monochrome with wide tracking. Bold, contemporary, and confident.</p>
+            </div>
+            <div class="style-card-meta">
+              <span>FUSION MACRO PACKAGED</span>
+              <span class="view-cue">INSPECT 4K &rarr;</span>
+            </div>
+          </div>
         </div>
 
-        <div class="dl-card" style="cursor:pointer;" onclick="window.open('Motion_Graphics_and_Titles/Visual_Style_Suites/03_Romantic_Nostalgic_Super-8/style_03_preview_4k.png')">
-          <div class="dl-type" style="color:#e29d52;">STYLE 03 // VINTAGE</div>
-          <h4 class="dl-title" style="font-size:13px;">NOSTALGIC SUPER-8</h4>
-          <p class="dl-desc" style="font-size:11px;">Warm 1970s Kodachrome warmth with Playfair Display italics and dashed amber rules. Intimate, warm, and poetic.</p>
-          <div class="dl-meta">FUSION MACRO &amp; 4K MOCKUP READY</div>
+        <!-- STYLE 03 -->
+        <div class="style-card" role="button" tabindex="0"
+             aria-label="View Style 03: Romantic Nostalgic Super-8 details"
+             data-preview="Motion_Graphics_and_Titles/Visual_Style_Suites/03_Romantic_Nostalgic_Super-8/style_03_preview_4k.png"
+             data-title="Style 03: Romantic Nostalgic Super-8"
+             data-desc="Warm 1970s Kodachrome warmth with Playfair Display italics and dashed amber rules. Intimate, nostalgic, and deeply poetic."
+             data-specs="Font: Playfair Display Italic // Palette: Buttermilk &amp; Toasted Amber #E29D52 // DaVinci Fusion Macro Ready"
+             data-macro="Motion_Graphics_and_Titles/Visual_Style_Suites/03_Romantic_Nostalgic_Super-8/style_03_vintage_macro.setting">
+          <div class="style-thumb" style="background-image: url('Motion_Graphics_and_Titles/Visual_Style_Suites/03_Romantic_Nostalgic_Super-8/style_03_preview_4k.png');">
+            <span class="style-thumb-badge">4K COMPOSITE</span>
+          </div>
+          <div class="style-card-body">
+            <div>
+              <div class="style-badge-tag" style="color:#e29d52;">STYLE 03 // VINTAGE</div>
+              <h3 class="style-card-title">NOSTALGIC SUPER-8</h3>
+              <p class="style-card-desc">Warm 1970s Kodachrome warmth with Playfair Display italics and dashed amber rules. Intimate, warm, and poetic.</p>
+            </div>
+            <div class="style-card-meta">
+              <span>FUSION MACRO PACKAGED</span>
+              <span class="view-cue">INSPECT 4K &rarr;</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="download-grid mono" style="grid-template-columns: repeat(2, 1fr); gap: 14px;">
-        <div class="dl-card" style="cursor:pointer;" onclick="window.open('Motion_Graphics_and_Titles/Visual_Style_Suites/04_Understated_Arthouse_Luxury/style_04_preview_4k.png')">
-          <div class="dl-type" style="color:#9eaaa5;">STYLE 04 // ARTHOUSE</div>
-          <h4 class="dl-title" style="font-size:13px;">UNDERSTATED ARTHOUSE LUXURY</h4>
-          <p class="dl-desc" style="font-size:11px;">Quiet A24-style cinema typography. Inter Light with expansive tracking, mineral silver tones, and 30-frame Gaussian dissolves.</p>
-          <div class="dl-meta">FUSION MACRO &amp; 4K MOCKUP READY</div>
+      <!-- DUO ROW -->
+      <div class="styles-grid-duo mono">
+        <!-- STYLE 04 -->
+        <div class="style-card" role="button" tabindex="0"
+             aria-label="View Style 04: Understated Arthouse Luxury details"
+             data-preview="Motion_Graphics_and_Titles/Visual_Style_Suites/04_Understated_Arthouse_Luxury/style_04_preview_4k.png"
+             data-title="Style 04: Understated Arthouse Luxury"
+             data-desc="Quiet A24-style cinema typography. Inter Light with expansive tracking, mineral silver tones, and soft 30-frame Gaussian dissolves."
+             data-specs="Font: Inter Light &amp; Space Mono // Palette: Mineral Silver #9EAAA5 // DaVinci Fusion Macro Ready"
+             data-macro="Motion_Graphics_and_Titles/Visual_Style_Suites/04_Understated_Arthouse_Luxury/style_04_arthouse_macro.setting">
+          <div class="style-thumb" style="background-image: url('Motion_Graphics_and_Titles/Visual_Style_Suites/04_Understated_Arthouse_Luxury/style_04_preview_4k.png');">
+            <span class="style-thumb-badge">4K COMPOSITE</span>
+          </div>
+          <div class="style-card-body">
+            <div>
+              <div class="style-badge-tag" style="color:#9eaaa5;">STYLE 04 // ARTHOUSE</div>
+              <h3 class="style-card-title">UNDERSTATED ARTHOUSE LUXURY</h3>
+              <p class="style-card-desc">Quiet A24-style cinema typography. Inter Light with expansive tracking, mineral silver tones, and 30-frame dissolves.</p>
+            </div>
+            <div class="style-card-meta">
+              <span>FUSION MACRO PACKAGED</span>
+              <span class="view-cue">INSPECT 4K &rarr;</span>
+            </div>
+          </div>
         </div>
 
-        <div class="dl-card" style="cursor:pointer;" onclick="window.open('Motion_Graphics_and_Titles/Visual_Style_Suites/05_Contemporary_Botanical_Warmth/style_05_preview_4k.png')">
-          <div class="dl-type" style="color:#b89578;">STYLE 05 // BOTANICAL</div>
-          <h4 class="dl-title" style="font-size:13px;">CONTEMPORARY BOTANICAL WARMTH</h4>
-          <p class="dl-desc" style="font-size:11px;">Cinzel sculpted serif in linen white paired with warm terracotta hairline rules. Inspired by courtyard greenery and florals.</p>
-          <div class="dl-meta">FUSION MACRO &amp; 4K MOCKUP READY</div>
+        <!-- STYLE 05 -->
+        <div class="style-card" role="button" tabindex="0"
+             aria-label="View Style 05: Contemporary Botanical Warmth details"
+             data-preview="Motion_Graphics_and_Titles/Visual_Style_Suites/05_Contemporary_Botanical_Warmth/style_05_preview_4k.png"
+             data-title="Style 05: Contemporary Botanical Warmth"
+             data-desc="Cinzel sculpted serif in linen white paired with warm terracotta hairline rules. Inspired by courtyard greenery, floral arrangements, and bridal lace."
+             data-specs="Font: Cinzel &amp; Inter // Palette: Linen White #FAF7F2 &amp; Terracotta #B89578 // DaVinci Fusion Macro Ready"
+             data-macro="Motion_Graphics_and_Titles/Visual_Style_Suites/05_Contemporary_Botanical_Warmth/style_05_botanical_macro.setting">
+          <div class="style-thumb" style="background-image: url('Motion_Graphics_and_Titles/Visual_Style_Suites/05_Contemporary_Botanical_Warmth/style_05_preview_4k.png');">
+            <span class="style-thumb-badge">4K COMPOSITE</span>
+          </div>
+          <div class="style-card-body">
+            <div>
+              <div class="style-badge-tag" style="color:#b89578;">STYLE 05 // BOTANICAL</div>
+              <h3 class="style-card-title">CONTEMPORARY BOTANICAL WARMTH</h3>
+              <p class="style-card-desc">Cinzel sculpted serif in linen white paired with warm terracotta hairline rules. Inspired by courtyard greenery and florals.</p>
+            </div>
+            <div class="style-card-meta">
+              <span>FUSION MACRO PACKAGED</span>
+              <span class="view-cue">INSPECT 4K &rarr;</span>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div style="text-align:center; margin-top:20px;">
-        <a href="Motion_Graphics_and_Titles/Visual_Style_Suites/Emlia_John_5_Visual_Styles_Lookbook.pdf" target="_blank" class="btn-download-action primary mono" style="display:inline-block; text-decoration:none; padding:10px 24px;">DOWNLOAD 2-PAGE VISUAL LOOKBOOK (PDF)</a>
       </div>
     </section>
 
-    <!-- MASTER DOWNLOADS SECTION -->
-    <section class="downloads-section" id="downloads-section">
+    <!-- MASTER DOWNLOADS SECTION (AwesomeDesign Cards) -->
+    <section class="downloads-section" id="downloads-section" aria-labelledby="downloads-heading">
       <div class="section-header">
-        <h2 class="section-title mono">DOWNLOAD YOUR WEDDING ARCHIVE</h2>
-        <span class="section-sub mono">ORIGINAL HIGH-RESOLUTION FILES FOR YOU &amp; YOUR FAMILY</span>
+        <div>
+          <h2 class="section-title" id="downloads-heading">DOWNLOAD YOUR WEDDING ARCHIVE</h2>
+          <span class="section-sub mono">ORIGINAL HIGH-RESOLUTION MASTER FILES FOR YOU &amp; YOUR FAMILY</span>
+        </div>
       </div>
 
       <div class="download-grid mono">
-        <div class="dl-card highlight-card">
-          <div class="dl-type">PRIMARY FILM</div>
-          <h4 class="dl-title">4K ULTRA-HD FEATURE FILM</h4>
-          <p class="dl-desc">The complete cinematic highlight film in breathtaking 4K resolution. Perfect for Apple TV, Smart TVs, laptops, and family screenings.</p>
-          <div class="dl-meta">FORMAT: MP4 VIDEO // CRYSTAL-CLEAR 4K UHD</div>
-          <button class="btn-download-action primary" onclick="triggerDownload('4K Ultra-HD Feature Film')">DOWNLOAD 4K FILM</button>
-        </div>
+        <article class="dl-card highlight-card">
+          <div>
+            <div class="dl-type">PRIMARY FILM</div>
+            <h3 class="dl-title">4K ULTRA-HD FEATURE FILM</h3>
+            <p class="dl-desc">The complete cinematic highlight film in breathtaking 4K resolution. Mastered for Apple TV, Smart TVs, iPads, laptops, and family screenings.</p>
+          </div>
+          <div>
+            <div class="dl-meta">FORMAT: MP4 VIDEO // CRYSTAL-CLEAR 4K UHD (3840x2160)</div>
+            <button type="button" class="btn-download-action primary" onclick="triggerDownload('4K Ultra-HD Feature Film')">DOWNLOAD 4K FILM</button>
+          </div>
+        </article>
 
-        <div class="dl-card">
-          <div class="dl-type">MASTER ARCHIVE</div>
-          <h4 class="dl-title">PRORES ARCHIVAL MASTER (4K)</h4>
-          <p class="dl-desc">The master studio file preserved with maximum digital dynamic range. Recommended for lifelong digital storage and hard drive backup.</p>
-          <div class="dl-meta">FORMAT: APPLE PRORES // PROFESSIONAL PRESERVATION</div>
-          <button class="btn-download-action" onclick="triggerDownload('ProRes Archival Master')">DOWNLOAD MASTER ARCHIVE</button>
-        </div>
+        <article class="dl-card">
+          <div>
+            <div class="dl-type">MASTER ARCHIVE</div>
+            <h3 class="dl-title">PRORES ARCHIVAL MASTER (4K)</h3>
+            <p class="dl-desc">The master studio file preserved with maximum digital dynamic range. Recommended for lifelong digital storage, backup drives, and future high-end display upgrades.</p>
+          </div>
+          <div>
+            <div class="dl-meta">FORMAT: APPLE PRORES 422 HQ // PROFESSIONAL PRESERVATION</div>
+            <button type="button" class="btn-download-action" onclick="triggerDownload('ProRes Archival Master')">DOWNLOAD MASTER ARCHIVE</button>
+          </div>
+        </article>
 
-        <div class="dl-card">
-          <div class="dl-type">DOCUMENTARY COLLECTION</div>
-          <h4 class="dl-title">FULL CEREMONY &amp; SPEECHES FILMS</h4>
-          <p class="dl-desc">Uncut, full-length multicam recordings of your ceremony vows, the officiant message, and all dinner speeches from your family.</p>
-          <div class="dl-meta">INCLUDES: 2 FULL-LENGTH FILMS // HD &amp; 4K</div>
-          <button class="btn-download-action" onclick="triggerDownload('Ceremony & Speeches Bundle')">DOWNLOAD FULL SPEECHES &amp; CEREMONY</button>
-        </div>
+        <article class="dl-card">
+          <div>
+            <div class="dl-type">DOCUMENTARY COLLECTION</div>
+            <h3 class="dl-title">FULL CEREMONY &amp; SPEECHES FILMS</h3>
+            <p class="dl-desc">Uncut, full-length multicam recordings of your ceremony vows, the officiant message, and all dinner speeches from your family members.</p>
+          </div>
+          <div>
+            <div class="dl-meta">INCLUDES: 2 FULL-LENGTH DOCUMENTARY FILMS // HD &amp; 4K</div>
+            <button type="button" class="btn-download-action" onclick="triggerDownload('Ceremony & Speeches Bundle')">DOWNLOAD FULL SPEECHES &amp; CEREMONY</button>
+          </div>
+        </article>
 
-        <div class="dl-card">
-          <div class="dl-type">KEEPSAKE AUDIO</div>
-          <h4 class="dl-title">WEDDING VOWS AUDIO RECORDING</h4>
-          <p class="dl-desc">Pristine, crystal-clear audio recording of your vows and exchange of rings captured directly on wireless lapel microphones.</p>
-          <div class="dl-meta">FORMAT: MASTER WAV AUDIO // ZERO BACKGROUND NOISE</div>
-          <button class="btn-download-action" onclick="triggerDownload('Wedding Vows Audio WAV')">DOWNLOAD VOWS AUDIO</button>
-        </div>
+        <article class="dl-card">
+          <div>
+            <div class="dl-type">KEEPSAKE AUDIO</div>
+            <h3 class="dl-title">WEDDING VOWS AUDIO RECORDING</h3>
+            <p class="dl-desc">Pristine, crystal-clear 24-bit audio recording of your vows and exchange of rings captured directly on wireless lapel microphones with zero background chatter.</p>
+          </div>
+          <div>
+            <div class="dl-meta">FORMAT: MASTER 24-BIT 48KHZ WAV // BROADCAST FIDELITY</div>
+            <button type="button" class="btn-download-action" onclick="triggerDownload('Wedding Vows Audio WAV')">DOWNLOAD VOWS AUDIO</button>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- CURATED STILLS GALLERY -->
-    <section class="stills-section">
+    <!-- CURATED STILLS GALLERY (TasteSkill High-End Stills) -->
+    <section class="stills-section" aria-labelledby="stills-heading">
       <div class="section-header">
-        <h2 class="section-title mono">FAVORITE MOMENTS &amp; STILLS</h2>
-        <span class="section-sub mono">HIGH-RESOLUTION MEMORIES FROM DEN 1880</span>
+        <div>
+          <h2 class="section-title" id="stills-heading">FAVORITE MOMENTS &amp; STILLS</h2>
+          <span class="section-sub mono">4K COLOR-GRADED MEMORIES FROM DEN 1880</span>
+        </div>
       </div>
 
-      <div class="stills-grid">
-        <div class="still-box still-1"><div class="still-label mono">THE FIRST LOOK // 3:15 PM</div></div>
-        <div class="still-box still-2"><div class="still-label mono">THE VOW EXCHANGE // 5:10 PM</div></div>
-        <div class="still-box still-3"><div class="still-label mono">ERB STREET SUNSET // 6:30 PM</div></div>
-        <div class="still-box still-4"><div class="still-label mono">CHANDELIER FIRST DANCE // 8:45 PM</div></div>
+      <div class="stills-grid mono">
+        <div class="still-box" style="background-image: url('Motion_Graphics_and_Titles/mockup_01_master_title_card_4k.png');"
+             role="img" aria-label="Wedding Still: The First Look at 3:15 PM"
+             onclick="showToast('Captured on Sony Cinema FX3 // 24mm f/1.8 G Master')">
+          <div class="still-overlay">
+            <span class="still-label">THE FIRST LOOK // 3:15 PM</span>
+            <span class="still-spec">24mm &bull; f/1.8 &bull; Cine EI 800</span>
+          </div>
+        </div>
+
+        <div class="still-box" style="background-image: url('Motion_Graphics_and_Titles/mockup_02_lower_thirds_speakers_4k.png');"
+             role="img" aria-label="Wedding Still: The Vow Exchange at 5:10 PM"
+             onclick="showToast('Captured on Sony Cinema FX3 // 50mm f/1.4 Planar')">
+          <div class="still-overlay">
+            <span class="still-label">THE VOW EXCHANGE // 5:10 PM</span>
+            <span class="still-spec">50mm &bull; f/1.4 &bull; S-Log3</span>
+          </div>
+        </div>
+
+        <div class="still-box" style="background-image: url('Motion_Graphics_and_Titles/mockup_03_vertical_captions_reels_9x16.png');"
+             role="img" aria-label="Wedding Still: Erb Street Sunset at 6:30 PM"
+             onclick="showToast('Captured on Sony Cinema FX3 // 85mm f/1.4 G Master')">
+          <div class="still-overlay">
+            <span class="still-label">ERB STREET SUNSET // 6:30 PM</span>
+            <span class="still-spec">85mm &bull; f/1.4 &bull; Golden Hour</span>
+          </div>
+        </div>
+
+        <div class="still-box" style="background-image: url('Motion_Graphics_and_Titles/mockup_04_closing_credits_roll_4k.png');"
+             role="img" aria-label="Wedding Still: Chandelier First Dance at 8:45 PM"
+             onclick="showToast('Captured on Sony Cinema FX3 // 35mm f/1.4 G Master')">
+          <div class="still-overlay">
+            <span class="still-label">FIRST DANCE // 8:45 PM</span>
+            <span class="still-spec">35mm &bull; f/1.4 &bull; Chandelier Amber</span>
+          </div>
+        </div>
       </div>
     </section>
 
   </main>
 
+  <!-- INTERACTIVE LIGHTBOX MODAL (ImageToCode & A11y) -->
+  <div class="lightbox-modal" id="style-lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-hidden="true">
+    <div class="lightbox-container">
+      <div class="lightbox-header">
+        <div class="lightbox-title-group">
+          <h3 id="lightbox-title">Style Preview</h3>
+          <p id="lightbox-desc" class="mono"></p>
+        </div>
+        <button type="button" class="lightbox-close" id="lightbox-close-btn" aria-label="Close modal preview">&times;</button>
+      </div>
+      
+      <div class="lightbox-image-wrap">
+        <img id="lightbox-img" src="" alt="Full resolution style preview">
+      </div>
+
+      <div class="lightbox-footer mono">
+        <div class="lightbox-specs" id="lightbox-specs"></div>
+        <div style="display:flex; gap:12px;">
+          <a id="lightbox-macro-btn" href="#" download class="btn-download-action primary" style="text-decoration:none; padding:8px 16px; font-size:10px;">DOWNLOAD RESOLVE MACRO (.SETTING)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- LUXURY PERSONAL FOOTER -->
-  <footer class="footer-bar mono">
+  <footer class="footer-bar mono" aria-label="Site Footer">
     <div class="footer-container">
       <div class="footer-left">
         <span class="monogram-lg">E &amp; J</span>
@@ -345,7 +520,7 @@
       </div>
       <div class="footer-right">
         <span>FILMED WITH LOVE BY JACKSON &amp; DECLAN</span>
-        <span>A LIFELONG CELEBRATION OF MARRIAGE</span>
+        <span>A LIFELONG ARCHIVE OF MARRIAGE</span>
       </div>
     </div>
   </footer>
