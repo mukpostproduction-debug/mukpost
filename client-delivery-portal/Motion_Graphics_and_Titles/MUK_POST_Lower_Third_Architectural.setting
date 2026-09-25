@@ -1,0 +1,24 @@
+{
+	Tools = ordered() {
+		MUK_POST_LowerThird_Speaker = TextPlus {
+			CtrlWZoom = false,
+			Inputs = {
+				Width = Input { Value = 3840, },
+				Height = Input { Value = 2160, },
+				StyledText = Input { Value = "MICHAEL MORRA\nFATHER OF THE BRIDE // DEN 1880", },
+				Font = Input { Value = "Space Mono", },
+				Style = Input { Value = "Bold", },
+				Size = Input { Value = 0.026, },
+				VerticalJustificationNew = Input { Value = 3, },
+				HorizontalJustificationNew = Input { Value = 1, },
+				Center = Input { Value = { 0.12, 0.16 }, },
+				Tracking = Input { Value = 1.12, },
+				LineSpacing = Input { Value = 1.45, },
+				Red1 = Input { Value = 0.98, },
+				Green1 = Input { Value = 0.98, },
+				Blue1 = Input { Value = 0.98, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 550, 115.5 } },
+		}
+	}
+}

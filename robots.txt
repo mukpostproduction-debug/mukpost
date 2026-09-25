@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /client-delivery-portal/
+Disallow: /Client_Delivery_Portal/
+Disallow: /emlia-and-john/
+Disallow: /delivery/
+

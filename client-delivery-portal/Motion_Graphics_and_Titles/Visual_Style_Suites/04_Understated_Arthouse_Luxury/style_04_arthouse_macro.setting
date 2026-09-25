@@ -1,0 +1,24 @@
+{
+	Tools = ordered() {
+		Title_style_04_arthouse = TextPlus {
+			CtrlWZoom = false,
+			Inputs = {
+				Width = Input { Value = 3840, },
+				Height = Input { Value = 2160, },
+				LayoutType = Input { Value = 0, },
+				StyledText = Input { Value = "E M L I A   +   J O H N", },
+				Font = Input { Value = "Inter", },
+				Style = Input { Value = "Regular", },
+				Size = Input { Value = 0.054, },
+				VerticalJustificationNew = Input { Value = 3, },
+				HorizontalJustificationNew = Input { Value = 3, },
+				Tracking = Input { Value = 1.35, },
+				LineSpacing = Input { Value = 1.2, },
+				Red1 = Input { Value = 0.98, },
+				Green1 = Input { Value = 0.97, },
+				Blue1 = Input { Value = 0.95, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 495, 82.5 } },
+		}
+	}
+}

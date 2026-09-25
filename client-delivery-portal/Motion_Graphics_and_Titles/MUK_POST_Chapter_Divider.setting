@@ -1,0 +1,23 @@
+{
+	Tools = ordered() {
+		MUK_POST_Chapter_Divider = TextPlus {
+			CtrlWZoom = false,
+			Inputs = {
+				Width = Input { Value = 3840, },
+				Height = Input { Value = 2160, },
+				StyledText = Input { Value = "CHAPTER II // THE FIRST LOOK\nDEN 1880 HISTORIC LIBRARY", },
+				Font = Input { Value = "Space Mono", },
+				Style = Input { Value = "Regular", },
+				Size = Input { Value = 0.028, },
+				VerticalJustificationNew = Input { Value = 3, },
+				HorizontalJustificationNew = Input { Value = 3, },
+				Tracking = Input { Value = 1.25, },
+				LineSpacing = Input { Value = 1.5, },
+				Red1 = Input { Value = 0.95, },
+				Green1 = Input { Value = 0.88, },
+				Blue1 = Input { Value = 0.72, },
+			},
+			ViewInfo = OperatorInfo { Pos = { 605, 148.5 } },
+		}
+	}
+}

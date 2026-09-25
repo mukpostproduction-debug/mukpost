@@ -1,0 +1,30 @@
+{
+	Tools = ordered() {
+		Client_Credits_Roll = TextPlus {
+			CtrlWZoom = false,
+			Inputs = {
+				Width = Input { Value = 3840, },
+				Height = Input { Value = 2160, },
+				StyledText = Input { Value = "EMLIA & JOHN\n\nSTARRING\nEMLIA MORRA  &  JOHN MAGVAS\n\nPARENTS OF THE BRIDE\nCYNTHIA & MICHAEL MORRA\n\nPARENTS OF THE GROOM\nJUDY & ROBERT MAGVAS\n\nMAID OF HONOR\nABIGAIL MORRA\n\nBEST MAN\nALEXANDER MAGVAS\n\nOFFICIATED BY\nED\n\nSOUND & ENTERTAINMENT\nDJ THUNDERSTORM\n\nPHOTOGRAPHY\nNAOMI KEMENY\n\nVENUE\nDEN 1880 // WATERLOO, ONTARIO\n\nCINEMATOGRAPHY\nJACKSON MCMURDO  &  DECLAN", },
+				Font = Input { Value = "Space Mono", },
+				Style = Input { Value = "Regular", },
+				Size = Input { Value = 0.024, },
+				VerticalJustificationNew = Input { Value = 3, },
+				HorizontalJustificationNew = Input { Value = 3, },
+				Tracking = Input { Value = 1.18, },
+				LineSpacing = Input { Value = 1.6, },
+				Center = Input {
+					SourceOp = "ScrollPath",
+					Source = "Position",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 660, 181.5 } },
+		},
+		ScrollPath = DLGPath {
+			KeyFrames = {
+				[0] = { -0.5, 0 },
+				[900] = { 1.5, 0 }
+			}
+		}
+	}
+}

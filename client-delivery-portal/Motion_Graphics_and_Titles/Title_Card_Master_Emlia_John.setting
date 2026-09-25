@@ -1,0 +1,37 @@
+{
+	Tools = ordered() {
+		Client_Master_Title = TextPlus {
+			CtrlWZoom = false,
+			Inputs = {
+				Width = Input { Value = 3840, },
+				Height = Input { Value = 2160, },
+				LayoutType = Input { Value = 0, },
+				StyledText = Input { Value = "E M L I A   &   J O H N", },
+				Font = Input { Value = "Syne", },
+				Style = Input { Value = "Bold", },
+				Size = Input { Value = 0.052, },
+				VerticalJustificationNew = Input { Value = 3, },
+				HorizontalJustificationNew = Input { Value = 3, },
+				Tracking = Input { Value = 1.35, },
+				LineSpacing = Input { Value = 1.2, },
+				Red1 = Input { Value = 0.98, },
+				Green1 = Input { Value = 0.97, },
+				Blue1 = Input { Value = 0.95, },
+				Alpha1 = Input {
+					SourceOp = "TitleFade",
+					Source = "Value",
+				},
+			},
+			ViewInfo = OperatorInfo { Pos = { 495, 82.5 } },
+		},
+		TitleFade = BezierSpline {
+			SplineColor = { Red = 255, Green = 255, Blue = 255 },
+			KeyFrames = {
+				[0] = { 0, RH = { 10, 0.33 } },
+				[24] = { 1, LH = { 14, 0.66 }, RH = { 110, 1 } },
+				[130] = { 1, LH = { 110, 1 }, RH = { 142, 0.66 } },
+				[150] = { 0, LH = { 138, 0.33 } }
+			}
+		}
+	}
+}
