@@ -1,12 +1,12 @@
-# Emlia & John // 5 Distinct Visual Style Options Cinema Lookbook
-**Event:** Emlia Morra & John Magvas Wedding  
+# Emilia & John // 5 Distinct Visual Style Options Cinema Lookbook
+**Event:** Emilia Morra & John Magvas Wedding  
 **Location:** Den 1880, 14 Erb St West, Waterloo, ON  
 **Delivery Policy:** 100% Personal & Completely Unbranded  
 
 ---
 
 > **[CLIENT PRESENTATION ETHOS]:**  
-> Every visual style below has been fully pre-built with native DaVinci Resolve Fusion macros, 4K CinemaScope mattes, and visual layout references. All five options remain **100% unbranded, intimate, and personal** to Emlia & John with zero agency logos or technical jargon.
+> Every visual style below has been fully pre-built with native DaVinci Resolve Fusion macros, 4K CinemaScope mattes, and visual layout references. All five options remain **100% unbranded, intimate, and personal** to Emilia & John with zero agency logos or technical jargon.
 
 ---
 
@@ -31,7 +31,7 @@
 - **Ideal Fit:** Couples who love classic wedding elegance, historic architecture, and timeless romance.
 
 ### Style 02: Modern Editorial Minimalist (Vogue / Kinfolk Style)
-- **Opening Title:** `EMLIA & JOHN` in Syne Bold with generous letter spacing; sub: `26 . 09 . 2026 — WATERLOO, ON`.
+- **Opening Title:** `EMILIA & JOHN` in Syne Bold with generous letter spacing; sub: `26 . 09 . 2026 — WATERLOO, ON`.
 - **Speaker Lower Third:** 2px solid pure white rule with bold all-caps name in lower left 10% title-safe margin.
 - **Motion Behavior:** Crisp 12-frame opacity cuts or bottom-up mask reveal with zero motion blur.
 - **Ideal Fit:** Couples with modern artistic sensibilities who want their wedding film to feel like high-end fashion cinema.
@@ -70,4 +70,4 @@
 - `03_Romantic_Vintage_Filmic/` &rarr; `style_03_preview_4k.png` & `style_03_vintage_macro.setting`
 - `04_Understated_Arthouse_Luxury/` &rarr; `style_04_preview_4k.png` & `style_04_arthouse_macro.setting`
 - `05_Contemporary_Botanical_Warmth/` &rarr; `style_05_preview_4k.png` & `style_05_botanical_macro.setting`
-- Master Printable PDF: [`Emlia_John_5_Visual_Styles_Lookbook.pdf`](file:///Users/jacksonmcmurdo/Desktop/Emlia%20&%20John%20Wedding/06_Exports/Client_Delivery_Portal/Motion_Graphics_and_Titles/Visual_Style_Suites/Emlia_John_5_Visual_Styles_Lookbook.pdf)
+- Master Printable PDF: [`Emilia_John_5_Visual_Styles_Lookbook.pdf`](file:///Users/jacksonmcmurdo/Desktop/Emilia%20&%20John%20Wedding/06_Exports/Client_Delivery_Portal/Motion_Graphics_and_Titles/Visual_Style_Suites/Emilia_John_5_Visual_Styles_Lookbook.pdf)

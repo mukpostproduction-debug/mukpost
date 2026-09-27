@@ -1,5 +1,5 @@
 // ==========================================================================
-// MUK POST // CLIENT DELIVERY PORTAL APP SCRIPT (EMLIA & JOHN)
+// MUK POST // CLIENT DELIVERY PORTAL APP SCRIPT (EMILIA & JOHN)
 // Enhanced via: Vercel Web Guidelines (A11y/Keyboard) + TasteSkill (Motion)
 // ==========================================================================
 

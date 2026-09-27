@@ -1,5 +1,5 @@
 # MUK POST // Motion Graphics & Title Elements Production Manual
-**Project:** Emlia & John Wedding  
+**Project:** Emilia & John Wedding  
 **Location:** Den 1880, Waterloo, ON  
 **Target Applications:** DaVinci Resolve 19 Studio (Fusion) & Adobe Premiere Pro  
 **Aesthetic Standard:** MUK POST Editorial Architecture  
@@ -54,7 +54,7 @@
 
 | Section | Credit Entries | Typographical Specification |
 | :--- | :--- | :--- |
-| **Hero Title** | EMLIA & JOHN<br>A Celebration at Den 1880 | Syne Bold 64pt / Space Mono 22pt (Warm Amber). Centered at top of crawl. |
+| **Hero Title** | EMILIA & JOHN<br>A Celebration at Den 1880 | Syne Bold 64pt / Space Mono 22pt (Warm Amber). Centered at top of crawl. |
 | **Family & Wedding Party** | Parents of the Bride, Parents of the Groom, Maid of Honor, Best Man | 2-column symmetrical layout. Header: 18pt 60% gray; Name: 26pt Pure White. |
 | **Vendor & Location Tributes** | Officiant Ed, DJ Thunderstorm, Naomi Kemeny (Photo), Den 1880 | Space Mono Regular 22pt. Distinct block separation with 60px vertical spacing. |
 | **Production Signature** | MUK POST PRODUCTION<br>Jackson McMurdo & Declan | Concludes with MUK POST emblem watermark fading over final slow-motion room candle out. |
