@@ -1,5 +1,5 @@
 // ==========================================================================
-// MUK POST // CLIENT DELIVERY PORTAL APP SCRIPT (AMELIA & JOHN)
+// MUK POST // CLIENT DELIVERY PORTAL APP SCRIPT (EMILIA & JOHN)
 // Features: ENJ26 Password Gate + Session Persistence + Accessible Tab Controls
 // ==========================================================================
 
@@ -68,7 +68,7 @@ window.handleGateSubmit = function() {
     if (gateOverlay) {
       gateOverlay.classList.add('unlocked');
     }
-    showToast('✨ Welcome Amelia & John. Your wedding vault is unlocked.');
+    showToast('✨ Welcome Emilia & John. Your wedding vault is unlocked.');
   } else {
     // Authentication failed
     if (errorEl) {
