@@ -16,7 +16,7 @@
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
   
-  <title>Emilia &amp; John // Our Wedding Films // Den 1880</title>
+  <title>Amelia &amp; John // Our Wedding Films // Den 1880</title>
   <link rel="icon" href="https://i.imgur.com/0czpN64.png" type="image/png">
   <link rel="stylesheet" href="portal_styles.css">
 
@@ -26,6 +26,45 @@
 </head>
 <body>
 
+  <!-- PASSWORD GATE (ENJ26 AUTHENTICATION OVERLAY) -->
+  <div id="password-gate" class="password-gate-overlay" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+    <div class="gate-card">
+      <div class="gate-monogram mono">A &amp; J</div>
+      <div class="gate-header">
+        <div class="gate-eyebrow mono">PRIVATE CLIENT PORTAL // DEN 1880</div>
+        <h1 class="gate-title" id="gate-title">AMELIA &amp; JOHN</h1>
+        <p class="gate-sub mono">ENTER YOUR ACCESS PASSKEY TO UNLOCK YOUR WEDDING CINEMA VAULT</p>
+      </div>
+
+      <form id="gate-form" class="gate-form" onsubmit="event.preventDefault(); handleGateSubmit();">
+        <div class="gate-input-wrapper">
+          <input 
+            type="password" 
+            id="gate-password-input" 
+            class="gate-input mono" 
+            placeholder="ENTER PASSKEY" 
+            autocomplete="current-password"
+            required
+            aria-describedby="gate-error"
+          />
+          <button type="button" class="btn-toggle-pw" id="toggle-pw-btn" aria-label="Toggle password visibility">
+            <span id="eye-icon">&#128065;</span>
+          </button>
+        </div>
+        <p id="gate-error" class="gate-error mono" role="alert" aria-live="polite"></p>
+
+        <button type="submit" class="gate-submit-btn mono" id="gate-submit-btn">
+          <span>UNLOCK WEDDING VAULT</span>
+          <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+        </button>
+      </form>
+
+      <div class="gate-footer mono">
+        <span>MUK POST // WEDDING ARCHIVES &bull; WATERLOO, ON</span>
+      </div>
+    </div>
+  </div>
+
   <!-- ACCESSIBILITY: SKIP LINK (Web Design Guidelines) -->
   <a href="#cinema-suite" class="skip-link">Skip to wedding films</a>
 
@@ -33,11 +72,11 @@
   <nav class="nav-bar" aria-label="Main Navigation">
     <div class="nav-container">
       <div class="brand-cluster">
-        <span class="monogram">E &amp; J</span>
+        <span class="monogram">A &amp; J</span>
         <span class="client-badge mono">WEDDING CINEMA VAULT</span>
       </div>
       <div class="nav-links mono">
-        <span class="event-meta">EMILIA &amp; JOHN</span>
+        <span class="event-meta">AMELIA &amp; JOHN</span>
         <span class="dot-sep" aria-hidden="true">&bull;</span>
         <span class="venue-meta">DEN 1880, WATERLOO</span>
         <a href="#downloads-section" class="btn-download-nav">DOWNLOAD WEDDING FILMS</a>
@@ -45,11 +84,11 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION (TasteSkill Archival Direction) -->
+  <!-- HERO SECTION -->
   <header class="hero-section">
     <div class="hero-content">
       <div class="hero-eyebrow mono">OUR WEDDING DAY // SEPTEMBER 26, 2026</div>
-      <h1 class="hero-title">EMILIA &amp; JOHN</h1>
+      <h1 class="hero-title">AMELIA &amp; JOHN</h1>
       <p class="hero-subtitle mono">A CELEBRATION OF LOVE &amp; FAMILY AT DEN 1880 // WATERLOO, ONTARIO</p>
       
       <div class="hero-tags mono">
@@ -62,9 +101,8 @@
       <div class="director-note">
         <div class="director-avatar mono" aria-label="Filmed by Jackson and Declan">J &amp; D</div>
         <div class="director-text">
-          <p><strong>A personal note for Emilia &amp; John:</strong></p>
-          <p class="note-quote">"Emilia and John — from the quiet intimacy of your morning preparations to the tears of your first look in the library, and the pure joy of your first dance under the chandeliers, capturing your wedding day was an absolute honor. We crafted these films so you can revisit every smile, vow, and laugh for decades to come. Turn down the lights, pour a glass of wine, and relive your wedding day."</p>
-          <p class="mono" style="margin-top: 10px; font-size: 11px; color: var(--gold-primary); font-weight: 700;">WITH LOVE, JACKSON &amp; DECLAN</p>
+          <p><strong>A personal note for Amelia &amp; John:</strong></p>
+          <p class="note-quote">Coming soon.</p>
         </div>
       </div>
     </div>
@@ -103,7 +141,7 @@
 
                 <div class="video-center-titles">
                   <span class="mono film-label">CINEMATIC FEATURE FILM</span>
-                  <h3 class="film-name">EMILIA &amp; JOHN: FOREVER AT DEN 1880</h3>
+                  <h3 class="film-name">AMELIA &amp; JOHN: FOREVER AT DEN 1880</h3>
                   <span class="mono film-spec">WATERLOO, ONTARIO // SEPTEMBER 26, 2026</span>
                 </div>
               </div>
@@ -237,143 +275,6 @@
       </div>
     </section>
 
-    <!-- 5 DISTINCT VISUAL STYLES SHOWCASE (ImageToCode & TasteSkill Gallery) -->
-    <section class="styles-section" id="styles-section" aria-labelledby="styles-section-heading">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title" id="styles-section-heading">5 CINEMATIC VISUAL STYLE SUITES</h2>
-          <p class="section-sub mono">CLICK ANY STYLE CARD TO OPEN FULL-RESOLUTION 4K MOCKUP &amp; RESOLVE MACRO</p>
-        </div>
-        <a href="Motion_Graphics_and_Titles/Visual_Style_Suites/Emilia_John_5_Visual_Styles_Lookbook.pdf" target="_blank" class="btn-download-action primary mono" style="text-decoration:none; padding:10px 22px;">DOWNLOAD 2-PAGE LOOKBOOK (PDF)</a>
-      </div>
-
-      <!-- TRIO ROW -->
-      <div class="styles-grid mono">
-        <!-- STYLE 01 -->
-        <div class="style-card" role="button" tabindex="0" 
-             aria-label="View Style 01: Classic Architectural Heritage details"
-             data-preview="Motion_Graphics_and_Titles/Visual_Style_Suites/01_Classic_Architectural_Heritage/style_01_preview_4k.png"
-             data-title="Style 01: Classic Architectural Heritage"
-             data-desc="Crafted with Cormorant Garamond serif and antique champagne gold accents. Designed to harmonize with Den 1880's historic 1900s brickwork and warm interior timber."
-             data-specs="Font: Cormorant Garamond // Palette: Ivory #FAF7F2 &amp; Champagne Gold #D4AF37 // DaVinci Fusion Macro Ready"
-             data-macro="Motion_Graphics_and_Titles/Visual_Style_Suites/01_Classic_Architectural_Heritage/style_01_heritage_macro.setting">
-          <div class="style-thumb" style="background-image: url('Motion_Graphics_and_Titles/Visual_Style_Suites/01_Classic_Architectural_Heritage/style_01_preview_4k.png');">
-            <span class="style-thumb-badge">4K COMPOSITE</span>
-          </div>
-          <div class="style-card-body">
-            <div>
-              <div class="style-badge-tag" style="color:#c9a875;">STYLE 01 // HERITAGE</div>
-              <h3 class="style-card-title">CLASSIC ARCHITECTURAL</h3>
-              <p class="style-card-desc">Cormorant Garamond serif with antique champagne gold accents. Built to harmonize with Den 1880's historic 1900s millwork.</p>
-            </div>
-            <div class="style-card-meta">
-              <span>FUSION MACRO PACKAGED</span>
-              <span class="view-cue">INSPECT 4K &rarr;</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- STYLE 02 -->
-        <div class="style-card" role="button" tabindex="0"
-             aria-label="View Style 02: Modern Editorial Minimalist details"
-             data-preview="Motion_Graphics_and_Titles/Visual_Style_Suites/02_Modern_Editorial_Minimalist/style_02_preview_4k.png"
-             data-title="Style 02: Modern Editorial Minimalist"
-             data-desc="Vogue and Kinfolk-inspired high-contrast monochrome with wide tracking. Confident, modern, and striking against warm wedding footage."
-             data-specs="Font: Syne &amp; Inter // Palette: Pure Monochrome White #FFFFFF &amp; Deep Obsidian // DaVinci Fusion Macro Ready"
-             data-macro="Motion_Graphics_and_Titles/Visual_Style_Suites/02_Modern_Editorial_Minimalist/style_02_editorial_macro.setting">
-          <div class="style-thumb" style="background-image: url('Motion_Graphics_and_Titles/Visual_Style_Suites/02_Modern_Editorial_Minimalist/style_02_preview_4k.png');">
-            <span class="style-thumb-badge">4K COMPOSITE</span>
-          </div>
-          <div class="style-card-body">
-            <div>
-              <div class="style-badge-tag" style="color:#ffffff;">STYLE 02 // EDITORIAL</div>
-              <h3 class="style-card-title">MODERN EDITORIAL MINIMAL</h3>
-              <p class="style-card-desc">Vogue &amp; Kinfolk inspired high-contrast monochrome with wide tracking. Bold, contemporary, and confident.</p>
-            </div>
-            <div class="style-card-meta">
-              <span>FUSION MACRO PACKAGED</span>
-              <span class="view-cue">INSPECT 4K &rarr;</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- STYLE 03 -->
-        <div class="style-card" role="button" tabindex="0"
-             aria-label="View Style 03: Romantic Nostalgic Super-8 details"
-             data-preview="Motion_Graphics_and_Titles/Visual_Style_Suites/03_Romantic_Nostalgic_Super-8/style_03_preview_4k.png"
-             data-title="Style 03: Romantic Nostalgic Super-8"
-             data-desc="Warm 1970s Kodachrome warmth with Playfair Display italics and dashed amber rules. Intimate, nostalgic, and deeply poetic."
-             data-specs="Font: Playfair Display Italic // Palette: Buttermilk &amp; Toasted Amber #E29D52 // DaVinci Fusion Macro Ready"
-             data-macro="Motion_Graphics_and_Titles/Visual_Style_Suites/03_Romantic_Nostalgic_Super-8/style_03_vintage_macro.setting">
-          <div class="style-thumb" style="background-image: url('Motion_Graphics_and_Titles/Visual_Style_Suites/03_Romantic_Nostalgic_Super-8/style_03_preview_4k.png');">
-            <span class="style-thumb-badge">4K COMPOSITE</span>
-          </div>
-          <div class="style-card-body">
-            <div>
-              <div class="style-badge-tag" style="color:#e29d52;">STYLE 03 // VINTAGE</div>
-              <h3 class="style-card-title">NOSTALGIC SUPER-8</h3>
-              <p class="style-card-desc">Warm 1970s Kodachrome warmth with Playfair Display italics and dashed amber rules. Intimate, warm, and poetic.</p>
-            </div>
-            <div class="style-card-meta">
-              <span>FUSION MACRO PACKAGED</span>
-              <span class="view-cue">INSPECT 4K &rarr;</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- DUO ROW -->
-      <div class="styles-grid-duo mono">
-        <!-- STYLE 04 -->
-        <div class="style-card" role="button" tabindex="0"
-             aria-label="View Style 04: Understated Arthouse Luxury details"
-             data-preview="Motion_Graphics_and_Titles/Visual_Style_Suites/04_Understated_Arthouse_Luxury/style_04_preview_4k.png"
-             data-title="Style 04: Understated Arthouse Luxury"
-             data-desc="Quiet A24-style cinema typography. Inter Light with expansive tracking, mineral silver tones, and soft 30-frame Gaussian dissolves."
-             data-specs="Font: Inter Light &amp; Space Mono // Palette: Mineral Silver #9EAAA5 // DaVinci Fusion Macro Ready"
-             data-macro="Motion_Graphics_and_Titles/Visual_Style_Suites/04_Understated_Arthouse_Luxury/style_04_arthouse_macro.setting">
-          <div class="style-thumb" style="background-image: url('Motion_Graphics_and_Titles/Visual_Style_Suites/04_Understated_Arthouse_Luxury/style_04_preview_4k.png');">
-            <span class="style-thumb-badge">4K COMPOSITE</span>
-          </div>
-          <div class="style-card-body">
-            <div>
-              <div class="style-badge-tag" style="color:#9eaaa5;">STYLE 04 // ARTHOUSE</div>
-              <h3 class="style-card-title">UNDERSTATED ARTHOUSE LUXURY</h3>
-              <p class="style-card-desc">Quiet A24-style cinema typography. Inter Light with expansive tracking, mineral silver tones, and 30-frame dissolves.</p>
-            </div>
-            <div class="style-card-meta">
-              <span>FUSION MACRO PACKAGED</span>
-              <span class="view-cue">INSPECT 4K &rarr;</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- STYLE 05 -->
-        <div class="style-card" role="button" tabindex="0"
-             aria-label="View Style 05: Contemporary Botanical Warmth details"
-             data-preview="Motion_Graphics_and_Titles/Visual_Style_Suites/05_Contemporary_Botanical_Warmth/style_05_preview_4k.png"
-             data-title="Style 05: Contemporary Botanical Warmth"
-             data-desc="Cinzel sculpted serif in linen white paired with warm terracotta hairline rules. Inspired by courtyard greenery, floral arrangements, and bridal lace."
-             data-specs="Font: Cinzel &amp; Inter // Palette: Linen White #FAF7F2 &amp; Terracotta #B89578 // DaVinci Fusion Macro Ready"
-             data-macro="Motion_Graphics_and_Titles/Visual_Style_Suites/05_Contemporary_Botanical_Warmth/style_05_botanical_macro.setting">
-          <div class="style-thumb" style="background-image: url('Motion_Graphics_and_Titles/Visual_Style_Suites/05_Contemporary_Botanical_Warmth/style_05_preview_4k.png');">
-            <span class="style-thumb-badge">4K COMPOSITE</span>
-          </div>
-          <div class="style-card-body">
-            <div>
-              <div class="style-badge-tag" style="color:#b89578;">STYLE 05 // BOTANICAL</div>
-              <h3 class="style-card-title">CONTEMPORARY BOTANICAL WARMTH</h3>
-              <p class="style-card-desc">Cinzel sculpted serif in linen white paired with warm terracotta hairline rules. Inspired by courtyard greenery and florals.</p>
-            </div>
-            <div class="style-card-meta">
-              <span>FUSION MACRO PACKAGED</span>
-              <span class="view-cue">INSPECT 4K &rarr;</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- MASTER DOWNLOADS SECTION (AwesomeDesign Cards) -->
     <section class="downloads-section" id="downloads-section" aria-labelledby="downloads-heading">
       <div class="section-header">
@@ -434,87 +335,15 @@
       </div>
     </section>
 
-    <!-- CURATED STILLS GALLERY (TasteSkill High-End Stills) -->
-    <section class="stills-section" aria-labelledby="stills-heading">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title" id="stills-heading">FAVORITE MOMENTS &amp; STILLS</h2>
-          <span class="section-sub mono">4K COLOR-GRADED MEMORIES FROM DEN 1880</span>
-        </div>
-      </div>
-
-      <div class="stills-grid mono">
-        <div class="still-box" style="background-image: url('Motion_Graphics_and_Titles/mockup_01_master_title_card_4k.png');"
-             role="img" aria-label="Wedding Still: The First Look at 3:15 PM"
-             onclick="showToast('Captured on Sony Cinema FX3 // 24mm f/1.8 G Master')">
-          <div class="still-overlay">
-            <span class="still-label">THE FIRST LOOK // 3:15 PM</span>
-            <span class="still-spec">24mm &bull; f/1.8 &bull; Cine EI 800</span>
-          </div>
-        </div>
-
-        <div class="still-box" style="background-image: url('Motion_Graphics_and_Titles/mockup_02_lower_thirds_speakers_4k.png');"
-             role="img" aria-label="Wedding Still: The Vow Exchange at 5:10 PM"
-             onclick="showToast('Captured on Sony Cinema FX3 // 50mm f/1.4 Planar')">
-          <div class="still-overlay">
-            <span class="still-label">THE VOW EXCHANGE // 5:10 PM</span>
-            <span class="still-spec">50mm &bull; f/1.4 &bull; S-Log3</span>
-          </div>
-        </div>
-
-        <div class="still-box" style="background-image: url('Motion_Graphics_and_Titles/mockup_03_vertical_captions_reels_9x16.png');"
-             role="img" aria-label="Wedding Still: Erb Street Sunset at 6:30 PM"
-             onclick="showToast('Captured on Sony Cinema FX3 // 85mm f/1.4 G Master')">
-          <div class="still-overlay">
-            <span class="still-label">ERB STREET SUNSET // 6:30 PM</span>
-            <span class="still-spec">85mm &bull; f/1.4 &bull; Golden Hour</span>
-          </div>
-        </div>
-
-        <div class="still-box" style="background-image: url('Motion_Graphics_and_Titles/mockup_04_closing_credits_roll_4k.png');"
-             role="img" aria-label="Wedding Still: Chandelier First Dance at 8:45 PM"
-             onclick="showToast('Captured on Sony Cinema FX3 // 35mm f/1.4 G Master')">
-          <div class="still-overlay">
-            <span class="still-label">FIRST DANCE // 8:45 PM</span>
-            <span class="still-spec">35mm &bull; f/1.4 &bull; Chandelier Amber</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
   </main>
-
-  <!-- INTERACTIVE LIGHTBOX MODAL (ImageToCode & A11y) -->
-  <div class="lightbox-modal" id="style-lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="lightbox-title" aria-hidden="true">
-    <div class="lightbox-container">
-      <div class="lightbox-header">
-        <div class="lightbox-title-group">
-          <h3 id="lightbox-title">Style Preview</h3>
-          <p id="lightbox-desc" class="mono"></p>
-        </div>
-        <button type="button" class="lightbox-close" id="lightbox-close-btn" aria-label="Close modal preview">&times;</button>
-      </div>
-      
-      <div class="lightbox-image-wrap">
-        <img id="lightbox-img" src="" alt="Full resolution style preview">
-      </div>
-
-      <div class="lightbox-footer mono">
-        <div class="lightbox-specs" id="lightbox-specs"></div>
-        <div style="display:flex; gap:12px;">
-          <a id="lightbox-macro-btn" href="#" download class="btn-download-action primary" style="text-decoration:none; padding:8px 16px; font-size:10px;">DOWNLOAD RESOLVE MACRO (.SETTING)</a>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- LUXURY PERSONAL FOOTER -->
   <footer class="footer-bar mono" aria-label="Site Footer">
     <div class="footer-container">
       <div class="footer-left">
-        <span class="monogram-lg">E &amp; J</span>
+        <span class="monogram-lg">A &amp; J</span>
         <div>
-          <p class="footer-brand">EMILIA MORRA &amp; JOHN MAGVAS</p>
+          <p class="footer-brand">AMELIA MORRA &amp; JOHN MAGVAS</p>
           <p class="footer-copy">SEPTEMBER 26, 2026 // DEN 1880, WATERLOO, ONTARIO</p>
         </div>
       </div>

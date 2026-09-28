@@ -1,10 +1,94 @@
 // ==========================================================================
-// MUK POST // CLIENT DELIVERY PORTAL APP SCRIPT (EMILIA & JOHN)
-// Enhanced via: Vercel Web Guidelines (A11y/Keyboard) + TasteSkill (Motion)
+// MUK POST // CLIENT DELIVERY PORTAL APP SCRIPT (AMELIA & JOHN)
+// Features: ENJ26 Password Gate + Session Persistence + Accessible Tab Controls
 // ==========================================================================
 
+const PASSKEY = 'ENJ26';
+const AUTH_KEY = 'enj_wedding_auth';
+
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Accessible Tab Switching with Keyboard Support
+  // 1. Password Gate Initialization
+  initPasswordGate();
+
+  // 2. Accessible Tab Switching with Keyboard Support
+  initTabs();
+
+  // 3. Chapter Seek Click & Keyboard Handlers
+  initChapterSeekers();
+
+  // 4. Play Button Triggers
+  initPlayTriggers();
+});
+
+// --------------------------------------------------------------------------
+// 1. Password Gate (ENJ26) & Session Auth
+// --------------------------------------------------------------------------
+function initPasswordGate() {
+  const gateOverlay = document.getElementById('password-gate');
+  const gateInput = document.getElementById('gate-password-input');
+  const toggleBtn = document.getElementById('toggle-pw-btn');
+
+  // Check if previously authenticated in this session
+  if (sessionStorage.getItem(AUTH_KEY) === 'true') {
+    if (gateOverlay) {
+      gateOverlay.classList.add('unlocked');
+    }
+  } else {
+    // Focus input field for immediate entry
+    if (gateInput) {
+      setTimeout(() => gateInput.focus(), 250);
+    }
+  }
+
+  // Toggle password visibility
+  if (toggleBtn && gateInput) {
+    toggleBtn.addEventListener('click', () => {
+      const isPassword = gateInput.type === 'password';
+      gateInput.type = isPassword ? 'text' : 'password';
+      toggleBtn.setAttribute('aria-label', isPassword ? 'Hide passkey' : 'Show passkey');
+    });
+  }
+}
+
+// Global submit handler for gate form
+window.handleGateSubmit = function() {
+  const gateOverlay = document.getElementById('password-gate');
+  const gateCard = document.querySelector('.gate-card');
+  const gateInput = document.getElementById('gate-password-input');
+  const errorEl = document.getElementById('gate-error');
+
+  if (!gateInput) return;
+  const enteredVal = gateInput.value.trim().toUpperCase();
+
+  if (enteredVal === PASSKEY) {
+    // Authentication successful
+    sessionStorage.setItem(AUTH_KEY, 'true');
+    if (errorEl) errorEl.textContent = '';
+    
+    if (gateOverlay) {
+      gateOverlay.classList.add('unlocked');
+    }
+    showToast('✨ Welcome Amelia & John. Your wedding vault is unlocked.');
+  } else {
+    // Authentication failed
+    if (errorEl) {
+      errorEl.textContent = 'Incorrect passkey. Please check credentials or contact Muk Post.';
+    }
+    if (gateCard) {
+      gateCard.classList.remove('shake');
+      // Trigger reflow to restart animation
+      void gateCard.offsetWidth;
+      gateCard.classList.add('shake');
+    }
+    gateInput.select();
+    gateInput.focus();
+  }
+};
+
+// --------------------------------------------------------------------------
+// 2. Accessible Tab Switching
+// --------------------------------------------------------------------------
+function initTabs() {
   const tabButtons = document.querySelectorAll('.tab-btn');
   const panes = document.querySelectorAll('.tab-pane');
 
@@ -25,104 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+}
 
-  // 2. Chapter Seek Click & Keyboard handlers
-  const chapterCards = document.querySelectorAll('.chapter-card');
-  chapterCards.forEach(card => {
-    const handleSeek = () => {
-      const timecode = card.dataset.seek;
-      const chapterName = card.querySelector('.ch-name').innerText;
-      
-      // Update active state
-      chapterCards.forEach(c => c.style.borderColor = 'var(--border-subtle)');
-      card.style.borderColor = 'var(--gold-primary)';
-
-      showToast(`🎬 Seeking Highlight Film to ${timecode} — [${chapterName}]`);
-    };
-
-    card.addEventListener('click', handleSeek);
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        handleSeek();
-      }
-    });
-  });
-
-  // 3. Play button click simulation
-  const playButtons = document.querySelectorAll('.play-trigger, .play-sm');
-  playButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      showToast('▶ Master 4K Video Player Initialized. Ready for client review streaming.');
-    });
-  });
-
-  // 4. Lightbox Modal for 5 Visual Style Suites (ImageToCode & A11y)
-  const modal = document.getElementById('style-lightbox-modal');
-  const modalImg = document.getElementById('lightbox-img');
-  const modalTitle = document.getElementById('lightbox-title');
-  const modalDesc = document.getElementById('lightbox-desc');
-  const modalSpecs = document.getElementById('lightbox-specs');
-  const modalMacroBtn = document.getElementById('lightbox-macro-btn');
-  const closeBtn = document.getElementById('lightbox-close-btn');
-
-  const styleCards = document.querySelectorAll('.style-card');
-  styleCards.forEach(card => {
-    const openCard = () => {
-      const imgPath = card.dataset.preview;
-      const title = card.dataset.title;
-      const desc = card.dataset.desc;
-      const specs = card.dataset.specs;
-      const macroPath = card.dataset.macro;
-
-      modalImg.src = imgPath;
-      modalImg.alt = `${title} 4K Preview`;
-      modalTitle.innerText = title;
-      modalDesc.innerText = desc;
-      modalSpecs.innerText = specs;
-      modalMacroBtn.href = macroPath;
-
-      modal.classList.add('active');
-      modal.setAttribute('aria-hidden', 'false');
-      closeBtn.focus();
-    };
-
-    card.addEventListener('click', openCard);
-    card.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openCard();
-      }
-    });
-  });
-
-  const closeModal = () => {
-    if (modal) {
-      modal.classList.remove('active');
-      modal.setAttribute('aria-hidden', 'true');
-    }
-  };
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeModal);
-  }
-
-  if (modal) {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-  }
-
-  // Escape key closes modal
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-      closeModal();
-    }
-  });
-});
-
-// Tab activator helper
 function activateTab(tab, panes, allTabs) {
   allTabs.forEach(t => {
     t.classList.remove('active');
@@ -139,7 +127,49 @@ function activateTab(tab, panes, allTabs) {
   }
 }
 
-// Toast notification helper (WCAG AA compliant status announcer)
+// --------------------------------------------------------------------------
+// 3. Chapter Seeker Module
+// --------------------------------------------------------------------------
+function initChapterSeekers() {
+  const chapterCards = document.querySelectorAll('.chapter-card');
+  chapterCards.forEach(card => {
+    const handleSeek = () => {
+      const timecode = card.dataset.seek;
+      const chapterName = card.querySelector('.ch-name').innerText;
+      
+      // Update active highlight border
+      chapterCards.forEach(c => c.style.borderColor = 'var(--border-subtle)');
+      card.style.borderColor = 'var(--gold-primary)';
+
+      showToast(`🎬 Seeking Highlight Film to ${timecode} — [${chapterName}]`);
+    };
+
+    card.addEventListener('click', handleSeek);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleSeek();
+      }
+    });
+  });
+}
+
+// --------------------------------------------------------------------------
+// 4. Video Play Trigger Simulation
+// --------------------------------------------------------------------------
+function initPlayTriggers() {
+  const playButtons = document.querySelectorAll('.play-trigger, .play-sm');
+  playButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showToast('▶ Master 4K Video Player Initialized. Ready for streaming.');
+    });
+  });
+}
+
+// --------------------------------------------------------------------------
+// 5. Toast Announcements & Downloads
+// --------------------------------------------------------------------------
 function showToast(message) {
   let toast = document.getElementById('muk-toast');
   if (!toast) {
@@ -157,10 +187,9 @@ function showToast(message) {
   window.mukToastTimer = setTimeout(() => {
     toast.style.opacity = '0';
     toast.style.transform = 'translateY(12px)';
-  }, 3400);
+  }, 3500);
 }
 
-// Accessible download action trigger
 function triggerDownload(assetName) {
   showToast(`⏳ Initiating direct high-speed transfer for: ${assetName}`);
 }
