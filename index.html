@@ -1784,7 +1784,7 @@
                         <div class="work-thumb-wrap">
                             <img src="portfolio-assets/thumbs/donatjackson-sweartogod-thumb.jpg" alt="Donat Jackson — Swear to God" loading="lazy">
                             <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
-                            <span class="work-duration">1080p Teaser</span>
+                            <span class="work-duration">Teaser</span>
                         </div>
                         <div class="work-card-info">
                             <div class="work-card-top">
@@ -2236,9 +2236,6 @@
             const video = document.getElementById('heroTeaserVideo');
             const playPauseBtn = document.getElementById('dockPlayPauseBtn');
             const playPauseIcon = document.getElementById('dockPlayPauseIcon');
-            const audioPill = document.getElementById('teaserAudioToggle');
-            const audioIcon = document.getElementById('teaserAudioIcon');
-            const audioText = document.getElementById('teaserAudioText');
             const dockVolumeBtn = document.getElementById('dockVolumeBtn');
             const dockVolumeIcon = document.getElementById('dockVolumeIcon');
             const curTimeEl = document.getElementById('dockCurTime');
@@ -2288,15 +2285,6 @@
             function toggleAudio() {
                 video.muted = !video.muted;
                 const isMuted = video.muted;
-                if (audioIcon) {
-                    audioIcon.className = isMuted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
-                }
-                if (audioText) {
-                    audioText.innerHTML = isMuted ? 'Sound Off &bull; Click to Unmute' : 'Sound On';
-                }
-                if (audioPill) {
-                    audioPill.classList.toggle('unmuted', !isMuted);
-                }
                 if (dockVolumeIcon) {
                     dockVolumeIcon.className = isMuted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
                 }
@@ -2306,11 +2294,7 @@
             video.addEventListener('click', togglePlay);
             if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlay);
 
-            // Audio toggles
-            if (audioPill) audioPill.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleAudio();
-            });
+            // Audio toggle via dock volume button
             if (dockVolumeBtn) dockVolumeBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 toggleAudio();
