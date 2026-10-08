@@ -1018,6 +1018,539 @@
             filter: brightness(1.1);
         }
 
+        /* ==========================================================================
+           TOP NAV & FOOTER "GET IN TOUCH" CONTACT CTA BUTTONS
+           ========================================================================== */
+        .nav-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.42rem 1.05rem;
+            background: #ffffff;
+            color: #000000 !important;
+            font-size: 0.74rem !important;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            transition: all 0.25s var(--ease-out);
+            box-shadow: 0 4px 14px rgba(255, 255, 255, 0.12);
+            border: none;
+            cursor: pointer;
+            margin-left: 0.4rem;
+        }
+
+        .nav-contact-btn:hover {
+            background: #eaeaea;
+            color: #000000 !important;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(255, 255, 255, 0.22);
+        }
+
+        .nav-contact-btn::after {
+            display: none !important;
+        }
+
+        .mobile-contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.85rem 1.4rem;
+            background: #ffffff;
+            color: #000000 !important;
+            font-size: 0.84rem !important;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            margin-top: 0.85rem;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .footer-cta-card {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 3.5rem;
+            padding: 3.5rem 2.2rem;
+            background: linear-gradient(180deg, rgba(20, 20, 26, 0.7) 0%, rgba(12, 12, 16, 0.95) 100%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), var(--shadow-inner);
+        }
+
+        .footer-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.24em;
+            color: var(--text-dim);
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-headline {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin: 0 0 0.85rem;
+            line-height: 1.15;
+        }
+
+        .footer-subtext {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 520px;
+            margin: 0 auto 2.2rem;
+        }
+
+        .footer-inquiry-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.05rem 2.6rem;
+            background: #ffffff;
+            color: #000000;
+            font-weight: 700;
+            font-size: 0.86rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s var(--ease-out);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-inquiry-btn:hover {
+            background: #eaeaea;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(255, 255, 255, 0.25);
+        }
+
+        /* ==========================================================================
+           INTERACTIVE "GET IN TOUCH" WALKTHROUGH MODAL
+           Minimalist Studio Design inspired by Waqas Qazi & Muk Post Brand Guidelines
+           ========================================================================== */
+        .inquiry-dialog {
+            width: min(620px, calc(100% - 32px));
+            max-height: calc(100vh - 40px);
+            max-height: calc(100dvh - 40px);
+            background: #0e0f14;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: var(--radius-md);
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.95), 0 0 60px rgba(255, 255, 255, 0.05);
+            padding: 2.2rem 2.4rem;
+            color: #ffffff;
+            overflow-y: auto;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            z-index: 10001;
+        }
+
+        .inquiry-dialog::backdrop {
+            background: rgba(6, 7, 9, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .inquiry-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .inquiry-step-caption {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            color: var(--text-dim);
+            text-transform: uppercase;
+        }
+
+        .inquiry-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .inquiry-close:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .inquiry-progress-bar {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 1.8rem;
+        }
+
+        .inquiry-progress-bar span {
+            height: 3px;
+            flex: 1;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 2px;
+            transition: background 0.3s ease;
+        }
+
+        .inquiry-progress-bar span.active {
+            background: #ffffff;
+        }
+
+        .inquiry-heading {
+            font-size: clamp(1.4rem, 3vw, 1.85rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin: 0 0 0.45rem;
+            line-height: 1.15;
+            text-align: left;
+        }
+
+        .inquiry-helper {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 1.6rem;
+            text-align: left;
+        }
+
+        /* TYPE OPTIONS GRID */
+        .type-cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .type-card {
+            position: relative;
+            cursor: pointer;
+            display: block;
+        }
+
+        .type-card.type-card-wide {
+            grid-column: span 2;
+        }
+
+        .type-card input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .type-card-inner {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 1rem 1.1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-sm);
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .type-icon {
+            font-size: 1rem;
+            color: var(--text-dim);
+            transition: color 0.2s ease;
+        }
+
+        .type-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .type-card:hover .type-card-inner {
+            border-color: rgba(255, 255, 255, 0.28);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .type-card input:checked + .type-card-inner {
+            border-color: #ffffff;
+            background: rgba(255, 255, 255, 0.09);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
+        }
+
+        .type-card input:checked + .type-card-inner .type-name {
+            color: #ffffff;
+        }
+
+        .type-card input:checked + .type-card-inner .type-icon {
+            color: #ffffff;
+        }
+
+        /* SERVICES PILLS */
+        .services-pills-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 0.5rem;
+        }
+
+        .service-pill {
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .service-pill input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .service-pill span {
+            display: inline-block;
+            padding: 0.45rem 0.95rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-sm);
+            font-size: 0.74rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            letter-spacing: 0.04em;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .service-pill:hover span {
+            border-color: rgba(255, 255, 255, 0.25);
+            color: var(--text-secondary);
+        }
+
+        .service-pill input:checked + span {
+            border-color: #ffffff;
+            background: #ffffff;
+            color: #000000;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+        }
+
+        /* FIELDS & FORM ELEMENTS */
+        .inquiry-field-group {
+            margin-bottom: 1.15rem;
+            text-align: left;
+        }
+
+        .inquiry-label {
+            display: block;
+            font-size: 0.76rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 0.45rem;
+        }
+
+        .inquiry-label .required {
+            color: #ff4d4d;
+        }
+
+        .inquiry-label small {
+            text-transform: none;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: normal;
+        }
+
+        .inquiry-input, .inquiry-select, .inquiry-textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: var(--radius-sm);
+            color: #ffffff;
+            font-size: 0.88rem;
+            font-family: inherit;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .inquiry-input:focus, .inquiry-select:focus, .inquiry-textarea:focus {
+            border-color: #ffffff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.12);
+        }
+
+        .inquiry-select option {
+            background: #0f1014;
+            color: #ffffff;
+        }
+
+        .inquiry-two-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .inquiry-note {
+            font-size: 0.74rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin: 1rem 0 0;
+            text-align: left;
+        }
+
+        .inquiry-error-msg {
+            color: #ff5252;
+            font-size: 0.78rem;
+            font-weight: 600;
+            background: rgba(255, 82, 82, 0.1);
+            border: 1px solid rgba(255, 82, 82, 0.25);
+            padding: 0.6rem 0.9rem;
+            border-radius: var(--radius-sm);
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        /* ACTIONS BAR */
+        .inquiry-actions-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .inquiry-back-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            color: var(--text-secondary);
+            padding: 0.75rem 1.4rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .inquiry-back-btn:hover {
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.35);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .inquiry-next-btn {
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 0.75rem 1.8rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s var(--ease-out);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.14);
+        }
+
+        .inquiry-next-btn:hover {
+            background: #eaeaea;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.22);
+        }
+
+        .inquiry-next-btn:disabled {
+            opacity: 0.5;
+            cursor: wait;
+        }
+
+        /* SUCCESS STATE */
+        .inquiry-success-view {
+            text-align: center;
+            padding: 1.5rem 0.5rem 0.5rem;
+        }
+
+        .inquiry-success-badge {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: #ffffff;
+            color: #000000;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.4rem;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
+        }
+
+        .inquiry-success-details {
+            margin: 1.6rem 0 2rem;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            text-align: center;
+        }
+
+        .details-label {
+            display: block;
+            font-size: 0.72rem;
+            font-family: var(--font-mono);
+            color: var(--text-dim);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 0.35rem;
+        }
+
+        .details-email {
+            font-size: 0.95rem;
+            color: #ffffff;
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        .inquiry-close-success-btn {
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            padding: 0.85rem 2.2rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .inquiry-close-success-btn:hover {
+            background: #eaeaea;
+            transform: translateY(-1px);
+        }
+
         /* MOBILE RESPONSIVENESS OVERRIDES */
         @media (max-width: 768px) {
             .hero { min-height: auto; padding: 110px 1.2rem 50px; }
@@ -1062,7 +1595,7 @@
                     <a href="colour.html">Colour</a>
                     <a href="sound.html">Sound</a>
                     <a href="design.html">Design</a>
-                    <a href="#contact">Contact</a>
+                    <button type="button" class="nav-contact-btn" data-inquiry>Get in touch ↗</button>
                 </div>
                 <div class="nav-socials">
                     <a href="https://www.instagram.com/muk.post/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -1082,7 +1615,7 @@
                 <a href="colour.html">Colour</a>
                 <a href="sound.html">Sound</a>
                 <a href="design.html">Design</a>
-                <a href="#contact">Contact</a>
+                <button type="button" class="mobile-contact-btn" data-inquiry>Get in touch ↗</button>
             </div>
             <div class="mobile-socials">
                 <a href="https://www.instagram.com/muk.post/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -1771,75 +2304,13 @@
     <footer id="contact" class="container">
         <img src="https://i.imgur.com/0czpN64.png" alt="M Logo" class="footer-logo reveal">
         
-        <div class="reveal">
-            <h2 class="workflow-headline" style="margin: 0 auto 0.5rem; text-align: center;">Request a Project Quote</h2>
-            <p style="color: var(--text-dim); max-width: 580px; margin: 0 auto 2.5rem; font-size: 0.9rem; text-align: center;">Fill out the details below to receive a fast, tailored quote directly to your inbox.</p>
-        </div>
-
-        <!-- Intake Form -->
-        <div class="contact-section reveal">
-            <form action="https://formspree.io/f/xrpzyngg" method="POST" class="form-grid">
-                
-                <input type="hidden" name="_subject" value="[Muk Post] New Project Quote Request">
-
-                <div class="form-group">
-                    <label for="name">Your Name / Company</label>
-                    <input type="text" id="name" name="name" placeholder="John Doe / Studio" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="_replyto" placeholder="client@example.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="project_type">Project Type</label>
-                    <select id="project_type" name="project_type" required>
-                        <option value="" disabled selected>Select project type</option>
-                        <option value="Music Video">Music Video</option>
-                        <option value="Narrative Film / Short">Narrative Film / Short</option>
-                        <option value="Commercial / Brand">Commercial / Brand</option>
-                        <option value="Documentary">Documentary</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="services">Services Required</label>
-                    <select id="services" name="services" required>
-                        <option value="" disabled selected>Select primary service</option>
-                        <option value="Full Post-Production Package">Full Post (Editing, Sound, Colour, Titles)</option>
-                        <option value="Editing Only">Editing Only</option>
-                        <option value="Sound Design & Mix Only">Sound Design & Mix Only</option>
-                        <option value="Colour Grading Only">Colour Grading Only</option>
-                        <option value="Titling & Graphic Design">Titling & Graphic Design</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="timeline">Target Delivery Date / Timeline</label>
-                    <input type="text" id="timeline" name="timeline" placeholder="e.g. 2 weeks / Oct 15th">
-                </div>
-
-                <div class="form-group">
-                    <label for="budget">Estimated Budget (CAD/USD)</label>
-                    <input type="text" id="budget" name="budget" placeholder="e.g. $2,000 - $5,000">
-                </div>
-
-                <div class="form-group full-width">
-                    <label for="links">Raw Footage / Project Reference Links</label>
-                    <input type="text" id="links" name="project_links" placeholder="Google Drive, Dropbox, Frame.io links">
-                </div>
-
-                <div class="form-group full-width">
-                    <label for="message">Project Overview & Specifics</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Tell us about the vision, camera specs, number of deliverables..." required></textarea>
-                </div>
-
-                <div class="form-group full-width" style="text-align: right;">
-                    <button type="submit" class="submit-btn">Send Quote Request</button>
-                </div>
-            </form>
+        <div class="footer-cta-card reveal">
+            <span class="footer-eyebrow">// START A PROJECT</span>
+            <h2 class="footer-headline">Let's get to work.</h2>
+            <p class="footer-subtext">Tell us what you're making — from initial offline assembly to final cinema grade and master delivery.</p>
+            <button type="button" class="footer-inquiry-btn" data-inquiry>
+                Get in touch ↗
+            </button>
         </div>
 
         <div class="footer-socials reveal">
@@ -2120,6 +2591,282 @@
                     }
                 }).catch(() => {});
             };
+
+            // --- 4. Interactive Inquiry Walkthrough Dialog Controller ---
+            (function initInquiryModal() {
+                const dialog = document.getElementById('inquiry-dialog');
+                if (!dialog) return;
+
+                const form = document.getElementById('inquiryForm');
+                const step1 = document.getElementById('inquiryStep1');
+                const step2 = document.getElementById('inquiryStep2');
+                const step3 = document.getElementById('inquiryStep3');
+                const successView = document.getElementById('inquirySuccessView');
+
+                const p1 = document.getElementById('progressStep1');
+                const p2 = document.getElementById('progressStep2');
+                const p3 = document.getElementById('progressStep3');
+                const stepCaption = document.getElementById('inquiryStepCaption');
+                const closeBtn = document.getElementById('inquiryCloseBtn');
+                const successCloseBtn = document.getElementById('inquiryCloseSuccessBtn');
+
+                const step1Next = document.getElementById('step1NextBtn');
+                const step2Next = document.getElementById('step2NextBtn');
+                const step2Back = document.getElementById('step2BackBtn');
+                const step3Back = document.getElementById('step3BackBtn');
+                const step3Submit = document.getElementById('step3SubmitBtn');
+
+                const step2Error = document.getElementById('step2Error');
+                const step3Error = document.getElementById('step3Error');
+                const confirmEmail = document.getElementById('inquiryConfirmEmail');
+
+                let currentStep = 1;
+
+                function goToStep(step) {
+                    currentStep = step;
+                    if (step1) step1.style.display = step === 1 ? 'block' : 'none';
+                    if (step2) step2.style.display = step === 2 ? 'block' : 'none';
+                    if (step3) step3.style.display = step === 3 ? 'block' : 'none';
+                    if (successView) successView.style.display = 'none';
+                    if (form) form.style.display = 'block';
+
+                    if (p1 && p2 && p3) {
+                        p1.classList.toggle('active', step >= 1);
+                        p2.classList.toggle('active', step >= 2);
+                        p3.classList.toggle('active', step >= 3);
+                    }
+
+                    if (stepCaption) {
+                        if (step === 1) stepCaption.textContent = '// 01 / 03 — PROJECT TYPE';
+                        else if (step === 2) stepCaption.textContent = '// 02 / 03 — SCOPE & TIMELINE';
+                        else if (step === 3) stepCaption.textContent = '// 03 / 03 — CONTACT DETAILS';
+                    }
+
+                    if (step2Error) step2Error.style.display = 'none';
+                    if (step3Error) step3Error.style.display = 'none';
+
+                    setTimeout(() => {
+                        if (step === 2) {
+                            const ta = document.getElementById('inquiryDetails');
+                            if (ta) ta.focus();
+                        } else if (step === 3) {
+                            const nameInput = document.getElementById('inquiryName');
+                            if (nameInput) nameInput.focus();
+                        }
+                    }, 50);
+                }
+
+                function openModal() {
+                    if (typeof dialog.showModal === 'function') {
+                        if (!dialog.open) {
+                            goToStep(1);
+                            dialog.showModal();
+                            document.body.style.overflow = 'hidden';
+                        }
+                    } else {
+                        dialog.setAttribute('open', '');
+                        goToStep(1);
+                        document.body.style.overflow = 'hidden';
+                    }
+                }
+
+                function closeModal() {
+                    if (typeof dialog.close === 'function') {
+                        dialog.close();
+                    } else {
+                        dialog.removeAttribute('open');
+                    }
+                    document.body.style.overflow = '';
+                }
+
+                window.openInquiryModal = openModal;
+                window.closeInquiryModal = closeModal;
+
+                if (closeBtn) closeBtn.addEventListener('click', closeModal);
+                if (successCloseBtn) successCloseBtn.addEventListener('click', closeModal);
+
+                dialog.addEventListener('close', () => {
+                    document.body.style.overflow = '';
+                });
+
+                // Backdrop click dismissal
+                dialog.addEventListener('click', (e) => {
+                    const rect = dialog.getBoundingClientRect();
+                    const isInDialog = (
+                        rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
+                        rect.left <= e.clientX && e.clientX <= rect.left + rect.width
+                    );
+                    if (!isInDialog) {
+                        closeModal();
+                    }
+                });
+
+                // Attach to all elements with data-inquiry
+                document.querySelectorAll('[data-inquiry]').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        openModal();
+                    });
+                });
+
+                // Intercept clicks to contact anchor
+                document.querySelectorAll('a[href$="#contact"]').forEach(anchor => {
+                    anchor.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        openModal();
+                    });
+                });
+
+                if (window.location.hash === '#contact' || window.location.hash === '#inquiry') {
+                    setTimeout(openModal, 400);
+                }
+
+                // Step 1 -> Step 2
+                if (step1Next) {
+                    step1Next.addEventListener('click', () => {
+                        goToStep(2);
+                    });
+                }
+
+                // Step 2 Back & Next
+                if (step2Back) {
+                    step2Back.addEventListener('click', () => {
+                        goToStep(1);
+                    });
+                }
+                if (step2Next) {
+                    step2Next.addEventListener('click', () => {
+                        const detailsInput = document.getElementById('inquiryDetails');
+                        if (!detailsInput || !detailsInput.value.trim()) {
+                            if (step2Error) {
+                                step2Error.textContent = 'Please tell us a little about your project or share a reference link.';
+                                step2Error.style.display = 'block';
+                            }
+                            if (detailsInput) detailsInput.focus();
+                            return;
+                        }
+                        goToStep(3);
+                    });
+                }
+
+                // Step 3 Back
+                if (step3Back) {
+                    step3Back.addEventListener('click', () => {
+                        goToStep(2);
+                    });
+                }
+
+                // Step 3 Submit
+                if (form) {
+                    form.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+
+                        const nameInput = document.getElementById('inquiryName');
+                        const emailInput = document.getElementById('inquiryEmail');
+                        const detailsInput = document.getElementById('inquiryDetails');
+
+                        const nameVal = nameInput ? nameInput.value.trim() : '';
+                        const emailVal = emailInput ? emailInput.value.trim() : '';
+
+                        if (!nameVal) {
+                            if (step3Error) {
+                                step3Error.textContent = 'Please enter your name.';
+                                step3Error.style.display = 'block';
+                            }
+                            if (nameInput) nameInput.focus();
+                            return;
+                        }
+
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailVal || !emailRegex.test(emailVal)) {
+                            if (step3Error) {
+                                step3Error.textContent = 'Please enter a valid email address.';
+                                step3Error.style.display = 'block';
+                            }
+                            if (emailInput) emailInput.focus();
+                            return;
+                        }
+
+                        const projectTypeInput = form.querySelector('input[name="project_type"]:checked');
+                        const projectType = projectTypeInput ? projectTypeInput.value : 'Project';
+
+                        const services = Array.from(form.querySelectorAll('input[name="services"]:checked'))
+                            .map(cb => cb.value)
+                            .join(', ') || 'None specified';
+
+                        const timelineSelect = document.getElementById('inquiryTimeline');
+                        const timeline = timelineSelect ? timelineSelect.value : '2 - 3 Weeks';
+
+                        const budgetSelect = document.getElementById('inquiryBudget');
+                        const budget = budgetSelect ? budgetSelect.value : 'TBD';
+
+                        const roleInput = document.getElementById('inquiryRole');
+                        const role = roleInput ? roleInput.value.trim() : '';
+
+                        const igInput = document.getElementById('inquiryInstagram');
+                        const instagram = igInput ? igInput.value.trim() : '';
+
+                        const projectDetails = detailsInput ? detailsInput.value.trim() : '';
+
+                        const payload = {
+                            name: nameVal,
+                            email: emailVal,
+                            _replyto: emailVal,
+                            _subject: `[Muk Post Inquiry] ${projectType} from ${nameVal}`,
+                            project_type: projectType,
+                            services: services,
+                            timeline: timeline,
+                            target_budget: budget,
+                            role_or_company: role || 'Not specified',
+                            instagram: instagram || 'Not specified',
+                            project_brief_and_links: projectDetails
+                        };
+
+                        if (step3Submit) {
+                            step3Submit.disabled = true;
+                            step3Submit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+                        }
+                        if (step3Error) step3Error.style.display = 'none';
+
+                        try {
+                            const response = await fetch('https://formspree.io/f/xrpzyngg', {
+                                method: 'POST',
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(payload)
+                            });
+
+                            if (response.ok) {
+                                form.style.display = 'none';
+                                if (confirmEmail) confirmEmail.textContent = emailVal;
+                                if (stepCaption) stepCaption.textContent = '// INQUIRY CONFIRMED';
+                                if (successView) successView.style.display = 'block';
+                                form.reset();
+                            } else {
+                                const errData = await response.json().catch(() => ({}));
+                                const errMessage = (errData && errData.errors && errData.errors.map(err => err.message).join(', ')) ||
+                                    'There was an issue sending your inquiry. Please email us directly at contact@mukpost.com';
+                                if (step3Error) {
+                                    step3Error.innerHTML = `${errMessage} &bull; <a href="mailto:contact@mukpost.com?subject=Project Inquiry" style="color:#ffffff;text-decoration:underline;">Email directly</a>`;
+                                    step3Error.style.display = 'block';
+                                }
+                            }
+                        } catch (err) {
+                            if (step3Error) {
+                                step3Error.innerHTML = 'Network error. Please email us directly at <a href="mailto:contact@mukpost.com?subject=Project Inquiry" style="color:#ffffff;text-decoration:underline;">contact@mukpost.com</a>';
+                                step3Error.style.display = 'block';
+                            }
+                        } finally {
+                            if (step3Submit) {
+                                step3Submit.disabled = false;
+                                step3Submit.innerHTML = 'Send Inquiry &rarr;';
+                            }
+                        }
+                    });
+                }
+            })();
         })();
     </script>
 
@@ -2142,6 +2889,204 @@
             </div>
         </div>
     </aside>
+
+    <!-- GET IN TOUCH / PROJECT INQUIRY WALKTHROUGH MODAL -->
+    <dialog id="inquiry-dialog" class="inquiry-dialog" aria-labelledby="inquiryDialogHeading">
+        <div class="inquiry-top">
+            <span class="inquiry-step-caption" id="inquiryStepCaption">// 01 / 03 — PROJECT TYPE</span>
+            <button type="button" class="inquiry-close" id="inquiryCloseBtn" aria-label="Close inquiry modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="inquiry-progress-bar" id="inquiryProgressBar" aria-hidden="true">
+            <span class="active" id="progressStep1"></span>
+            <span id="progressStep2"></span>
+            <span id="progressStep3"></span>
+        </div>
+
+        <form id="inquiryForm" novalidate>
+            <!-- Formspree hidden fields -->
+            <input type="text" name="_gotcha" style="display:none !important;" tabindex="-1" autocomplete="off">
+            <input type="hidden" name="_replyto" id="inquiryReplyTo">
+            <input type="hidden" name="_subject" id="inquirySubject" value="[Muk Post] New Project Inquiry">
+
+            <!-- STEP 1: What are you making? -->
+            <div class="inquiry-step-pane" id="inquiryStep1" data-step="1">
+                <h3 class="inquiry-heading" id="inquiryDialogHeading">What are you making?</h3>
+                <p class="inquiry-helper">Select your project format and the post-production disciplines required.</p>
+
+                <div class="inquiry-field-group">
+                    <label class="inquiry-label">Project Format <span class="required">*</span></label>
+                    <div class="type-cards-grid">
+                        <label class="type-card">
+                            <input type="radio" name="project_type" value="Music Video" checked>
+                            <div class="type-card-inner">
+                                <i class="fa-solid fa-compact-disc type-icon"></i>
+                                <span class="type-name">Music Video</span>
+                            </div>
+                        </label>
+                        <label class="type-card">
+                            <input type="radio" name="project_type" value="Commercial / Brand">
+                            <div class="type-card-inner">
+                                <i class="fa-solid fa-bullhorn type-icon"></i>
+                                <span class="type-name">Commercial</span>
+                            </div>
+                        </label>
+                        <label class="type-card">
+                            <input type="radio" name="project_type" value="Short Film / Narrative">
+                            <div class="type-card-inner">
+                                <i class="fa-solid fa-film type-icon"></i>
+                                <span class="type-name">Short Film</span>
+                            </div>
+                        </label>
+                        <label class="type-card">
+                            <input type="radio" name="project_type" value="Live Session / Doc">
+                            <div class="type-card-inner">
+                                <i class="fa-solid fa-clapperboard type-icon"></i>
+                                <span class="type-name">Live Session / Doc</span>
+                            </div>
+                        </label>
+                        <label class="type-card type-card-wide">
+                            <input type="radio" name="project_type" value="Other / Creative Direction">
+                            <div class="type-card-inner">
+                                <i class="fa-solid fa-sliders type-icon"></i>
+                                <span class="type-name">Other / Custom Post-Production</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="inquiry-field-group" style="margin-top: 1.3rem;">
+                    <label class="inquiry-label">Services Required <small>(Select all that apply)</small></label>
+                    <div class="services-pills-wrap">
+                        <label class="service-pill">
+                            <input type="checkbox" name="services" value="Colour Grading" checked>
+                            <span>Colour Grading</span>
+                        </label>
+                        <label class="service-pill">
+                            <input type="checkbox" name="services" value="Offline Editing">
+                            <span>Offline Editing</span>
+                        </label>
+                        <label class="service-pill">
+                            <input type="checkbox" name="services" value="Sound Design & Mix">
+                            <span>Sound Design &amp; Mix</span>
+                        </label>
+                        <label class="service-pill">
+                            <input type="checkbox" name="services" value="Motion & Titling">
+                            <span>Motion &amp; Titling</span>
+                        </label>
+                        <label class="service-pill">
+                            <input type="checkbox" name="services" value="Full Post Package">
+                            <span>Full Post Package</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="inquiry-actions-bar">
+                    <div></div>
+                    <button type="button" class="inquiry-next-btn" id="step1NextBtn">
+                        Continue &rarr;
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 2: Scope & Timeline -->
+            <div class="inquiry-step-pane" id="inquiryStep2" data-step="2" style="display: none;">
+                <h3 class="inquiry-heading">Tell us a little more.</h3>
+                <p class="inquiry-helper">Share your timeline, target budget, and links to rough cuts or moodboards.</p>
+
+                <div class="inquiry-field-group">
+                    <label class="inquiry-label" for="inquiryDetails">Project Brief &amp; Links <span class="required">*</span></label>
+                    <textarea id="inquiryDetails" name="project_details" class="inquiry-textarea" rows="4" placeholder="Tell us about the project, director, camera format (e.g. Arri, RED, 16mm, Sony), and rough cut or reference links..." required></textarea>
+                </div>
+
+                <div class="inquiry-two-cols">
+                    <div class="inquiry-field-group">
+                        <label class="inquiry-label" for="inquiryTimeline">Timeline / Delivery</label>
+                        <select id="inquiryTimeline" name="timeline" class="inquiry-select">
+                            <option value="Urgent (Within 7 Days)">Urgent (Within 7 Days)</option>
+                            <option value="2 - 3 Weeks" selected>2 &ndash; 3 Weeks</option>
+                            <option value="1 Month +">1 Month +</option>
+                            <option value="Flexible / Pre-production">Flexible / Pre-production</option>
+                        </select>
+                    </div>
+                    <div class="inquiry-field-group">
+                        <label class="inquiry-label" for="inquiryBudget">Target Budget <small>(CAD / USD)</small></label>
+                        <select id="inquiryBudget" name="budget" class="inquiry-select">
+                            <option value="Under $1,500">Under $1,500</option>
+                            <option value="$1,500 - $3,500" selected>$1,500 &ndash; $3,500</option>
+                            <option value="$3,500 - $7,500">$3,500 &ndash; $7,500</option>
+                            <option value="$7,500+">$7,500+</option>
+                            <option value="Discuss / To Be Determined">To Be Determined</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="inquiry-error-msg" id="step2Error" style="display: none;"></div>
+
+                <div class="inquiry-actions-bar">
+                    <button type="button" class="inquiry-back-btn" id="step2BackBtn">&larr; Back</button>
+                    <button type="button" class="inquiry-next-btn" id="step2NextBtn">Continue &rarr;</button>
+                </div>
+            </div>
+
+            <!-- STEP 3: Where can we reach you? -->
+            <div class="inquiry-step-pane" id="inquiryStep3" data-step="3" style="display: none;">
+                <h3 class="inquiry-heading">Where can we reach you?</h3>
+                <p class="inquiry-helper">We'll review your project details and follow up directly within 24 hours.</p>
+
+                <div class="inquiry-two-cols">
+                    <div class="inquiry-field-group">
+                        <label class="inquiry-label" for="inquiryName">Your Name <span class="required">*</span></label>
+                        <input type="text" id="inquiryName" name="name" class="inquiry-input" placeholder="First &amp; Last Name" required autocomplete="name">
+                    </div>
+                    <div class="inquiry-field-group">
+                        <label class="inquiry-label" for="inquiryEmail">Email Address <span class="required">*</span></label>
+                        <input type="email" id="inquiryEmail" name="email" class="inquiry-input" placeholder="you@domain.com" required autocomplete="email">
+                    </div>
+                </div>
+
+                <div class="inquiry-two-cols">
+                    <div class="inquiry-field-group">
+                        <label class="inquiry-label" for="inquiryRole">Role / Company <small>(Optional)</small></label>
+                        <input type="text" id="inquiryRole" name="role_company" class="inquiry-input" placeholder="Director / Producer / Label / Artist">
+                    </div>
+                    <div class="inquiry-field-group">
+                        <label class="inquiry-label" for="inquiryInstagram">Instagram / Handle <small>(Optional)</small></label>
+                        <input type="text" id="inquiryInstagram" name="instagram" class="inquiry-input" placeholder="@yourhandle">
+                    </div>
+                </div>
+
+                <p class="inquiry-note">Sent directly to <strong>contact@mukpost.com</strong>. You'll receive a direct reply to the email address provided above.</p>
+
+                <div class="inquiry-error-msg" id="step3Error" style="display: none;"></div>
+
+                <div class="inquiry-actions-bar">
+                    <button type="button" class="inquiry-back-btn" id="step3BackBtn">&larr; Back</button>
+                    <button type="submit" class="inquiry-next-btn" id="step3SubmitBtn">Send Inquiry &rarr;</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- SUCCESS VIEW -->
+        <div class="inquiry-success-view" id="inquirySuccessView" style="display: none;">
+            <div class="inquiry-success-badge">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="inquiry-heading" style="text-align: center;">Inquiry Dispatched</h3>
+            <p class="inquiry-helper" style="text-align: center; max-width: 440px; margin: 0 auto 1.4rem;">
+                Thank you. Your project brief has been sent to <strong style="color: #ffffff;">contact@mukpost.com</strong>. Jackson will review your materials and follow up shortly.
+            </p>
+            <div class="inquiry-success-details">
+                <span class="details-label">Confirmation Copy Sent To</span>
+                <span class="details-email" id="inquiryConfirmEmail"></span>
+            </div>
+            <button type="button" class="inquiry-close-success-btn" id="inquiryCloseSuccessBtn">
+                Done
+            </button>
+        </div>
+    </dialog>
 
     <!-- VIDEO THEATER MODAL -->
     <div class="video-modal" id="videoModal" onclick="handleVideoModalBackdrop(event)">
