@@ -876,6 +876,25 @@ footer {
 }
 
 /* ==========================================================================
+   COMPARISON SLIDER (COLOUR BEFORE/AFTER - ROW OF THREE)
+   ========================================================================== */
+.slider-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  width: 100%;
+  margin-top: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 960px) {
+  .slider-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+/* ==========================================================================
    RESPONSIVE MEDIA QUERIES (Mobile-First 375px / 768px / 1024px / 1440px)
    ========================================================================== */
 @media (max-width: 1024px) {

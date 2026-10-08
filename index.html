@@ -598,16 +598,39 @@
             text-transform: uppercase;
         }
 
-        /* COMPARISON SLIDER (COLOUR BEFORE/AFTER) */
+        /* COMPARISON SLIDER (COLOUR BEFORE/AFTER - ROW OF THREE) */
+        .slider-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+            width: 100%;
+            margin-top: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 960px) {
+            .slider-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+        }
+
         .comparison-slider {
             position: relative;
             aspect-ratio: 16 / 9;
             background: #000000;
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: var(--radius-md);
             overflow: hidden;
             user-select: none;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
+            transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s var(--ease-out);
+        }
+
+        .comparison-slider:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.85);
+            transform: translateY(-2px);
         }
 
         .comparison-slider.fullscreen {
@@ -625,6 +648,7 @@
             align-items: center;
             justify-content: center;
             aspect-ratio: auto;
+            transform: none !important;
         }
 
         .comparison-slider img {
@@ -666,38 +690,39 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 34px;
-            height: 34px;
+            width: 28px;
+            height: 28px;
             background: #ffffff;
             color: #000000;
             border-radius: var(--radius-full);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.72rem;
+            font-size: 0.62rem;
             font-weight: 800;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.75);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.75);
             transition: transform 0.2s var(--ease-out);
         }
 
         .comparison-slider .slider-label {
             position: absolute;
-            bottom: 1rem;
-            padding: 0.35rem 0.85rem;
-            background: rgba(14, 14, 18, 0.8);
+            bottom: 0.85rem;
+            padding: 0.22rem 0.6rem;
+            background: rgba(14, 15, 20, 0.85);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             color: #ffffff;
-            font-size: 0.65rem;
-            letter-spacing: 0.15em;
+            font-size: 0.6rem;
+            font-family: var(--font-mono);
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             pointer-events: none;
             z-index: 3;
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255, 255, 255, 0.16);
             border-radius: var(--radius-sm);
         }
-        .comparison-slider .label-left { left: 1rem; }
-        .comparison-slider .label-right { right: 1rem; }
+        .comparison-slider .label-left { left: 0.85rem; }
+        .comparison-slider .label-right { right: 0.85rem; }
 
         .comparison-slider .slider-input {
             position: absolute;
@@ -716,27 +741,29 @@
 
         .expand-btn {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
+            top: 0.85rem;
+            right: 0.85rem;
             z-index: 10;
-            background: rgba(14, 14, 18, 0.75);
+            background: rgba(14, 15, 20, 0.85);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255, 255, 255, 0.16);
             color: #ffffff;
-            padding: 0.55rem 0.7rem;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            display: grid;
+            place-items: center;
             cursor: pointer;
             border-radius: var(--radius-sm);
-            transition: all 0.25s var(--ease-out);
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            transition: all 0.2s var(--ease-out);
+            font-size: 0.75rem;
         }
         .expand-btn:hover {
             background: #ffffff;
             color: #000000;
-            transform: scale(1.05);
+            border-color: #ffffff;
+            transform: scale(1.08);
         }
 
         /* TITLING GRID */
