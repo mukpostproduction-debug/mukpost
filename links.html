@@ -78,6 +78,24 @@
             border-radius: var(--radius-sm);
         }
 
+        h1 {
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            margin-bottom: 0.4rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        p.bio {
+            color: var(--text-dim);
+            font-size: 0.82rem;
+            text-align: center;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+            letter-spacing: 0.02em;
+        }
+
         .hero-wordmark {
             width: 280px;
             max-width: 80vw;
@@ -262,41 +280,37 @@
             color: var(--accent);
         }
 
-        /* DIGITAL STORE PRODUCT CARD */
-        .store-card {
-            width: 100%;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
+        /* FEATURED CARD ACTIONS ROW */
+        .card-actions-row {
             display: flex;
-            flex-direction: column;
-            transition: all 0.35s var(--ease-out);
-            box-shadow: var(--shadow-sm), var(--shadow-inner);
+            border-top: 1px solid var(--border);
+            background: #09090d;
         }
-        .store-card:hover {
-            border-color: var(--border-gold);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md), var(--shadow-gold);
-        }
-        .store-pill {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--accent-gold);
-            font-weight: 700;
+        .card-action-btn {
+            flex: 1;
             display: flex;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            gap: 0.45rem;
+            padding: 0.85rem 0.5rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-right: 1px solid var(--border);
+            transition: all 0.2s var(--ease-out);
         }
-        .store-pill::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            border-radius: var(--radius-full);
-            background: var(--accent-gold);
+        .card-action-btn:last-child {
+            border-right: none;
+        }
+        .card-action-btn:hover {
+            color: var(--accent);
+            background: var(--surface-hover);
+        }
+        .card-action-btn.card-action-yt:hover {
+            color: #ff3333;
         }
 
         /* STANDARD LINK BUTTONS */
@@ -516,8 +530,8 @@
         <!-- 1. PREMIERING TONIGHT: LATEST FEATURED PROJECT -->
         <div class="section-label">Premiere Tonight • Midnight (12:00 AM EDT)</div>
         
-        <a href="index.html" class="featured-card">
-            <div class="video-card-thumb">
+        <div class="featured-card">
+            <a href="index.html" class="video-card-thumb" aria-label="Watch Teaser & Live Countdown">
                 <div class="status-pill">
                     <span class="pulse-dot"></span>
                     <span>Premiere Tonight</span>
@@ -528,28 +542,37 @@
                         <i class="fa-solid fa-play"></i>
                     </div>
                 </div>
-            </div>
+            </a>
             <div class="card-body">
                 <div class="card-body-text">
                     <span class="card-headline">Donat Jackson — "sweartogod!"</span>
-                    <span class="card-subtext">Official Music Video • Dir. Mason Cline • Post: Muk Post</span>
+                    <span class="card-subtext">Official Music Video • Directed by Mason Cline • Post: Muk Post</span>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square card-cta-arrow"></i>
             </div>
-        </a>
-
-
+            <!-- DIRECT PREMIERE ACCESS ROW -->
+            <div class="card-actions-row">
+                <a href="index.html" class="card-action-btn" title="Watch 4:3 Teaser & Midnight Countdown">
+                    <i class="fa-solid fa-play"></i> Teaser & Countdown
+                </a>
+                <a href="colour.html#sweartogod-project" class="card-action-btn" title="Inspect 53 Colour Grading Stills">
+                    <i class="fa-solid fa-palette"></i> 53 Colour Stills
+                </a>
+                <a href="https://www.youtube.com/@MukPostProduction" target="_blank" rel="noopener noreferrer" class="card-action-btn card-action-yt" title="YouTube Channel">
+                    <i class="fa-brands fa-youtube"></i> YouTube
+                </a>
+            </div>
+        </div>
 
         <!-- 3. PORTFOLIO & WORK EXPLORATION -->
         <div class="section-label">Explore Portfolio</div>
 
         <!-- Dedicated Colour Portfolio -->
-        <a href="https://mukpost.com/colour.html" class="link-btn">
+        <a href="colour.html#sweartogod-project" class="link-btn">
             <div class="btn-left">
                 <i class="fa-solid fa-palette"></i>
                 <div class="btn-details">
                     <span class="btn-title">Colour Grading Gallery</span>
-                    <span class="btn-hint">High-Res Stills • Log vs Graded • Projects</span>
+                    <span class="btn-hint">"sweartogod!" (53 Stills) • Log vs Graded • Projects</span>
                 </div>
             </div>
             <i class="fa-solid fa-chevron-right btn-arrow"></i>
@@ -561,7 +584,7 @@
                 <i class="fa-solid fa-headphones"></i>
                 <div class="btn-details">
                     <span class="btn-title">Sound Portfolio & Stem Mixer</span>
-                    <span class="btn-hint">Interactive Stems • Cerberus (Dir. Johnny Tsatsossatsos)</span>
+                    <span class="btn-hint">Interactive Stems • Cerberus (Dir. Johnny Tsatsos)</span>
                 </div>
             </div>
             <i class="fa-solid fa-chevron-right btn-arrow"></i>
@@ -573,31 +596,31 @@
                 <i class="fa-solid fa-pen-nib"></i>
                 <div class="btn-details">
                     <span class="btn-title">Graphic & Title Design</span>
-                    <span class="btn-hint">Custom Title Sequences • Album Art • Calligraphy</span>
+                    <span class="btn-hint">Custom Title Sequences • "sweartogod!" Cover • Calligraphy</span>
                 </div>
             </div>
             <i class="fa-solid fa-chevron-right btn-arrow"></i>
         </a>
 
         <!-- Video Showreels Section -->
-        <a href="https://mukpost.com/#work" class="link-btn">
+        <a href="index.html#work" class="link-btn">
             <div class="btn-left">
                 <i class="fa-solid fa-film"></i>
                 <div class="btn-details">
                     <span class="btn-title">Showreels & Selected Work</span>
-                    <span class="btn-hint">Editing, Sound, Colour & Titling Reels</span>
+                    <span class="btn-hint">Full-Screen Editing, Sound, Colour & Titling Reels</span>
                 </div>
             </div>
             <i class="fa-solid fa-chevron-right btn-arrow"></i>
         </a>
 
         <!-- Full Website -->
-        <a href="https://mukpost.com" class="link-btn">
+        <a href="index.html" class="link-btn">
             <div class="btn-left">
                 <i class="fa-solid fa-globe"></i>
                 <div class="btn-details">
                     <span class="btn-title">Main Website</span>
-                    <span class="btn-hint">Interactive Comparison Sliders & Tech Stack</span>
+                    <span class="btn-hint">Interactive Comparison Sliders & In-House Tools</span>
                 </div>
             </div>
             <i class="fa-solid fa-chevron-right btn-arrow"></i>
@@ -618,8 +641,13 @@
             <div class="dropdown-content">
                 <a href="index.html" class="dropdown-item">
                     <i class="fa-solid fa-film item-icon" style="color: #ffffff;"></i>
-                    <span>Donat Jackson — "sweartogod!"</span>
+                    <span>Donat Jackson — "sweartogod!" (Teaser & Drop)</span>
                     <span class="item-tag" style="color: #ffffff; border-color: rgba(255, 255, 255, 0.25); background: rgba(255, 255, 255, 0.08);">Tonight</span>
+                </a>
+                <a href="colour.html#sweartogod-project" class="dropdown-item">
+                    <i class="fa-solid fa-palette item-icon" style="color: #ffffff;"></i>
+                    <span>Donat Jackson — "sweartogod!" (53 Stills)</span>
+                    <span class="item-tag">New Stills</span>
                 </a>
                 <a href="https://www.youtube.com/watch?v=m3GzM8sJ_V8" target="_blank" rel="noopener noreferrer" class="dropdown-item">
                     <i class="fa-brands fa-youtube item-icon"></i>
