@@ -5,38 +5,34 @@
    ========================================================================== */
 
 :root {
-  /* Surface Tokens (AwesomeDesign Linear & Near-Black Profile) */
-  --bg: #070709;
-  --bg-canvas: #070709;
-  --surface: #0e0e12;
-  --surface-hover: #15151b;
-  --surface-active: #1c1c24;
-  --surface-glass: rgba(14, 14, 18, 0.78);
-  --bg-glass: rgba(7, 7, 9, 0.85);
+  /* Surface Tokens (Muk Post Studio Obsidian) */
+  --bg: #0a0a0a;
+  --bg-canvas: #0a0a0a;
+  --surface: #111111;
+  --surface-hover: #161616;
+  --surface-active: #1c1c1c;
+  --surface-glass: rgba(17, 17, 17, 0.88);
+  --bg-glass: rgba(10, 10, 10, 0.88);
 
   /* Hairlines & Borders */
-  --border: rgba(255, 255, 255, 0.08);
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.22);
-  --border-active: rgba(255, 255, 255, 0.38);
-  --border-gold: rgba(229, 185, 111, 0.36);
-  --border-gold-glow: rgba(229, 185, 111, 0.6);
+  --border: #1e1e1e;
+  --border-subtle: #1e1e1e;
+  --border-hover: #333333;
+  --border-active: #555555;
 
   /* Studio Accents & Ink Tokens */
-  --text-main: #fcfcfd;
-  --text-primary: #fcfcfd;
-  --text-secondary: #c0c0cb;
-  --text-dim: #888894;
-  --text-muted: #545460;
+  --text-main: #eeeeee;
+  --text-primary: #ffffff;
+  --text-secondary: #aaaaaa;
+  --text-dim: #888888;
+  --text-muted: #555555;
   --accent: #ffffff;
-  --accent-gold: #e5b96f;
   --accent-emerald: #10b981;
-  --accent-glow: rgba(255, 255, 255, 0.12);
+  --accent-glow: rgba(255, 255, 255, 0.08);
 
   /* Typography System */
   --font: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-mono: 'Space Mono', 'SF Mono', Menlo, Consolas, monospace;
-  --font-serif: 'Cinzel', serif;
 
   /* 8-Point Spacing Scale */
   --space-1: 4px;
@@ -49,23 +45,22 @@
   --space-12: 64px;
   --space-16: 96px;
 
-  /* Radii */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 14px;
+  /* Sharp Architectural Radii */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
   --radius-full: 9999px;
 
   /* Elevation Shadows & Depth */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.6);
-  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.8);
-  --shadow-inner: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  --shadow-gold: 0 0 35px rgba(229, 185, 111, 0.22);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.9);
+  --shadow-inner: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 
   /* Easing Curves */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ==========================================================================
@@ -417,8 +412,42 @@ nav .container {
 }
 
 /* ==========================================================================
-   VIDEO EMBED CONTAINERS
+   HOMEPAGE FULL-SIZE REELS // TAKING UP FULL SCREEN ON WEB OR PHONE
+   Editing, Sound, Colour, Titling & Design
    ========================================================================== */
+.video-container {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  height: 100vh;
+  height: 100dvh;
+  background: #000000;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  margin-top: 1.5rem;
+  margin-bottom: 3.5rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.85);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 .video-wrapper {
   position: relative;
   aspect-ratio: 16 / 9;
