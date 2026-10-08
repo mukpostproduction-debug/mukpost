@@ -1799,9 +1799,9 @@
             <!-- THE FOUR MAIN REELS IN WIDESCREEN 2-COLUMN GRID (WAQAS QAZI STYLE) -->
             <div class="reels-grid reveal">
                 <!-- 1. Colour Grading Reel -->
-                <div class="film" onclick="openVideoModal('yaZ__LsubwY', 'Colour Grading Reel', 'Colourist: Jackson McMurdo &bull; DaVinci Resolve Studio &bull; Film Emulation', 'https://www.youtube.com/watch?v=yaZ__LsubwY')">
+                <div class="film" onclick="openVideoModal('portfolio-assets/videos/reels/colour-reel-1080p.mp4', 'Colour Grading Reel', 'Colourist: Jackson McMurdo &bull; DaVinci Resolve Studio &bull; Film Emulation', 'https://www.youtube.com/watch?v=yaZ__LsubwY')">
                     <div class="film-frame">
-                        <img src="https://img.youtube.com/vi/yaZ__LsubwY/maxresdefault.jpg" alt="Colour Grading Reel" loading="eager">
+                        <img src="portfolio-assets/thumbs/reels/poster-colour-reel.jpg" alt="Colour Grading Reel" loading="eager">
                         <span class="play" aria-label="Play Colour Grading Reel"><i class="play-icon"></i></span>
                     </div>
                     <div class="film-caption">
@@ -1811,9 +1811,9 @@
                 </div>
 
                 <!-- 2. Offline Editing Reel -->
-                <div class="film" onclick="openVideoModal('kE3bO4kxMgM', 'Offline Editing Reel', 'Editor: Jackson McMurdo &bull; Narrative Assembly &bull; Commercial Pacing', 'https://www.youtube.com/watch?v=kE3bO4kxMgM')">
+                <div class="film" onclick="openVideoModal('portfolio-assets/videos/reels/editing-reel-1080p.mp4', 'Offline Editing Reel', 'Editor: Jackson McMurdo &bull; Narrative Assembly &bull; Commercial Pacing', 'https://www.youtube.com/watch?v=kE3bO4kxMgM')">
                     <div class="film-frame">
-                        <img src="https://img.youtube.com/vi/kE3bO4kxMgM/maxresdefault.jpg" alt="Offline Editing Reel" loading="eager">
+                        <img src="portfolio-assets/thumbs/reels/poster-editing-reel.jpg" alt="Offline Editing Reel" loading="eager">
                         <span class="play" aria-label="Play Offline Editing Reel"><i class="play-icon"></i></span>
                     </div>
                     <div class="film-caption">
@@ -1823,9 +1823,9 @@
                 </div>
 
                 <!-- 3. Sound Design & Mix Reel -->
-                <div class="film" onclick="openVideoModal('9Wv0WVDgzEU', 'Sound Design &amp; Mix Reel', 'Sound Editor &amp; Re-Recording Mixer: Jackson McMurdo &bull; Pro Tools &bull; RX 12', 'https://www.youtube.com/watch?v=9Wv0WVDgzEU')">
+                <div class="film" onclick="openVideoModal('portfolio-assets/videos/reels/sound-reel-1080p.mp4', 'Sound Design &amp; Mix Reel', 'Sound Editor &amp; Re-Recording Mixer: Jackson McMurdo &bull; Pro Tools &bull; Fairlight', 'https://www.youtube.com/watch?v=9Wv0WVDgzEU')">
                     <div class="film-frame">
-                        <img src="https://img.youtube.com/vi/9Wv0WVDgzEU/maxresdefault.jpg" alt="Sound Design & Mix Reel" loading="lazy">
+                        <img src="portfolio-assets/thumbs/reels/poster-sound-reel.jpg" alt="Sound Design & Mix Reel" loading="lazy">
                         <span class="play" aria-label="Play Sound Design Reel"><i class="play-icon"></i></span>
                     </div>
                     <div class="film-caption">
@@ -1835,9 +1835,9 @@
                 </div>
 
                 <!-- 4. Title Design & Motion Reel -->
-                <div class="film" onclick="openVideoModal('9u2EourejMM', 'Title Design &amp; Motion Reel', 'Title Designer &amp; Motion Artist: Jackson McMurdo &bull; After Effects &bull; Illustrator', 'https://www.youtube.com/watch?v=9u2EourejMM')">
+                <div class="film" onclick="openVideoModal('portfolio-assets/videos/reels/title-cards-reel-1080p.mp4', 'Title Design &amp; Motion Reel', 'Title Designer &amp; Motion Artist: Jackson McMurdo &bull; After Effects &bull; Illustrator', 'https://www.youtube.com/watch?v=9u2EourejMM')">
                     <div class="film-frame">
-                        <img src="https://img.youtube.com/vi/9u2EourejMM/maxresdefault.jpg" alt="Title Design & Motion Reel" loading="lazy">
+                        <img src="portfolio-assets/thumbs/reels/poster-design-reel.jpg" alt="Title Design & Motion Reel" loading="lazy">
                         <span class="play" aria-label="Play Titling & Design Reel"><i class="play-icon"></i></span>
                     </div>
                     <div class="film-caption">
@@ -2299,20 +2299,126 @@
             }
         });
 
-        // --- Video Theater Modal Logic ---
+        // --- Video Theater Modal Logic (Native Cinema Player & Custom Controls) ---
         const videoModal = document.getElementById('videoModal');
         const videoModalIframe = document.getElementById('videoModalIframe');
         const videoModalVideo = document.getElementById('videoModalVideo');
+        const videoModalLoading = document.getElementById('videoModalLoading');
+        const videoModalControls = document.getElementById('videoModalControls');
         const videoModalTitle = document.getElementById('videoModalTitle');
         const videoModalRole = document.getElementById('videoModalRole');
         const videoModalExternalBtn = document.getElementById('videoModalExternalBtn');
         const videoModalIgBtn = document.getElementById('videoModalIgBtn');
 
+        const videoCtrlPlay = document.getElementById('videoCtrlPlay');
+        const videoCtrlPlayIcon = document.getElementById('videoCtrlPlayIcon');
+        const videoCtrlTime = document.getElementById('videoCtrlTime');
+        const videoCtrlDuration = document.getElementById('videoCtrlDuration');
+        const videoCtrlSeek = document.getElementById('videoCtrlSeek');
+        const videoCtrlMute = document.getElementById('videoCtrlMute');
+        const videoCtrlMuteIcon = document.getElementById('videoCtrlMuteIcon');
+        const videoCtrlFs = document.getElementById('videoCtrlFs');
+
+        function formatFilmTime(secs) {
+            if (!secs || isNaN(secs)) return '0:00';
+            const m = Math.floor(secs / 60);
+            const s = Math.floor(secs % 60);
+            return m + ':' + (s < 10 ? '0' : '') + s;
+        }
+
+        function toggleVideoPlayback() {
+            if (!videoModalVideo || !videoModalVideo.src) return;
+            if (videoModalVideo.paused) {
+                videoModalVideo.play().catch(() => {});
+            } else {
+                videoModalVideo.pause();
+            }
+        }
+
+        if (videoCtrlPlay) videoCtrlPlay.addEventListener('click', toggleVideoPlayback);
+        if (videoModalVideo) {
+            videoModalVideo.addEventListener('click', toggleVideoPlayback);
+
+            videoModalVideo.addEventListener('play', () => {
+                if (videoCtrlPlayIcon) {
+                    videoCtrlPlayIcon.classList.remove('fa-play');
+                    videoCtrlPlayIcon.classList.add('fa-pause');
+                }
+            });
+
+            videoModalVideo.addEventListener('pause', () => {
+                if (videoCtrlPlayIcon) {
+                    videoCtrlPlayIcon.classList.remove('fa-pause');
+                    videoCtrlPlayIcon.classList.add('fa-play');
+                }
+            });
+
+            videoModalVideo.addEventListener('loadedmetadata', () => {
+                if (videoCtrlSeek) videoCtrlSeek.max = videoModalVideo.duration || 100;
+                if (videoCtrlDuration) videoCtrlDuration.textContent = formatFilmTime(videoModalVideo.duration);
+                if (videoModalLoading) videoModalLoading.style.display = 'none';
+            });
+
+            videoModalVideo.addEventListener('timeupdate', () => {
+                if (videoCtrlSeek && !videoCtrlSeek.matches(':active')) {
+                    videoCtrlSeek.value = videoModalVideo.currentTime;
+                }
+                if (videoCtrlTime) videoCtrlTime.textContent = formatFilmTime(videoModalVideo.currentTime);
+            });
+
+            videoModalVideo.addEventListener('waiting', () => {
+                if (videoModalLoading) videoModalLoading.style.display = 'grid';
+            });
+            videoModalVideo.addEventListener('playing', () => {
+                if (videoModalLoading) videoModalLoading.style.display = 'none';
+            });
+            videoModalVideo.addEventListener('canplay', () => {
+                if (videoModalLoading) videoModalLoading.style.display = 'none';
+            });
+        }
+
+        if (videoCtrlSeek) {
+            videoCtrlSeek.addEventListener('input', () => {
+                if (videoModalVideo) videoModalVideo.currentTime = Number(videoCtrlSeek.value);
+            });
+        }
+
+        if (videoCtrlMute) {
+            videoCtrlMute.addEventListener('click', () => {
+                if (!videoModalVideo) return;
+                videoModalVideo.muted = !videoModalVideo.muted;
+                if (videoCtrlMuteIcon) {
+                    if (videoModalVideo.muted) {
+                        videoCtrlMuteIcon.classList.remove('fa-volume-high');
+                        videoCtrlMuteIcon.classList.add('fa-volume-xmark');
+                        videoCtrlMute.style.opacity = '0.55';
+                    } else {
+                        videoCtrlMuteIcon.classList.remove('fa-volume-xmark');
+                        videoCtrlMuteIcon.classList.add('fa-volume-high');
+                        videoCtrlMute.style.opacity = '1';
+                    }
+                }
+            });
+        }
+
+        if (videoCtrlFs) {
+            videoCtrlFs.addEventListener('click', () => {
+                const stage = document.querySelector('.video-modal-iframe-wrap');
+                if (document.fullscreenElement) {
+                    document.exitFullscreen().catch(() => {});
+                } else if (stage && stage.requestFullscreen) {
+                    stage.requestFullscreen().catch(() => {});
+                } else if (videoModalVideo && videoModalVideo.webkitEnterFullscreen) {
+                    videoModalVideo.webkitEnterFullscreen();
+                }
+            });
+        }
+
         function openVideoModal(source, title, role, externalUrl, igUrl) {
             videoModalTitle.innerHTML = title;
             videoModalRole.innerHTML = role;
 
-            if (externalUrl && externalUrl.trim() !== '') {
+            if (externalUrl && externalUrl.trim() !== '' && externalUrl !== '#') {
                 videoModalExternalBtn.href = externalUrl;
                 videoModalExternalBtn.style.display = 'inline-flex';
             } else {
@@ -2326,18 +2432,42 @@
                 videoModalIgBtn.style.display = 'none';
             }
 
-            if (source.endsWith('.mp4') || source.startsWith('portfolio-assets/')) {
-                videoModalIframe.style.display = 'none';
-                videoModalIframe.src = '';
-                videoModalVideo.style.display = 'block';
-                videoModalVideo.src = source;
-                videoModalVideo.play().catch(function() {});
+            const isMp4 = source.endsWith('.mp4') || source.startsWith('portfolio-assets/') || source.startsWith('/');
+
+            if (isMp4) {
+                if (videoModalIframe) {
+                    videoModalIframe.style.display = 'none';
+                    videoModalIframe.src = '';
+                }
+                if (videoModalVideo) {
+                    videoModalVideo.style.display = 'block';
+                    videoModalVideo.src = source;
+                    videoModalVideo.muted = false;
+                    videoModalVideo.currentTime = 0;
+                    if (videoModalLoading) videoModalLoading.style.display = 'grid';
+                    if (videoModalControls) videoModalControls.style.display = 'flex';
+                    videoModalVideo.play().catch(() => {
+                        videoModalVideo.muted = true;
+                        if (videoCtrlMuteIcon) {
+                            videoCtrlMuteIcon.classList.remove('fa-volume-high');
+                            videoCtrlMuteIcon.classList.add('fa-volume-xmark');
+                            videoCtrlMute.style.opacity = '0.55';
+                        }
+                        videoModalVideo.play().catch(() => {});
+                    });
+                }
             } else {
-                videoModalVideo.style.display = 'none';
-                videoModalVideo.pause();
-                videoModalVideo.src = '';
-                videoModalIframe.style.display = 'block';
-                videoModalIframe.src = 'https://www.youtube.com/embed/' + source + '?autoplay=1&rel=0&modestbranding=1&color=white';
+                if (videoModalVideo) {
+                    videoModalVideo.style.display = 'none';
+                    videoModalVideo.pause();
+                    videoModalVideo.src = '';
+                }
+                if (videoModalControls) videoModalControls.style.display = 'none';
+                if (videoModalLoading) videoModalLoading.style.display = 'none';
+                if (videoModalIframe) {
+                    videoModalIframe.style.display = 'block';
+                    videoModalIframe.src = 'https://www.youtube-nocookie.com/embed/' + source + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                }
             }
 
             videoModal.style.display = 'flex';
@@ -2354,6 +2484,12 @@
                 videoModalVideo.pause();
                 videoModalVideo.src = '';
                 videoModalVideo.style.display = 'none';
+            }
+            if (videoModalControls) {
+                videoModalControls.style.display = 'none';
+            }
+            if (videoModalLoading) {
+                videoModalLoading.style.display = 'none';
             }
             document.body.style.overflow = '';
         }
@@ -2963,25 +3099,51 @@
         </div>
     </dialog>
 
-    <!-- VIDEO THEATER MODAL -->
+    <!-- VIDEO THEATER MODAL (CINEMA VIEWER) -->
     <div class="video-modal" id="videoModal" onclick="handleVideoModalBackdrop(event)">
         <div class="video-modal-dialog">
-            <button class="video-modal-close" onclick="closeVideoModal()" aria-label="Close video player"><i class="fa-solid fa-xmark"></i></button>
-            <div class="video-modal-iframe-wrap">
-                <iframe id="videoModalIframe" src="" title="Muk Post Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <video id="videoModalVideo" controls playsinline preload="metadata" style="display: none;"></video>
-            </div>
-            <div class="video-modal-footer">
-                <div class="video-modal-meta">
+            <div class="video-modal-top">
+                <div class="video-modal-heading">
                     <h3 id="videoModalTitle">Video Title</h3>
                     <p id="videoModalRole">Credits & Role</p>
                 </div>
+                <button class="video-modal-close" onclick="closeVideoModal()" aria-label="Close cinema viewer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="video-modal-iframe-wrap">
+                <iframe id="videoModalIframe" src="" title="Muk Post Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none;"></iframe>
+                <video id="videoModalVideo" playsinline preload="metadata" style="display: none;"></video>
+                <div id="videoModalLoading" class="player-loading" style="display: none;">Loading cinema reel…</div>
+                
+                <!-- Sleek Frosted Glass Cinema Controls (Qazi Benchmark) -->
+                <div class="video-controls" id="videoModalControls" style="display: none;">
+                    <button type="button" class="video-ctrl-btn" id="videoCtrlPlay" aria-label="Play/Pause">
+                        <i class="fa-solid fa-play" id="videoCtrlPlayIcon"></i>
+                    </button>
+                    <span class="video-time" id="videoCtrlTime">0:00</span>
+                    <input class="video-seek" id="videoCtrlSeek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek through film">
+                    <span class="video-duration" id="videoCtrlDuration">0:00</span>
+                    <button type="button" class="video-ctrl-btn" id="videoCtrlMute" aria-label="Mute/Unmute">
+                        <i class="fa-solid fa-volume-high" id="videoCtrlMuteIcon"></i>
+                    </button>
+                    <button type="button" class="video-ctrl-btn" id="videoCtrlFs" aria-label="Fullscreen">
+                        <i class="fa-solid fa-expand"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="video-modal-footer">
+                <div class="video-modal-footer-tag">
+                    <span class="film-tag">// MUK POST PRODUCTION &bull; TORONTO</span>
+                </div>
                 <div class="video-modal-actions">
-                    <a id="videoModalExternalBtn" href="#" target="_blank" class="video-ext-btn" style="display: none;">
-                        <i class="fa-brands fa-youtube"></i> Watch on YouTube
+                    <a id="videoModalExternalBtn" href="#" target="_blank" rel="noopener noreferrer" class="video-ext-btn" style="display: none;">
+                        <i class="fa-brands fa-youtube" style="margin-right: 0.45rem; color: #ff0000;"></i> Watch on YouTube ↗
                     </a>
-                    <a id="videoModalIgBtn" href="#" target="_blank" class="video-ext-btn ig-btn" style="display: none;">
-                        <i class="fa-brands fa-instagram" style="color: #E1306C;"></i> View on Instagram
+                    <a id="videoModalIgBtn" href="#" target="_blank" rel="noopener noreferrer" class="video-ext-btn ig-btn" style="display: none;">
+                        <i class="fa-brands fa-instagram" style="margin-right: 0.45rem; color: #E1306C;"></i> Instagram ↗
                     </a>
                 </div>
             </div>
