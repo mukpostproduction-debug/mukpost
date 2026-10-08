@@ -142,12 +142,13 @@ button:active,
 }
 
 /* ==========================================================================
-   LAYOUT & CONTAINER
+   LAYOUT & CONTAINER (WIDESCREEN FLUID STUDIO DESIGN)
    ========================================================================== */
 .container {
-  max-width: 1240px;
+  width: 100%;
+  max-width: 1920px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 clamp(24px, 4.5vw, 64px);
 }
 
 section {
@@ -484,14 +485,14 @@ nav .container {
 }
 
 .video-modal-dialog {
-  width: 100%;
-  max-width: 980px;
+  width: min(1560px, calc(100vw - 36px), calc((100svh - 140px) * 1.77778));
+  max-width: none;
   background: #0e0e12;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: var(--radius-lg);
   overflow: hidden;
   position: relative;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 30px 120px rgba(0, 0, 0, 0.95), 0 0 60px rgba(255, 255, 255, 0.05);
 }
 
 .video-modal-close {

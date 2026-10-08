@@ -92,7 +92,7 @@
             animation-delay: 0.25s;
             text-align: center;
             width: 100%;
-            max-width: 1040px;
+            max-width: 1380px;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -103,7 +103,7 @@
         .featured-drop-header {
             margin-bottom: 1.6rem;
             text-align: center;
-            max-width: 860px;
+            max-width: 980px;
             padding: 0 1rem;
         }
 
@@ -472,41 +472,130 @@
         }
 
         /* ==========================================================================
-           FULL-SIZE REELS // EDITING, SOUND, COLOUR, TITLING & DESIGN
-           Full screen edge-to-edge (100vw x 100vh / 100dvh) on Web & Mobile Phone
+           FOUR MAIN REELS // FULL-WIDTH WIDESCREEN CINEMA GRID (WAQAS QAZI UI)
+           High-res posters, frosted play button, quiet (no autoplay), theater modal
            ========================================================================== */
-        .video-container {
-            position: relative;
-            width: 100vw;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-            height: 100vh;
-            height: 100dvh;
-            background: #000000;
-            overflow: hidden;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            border-left: none;
-            border-right: none;
-            border-radius: 0;
-            margin-top: 1.5rem;
-            margin-bottom: 3.5rem;
-            padding-bottom: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.85);
+        .reels-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 40px 26px;
+            width: 100%;
+            margin-bottom: 4.5rem;
         }
 
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .film {
+            display: block;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+            text-align: left;
+            width: 100%;
+        }
+
+        .film-frame {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            border-radius: var(--radius-md);
+            background: #0f1015;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.7);
+            transition: border-color 0.35s ease, box-shadow 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+        }
+
+        .film-frame img {
             width: 100%;
             height: 100%;
-            border: none;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s var(--ease-out), filter 0.4s ease;
+        }
+
+        .film:hover .film-frame {
+            border-color: rgba(255, 255, 255, 0.38);
+            box-shadow: 0 24px 75px rgba(0, 0, 0, 0.9), 0 0 40px rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .film:hover .film-frame img {
+            transform: scale(1.03);
+            filter: brightness(1.04);
+        }
+
+        .film-frame::after {
+            content: '';
+            position: absolute;
+            inset: 38% 0 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+            pointer-events: none;
+        }
+
+        /* Frosted Glass Floating Play Button (Qazi benchmark) */
+        .play {
+            position: absolute;
+            z-index: 2;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.38);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-radius: 50%;
+            color: #ffffff;
+            transition: all 0.25s var(--ease-out);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .film:hover .play {
+            transform: scale(1.12);
+            background: #ffffff;
+            border-color: #ffffff;
+            color: #000000;
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 10px solid currentColor;
+            display: inline-block;
+            margin-left: 3px;
+            transition: border-left-color 0.25s ease;
+        }
+
+        .film-caption {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 16px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .film-caption h3 {
+            font-size: clamp(1.15rem, 1.4vw, 1.4rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .film-caption .film-tag {
+            font-size: 0.74rem;
+            font-family: var(--font-mono);
+            color: var(--text-dim);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
         /* COMPARISON SLIDER (COLOUR BEFORE/AFTER) */
@@ -1590,8 +1679,9 @@
             </a>
             <div class="nav-right">
                 <div class="nav-links">
-                    <a href="#about">Workflow</a>
                     <a href="#work">Work</a>
+                    <a href="#selected-works">Directory</a>
+                    <a href="#about">Workflow</a>
                     <a href="colour.html">Colour</a>
                     <a href="sound.html">Sound</a>
                     <a href="design.html">Design</a>
@@ -1610,8 +1700,9 @@
         </div>
         <div class="mobile-drawer" id="mobileDrawer">
             <div class="mobile-links">
-                <a href="#about">Workflow</a>
                 <a href="#work">Work</a>
+                <a href="#selected-works">Directory</a>
+                <a href="#about">Workflow</a>
                 <a href="colour.html">Colour</a>
                 <a href="sound.html">Sound</a>
                 <a href="design.html">Design</a>
@@ -1687,424 +1778,150 @@
             <h1>Toronto-Based Remote Post-Production House</h1>
         </section>
 
-        <!-- CAPABILITIES -->
-        <section id="about" class="container">
-            <h2 class="workflow-headline reveal">Professional grade integration of sight and sound.</h2>
-            
-            <div class="caps-grid">
-                <div class="cap-card reveal">
-                    <h3>01. Editing</h3>
-                    <ul class="cap-list">
-                        <li>Narrative & commercial precision cutting</li>
-                        <li>Native 4K/8K media handling</li>
-                        <li>DaVinci Resolve studio workflow</li>
-                        <li>Camera raw media management</li>
-                    </ul>
-                </div>
-                <div class="cap-card reveal">
-                    <h3>02. Sound</h3>
-                    <ul class="cap-list">
-                        <li>High-fidelity sound design & mixing</li>
-                        <li>Dialogue cleanup & surgical restoration</li>
-                        <li>Pro Tools and DaVinci Fairlight mixing and mastering</li>
-                    </ul>
-                </div>
-                <div class="cap-card reveal">
-                    <h3>03. Colour</h3>
-                    <ul class="cap-list">
-                        <li>Industrial-grade cinematic grading</li>
-                        <li>Mood alignment & look development</li>
-                        <li>Color space management & LUT creation</li>
-                        <li>Calibrated monitoring delivery</li>
-                    </ul>
-                </div>
-                <div class="cap-card reveal">
-                    <h3>04. Design</h3>
-                    <ul class="cap-list">
-                        <li>Custom film titling & typography</li>
-                        <li>Motion graphics & VFX integration</li>
-                        <li>Intermediate Fusion compositing</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- AWARDS & LAURELS -->
-            <div class="laurels-wrapper reveal">
-                <img src="https://i.imgur.com/aZRtwt0.png" alt="Film Laurel 1">
-                <img src="https://i.imgur.com/6oa5xem.png" alt="Film Laurel 2">
-                <img src="https://i.imgur.com/h7HrGeu.png" alt="Film Laurel 3">
-                <img src="https://i.imgur.com/Bs2kTUm.png" alt="Film Laurel 4">
-            </div>
-
-            <!-- In-House Storage Badge -->
-            <div class="storage-wrapper reveal">
-                <div class="storage-banner">
-                    <span class="storage-badge-dot"></span>
-                    <span>15TB+ In-House High-Speed SSD & HDD Storage</span>
-                </div>
-            </div>
-        </section>
 
         <!-- PORTFOLIO / SELECTED WORK -->
         <section id="work" class="container">
             
-            <!-- EDITING -->
-            <div class="work-cat reveal">
-                <div class="work-header">
-                    <h2>Editing</h2>
+            <!-- SECTION HEADER -->
+            <div class="works-catalog-header reveal" style="margin-bottom: 2.4rem;">
+                <div>
+                    <span class="works-eyebrow">// CORE DISCIPLINES &amp; SHOWREELS</span>
+                    <h2 class="works-title" style="font-size: clamp(2rem, 3.8vw, 3.2rem); margin-bottom: 0.35rem;">Selected Work.</h2>
+                    <p class="works-subtitle" style="font-size: 0.95rem;">Watch full reels across Colour, Editing, Sound, and Motion Titles. Click any reel to launch in cinema resolution.</p>
                 </div>
-                <!-- Editing Video Reel -->
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/kE3bO4kxMgM?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=kE3bO4kxMgM&cc_load_policy=0" 
-                        title="Editing Reel"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
+                <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <a href="colour.html" class="studio-btn" style="font-size: 0.76rem; padding: 0.55rem 1.15rem;">Colour Suite ↗</a>
+                    <a href="sound.html" class="studio-btn" style="font-size: 0.76rem; padding: 0.55rem 1.15rem;">Sound Suite ↗</a>
+                    <a href="design.html" class="studio-btn" style="font-size: 0.76rem; padding: 0.55rem 1.15rem;">Design Suite ↗</a>
                 </div>
-                <!-- Editing Tech Stack -->
-                <div class="tech-stack">
-                    <span class="tech-stack-label">In-House</span>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/QbyNOsi.png" alt="DaVinci Resolve">
-                        <div class="tech-tooltip">
-                            <strong>DaVinci Resolve</strong>
-                            <span>Native 4K/8K media handling and precision cutting.</span>
-                        </div>
+            </div>
+
+            <!-- THE FOUR MAIN REELS IN WIDESCREEN 2-COLUMN GRID (WAQAS QAZI STYLE) -->
+            <div class="reels-grid reveal">
+                <!-- 1. Colour Grading Reel -->
+                <div class="film" onclick="openVideoModal('yaZ__LsubwY', 'Colour Grading Reel', 'Colourist: Jackson McMurdo &bull; DaVinci Resolve Studio &bull; Film Emulation', 'https://www.youtube.com/watch?v=yaZ__LsubwY')">
+                    <div class="film-frame">
+                        <img src="https://img.youtube.com/vi/yaZ__LsubwY/maxresdefault.jpg" alt="Colour Grading Reel" loading="eager">
+                        <span class="play" aria-label="Play Colour Grading Reel"><i class="play-icon"></i></span>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/0t3ivem.png" alt="Premiere Pro">
-                        <div class="tech-tooltip">
-                            <strong>Premiere Pro</strong>
-                            <span>Adaptable NLE for seamless agency & client handoffs.</span>
-                        </div>
+                    <div class="film-caption">
+                        <h3>Colour Grading Reel</h3>
+                        <span class="film-tag">DaVinci Resolve &bull; Film Emulation</span>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/bpuzggK.png" alt="Frame.io">
-                        <div class="tech-tooltip">
-                            <strong>Frame.io</strong>
-                            <span>Timecoded, frame-accurate client review & feedback.</span>
-                        </div>
+                </div>
+
+                <!-- 2. Offline Editing Reel -->
+                <div class="film" onclick="openVideoModal('kE3bO4kxMgM', 'Offline Editing Reel', 'Editor: Jackson McMurdo &bull; Narrative Assembly &bull; Commercial Pacing', 'https://www.youtube.com/watch?v=kE3bO4kxMgM')">
+                    <div class="film-frame">
+                        <img src="https://img.youtube.com/vi/kE3bO4kxMgM/maxresdefault.jpg" alt="Offline Editing Reel" loading="eager">
+                        <span class="play" aria-label="Play Offline Editing Reel"><i class="play-icon"></i></span>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/8REtVAp.png" alt="Topaz Video AI">
-                        <div class="tech-tooltip">
-                            <strong>Topaz Video AI</strong>
-                            <span>AI-driven upscaling, interpolation, and artifact reduction.</span>
-                        </div>
+                    <div class="film-caption">
+                        <h3>Offline Editing Reel</h3>
+                        <span class="film-tag">Narrative &bull; Commercial Pacing</span>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/XbuAuQ5.png" alt="After Effects">
-                        <div class="tech-tooltip">
-                            <strong>After Effects</strong>
-                            <span>Dynamic motion graphics and VFX compositing.</span>
-                        </div>
+                </div>
+
+                <!-- 3. Sound Design & Mix Reel -->
+                <div class="film" onclick="openVideoModal('9Wv0WVDgzEU', 'Sound Design &amp; Mix Reel', 'Sound Editor &amp; Re-Recording Mixer: Jackson McMurdo &bull; Pro Tools &bull; RX 12', 'https://www.youtube.com/watch?v=9Wv0WVDgzEU')">
+                    <div class="film-frame">
+                        <img src="https://img.youtube.com/vi/9Wv0WVDgzEU/maxresdefault.jpg" alt="Sound Design & Mix Reel" loading="lazy">
+                        <span class="play" aria-label="Play Sound Design Reel"><i class="play-icon"></i></span>
+                    </div>
+                    <div class="film-caption">
+                        <h3>Sound Design &amp; Mix Reel</h3>
+                        <span class="film-tag">Pro Tools &bull; Spatial Audio</span>
+                    </div>
+                </div>
+
+                <!-- 4. Title Design & Motion Reel -->
+                <div class="film" onclick="openVideoModal('9u2EourejMM', 'Title Design &amp; Motion Reel', 'Title Designer &amp; Motion Artist: Jackson McMurdo &bull; After Effects &bull; Illustrator', 'https://www.youtube.com/watch?v=9u2EourejMM')">
+                    <div class="film-frame">
+                        <img src="https://img.youtube.com/vi/9u2EourejMM/maxresdefault.jpg" alt="Title Design & Motion Reel" loading="lazy">
+                        <span class="play" aria-label="Play Titling & Design Reel"><i class="play-icon"></i></span>
+                    </div>
+                    <div class="film-caption">
+                        <h3>Title Design &amp; Motion Reel</h3>
+                        <span class="film-tag">Custom Typography &bull; Motion Titles</span>
                     </div>
                 </div>
             </div>
 
-            <!-- SOUND -->
-            <div class="work-cat reveal">
-                <div class="work-header">
-                    <h2>Sound</h2>
-                </div>
-                <!-- Sound Video Reel -->
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/9Wv0WVDgzEU?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=9Wv0WVDgzEU&cc_load_policy=0" 
-                        title="Sound Reel"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <!-- Sound Tech Stack -->
-                <div class="tech-stack">
-                    <span class="tech-stack-label">In-House</span>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/fy2T4rG.png" alt="Pro Tools">
-                        <div class="tech-tooltip">
-                            <strong>Avid Pro Tools</strong>
-                            <span>The industry standard for cinematic mixing & sound design.</span>
+            <!-- INTERACTIVE DEPARTMENT HIGHLIGHTS -->
+            <div class="interactive-showcases reveal" style="margin-top: 4.5rem; padding-top: 3.5rem; border-top: 1px solid var(--border);">
+                <!-- 1. Colour Comparison Sliders -->
+                <div style="margin-bottom: 4.5rem;">
+                    <div class="work-header" style="margin-bottom: 1.5rem;">
+                        <div>
+                            <span class="works-eyebrow">// COLOUR SCIENCE</span>
+                            <h3 style="font-size: 1.45rem; font-weight: 700; color: #ffffff; margin: 0 0 0.3rem;">Interactive Film Emulation Sliders</h3>
+                            <p style="font-size: 0.86rem; color: var(--text-dim); margin: 0;">Drag sliders to evaluate raw camera log profiles against our final DaVinci Resolve print film grades.</p>
                         </div>
+                        <a href="colour.html" class="studio-btn" style="font-size: 0.76rem; padding: 0.55rem 1.15rem;">Explore Full Colour Suite ↗</a>
                     </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/ocAbDKq.png" alt="iZotope RX 12">
-                        <div class="tech-tooltip">
-                            <strong>iZotope RX 12</strong>
-                            <span>Surgical dialogue isolation and audio restoration.</span>
+                    <div class="slider-grid">
+                        <div class="comparison-slider">
+                            <img class="img-after" src="https://i.imgur.com/Mue08R1.jpg" alt="Coloured Grade 1">
+                            <img class="img-before" src="https://i.imgur.com/kRrD6EF.jpg" alt="Log Image 1">
+                            <div class="slider-handle"><span class="handle-arrow">&#10094;&#10095;</span></div>
+                            <span class="slider-label label-left">Log</span>
+                            <span class="slider-label label-right">Graded</span>
+                            <input type="range" min="0" max="100" value="25" class="slider-input" oninput="updateComparisonSlider(this)">
+                            <div class="expand-btn" onclick="toggleFullscreen(this)" title="Fullscreen"><i class="fa-solid fa-expand"></i></div>
                         </div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/QbyNOsi.png" alt="DaVinci Fairlight">
-                        <div class="tech-tooltip">
-                            <strong>DaVinci Fairlight</strong>
-                            <span>Integrated high-fidelity mixing and mastering.</span>
+                        <div class="comparison-slider">
+                            <img class="img-after" src="https://i.imgur.com/Z82T1V9.jpg" alt="Coloured Grade 2">
+                            <img class="img-before" src="https://i.imgur.com/M37D5Zl.jpg" alt="Log Image 2">
+                            <div class="slider-handle"><span class="handle-arrow">&#10094;&#10095;</span></div>
+                            <span class="slider-label label-left">Log</span>
+                            <span class="slider-label label-right">Graded</span>
+                            <input type="range" min="0" max="100" value="50" class="slider-input" oninput="updateComparisonSlider(this)">
+                            <div class="expand-btn" onclick="toggleFullscreen(this)" title="Fullscreen"><i class="fa-solid fa-expand"></i></div>
                         </div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/eMDKZyM.png" alt="FabFilter">
-                        <div class="tech-tooltip">
-                            <strong>FabFilter Total Bundle</strong>
-                            <span>Premium, surgical EQ and dynamics processing.</span>
-                        </div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/cPshQBi.png" alt="iZotope Insight">
-                        <div class="tech-tooltip">
-                            <strong>iZotope Insight</strong>
-                            <span>Broadcast-standard audio metering and compliance.</span>
-                        </div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/tFMO4D7.png" alt="Ableton Live">
-                        <div class="tech-tooltip">
-                            <strong>Ableton Live</strong>
-                            <span>Custom sound design, scoring, and rhythmic sequencing.</span>
-                        </div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/NE2dUiH.png" alt="Serum 2">
-                        <div class="tech-tooltip">
-                            <strong>Serum 2</strong>
-                            <span>Advanced wavetable synthesis for unique soundscapes.</span>
-                        </div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/c32b8rP.png" alt="Valhalla DSP">
-                        <div class="tech-tooltip">
-                            <strong>Valhalla DSP</strong>
-                            <span>Lush, high-end spatial and environmental reverbs.</span>
-                        </div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/UkbfaSp.png" alt="Krotos Studio">
-                        <div class="tech-tooltip">
-                            <strong>Krotos Studio</strong>
-                            <span>Dynamic, performative Foley and sound effect generation.</span>
+                        <div class="comparison-slider">
+                            <img class="img-after" src="https://i.imgur.com/pwfJOKY.jpg" alt="Coloured Grade 3">
+                            <img class="img-before" src="https://i.imgur.com/gd6lS5r.jpg" alt="Log Image 3">
+                            <div class="slider-handle"><span class="handle-arrow">&#10094;&#10095;</span></div>
+                            <span class="slider-label label-left">Log</span>
+                            <span class="slider-label label-right">Graded</span>
+                            <input type="range" min="0" max="100" value="75" class="slider-input" oninput="updateComparisonSlider(this)">
+                            <div class="expand-btn" onclick="toggleFullscreen(this)" title="Fullscreen"><i class="fa-solid fa-expand"></i></div>
                         </div>
                     </div>
                 </div>
 
-                <div style="text-align: center; margin-top: 3rem;">
-                    <a href="sound.html" class="submit-btn" style="text-decoration: none; display: inline-block;">Launch Interactive Stem Mixer</a>
-                </div>
-            </div>
-
-            <!-- COLOUR -->
-            <div class="work-cat reveal">
-                <div class="work-header">
-                    <h2>Colour</h2>
-                </div>
-
-                <!-- 1. Colour Video Reel -->
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/yaZ__LsubwY?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=yaZ__LsubwY&cc_load_policy=0" 
-                        title="Colour Reel"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-
-                <!-- 2. Overlapping Before/After Comparison Sliders (Grid Layout) -->
-                <div class="slider-grid">
-                    <div class="comparison-slider">
-                        <img class="img-after" src="https://i.imgur.com/Mue08R1.jpg" alt="Coloured Grade 1">
-                        <img class="img-before" src="https://i.imgur.com/kRrD6EF.jpg" alt="Log Image 1">
-                        <div class="slider-handle">
-                            <span class="handle-arrow">&#10094;&#10095;</span>
+                <!-- 2. Titling 2x2 Grid -->
+                <div style="margin-bottom: 2rem;">
+                    <div class="work-header" style="margin-bottom: 1.5rem;">
+                        <div>
+                            <span class="works-eyebrow">// TYPOGRAPHY &amp; MOTION</span>
+                            <h3 style="font-size: 1.45rem; font-weight: 700; color: #ffffff; margin: 0 0 0.3rem;">Interactive Titling Showcase</h3>
+                            <p style="font-size: 0.86rem; color: var(--text-dim); margin: 0;">Click any frame to toggle between isolated vector typography and video context.</p>
                         </div>
-                        <span class="slider-label label-left">Log</span>
-                        <span class="slider-label label-right">Graded</span>
-                        <!-- 75% Graded, 25% Log -->
-                        <input type="range" min="0" max="100" value="25" class="slider-input" oninput="updateComparisonSlider(this)">
-                        <div class="expand-btn" onclick="toggleFullscreen(this)" title="Fullscreen">
-                            <i class="fa-solid fa-expand"></i>
+                        <a href="design.html" class="studio-btn" style="font-size: 0.76rem; padding: 0.55rem 1.15rem;">View Design Portfolio ↗</a>
+                    </div>
+                    <div class="titling-grid">
+                        <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
+                            <img class="title-isolated" src="https://i.imgur.com/CDDqpRU.jpg" alt="Title 1 Isolated">
+                            <img class="title-with-bg" src="https://i.imgur.com/gWEirNW.jpg" alt="Title 1 Context">
+                            <div class="toggle-indicator"><span class="view-isolated">Isolate</span><span class="view-context">Context</span></div>
+                        </div>
+                        <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
+                            <img class="title-isolated" src="https://i.imgur.com/OYbowMM.jpg" alt="Title 2 Isolated">
+                            <img class="title-with-bg" src="https://i.imgur.com/e6CYyoG.jpg" alt="Title 2 Context">
+                            <div class="toggle-indicator"><span class="view-isolated">Isolate</span><span class="view-context">Context</span></div>
+                        </div>
+                        <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
+                            <img class="title-isolated" src="https://i.imgur.com/W3iBRIl.jpg" alt="Title 3 Isolated">
+                            <img class="title-with-bg" src="https://i.imgur.com/wQGUuEr.jpg" alt="Title 3 Context">
+                            <div class="toggle-indicator"><span class="view-isolated">Isolate</span><span class="view-context">Context</span></div>
+                        </div>
+                        <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
+                            <img class="title-isolated" src="https://i.imgur.com/43s9l4k.jpg" alt="Title 4 Isolated">
+                            <img class="title-with-bg" src="https://i.imgur.com/pCZGH7x.jpg" alt="Title 4 Context">
+                            <div class="toggle-indicator"><span class="view-isolated">Isolate</span><span class="view-context">Context</span></div>
                         </div>
                     </div>
-
-                    <div class="comparison-slider">
-                        <img class="img-after" src="https://i.imgur.com/Z82T1V9.jpg" alt="Coloured Grade 2">
-                        <img class="img-before" src="https://i.imgur.com/M37D5Zl.jpg" alt="Log Image 2">
-                        <div class="slider-handle">
-                            <span class="handle-arrow">&#10094;&#10095;</span>
-                        </div>
-                        <span class="slider-label label-left">Log</span>
-                        <span class="slider-label label-right">Graded</span>
-                        <!-- 50/50 -->
-                        <input type="range" min="0" max="100" value="50" class="slider-input" oninput="updateComparisonSlider(this)">
-                        <div class="expand-btn" onclick="toggleFullscreen(this)" title="Fullscreen">
-                            <i class="fa-solid fa-expand"></i>
-                        </div>
-                    </div>
-
-                    <div class="comparison-slider">
-                        <img class="img-after" src="https://i.imgur.com/pwfJOKY.jpg" alt="Coloured Grade 3">
-                        <img class="img-before" src="https://i.imgur.com/gd6lS5r.jpg" alt="Log Image 3">
-                        <div class="slider-handle">
-                            <span class="handle-arrow">&#10094;&#10095;</span>
-                        </div>
-                        <span class="slider-label label-left">Log</span>
-                        <span class="slider-label label-right">Graded</span>
-                        <!-- 75% Log, 25% Graded -->
-                        <input type="range" min="0" max="100" value="75" class="slider-input" oninput="updateComparisonSlider(this)">
-                        <div class="expand-btn" onclick="toggleFullscreen(this)" title="Fullscreen">
-                            <i class="fa-solid fa-expand"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Colour Tech Stack -->
-                <div class="tech-stack">
-                    <span class="tech-stack-label">In-House</span>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/QbyNOsi.png" alt="DaVinci Resolve">
-                        <div class="tech-tooltip">
-                            <strong>DaVinci Resolve</strong>
-                            <span>Industrial-grade cinematic grading and look development.</span>
-                        </div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/S6wYBLA.png" alt="MagicGrade">
-                        <div class="tech-tooltip">
-                            <strong>MagicGrade</strong>
-                            <span>Authentic film emulation built from real film density data.</span>
-                        </div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/i6ucjjG.png" alt="Magic Grade Film">
-                        <div class="tech-tooltip">
-                            <strong>Magic Grade Film</strong>
-                            <span>Advanced cinematic print film profiles.</span>
-                        </div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/JyoJXCW.png" alt="LensNode">
-                        <div class="tech-tooltip">
-                            <strong>LensNode</strong>
-                            <span>GPU-powered simulations for authentic lens distortion and halation.</span>
-                        </div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/m2XvjMf.png" alt="ASUS ProArt Monitor">
-                        <div class="tech-tooltip">
-                            <strong>ASUS ProArt Monitor</strong>
-                            <span>Factory-calibrated, color-accurate reference monitoring.</span>
-                        </div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/J2Sl742.png" alt="Calman Verified">
-                        <div class="tech-tooltip">
-                            <strong>Calman Verified</strong>
-                            <span>Guaranteed Delta E < 2 for broadcast-safe color space management.</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- LINK TO NEW DEDICATED COLOUR PAGE -->
-                <div style="text-align: center; margin-top: 4rem;">
-                    <a href="colour.html" class="submit-btn" style="text-decoration: none; display: inline-block;">View Full Colour Portfolio</a>
-                </div>
-
-            </div>
-
-            <!-- TITLING & DESIGN -->
-            <div class="work-cat reveal">
-                <div class="work-header">
-                    <h2>Titling & Design</h2>
-                </div>
-
-                <!-- 1. Graphic Design / Titling Showcase Reel -->
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/9u2EourejMM?rel=0&modestbranding=1&autoplay=1&mute=1&loop=1&playlist=9u2EourejMM" 
-                        title="Graphic Design Reel"
-                        allow="autoplay; encrypted-media; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                
-                <!-- 2. Interactive 2x2 Titling Grid -->
-                <div class="titling-grid">
-                    <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
-                        <img class="title-isolated" src="https://i.imgur.com/CDDqpRU.jpg" alt="Title 1 Isolated">
-                        <img class="title-with-bg" src="https://i.imgur.com/gWEirNW.jpg" alt="Title 1 Context">
-                        <div class="toggle-indicator">
-                            <span class="view-isolated">Isolate</span>
-                            <span class="view-context">Context</span>
-                        </div>
-                    </div>
-
-                    <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
-                        <img class="title-isolated" src="https://i.imgur.com/OYbowMM.jpg" alt="Title 2 Isolated">
-                        <img class="title-with-bg" src="https://i.imgur.com/e6CYyoG.jpg" alt="Title 2 Context">
-                        <div class="toggle-indicator">
-                            <span class="view-isolated">Isolate</span>
-                            <span class="view-context">Context</span>
-                        </div>
-                    </div>
-
-                    <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
-                        <img class="title-isolated" src="https://i.imgur.com/W3iBRIl.jpg" alt="Title 3 Isolated">
-                        <img class="title-with-bg" src="https://i.imgur.com/wQGUuEr.jpg" alt="Title 3 Context">
-                        <div class="toggle-indicator">
-                            <span class="view-isolated">Isolate</span>
-                            <span class="view-context">Context</span>
-                        </div>
-                    </div>
-
-                    <div class="titling-item" onclick="this.classList.toggle('isolated-view')">
-                        <img class="title-isolated" src="https://i.imgur.com/43s9l4k.jpg" alt="Title 4 Isolated">
-                        <img class="title-with-bg" src="https://i.imgur.com/pCZGH7x.jpg" alt="Title 4 Context">
-                        <div class="toggle-indicator">
-                            <span class="view-isolated">Isolate</span>
-                            <span class="view-context">Context</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Design Tech Stack -->
-                <div class="tech-stack">
-                    <span class="tech-stack-label">In-House</span>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/DCQxcQR.png" alt="Adobe Photoshop">
-                        <div class="tech-tooltip">
-                            <strong>Photoshop</strong>
-                            <span>Industry-standard raster graphics and asset manipulation.</span>
-                        </div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/48pVUqo.png" alt="Adobe Illustrator">
-                        <div class="tech-tooltip">
-                            <strong>Illustrator</strong>
-                            <span>Scalable, vector-based titling and graphic design.</span>
-                        </div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/OTTzCL4.png" alt="Procreate">
-                        <div class="tech-tooltip">
-                            <strong>Procreate</strong>
-                            <span>Custom, hand-drawn typography and textural elements.</span>
-                        </div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/XbuAuQ5.png" alt="Adobe After Effects">
-                        <div class="tech-tooltip">
-                            <strong>After Effects</strong>
-                            <span>Complex title sequences and dynamic tracking.</span>
-                        </div>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://i.imgur.com/Ymma1yt.png" alt="Adobe InDesign">
-                        <div class="tech-tooltip">
-                            <strong>InDesign</strong>
-                            <span>Professional layout design for pitch decks and print.</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 3rem;">
-                    <a href="design.html" class="submit-btn" style="text-decoration: none; display: inline-block;">View Full Titling &amp; Design Portfolio</a>
                 </div>
             </div>
 
@@ -2295,6 +2112,64 @@
                             <div class="work-meta">Behind The Scenes &bull; Directed &amp; Edited by Jackson McMurdo</div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAPABILITIES & WORKFLOW -->
+        <section id="about" class="container">
+            <h2 class="workflow-headline reveal">Professional grade integration of sight and sound.</h2>
+            
+            <div class="caps-grid">
+                <div class="cap-card reveal">
+                    <h3>01. Editing</h3>
+                    <ul class="cap-list">
+                        <li>Narrative & commercial precision cutting</li>
+                        <li>Native 4K/8K media handling</li>
+                        <li>DaVinci Resolve studio workflow</li>
+                        <li>Camera raw media management</li>
+                    </ul>
+                </div>
+                <div class="cap-card reveal">
+                    <h3>02. Sound</h3>
+                    <ul class="cap-list">
+                        <li>High-fidelity sound design & mixing</li>
+                        <li>Dialogue cleanup & surgical restoration</li>
+                        <li>Pro Tools and DaVinci Fairlight mixing and mastering</li>
+                    </ul>
+                </div>
+                <div class="cap-card reveal">
+                    <h3>03. Colour</h3>
+                    <ul class="cap-list">
+                        <li>Industrial-grade cinematic grading</li>
+                        <li>Mood alignment & look development</li>
+                        <li>Color space management & LUT creation</li>
+                        <li>Calibrated monitoring delivery</li>
+                    </ul>
+                </div>
+                <div class="cap-card reveal">
+                    <h3>04. Design</h3>
+                    <ul class="cap-list">
+                        <li>Custom film titling & typography</li>
+                        <li>Motion graphics & VFX integration</li>
+                        <li>Intermediate Fusion compositing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- AWARDS & LAURELS -->
+            <div class="laurels-wrapper reveal">
+                <img src="https://i.imgur.com/aZRtwt0.png" alt="Film Laurel 1">
+                <img src="https://i.imgur.com/6oa5xem.png" alt="Film Laurel 2">
+                <img src="https://i.imgur.com/h7HrGeu.png" alt="Film Laurel 3">
+                <img src="https://i.imgur.com/Bs2kTUm.png" alt="Film Laurel 4">
+            </div>
+
+            <!-- In-House Storage Badge -->
+            <div class="storage-wrapper reveal">
+                <div class="storage-banner">
+                    <span class="storage-badge-dot"></span>
+                    <span>15TB+ In-House High-Speed SSD & HDD Storage</span>
                 </div>
             </div>
         </section>
