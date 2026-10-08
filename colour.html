@@ -50,6 +50,25 @@
             .colour-grid { grid-template-columns: repeat(8, 1fr); }
         }
 
+        .colour-grid.grid-4by3 img {
+            aspect-ratio: 4 / 3;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            box-shadow: 0 0 10px var(--accent-gold);
+            animation: pulseGlow 1.8s infinite;
+            display: inline-block;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(1.3); }
+        }
+
         .colour-grid img {
             width: 100%;
             aspect-ratio: 16 / 9;
@@ -332,6 +351,82 @@
     <main class="container" style="padding-top: 160px; min-height: 85vh;">
         <h1 class="workflow-headline" style="text-align: center; margin-bottom: 4rem;">Colour Grading Gallery</h1>
         
+        <!-- PROJECT: Donat Jackson - "Swear to God" -->
+        <div class="work-cat" id="sweartogod-project">
+            <div class="work-header">
+                <div style="display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 0.3rem;">
+                    <h2 style="margin: 0;">Donat Jackson — "Swear to God"</h2>
+                    <span style="display: inline-flex; align-items: center; gap: 0.45rem; background: rgba(229, 185, 111, 0.12); border: 1px solid rgba(229, 185, 111, 0.35); color: var(--accent-gold); padding: 0.35rem 0.8rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; border-radius: 4px;">
+                        <span class="pulse-dot"></span> Premiere Midnight Tonight
+                    </span>
+                    <a href="index.html" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #111; border: 1px solid #2a2a2a; color: #eee; text-decoration: none; padding: 0.4rem 0.8rem; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; transition: 0.3s;" onmouseover="this.style.borderColor='#fff'; this.style.color='#fff'" onmouseout="this.style.borderColor='#2a2a2a'; this.style.color='#eee'">
+                        <i class="fa-solid fa-play" style="color: var(--accent-gold); font-size: 0.85rem;"></i> Watch 1080p Teaser
+                    </a>
+                </div>
+                <p style="color: var(--text-dim); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em;">Music Video | Directed by Mason Cline | Colour Grading by Muk Post | October 2026</p>
+            </div>
+            
+            <div class="colour-grid grid-4by3 collapsed" id="sweartogod-grid">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.1.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.1.2.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.10.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.12.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.13.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.16.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.16.2.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.18.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.19.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.19.2.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.20.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.22.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.22.2.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.23.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.29.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.35.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.36.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.37.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.37.2.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.37.3.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.39.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.41.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.42.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.43.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.49.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.50.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.51.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.52.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.52.2.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.52.3.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.55.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.55.2.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.57.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.58.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.60.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.66.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.67.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.67.2.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.68.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.68.2.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.69.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.7.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.71.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.73.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.74.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.75.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.8.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.83.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.84.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.87.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_1.87.2.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_2.1.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+                <img src="stills-sweartogod/Still_2026-10-08_154848_3.1.1.jpg" alt="Donat Jackson — Swear to God Colour Still" loading="lazy" onclick="openLightbox(this)">
+            </div>
+            
+            <div class="show-more-wrapper">
+                <button class="submit-btn" onclick="toggleGallery('sweartogod-grid', this)">Show More Stills (53)</button>
+            </div>
+        </div>
+
         <!-- PROJECT: Donat Jackson - needmoretime! -->
         <div class="work-cat">
             <div class="work-header">
