@@ -80,125 +80,530 @@
             animation-delay: 0.75s;
         }
 
-        /* FEATURED YOUTUBE VIDEO DROP */
+        /* ==========================================================================
+           FEATURED MUSIC VIDEO PREMIERE // DONAT JACKSON - "SWEAR TO GOD"
+           Apple-Style Opaque Player Box + Midnight Countdown
+           ========================================================================== */
         .featured-drop-wrapper {
-            margin-bottom: 3.5rem;
+            margin-bottom: 3.8rem;
             opacity: 0;
-            transform: translateY(15px);
+            transform: translateY(16px);
             animation: heroSubFade 1s var(--ease-out) forwards;
-            animation-delay: 0.35s;
+            animation-delay: 0.25s;
             text-align: center;
-            padding: 2.2rem 2.4rem;
-            background: linear-gradient(180deg, rgba(21, 21, 27, 0.6) 0%, rgba(14, 14, 18, 0.85) 100%);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            padding: 2rem 2rem 2.4rem;
+            background: linear-gradient(180deg, rgba(16, 16, 22, 0.78) 0%, rgba(10, 10, 14, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             width: 100%;
-            max-width: 640px;
-            box-shadow: var(--shadow-md), var(--shadow-inner);
+            max-width: 860px;
+            box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.9), 0 0 45px rgba(229, 185, 111, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.14);
             position: relative;
         }
 
-        .out-now-title {
-            font-size: clamp(2rem, 5.5vw, 3.2rem);
-            font-weight: 800;
-            color: var(--accent);
-            letter-spacing: 0.08em;
-            line-height: 1;
-            margin-bottom: 1.4rem;
+        /* COUNTDOWN & PREMIERE HEADER */
+        .premiere-header {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .premiere-status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.4rem 1.1rem;
+            border-radius: 9999px;
+            background: rgba(229, 185, 111, 0.12);
+            border: 1px solid rgba(229, 185, 111, 0.35);
+            color: var(--accent-gold);
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
-            text-wrap: balance;
+            box-shadow: 0 0 20px rgba(229, 185, 111, 0.18);
         }
 
-        /* PULSING YOUTUBE VIDEO BOX */
-        .youtube-video-box {
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            box-shadow: 0 0 10px var(--accent-gold);
+            animation: pulseGlow 1.8s infinite;
+        }
+
+        .pulse-dot.active-live {
+            background: #ff0000;
+            box-shadow: 0 0 12px #ff0000;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(1.3); }
+        }
+
+        .premiere-track-title {
+            font-size: clamp(1.75rem, 4.4vw, 2.75rem);
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.06em;
+            line-height: 1.12;
+            margin: 0;
+            text-transform: uppercase;
+            text-shadow: 0 2px 24px rgba(0, 0, 0, 0.85);
+        }
+
+        .premiere-track-subtitle {
+            font-size: clamp(0.7rem, 1.6vw, 0.82rem);
+            color: var(--text-dim);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* COUNTDOWN TILES */
+        .countdown-clock {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            margin-top: 0.35rem;
+            padding: 0.65rem 1.4rem;
+            background: rgba(12, 12, 16, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 12px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 58px;
+        }
+
+        .countdown-val {
+            font-family: var(--font-mono);
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.05em;
+            line-height: 1;
+        }
+
+        .countdown-lbl {
+            font-size: 0.58rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            margin-top: 0.35rem;
+            text-transform: uppercase;
+        }
+
+        .countdown-sep {
+            font-family: var(--font-mono);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            opacity: 0.6;
+        }
+
+        /* APPLE-STYLE OPAQUE VIDEO PLAYER FRAME (SURROUNDING 4:3 VIDEO) */
+        .apple-video-player {
             position: relative;
-            display: block;
             width: 100%;
-            max-width: 540px;
-            aspect-ratio: 16 / 9;
             margin: 0 auto 1.6rem;
-            border-radius: var(--radius-md);
+            background: #0b0b0f;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid var(--border);
+            box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.92), 0 0 35px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+            transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s var(--ease-out);
+        }
+
+        .apple-video-player:hover {
+            border-color: rgba(255, 255, 255, 0.24);
+            box-shadow: 0 32px 75px -10px rgba(0, 0, 0, 0.96), 0 0 45px rgba(229, 185, 111, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+        }
+
+        /* Top macOS Window Chrome */
+        .apple-player-chrome {
+            height: 38px;
+            background: linear-gradient(180deg, #1b1b22 0%, #131318 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            user-select: none;
+        }
+
+        .apple-window-dots {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .apple-window-dots .dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        .apple-window-dots .dot-red { background: #ff5f56; border: 1px solid rgba(224, 68, 62, 0.85); }
+        .apple-window-dots .dot-yellow { background: #ffbd2e; border: 1px solid rgba(222, 161, 35, 0.85); }
+        .apple-window-dots .dot-green { background: #27c93f; border: 1px solid rgba(40, 173, 58, 0.85); }
+
+        .apple-player-chrome:hover .dot { transform: scale(1.08); }
+
+        .apple-player-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.74rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 60%;
+        }
+
+        .apple-player-app-icon {
+            color: #ff3333;
+            font-size: 0.7rem;
+        }
+
+        .apple-player-badges {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .apple-badge {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 0.15rem 0.45rem;
+            border-radius: 4px;
+            letter-spacing: 0.06em;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-dim);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .apple-badge.quality-badge {
+            color: var(--accent-gold);
+            border-color: rgba(229, 185, 111, 0.3);
+            background: rgba(229, 185, 111, 0.1);
+        }
+
+        /* Screen Wrapper (4:3 Aspect Ratio) */
+        .apple-player-screen-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: #000000;
             cursor: pointer;
-            text-decoration: none;
-            animation: clickPulse 2.8s ease-in-out infinite;
-            transition: transform 0.35s var(--ease-out), box-shadow 0.35s ease, border-color 0.35s ease;
-            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        @keyframes clickPulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 rgba(229, 185, 111, 0);
-            }
-            50% {
-                transform: scale(1.02);
-                box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75), 0 0 24px rgba(229, 185, 111, 0.16);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 0 rgba(229, 185, 111, 0);
-            }
-        }
-
-        .youtube-video-box:hover {
-            animation-play-state: paused;
-            transform: scale(1.035);
-            border-color: var(--border-hover);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 255, 255, 0.15);
-        }
-
-        .youtube-box-thumb {
+        .apple-player-screen {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.6s var(--ease-out);
+            background: #000000;
         }
 
-        .youtube-video-box:hover .youtube-box-thumb {
-            transform: scale(1.05);
-        }
-
-        .video-box-overlay {
+        /* Floating Audio Toggle Pill */
+        .teaser-audio-pill {
             position: absolute;
-            inset: 0;
-            display: flex;
+            top: 1rem;
+            right: 1rem;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.28);
-            transition: background 0.3s ease;
-        }
-
-        .youtube-video-box:hover .video-box-overlay {
-            background: rgba(0, 0, 0, 0.12);
-        }
-
-        .youtube-play-icon {
-            width: 64px;
-            height: 44px;
+            gap: 0.5rem;
             background: rgba(14, 14, 18, 0.88);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: var(--radius-md);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            padding: 0.5rem 0.95rem;
+            border-radius: 9999px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: all 0.25s var(--ease-out);
+            z-index: 10;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+        }
+
+        .teaser-audio-pill:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.45);
+            transform: scale(1.04);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.75);
+        }
+
+        .teaser-audio-pill.unmuted {
+            background: rgba(16, 185, 129, 0.22);
+            border-color: rgba(16, 185, 129, 0.55);
+            color: #34d399;
+        }
+
+        /* Center Play/Pause Flash Overlay */
+        .player-center-flash {
+            position: absolute;
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ff2222;
-            font-size: 1.8rem;
-            transition: all 0.3s var(--ease-out);
-            box-shadow: var(--shadow-md);
+            color: #ffffff;
+            font-size: 1.6rem;
+            opacity: 0;
+            transform: scale(0.7);
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s var(--ease-out);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9;
         }
 
-        .youtube-video-box:hover .youtube-play-icon {
-            background: #ff0000;
+        .player-center-flash.flash {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Apple / YouTube Player Controls Dock */
+        .apple-player-dock {
+            min-height: 48px;
+            background: linear-gradient(180deg, #16161c 0%, #0d0d12 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            gap: 0.85rem;
+            user-select: none;
+        }
+
+        .dock-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .dock-btn:hover {
             color: #ffffff;
-            transform: scale(1.12);
-            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.45);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .dock-time {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            white-space: nowrap;
+        }
+
+        /* Scrubber Track */
+        .dock-scrubber-wrap {
+            flex: 1;
+            position: relative;
+            padding: 10px 0;
+            cursor: pointer;
+        }
+
+        .dock-scrubber-track {
+            position: relative;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.18);
+            border-radius: 2px;
+            transition: height 0.15s ease;
+        }
+
+        .dock-scrubber-wrap:hover .dock-scrubber-track {
+            height: 6px;
+        }
+
+        .dock-scrubber-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0%;
+            background: #ff0000;
+            border-radius: 2px;
+            transition: width 0.1s linear;
+        }
+
+        .dock-scrubber-thumb {
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ff0000;
+            border: 2px solid #ffffff;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.15s ease;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+        }
+
+        .dock-scrubber-wrap:hover .dock-scrubber-thumb {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* YouTube Dock Action Badge */
+        .dock-yt-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: var(--text-primary);
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .dock-yt-action:hover {
+            background: rgba(255, 0, 0, 0.15);
+            border-color: rgba(255, 0, 0, 0.4);
+            color: #ffffff;
+        }
+
+        /* PREMIERE ACTIONS ROW BELOW PLAYER */
+        .premiere-actions-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .premiere-yt-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            color: #000000;
+            padding: 0.95rem 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            text-decoration: none;
+            transition: all 0.25s var(--ease-out);
+            font-size: 0.84rem;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.1);
+            border: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .premiere-yt-btn:hover {
+            background: #e8e8ee;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7), 0 0 28px rgba(255, 255, 255, 0.2);
+        }
+
+        .premiere-yt-btn:active {
+            transform: scale(0.98);
+        }
+
+        .yt-btn-copy {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .yt-main-lbl {
+            font-size: 0.84rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .yt-sub-lbl {
+            font-size: 0.62rem;
+            font-weight: 500;
+            color: #555560;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .yt-status-tag {
+            margin-left: 1rem;
+            background: rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            padding: 0.2rem 0.55rem;
+            border-radius: 4px;
+            font-size: 0.64rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            color: #222228;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .premiere-notify-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: var(--text-primary);
+            padding: 0.95rem 1.6rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.25s var(--ease-out);
+        }
+
+        .premiere-notify-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            transform: translateY(-2px);
         }
 
         .youtube-drop-btn {
@@ -223,8 +628,118 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 255, 255, 0.14);
         }
-        .youtube-drop-btn:active {
-            transform: scale(0.98);
+
+        /* PREMIERE TOAST NOTIFICATION */
+        .premiere-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            opacity: 0;
+            visibility: hidden;
+            background: rgba(14, 14, 18, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-top: 2px solid var(--accent-gold);
+            border-radius: 14px;
+            padding: 1.4rem 1.8rem;
+            width: 90%;
+            max-width: 520px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(229, 185, 111, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 10000;
+            transition: transform 0.4s var(--ease-out), opacity 0.4s ease, visibility 0.4s ease;
+            text-align: left;
+        }
+
+        .premiere-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .toast-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.6rem;
+        }
+
+        .toast-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .toast-close-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-dim);
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 0.2rem;
+            transition: color 0.2s ease;
+        }
+
+        .toast-close-btn:hover { color: #ffffff; }
+
+        .toast-body h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 0.35rem;
+        }
+
+        .toast-body p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            margin: 0 0 1.1rem;
+            line-height: 1.45;
+        }
+
+        .toast-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .toast-action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.55rem 1rem;
+            border-radius: 6px;
+            font-size: 0.74rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .toast-action-primary {
+            background: var(--accent-gold);
+            color: #000000;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .toast-action-primary:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .toast-action-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+        }
+
+        .toast-action-secondary:hover {
+            background: rgba(255, 255, 255, 0.16);
         }
 
         @keyframes heroFadeScale {
@@ -799,10 +1314,20 @@
 
         /* MOBILE RESPONSIVENESS OVERRIDES */
         @media (max-width: 768px) {
-            .hero { min-height: auto; padding: 110px 1.5rem 50px; }
+            .hero { min-height: auto; padding: 110px 1.2rem 50px; }
             .hero-wordmark { width: 85vw; }
             .work-cat { margin-bottom: 4.5rem; }
-            .featured-drop-wrapper { padding: 1.8rem 1.2rem; }
+            .featured-drop-wrapper { padding: 1.4rem 1rem 1.8rem; border-radius: 16px; margin-bottom: 2.8rem; }
+            .premiere-track-title { font-size: 1.6rem; }
+            .countdown-val { font-size: 1.35rem; }
+            .countdown-unit { min-width: 48px; }
+            .countdown-clock { padding: 0.5rem 1rem; gap: 0.45rem; }
+            .apple-player-title { max-width: 42%; font-size: 0.68rem; }
+            .apple-badge.aspect-badge { display: none; }
+            .dock-yt-action span { display: none; }
+            .dock-yt-action { padding: 0.35rem 0.55rem; }
+            .premiere-actions-row { flex-direction: column; width: 100%; gap: 0.75rem; }
+            .premiere-yt-btn, .premiere-notify-btn { width: 100%; justify-content: center; }
             .tech-stack-label { border-right: none; width: 100%; margin-bottom: 0.5rem; }
             .laurels-wrapper { gap: 1.5rem; margin-top: 2.5rem; }
             .laurels-wrapper img { height: 50px; }
@@ -812,7 +1337,12 @@
 
         @media (max-width: 375px) {
             .hero h1 { letter-spacing: 0.25em; font-size: 0.68rem; }
-            .out-now-title { font-size: 1.75rem; }
+            .premiere-track-title { font-size: 1.35rem; }
+            .countdown-val { font-size: 1.15rem; }
+            .countdown-unit { min-width: 38px; }
+            .countdown-lbl { font-size: 0.52rem; }
+            .teaser-audio-pill span { display: none; }
+            .teaser-audio-pill { padding: 0.45rem 0.6rem; }
         }
     </style>
 </head>
@@ -869,22 +1399,125 @@
         <section class="hero container">
             
             <!-- FEATURED YOUTUBE VIDEO DROP -->
+            <!-- FEATURED MUSIC VIDEO PREMIERE DROP: DONAT JACKSON - "SWEAR TO GOD" -->
             <div class="featured-drop-wrapper">
-                <div class="out-now-title">OUT NOW</div>
                 
-                <!-- Pulsing Clickable YouTube Video Box -->
-                <a href="https://www.youtube.com/watch?v=m3GzM8sJ_V8" target="_blank" rel="noopener noreferrer" class="youtube-video-box" aria-label="Watch Need More Time by Donat Jackson on YouTube">
-                    <img src="https://i.imgur.com/6RYCnXk.jpg" alt="Donat Jackson - Need More Time" class="youtube-box-thumb">
-                    <div class="video-box-overlay">
-                        <div class="youtube-play-icon">
-                            <i class="fa-brands fa-youtube"></i>
+                <!-- COUNTDOWN & PREMIERE HEADER -->
+                <div class="premiere-header">
+                    <div class="premiere-status-badge">
+                        <span class="pulse-dot"></span>
+                        <span>Music Video Premiere &bull; Tonight at Midnight</span>
+                    </div>
+                    <h2 class="premiere-track-title">Donat Jackson — "Swear to God"</h2>
+                    <p class="premiere-track-subtitle">Directed by Mason Cline &bull; Edit, Colour &amp; Titles by Muk Post</p>
+                    
+                    <!-- Segmented Countdown to Midnight -->
+                    <div class="countdown-clock" id="midnightCountdown" aria-label="Countdown to midnight premiere">
+                        <div class="countdown-unit">
+                            <span class="countdown-val" id="cdHours">00</span>
+                            <span class="countdown-lbl">Hours</span>
+                        </div>
+                        <span class="countdown-sep">:</span>
+                        <div class="countdown-unit">
+                            <span class="countdown-val" id="cdMinutes">00</span>
+                            <span class="countdown-lbl">Minutes</span>
+                        </div>
+                        <span class="countdown-sep">:</span>
+                        <div class="countdown-unit">
+                            <span class="countdown-val" id="cdSeconds">00</span>
+                            <span class="countdown-lbl">Seconds</span>
                         </div>
                     </div>
-                </a>
+                </div>
 
-                <a href="https://www.youtube.com/watch?v=m3GzM8sJ_V8" target="_blank" rel="noopener noreferrer" class="youtube-drop-btn">
-                    <i class="fa-brands fa-youtube" style="margin-right: 0.5rem; color: #ff0000; font-size: 1.1rem;"></i> Watch "Need More Time" by Donat Jackson
-                </a>
+                <!-- OPAQUE APPLE-STYLE VIDEO PLAYER (SURROUNDING 4:3 1080P TEASER) -->
+                <div class="apple-video-player" id="appleVideoPlayer">
+                    <!-- macOS Window Chrome Bar -->
+                    <div class="apple-player-chrome">
+                        <div class="apple-window-dots">
+                            <span class="dot dot-red" title="Close"></span>
+                            <span class="dot dot-yellow" title="Minimize"></span>
+                            <span class="dot dot-green" title="Zoom"></span>
+                        </div>
+                        <div class="apple-player-title">
+                            <i class="fa-solid fa-film apple-player-app-icon"></i>
+                            <span>DonatJackson-sweartoGod!-outroteaser-1080p.mp4</span>
+                        </div>
+                        <div class="apple-player-badges">
+                            <span class="apple-badge aspect-badge">4:3 Aspect</span>
+                            <span class="apple-badge quality-badge">1080p HD</span>
+                        </div>
+                    </div>
+
+                    <!-- 4:3 Video Screen Area -->
+                    <div class="apple-player-screen-wrap" id="appleScreenWrap">
+                        <video id="heroTeaserVideo" 
+                               class="apple-player-screen"
+                               src="portfolio-assets/videos/donatjackson-sweartogod-outroteaser-web.mp4" 
+                               poster="portfolio-assets/videos/donatjackson-sweartogod-poster.jpg" 
+                               autoplay loop muted playsinline preload="auto">
+                        </video>
+
+                        <!-- Floating Unmute Audio Pill -->
+                        <button id="teaserAudioToggle" class="teaser-audio-pill" type="button" aria-label="Toggle Audio">
+                            <i class="fa-solid fa-volume-xmark" id="teaserAudioIcon"></i>
+                            <span id="teaserAudioText">Sound Off &bull; Click to Unmute</span>
+                        </button>
+
+                        <!-- Center Play/Pause Flash Overlay Indicator -->
+                        <div class="player-center-flash" id="playerCenterFlash">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </div>
+
+                    <!-- Apple / YouTube Style Bottom Controls Dock -->
+                    <div class="apple-player-dock">
+                        <button type="button" class="dock-btn" id="dockPlayPauseBtn" aria-label="Play or Pause">
+                            <i class="fa-solid fa-pause" id="dockPlayPauseIcon"></i>
+                        </button>
+
+                        <div class="dock-time">
+                            <span id="dockCurTime">0:00</span> / <span id="dockTotTime">0:09</span>
+                        </div>
+
+                        <!-- Scrubber Track -->
+                        <div class="dock-scrubber-wrap" id="dockScrubberWrap" title="Seek preview">
+                            <div class="dock-scrubber-track">
+                                <div class="dock-scrubber-fill" id="dockScrubberFill"></div>
+                                <div class="dock-scrubber-thumb" id="dockScrubberThumb"></div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="dock-btn" id="dockVolumeBtn" aria-label="Toggle Mute">
+                            <i class="fa-solid fa-volume-xmark" id="dockVolumeIcon"></i>
+                        </button>
+
+                        <button type="button" class="dock-yt-action" id="dockYtActionBtn" aria-label="Watch on YouTube">
+                            <i class="fa-brands fa-youtube" style="color: #ff0000; font-size: 0.95rem;"></i>
+                            <span>Watch on YouTube</span>
+                        </button>
+
+                        <button type="button" class="dock-btn" id="dockFullscreenBtn" aria-label="Toggle Fullscreen">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PREMIERE ACTION BUTTONS (PLACEHOLDERS) -->
+                <div class="premiere-actions-row">
+                    <button type="button" class="premiere-yt-btn" id="heroYoutubeBtn">
+                        <i class="fa-brands fa-youtube" style="margin-right: 0.65rem; color: #ff0000; font-size: 1.3rem;"></i>
+                        <div class="yt-btn-copy">
+                            <span class="yt-main-lbl">Watch "Swear to God" on YouTube</span>
+                            <span class="yt-sub-lbl">Premiere Scheduled Tonight at Midnight</span>
+                        </div>
+                        <span class="yt-status-tag"><i class="fa-regular fa-clock"></i> Drops 12:00 AM</span>
+                    </button>
+                    <button type="button" class="premiere-notify-btn" id="premiereNotifyBtn">
+                        <i class="fa-regular fa-bell"></i>
+                        <span>Get Midnight Alert</span>
+                    </button>
+                </div>
             </div>
 
             <img src="https://i.imgur.com/MilMt1c.png" alt="MUK POST" class="hero-wordmark">
@@ -1398,20 +2031,20 @@
                         </div>
                     </div>
 
-                    <!-- Donat Jackson - Need More Time -->
-                    <div class="work-video-card" data-category="editing colour sound design" onclick="openVideoModal('m3GzM8sJ_V8', 'Donat Jackson — needmoretime!', 'Editing &bull; Colour &bull; Sound &bull; Titles', 'https://www.youtube.com/watch?v=m3GzM8sJ_V8')">
+                    <!-- Donat Jackson - Swear to God (Dir. Mason Cline) -->
+                    <div class="work-video-card" data-category="editing colour design" onclick="openVideoModal('portfolio-assets/videos/donatjackson-sweartogod-outroteaser-web.mp4', 'Donat Jackson — Swear to God (Dir. Mason Cline)', 'Editing &bull; Colour Grading &bull; Title Design &bull; Muk Post', '#')">
                         <div class="work-thumb-wrap">
-                            <img src="https://img.youtube.com/vi/m3GzM8sJ_V8/hqdefault.jpg" alt="Donat Jackson — Need More Time" loading="lazy">
+                            <img src="portfolio-assets/thumbs/donatjackson-sweartogod-thumb.jpg" alt="Donat Jackson — Swear to God" loading="lazy">
                             <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
-                            <span class="work-duration">Full Video</span>
+                            <span class="work-duration">1080p Teaser</span>
                         </div>
                         <div class="work-card-info">
                             <div class="work-card-top">
                                 <span class="work-role-tag">Edit &bull; Colour &bull; Design</span>
                                 <span class="work-year">2026</span>
                             </div>
-                            <div class="work-card-title">Donat Jackson — "needmoretime!"</div>
-                            <div class="work-meta">Music Video &bull; Directed by Jackson McMurdo</div>
+                            <div class="work-card-title">Donat Jackson — "Swear to God"</div>
+                            <div class="work-meta">Music Video &bull; Directed by Mason Cline &bull; Premiere Midnight Tonight</div>
                         </div>
                     </div>
 
@@ -1809,8 +2442,231 @@
             if (videoModal && videoModal.style.display === 'flex') {
                 if (e.key === 'Escape') closeVideoModal();
             }
+            if (e.key === 'Escape') {
+                closePremiereToast();
+            }
         });
+
+        // ==========================================================================
+        // MIDNIGHT PREMIERE COUNTDOWN & APPLE 4:3 VIDEO PLAYER CONTROLS
+        // Donat Jackson - "Swear to God" (Dir. Mason Cline)
+        // ==========================================================================
+        (function initMidnightPremierePlayer() {
+            // --- 1. Countdown to Tonight at Midnight ---
+            function updateCountdown() {
+                const now = new Date();
+                // Target midnight tonight (next 00:00:00 local time)
+                const targetMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0);
+                const diff = targetMidnight.getTime() - now.getTime();
+
+                const cdHours = document.getElementById('cdHours');
+                const cdMinutes = document.getElementById('cdMinutes');
+                const cdSeconds = document.getElementById('cdSeconds');
+                const statusBadge = document.querySelector('.premiere-status-badge');
+
+                if (diff <= 0) {
+                    if (cdHours) cdHours.textContent = '00';
+                    if (cdMinutes) cdMinutes.textContent = '00';
+                    if (cdSeconds) cdSeconds.textContent = '00';
+                    if (statusBadge) {
+                        statusBadge.innerHTML = '<span class="pulse-dot active-live"></span><span>OUT NOW &bull; PREMIERE LIVE ON YOUTUBE</span>';
+                    }
+                } else {
+                    const hours = Math.floor(diff / (1000 * 60 * 60));
+                    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                    if (cdHours) cdHours.textContent = String(hours).padStart(2, '0');
+                    if (cdMinutes) cdMinutes.textContent = String(minutes).padStart(2, '0');
+                    if (cdSeconds) cdSeconds.textContent = String(seconds).padStart(2, '0');
+                }
+            }
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+            // --- 2. Apple-Style 4:3 Video Player Logic ---
+            const video = document.getElementById('heroTeaserVideo');
+            const playPauseBtn = document.getElementById('dockPlayPauseBtn');
+            const playPauseIcon = document.getElementById('dockPlayPauseIcon');
+            const audioPill = document.getElementById('teaserAudioToggle');
+            const audioIcon = document.getElementById('teaserAudioIcon');
+            const audioText = document.getElementById('teaserAudioText');
+            const dockVolumeBtn = document.getElementById('dockVolumeBtn');
+            const dockVolumeIcon = document.getElementById('dockVolumeIcon');
+            const curTimeEl = document.getElementById('dockCurTime');
+            const totTimeEl = document.getElementById('dockTotTime');
+            const scrubberWrap = document.getElementById('dockScrubberWrap');
+            const scrubberFill = document.getElementById('dockScrubberFill');
+            const scrubberThumb = document.getElementById('dockScrubberThumb');
+            const centerFlash = document.getElementById('playerCenterFlash');
+            const fsBtn = document.getElementById('dockFullscreenBtn');
+            const playerFrame = document.getElementById('appleVideoPlayer');
+
+            if (!video) return;
+
+            function formatTime(secs) {
+                if (isNaN(secs) || secs < 0) return '0:00';
+                const m = Math.floor(secs / 60);
+                const s = Math.floor(secs % 60);
+                return `${m}:${s < 10 ? '0' : ''}${s}`;
+            }
+
+            function triggerFlash(iconClass) {
+                if (!centerFlash) return;
+                centerFlash.innerHTML = `<i class="${iconClass}"></i>`;
+                centerFlash.classList.add('flash');
+                setTimeout(() => centerFlash.classList.remove('flash'), 500);
+            }
+
+            function togglePlay() {
+                if (video.paused || video.ended) {
+                    video.play().then(() => {
+                        if (playPauseIcon) {
+                            playPauseIcon.classList.remove('fa-play');
+                            playPauseIcon.classList.add('fa-pause');
+                        }
+                        triggerFlash('fa-solid fa-play');
+                    }).catch(err => console.log('Autoplay error:', err));
+                } else {
+                    video.pause();
+                    if (playPauseIcon) {
+                        playPauseIcon.classList.remove('fa-pause');
+                        playPauseIcon.classList.add('fa-play');
+                    }
+                    triggerFlash('fa-solid fa-pause');
+                }
+            }
+
+            function toggleAudio() {
+                video.muted = !video.muted;
+                const isMuted = video.muted;
+                if (audioIcon) {
+                    audioIcon.className = isMuted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
+                }
+                if (audioText) {
+                    audioText.innerHTML = isMuted ? 'Sound Off &bull; Click to Unmute' : 'Sound On';
+                }
+                if (audioPill) {
+                    audioPill.classList.toggle('unmuted', !isMuted);
+                }
+                if (dockVolumeIcon) {
+                    dockVolumeIcon.className = isMuted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
+                }
+            }
+
+            // Click video screen or dock play/pause button
+            video.addEventListener('click', togglePlay);
+            if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlay);
+
+            // Audio toggles
+            if (audioPill) audioPill.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleAudio();
+            });
+            if (dockVolumeBtn) dockVolumeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleAudio();
+            });
+
+            // Update scrubber and timing
+            video.addEventListener('timeupdate', () => {
+                if (!video.duration) return;
+                const pct = (video.currentTime / video.duration) * 100;
+                if (scrubberFill) scrubberFill.style.width = pct + '%';
+                if (scrubberThumb) scrubberThumb.style.left = pct + '%';
+                if (curTimeEl) curTimeEl.textContent = formatTime(video.currentTime);
+                if (totTimeEl) totTimeEl.textContent = formatTime(video.duration);
+            });
+
+            video.addEventListener('loadedmetadata', () => {
+                if (totTimeEl) totTimeEl.textContent = formatTime(video.duration);
+            });
+
+            // Seek on scrubber click
+            if (scrubberWrap) {
+                scrubberWrap.addEventListener('click', (e) => {
+                    const rect = scrubberWrap.getBoundingClientRect();
+                    const clickX = e.clientX - rect.left;
+                    const pct = Math.max(0, Math.min(1, clickX / rect.width));
+                    if (video.duration) {
+                        video.currentTime = pct * video.duration;
+                    }
+                });
+            }
+
+            // Fullscreen toggle
+            if (fsBtn && playerFrame) {
+                fsBtn.addEventListener('click', () => {
+                    if (!document.fullscreenElement) {
+                        if (playerFrame.requestFullscreen) {
+                            playerFrame.requestFullscreen();
+                        } else if (playerFrame.webkitRequestFullscreen) {
+                            playerFrame.webkitRequestFullscreen();
+                        }
+                    } else {
+                        if (document.exitFullscreen) {
+                            document.exitFullscreen();
+                        } else if (document.webkitExitFullscreen) {
+                            document.webkitExitFullscreen();
+                        }
+                    }
+                });
+            }
+
+            // --- 3. YouTube Premiere Scheduled Toast Notification ---
+            const toast = document.getElementById('premiereToast');
+            const ytBtns = [
+                document.getElementById('heroYoutubeBtn'),
+                document.getElementById('dockYtActionBtn'),
+                document.getElementById('premiereNotifyBtn')
+            ].filter(Boolean);
+
+            ytBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (toast) {
+                        toast.classList.add('show');
+                    }
+                });
+            });
+
+            window.closePremiereToast = function() {
+                if (toast) toast.classList.remove('show');
+            };
+
+            window.copyPremiereLink = function() {
+                const url = window.location.href;
+                navigator.clipboard.writeText(url).then(() => {
+                    const copyBtn = document.getElementById('toastCopyBtn');
+                    if (copyBtn) {
+                        const orig = copyBtn.innerHTML;
+                        copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Link Copied!';
+                        setTimeout(() => copyBtn.innerHTML = orig, 2200);
+                    }
+                }).catch(() => {});
+            };
+        })();
     </script>
+
+    <!-- PREMIERE SCHEDULING INTERACTIVE TOAST -->
+    <aside class="premiere-toast" id="premiereToast" role="dialog" aria-labelledby="toastTitle">
+        <div class="toast-top">
+            <span class="toast-badge"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Premiere Countdown Active</span>
+            <button type="button" class="toast-close-btn" onclick="closePremiereToast()" aria-label="Close notification"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="toast-body">
+            <h4 id="toastTitle">Donat Jackson — "Swear to God"</h4>
+            <p>The official music video (Directed by Mason Cline &bull; Post-Production by Muk Post) premieres tonight at <strong>12:00 AM Midnight EDT</strong>. The YouTube release is currently being scheduled, and direct link indexing will unlock the moment it goes live.</p>
+            <div class="toast-actions">
+                <a href="https://www.instagram.com/muk.post/" target="_blank" rel="noopener noreferrer" class="toast-action-btn toast-action-primary">
+                    <i class="fa-brands fa-instagram"></i> Follow @muk.post for Drop
+                </a>
+                <button type="button" id="toastCopyBtn" class="toast-action-btn toast-action-secondary" onclick="copyPremiereLink()">
+                    <i class="fa-regular fa-copy"></i> Copy Page Link
+                </button>
+            </div>
+        </div>
+    </aside>
 
     <!-- VIDEO THEATER MODAL -->
     <div class="video-modal" id="videoModal" onclick="handleVideoModalBackdrop(event)">
