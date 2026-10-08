@@ -82,269 +82,147 @@
 
         /* ==========================================================================
            FEATURED MUSIC VIDEO PREMIERE // DONAT JACKSON - "sweartogod!"
-           Simplified Minimalist Apple-Style 4:3 Video Player + Countdown HUD
+           Clean Stamped 4:3 Video Showcase + Ambient Outer Glow + Header & Countdown
            ========================================================================== */
         .featured-drop-wrapper {
-            margin-bottom: 3.5rem;
+            margin-bottom: 4.5rem;
             opacity: 0;
             transform: translateY(16px);
             animation: heroSubFade 1s var(--ease-out) forwards;
             animation-delay: 0.25s;
             text-align: center;
-            padding: 1.8rem 1.8rem 2rem;
-            background: linear-gradient(180deg, rgba(18, 18, 24, 0.68) 0%, rgba(10, 10, 14, 0.92) 100%);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             width: 100%;
-            max-width: 760px;
-            box-shadow: var(--shadow-lg), var(--shadow-inner);
+            max-width: 1040px;
             position: relative;
-        }
-
-        /* MINIMALIST COUNTDOWN HUD */
-        .countdown-hud {
-            display: inline-flex;
+            display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.55rem;
-            margin-bottom: 1.4rem;
-            padding: 0.75rem 1.6rem;
-            background: rgba(10, 10, 14, 0.75);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            box-shadow: var(--shadow-inner);
         }
 
-        .countdown-status-indicator {
+        /* HEADER: Title & Subtitle */
+        .featured-drop-header {
+            margin-bottom: 1.6rem;
+            text-align: center;
+            max-width: 860px;
+            padding: 0 1rem;
+        }
+
+        .featured-drop-title {
+            font-size: clamp(1.4rem, 3.2vw, 2.35rem);
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            color: #ffffff;
+            margin: 0 0 0.55rem;
+            text-transform: none;
+            line-height: 1.15;
+        }
+
+        .featured-drop-subtitle {
+            font-size: clamp(0.78rem, 1.35vw, 0.96rem);
+            font-weight: 400;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+            margin: 0 0 1.35rem;
+            line-height: 1.45;
+        }
+
+        /* CLEAN MINIMALIST COUNTDOWN (No green light dot, no dropping at midnight badge) */
+        .clean-countdown {
             display: inline-flex;
             align-items: center;
-            gap: 0.45rem;
-        }
-
-        .pulse-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--accent-emerald);
-            box-shadow: 0 0 8px var(--accent-emerald);
-            animation: pulseGlow 1.8s infinite;
-        }
-
-        .pulse-dot.active-live {
-            background: #ff0000;
-            box-shadow: 0 0 10px #ff0000;
-        }
-
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.35; transform: scale(1.25); }
-        }
-
-        .countdown-status-text {
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            font-weight: 600;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--text-dim);
+            justify-content: center;
+            padding: 0.5rem 1.4rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: var(--radius-sm);
+            margin: 0 auto;
         }
 
         .countdown-display {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.7rem;
+            gap: 0.85rem;
         }
 
         .countdown-block {
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-width: 48px;
+            min-width: 52px;
         }
 
         .countdown-num {
             font-family: var(--font-mono);
-            font-size: 1.65rem;
+            font-size: clamp(1.45rem, 2.6vw, 1.95rem);
             font-weight: 700;
             color: #ffffff;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.06em;
             line-height: 1;
         }
 
         .countdown-tag {
             font-family: var(--font-mono);
-            font-size: 0.55rem;
+            font-size: 0.58rem;
             font-weight: 600;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.22em;
             color: var(--text-muted);
-            margin-top: 0.3rem;
+            margin-top: 0.35rem;
             text-transform: uppercase;
         }
 
         .countdown-divider {
             font-family: var(--font-mono);
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--text-muted);
-            margin-bottom: 0.65rem;
-            opacity: 0.5;
+            margin-bottom: 0.7rem;
+            opacity: 0.45;
         }
 
-        /* SIMPLIFIED MINIMALIST APPLE-STYLE 4:3 VIDEO PLAYER */
-        .apple-video-player {
-            position: relative;
+        /* CLEANLY STAMPED 4:3 VIDEO WITH AMBIENT OUTER GLOW */
+        .stamped-video-container {
             width: 100%;
-            margin: 0 auto 1.4rem;
-            background: #000000;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: 0 24px 60px -10px rgba(0, 0, 0, 0.95), var(--shadow-inner);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 auto 2rem;
+            position: relative;
         }
 
-        .apple-video-player:hover {
-            border-color: var(--border-hover);
-            box-shadow: 0 30px 75px -10px rgba(0, 0, 0, 0.98), var(--shadow-inner);
-        }
-
-        /* 4:3 Video Viewport */
-        .apple-player-screen-wrap {
+        .stamped-4x3-video-wrap {
             position: relative;
             width: 100%;
             aspect-ratio: 4 / 3;
             background: #000000;
-            cursor: pointer;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            /* Luminous studio outer-glow drop shadow popping off obsidian background */
+            box-shadow: 
+                0 0 0 1px rgba(255, 255, 255, 0.08),
+                0 0 45px rgba(255, 255, 255, 0.15),
+                0 0 95px rgba(255, 255, 255, 0.08),
+                0 30px 80px rgba(0, 0, 0, 0.95);
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+            transition: border-color 0.4s ease, box-shadow 0.4s var(--ease-out);
         }
 
-        .apple-player-screen {
+        .stamped-4x3-video-wrap:hover {
+            border-color: rgba(255, 255, 255, 0.30);
+            box-shadow: 
+                0 0 0 1px rgba(255, 255, 255, 0.15),
+                0 0 65px rgba(255, 255, 255, 0.22),
+                0 0 130px rgba(255, 255, 255, 0.12),
+                0 35px 95px rgba(0, 0, 0, 0.98);
+        }
+
+        .stamped-4x3-video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
             background: #000000;
-        }
-
-        /* Center Play/Pause Flash Overlay */
-        .player-center-flash {
-            position: absolute;
-            width: 68px;
-            height: 68px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.75);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            font-size: 1.5rem;
-            opacity: 0;
-            transform: scale(0.7);
-            pointer-events: none;
-            transition: opacity 0.3s ease, transform 0.3s var(--ease-out);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            z-index: 9;
-        }
-
-        .player-center-flash.flash {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        /* Minimalist Apple Media Controls Dock */
-        .apple-player-dock {
-            min-height: 44px;
-            background: #09090c;
-            border-top: 1px solid rgba(255, 255, 255, 0.07);
-            display: flex;
-            align-items: center;
-            padding: 0.35rem 0.9rem;
-            gap: 0.75rem;
-            user-select: none;
-        }
-
-        .dock-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .dock-btn:hover {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .dock-time {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: var(--text-dim);
-            white-space: nowrap;
-        }
-
-        .dock-scrubber-wrap {
-            flex: 1;
-            position: relative;
-            padding: 10px 0;
-            cursor: pointer;
-        }
-
-        .dock-scrubber-track {
-            position: relative;
-            width: 100%;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.16);
-            border-radius: 2px;
-            transition: height 0.15s ease;
-        }
-
-        .dock-scrubber-wrap:hover .dock-scrubber-track {
-            height: 5px;
-        }
-
-        .dock-scrubber-fill {
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 0%;
-            background: #ff0000;
-            border-radius: 2px;
-            transition: width 0.1s linear;
-        }
-
-        .dock-scrubber-thumb {
-            position: absolute;
-            top: 50%;
-            left: 0%;
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-            background: #ff0000;
-            border: 2px solid #ffffff;
-            transform: translate(-50%, -50%) scale(0);
-            transition: transform 0.15s ease;
-            box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
-        }
-
-        .dock-scrubber-wrap:hover .dock-scrubber-thumb {
-            transform: translate(-50%, -50%) scale(1);
         }
 
         /* Action Buttons Row */
@@ -1145,11 +1023,13 @@
             .hero { min-height: auto; padding: 110px 1.2rem 50px; }
             .hero-wordmark { width: 85vw; }
             .work-cat { margin-bottom: 4.5rem; }
-            .featured-drop-wrapper { padding: 1.4rem 1rem 1.6rem; border-radius: var(--radius-md); margin-bottom: 2.8rem; }
-            .countdown-hud { padding: 0.65rem 1rem; width: 100%; max-width: 320px; }
-            .countdown-num { font-size: 1.35rem; }
+            .featured-drop-wrapper { margin-bottom: 2.8rem; }
+            .featured-drop-header { margin-bottom: 1.2rem; }
+            .clean-countdown { padding: 0.45rem 1rem; }
+            .countdown-num { font-size: 1.3rem; }
             .countdown-block { min-width: 40px; }
             .countdown-divider { font-size: 1.1rem; margin-bottom: 0.5rem; }
+            .stamped-video-container { margin-bottom: 1.4rem; }
             .premiere-actions-row { flex-direction: column; width: 100%; gap: 0.75rem; }
             .youtube-drop-btn, .studio-btn { width: 100%; justify-content: center; }
             .tech-stack-label { border-right: none; width: 100%; margin-bottom: 0.5rem; }
@@ -1221,83 +1101,49 @@
             <!-- FEATURED MUSIC VIDEO PREMIERE DROP -->
             <div class="featured-drop-wrapper">
                 
-                <!-- MINIMALIST COUNTDOWN -->
-                <div class="countdown-hud" aria-label="Countdown to midnight">
-                    <div class="countdown-status-indicator">
-                        <span class="pulse-dot"></span>
-                        <span class="countdown-status-text">DROPPING AT MIDNIGHT</span>
-                    </div>
-                    <div class="countdown-display" id="midnightCountdown">
-                        <div class="countdown-block">
-                            <span class="countdown-num" id="cdHours">00</span>
-                            <span class="countdown-tag">HRS</span>
-                        </div>
-                        <span class="countdown-divider">:</span>
-                        <div class="countdown-block">
-                            <span class="countdown-num" id="cdMinutes">00</span>
-                            <span class="countdown-tag">MIN</span>
-                        </div>
-                        <span class="countdown-divider">:</span>
-                        <div class="countdown-block">
-                            <span class="countdown-num" id="cdSeconds">00</span>
-                            <span class="countdown-tag">SEC</span>
+                <!-- OVER TOP OF VIDEO: TITLE, SUBTITLE & COUNTDOWN -->
+                <div class="featured-drop-header">
+                    <h2 class="featured-drop-title">Donat Jackson - sweartoGod!</h2>
+                    <p class="featured-drop-subtitle">music video directed by Mason Cline, dropping at midnight.</p>
+                    
+                    <!-- COUNTDOWN -->
+                    <div class="clean-countdown" aria-label="Countdown">
+                        <div class="countdown-display" id="midnightCountdown">
+                            <div class="countdown-block">
+                                <span class="countdown-num" id="cdHours">00</span>
+                                <span class="countdown-tag">HRS</span>
+                            </div>
+                            <span class="countdown-divider">:</span>
+                            <div class="countdown-block">
+                                <span class="countdown-num" id="cdMinutes">00</span>
+                                <span class="countdown-tag">MIN</span>
+                            </div>
+                            <span class="countdown-divider">:</span>
+                            <div class="countdown-block">
+                                <span class="countdown-num" id="cdSeconds">00</span>
+                                <span class="countdown-tag">SEC</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- OPAQUE APPLE-STYLE 4:3 VIDEO PLAYER -->
-                <div class="apple-video-player" id="appleVideoPlayer">
-                    <!-- 4:3 Video Viewport -->
-                    <div class="apple-player-screen-wrap" id="appleScreenWrap">
+                <!-- 4:3 VIDEO CLEANLY STAMPED WITH OUTER-GLOW DROP SHADOW -->
+                <div class="stamped-video-container">
+                    <div class="stamped-4x3-video-wrap" id="stampedVideoWrap">
                         <video id="heroTeaserVideo" 
-                               class="apple-player-screen"
+                               class="stamped-4x3-video"
                                src="portfolio-assets/videos/donatjackson-sweartogod-outroteaser-web.mp4" 
                                poster="portfolio-assets/videos/donatjackson-sweartogod-poster.jpg" 
                                autoplay loop muted playsinline preload="auto">
                         </video>
-
-                        <!-- Center Play/Pause Flash Overlay Indicator -->
-                        <div class="player-center-flash" id="playerCenterFlash">
-                            <i class="fa-solid fa-play"></i>
-                        </div>
-                    </div>
-
-                    <!-- Minimalist Apple Media Controls Dock -->
-                    <div class="apple-player-dock">
-                        <button type="button" class="dock-btn" id="dockPlayPauseBtn" aria-label="Play or Pause">
-                            <i class="fa-solid fa-pause" id="dockPlayPauseIcon"></i>
-                        </button>
-
-                        <div class="dock-time">
-                            <span id="dockCurTime">0:00</span> / <span id="dockTotTime">0:09</span>
-                        </div>
-
-                        <!-- Scrubber Track -->
-                        <div class="dock-scrubber-wrap" id="dockScrubberWrap" title="Seek preview">
-                            <div class="dock-scrubber-track">
-                                <div class="dock-scrubber-fill" id="dockScrubberFill"></div>
-                                <div class="dock-scrubber-thumb" id="dockScrubberThumb"></div>
-                            </div>
-                        </div>
-
-                        <button type="button" class="dock-btn" id="dockVolumeBtn" aria-label="Toggle Mute">
-                            <i class="fa-solid fa-volume-xmark" id="dockVolumeIcon"></i>
-                        </button>
-
-                        <button type="button" class="dock-btn" id="dockFullscreenBtn" aria-label="Toggle Fullscreen">
-                            <i class="fa-solid fa-expand"></i>
-                        </button>
                     </div>
                 </div>
 
-                <!-- ACTION BUTTONS -->
+                <!-- UNDERNEATH: YOUTUBE LINK BUTTON -->
                 <div class="premiere-actions-row">
                     <a href="https://www.youtube.com/@MukPostProduction" target="_blank" rel="noopener noreferrer" class="youtube-drop-btn" id="heroYoutubeBtn">
-                        <i class="fa-brands fa-youtube" style="margin-right: 0.5rem; color: #ff0000; font-size: 1.05rem;"></i> Watch on YouTube
+                        <i class="fa-brands fa-youtube" style="margin-right: 0.6rem; color: #ff0000; font-size: 1.15rem;"></i> Watch on YouTube
                     </a>
-                    <button type="button" class="studio-btn" id="premiereNotifyBtn">
-                        <i class="fa-regular fa-bell" style="margin-right: 0.5rem;"></i> Midnight Alert
-                    </button>
                     <a href="colour.html#sweartogod-project" class="studio-btn" title="View Colour Stills">
                         <i class="fa-solid fa-palette" style="margin-right: 0.5rem;"></i> Colour Stills
                     </a>
@@ -2268,135 +2114,30 @@
             updateCountdown();
             setInterval(updateCountdown, 1000);
 
-            // --- 2. Apple-Style 4:3 Video Player Logic ---
+            // --- 2. Clean 4:3 Video Interaction ---
             const video = document.getElementById('heroTeaserVideo');
-            const playPauseBtn = document.getElementById('dockPlayPauseBtn');
-            const playPauseIcon = document.getElementById('dockPlayPauseIcon');
-            const dockVolumeBtn = document.getElementById('dockVolumeBtn');
-            const dockVolumeIcon = document.getElementById('dockVolumeIcon');
-            const curTimeEl = document.getElementById('dockCurTime');
-            const totTimeEl = document.getElementById('dockTotTime');
-            const scrubberWrap = document.getElementById('dockScrubberWrap');
-            const scrubberFill = document.getElementById('dockScrubberFill');
-            const scrubberThumb = document.getElementById('dockScrubberThumb');
-            const centerFlash = document.getElementById('playerCenterFlash');
-            const fsBtn = document.getElementById('dockFullscreenBtn');
-            const playerFrame = document.getElementById('appleVideoPlayer');
+            const videoWrap = document.getElementById('stampedVideoWrap');
 
-            if (!video) return;
-
-            function formatTime(secs) {
-                if (isNaN(secs) || secs < 0) return '0:00';
-                const m = Math.floor(secs / 60);
-                const s = Math.floor(secs % 60);
-                return `${m}:${s < 10 ? '0' : ''}${s}`;
-            }
-
-            function triggerFlash(iconClass) {
-                if (!centerFlash) return;
-                centerFlash.innerHTML = `<i class="${iconClass}"></i>`;
-                centerFlash.classList.add('flash');
-                setTimeout(() => centerFlash.classList.remove('flash'), 500);
-            }
-
-            function togglePlay() {
-                if (video.paused || video.ended) {
-                    video.play().then(() => {
-                        if (playPauseIcon) {
-                            playPauseIcon.classList.remove('fa-play');
-                            playPauseIcon.classList.add('fa-pause');
-                        }
-                        triggerFlash('fa-solid fa-play');
-                    }).catch(err => console.log('Autoplay error:', err));
-                } else {
-                    video.pause();
-                    if (playPauseIcon) {
-                        playPauseIcon.classList.remove('fa-pause');
-                        playPauseIcon.classList.add('fa-play');
-                    }
-                    triggerFlash('fa-solid fa-pause');
-                }
-            }
-
-            function toggleAudio() {
-                video.muted = !video.muted;
-                const isMuted = video.muted;
-                if (dockVolumeIcon) {
-                    dockVolumeIcon.className = isMuted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
-                }
-            }
-
-            // Click video screen or dock play/pause button
-            video.addEventListener('click', togglePlay);
-            if (playPauseBtn) playPauseBtn.addEventListener('click', togglePlay);
-
-            // Audio toggle via dock volume button
-            if (dockVolumeBtn) dockVolumeBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleAudio();
-            });
-
-            // Update scrubber and timing
-            video.addEventListener('timeupdate', () => {
-                if (!video.duration) return;
-                const pct = (video.currentTime / video.duration) * 100;
-                if (scrubberFill) scrubberFill.style.width = pct + '%';
-                if (scrubberThumb) scrubberThumb.style.left = pct + '%';
-                if (curTimeEl) curTimeEl.textContent = formatTime(video.currentTime);
-                if (totTimeEl) totTimeEl.textContent = formatTime(video.duration);
-            });
-
-            video.addEventListener('loadedmetadata', () => {
-                if (totTimeEl) totTimeEl.textContent = formatTime(video.duration);
-            });
-
-            // Seek on scrubber click
-            if (scrubberWrap) {
-                scrubberWrap.addEventListener('click', (e) => {
-                    const rect = scrubberWrap.getBoundingClientRect();
-                    const clickX = e.clientX - rect.left;
-                    const pct = Math.max(0, Math.min(1, clickX / rect.width));
-                    if (video.duration) {
-                        video.currentTime = pct * video.duration;
-                    }
-                });
-            }
-
-            // Fullscreen toggle
-            if (fsBtn && playerFrame) {
-                fsBtn.addEventListener('click', () => {
-                    if (!document.fullscreenElement) {
-                        if (playerFrame.requestFullscreen) {
-                            playerFrame.requestFullscreen();
-                        } else if (playerFrame.webkitRequestFullscreen) {
-                            playerFrame.webkitRequestFullscreen();
-                        }
+            if (video && videoWrap) {
+                videoWrap.addEventListener('click', () => {
+                    if (video.paused) {
+                        video.play().catch(e => console.log('Play err:', e));
                     } else {
-                        if (document.exitFullscreen) {
-                            document.exitFullscreen();
-                        } else if (document.webkitExitFullscreen) {
-                            document.webkitExitFullscreen();
-                        }
+                        video.pause();
                     }
                 });
             }
 
-            // --- 3. YouTube Premiere Scheduled Toast Notification ---
+            // --- 3. Premiere Toast Notification Helpers ---
             const toast = document.getElementById('premiereToast');
-            const ytBtns = [
-                document.getElementById('heroYoutubeBtn'),
-                document.getElementById('dockYtActionBtn'),
-                document.getElementById('premiereNotifyBtn')
-            ].filter(Boolean);
+            const premiereNotifyBtn = document.getElementById('premiereNotifyBtn');
 
-            ytBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
+            if (premiereNotifyBtn) {
+                premiereNotifyBtn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    if (toast) {
-                        toast.classList.add('show');
-                    }
+                    if (toast) toast.classList.add('show');
                 });
-            });
+            }
 
             window.closePremiereToast = function() {
                 if (toast) toast.classList.remove('show');
