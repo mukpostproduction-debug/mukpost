@@ -82,7 +82,7 @@ mukpost/
 │       ├── art-360.jpg                    # Insyt 360 album art
 │       ├── art-needmoretime.jpg           # Donat Jackson needmoretime! cover
 │       ├── art-toll.jpg                   # Insyt TOLL cover
-│       ├── art-sweartogod.jpg             # Swear to God! cover
+│       ├── art-sweartogod.jpg             # sweartogod! cover
 │       └── *Large.jpeg                    # Master uncompressed cover files
 │
 ├── stills-insyt360/                       # Project gallery stills: Insyt - "360°"
