@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Muk Post — Email Signatures (5 Brand Variants)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens/muk-tokens.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0A0A0A;
+      color: #EEEEEE;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 48px 24px 80px;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    header {
+      margin-bottom: 40px;
+      border-bottom: 1px solid #1E1E1E;
+      padding-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #F8A695;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+    h1 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -0.03em;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.1;
+    }
+    .lead {
+      color: #AAAAAA;
+      font-size: 14.5px;
+      margin-top: 6px;
+      max-width: 620px;
+    }
+    .mode-toggle {
+      display: inline-flex;
+      background: #141414;
+      border: 1px solid #282828;
+      border-radius: 4px;
+      padding: 3px;
+      gap: 4px;
+    }
+    .mode-btn {
+      background: none;
+      border: none;
+      color: #888888;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 6px 14px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .mode-btn.active {
+      background: #FFFFFF;
+      color: #0A0A0A;
+      font-weight: 600;
+    }
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .card {
+      background: #111111;
+      border: 1px solid #1E1E1E;
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .card:hover {
+      border-color: #333333;
+    }
+    .card-header {
+      padding: 16px 20px;
+      background: #151515;
+      border-bottom: 1px solid #1E1E1E;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .card-desc {
+      font-size: 12px;
+      color: #888888;
+      margin-top: 2px;
+    }
+    .copy-btn {
+      background: #FFFFFF;
+      color: #0A0A0A;
+      border: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 2px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .copy-btn:hover {
+      background: #F8A695;
+      color: #0A0A0A;
+    }
+    .copy-btn.copied {
+      background: #10B981;
+      color: #FFFFFF;
+    }
+    .preview-box {
+      padding: 32px 28px;
+      background: #FFFFFF;
+      color: #0A0A0A;
+      transition: background 0.25s, color 0.25s;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+    }
+    body.dark-mode .preview-box {
+      background: #18181A;
+      color: #EEEEEE;
+    }
+    body.dark-mode .preview-box td {
+      color: #EEEEEE !important;
+    }
+    body.dark-mode .preview-box div[style*="color:#0A0A0A"] {
+      color: #FFFFFF !important;
+    }
+    body.dark-mode .preview-box div[style*="color:#555555"],
+    body.dark-mode .preview-box div[style*="color:#666666"] {
+      color: #AAAAAA !important;
+    }
+    body.dark-mode .preview-box a[style*="color:#2D318F"] {
+      color: #8B90E8 !important;
+    }
+    body.dark-mode .preview-box img[src*="_ink"] {
+      filter: invert(1);
+    }
+    body.dark-mode .preview-box td[style*="border-left:2px solid #0A0A0A"] {
+      border-left-color: #FFFFFF !important;
+    }
+    .instructions {
+      margin-top: 48px;
+      background: #111111;
+      border: 1px solid #1E1E1E;
+      border-radius: 4px;
+      padding: 24px 28px;
+    }
+    .instructions h3 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 18px;
+      color: #FFFFFF;
+      margin-bottom: 12px;
+    }
+    .instructions ol {
+      padding-left: 20px;
+      color: #AAAAAA;
+      font-size: 13.5px;
+      line-height: 1.7;
+    }
+    .instructions li b {
+      color: #FFFFFF;
+    }
+    .back-link {
+      margin-top: 24px;
+      display: inline-block;
+      color: #F8A695;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <span class="tag">// BRAND ASSETS · EMAIL SUITE</span>
+        <h1>Muk Post Email Signatures</h1>
+        <p class="lead">5 approved brand variants. Click any button to copy rich HTML straight to your clipboard, then paste into Gmail or Apple Mail settings.</p>
+      </div>
+      <div class="mode-toggle">
+        <button class="mode-btn active" id="btnLight" onclick="setMode('light')">Light Inbox</button>
+        <button class="mode-btn" id="btnDark" onclick="setMode('dark')">Dark Mode</button>
+      </div>
+    </header>
+
+    <div class="card-list">
+
+      <!-- VARIANT 1 -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">01 · The Studio Pillar (Flagship)</div>
+            <div class="card-desc">The primary standard signature with the Signature Indigo Tile and Salmon hairline divider.</div>
+          </div>
+          <button class="copy-btn" onclick="copySig('sig1', this)">Copy Signature</button>
+        </div>
+        <div class="preview-box">
+          <div id="sig1">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#0A0A0A;font-size:13px;line-height:1.45;border-collapse:collapse">
+  <tr>
+    <td style="padding:0 16px 0 0;vertical-align:top;border-right:2px solid #F8A695">
+      <img src="https://mukpost.com/brand/assets/logos/muk-tile_indigo.png" width="60" height="60" alt="Muk Post" style="display:block;border:0;width:60px;height:60px;border-radius:2px">
+    </td>
+    <td style="padding:0 0 0 16px;vertical-align:top">
+      <div style="font-weight:700;font-size:15px;color:#0A0A0A;letter-spacing:-0.2px">Jackson McMurdo</div>
+      <div style="font-size:12px;color:#555555;margin-top:2px">Muk Post &nbsp;·&nbsp; Post-Production &nbsp;·&nbsp; Toronto</div>
+      <div style="margin-top:8px;font-size:12px">
+        <a href="mailto:contact@mukpost.com" style="color:#2D318F;text-decoration:none;font-weight:600">contact@mukpost.com</a>
+        <span style="color:#CCCCCC;margin:0 6px">/</span>
+        <a href="https://mukpost.com" style="color:#2D318F;text-decoration:none;font-weight:600">mukpost.com</a>
+      </div>
+      <div style="margin-top:6px;font-family:Menlo,Consolas,'Courier New',monospace;font-size:9.5px;letter-spacing:1.5px;color:#888888;text-transform:uppercase">EDIT · COLOUR · SOUND · DESIGN</div>
+    </td>
+  </tr>
+</table>
+          </div>
+        </div>
+      </div>
+
+      <!-- VARIANT 2 -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">02 · The Architectural Minimalist (Zero Image)</div>
+            <div class="card-desc">100% spam-filter proof. Pure typography with ink border and salmon slash. Never blocked by corporate firewalls.</div>
+          </div>
+          <button class="copy-btn" onclick="copySig('sig2', this)">Copy Signature</button>
+        </div>
+        <div class="preview-box">
+          <div id="sig2">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#0A0A0A;font-size:13px;line-height:1.5;border-collapse:collapse">
+  <tr>
+    <td style="padding:0 0 0 14px;border-left:2px solid #0A0A0A;vertical-align:top">
+      <div style="font-size:13.5px;font-weight:700;color:#0A0A0A;letter-spacing:0.3px">
+        JACKSON McMURDO <span style="color:#F8A695;font-weight:400;margin:0 4px">//</span> <span style="font-weight:400;color:#555555">MUK POST</span>
+      </div>
+      <div style="font-size:12px;color:#666666;margin-top:2px">
+        Post-Production Direction &bull; Toronto, Canada
+      </div>
+      <div style="margin-top:7px;font-size:12px">
+        <a href="mailto:contact@mukpost.com" style="color:#2D318F;text-decoration:none;font-weight:600">contact@mukpost.com</a>
+        <span style="color:#BBBBBB;margin:0 6px">·</span>
+        <a href="https://mukpost.com" style="color:#2D318F;text-decoration:none;font-weight:600">mukpost.com</a>
+        <span style="color:#BBBBBB;margin:0 6px">·</span>
+        <a href="https://instagram.com/muk.post" style="color:#888888;text-decoration:none">@muk.post</a>
+      </div>
+      <div style="margin-top:5px;font-family:Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:1.4px;color:#888888;text-transform:uppercase">
+        SIGHT + SOUND INTEGRATION
+      </div>
+    </td>
+  </tr>
+</table>
+          </div>
+        </div>
+      </div>
+
+      <!-- VARIANT 3 -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">03 · The Darkroom Noir</div>
+            <div class="card-desc">Features the Ink Black Tile with white spray M, framed with an Indigo accent border and portfolio pill.</div>
+          </div>
+          <button class="copy-btn" onclick="copySig('sig3', this)">Copy Signature</button>
+        </div>
+        <div class="preview-box">
+          <div id="sig3">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#0A0A0A;font-size:13px;line-height:1.45;border-collapse:collapse">
+  <tr>
+    <td style="padding:0 16px 0 0;vertical-align:top;border-right:2px solid #2D318F">
+      <img src="https://mukpost.com/brand/assets/logos/muk-tile_ink.png" width="60" height="60" alt="Muk Post" style="display:block;border:0;width:60px;height:60px;border-radius:2px">
+    </td>
+    <td style="padding:0 0 0 16px;vertical-align:top">
+      <div style="font-weight:700;font-size:15px;color:#0A0A0A">Jackson McMurdo</div>
+      <div style="font-size:12px;color:#555555;margin-top:1px">Owner &amp; Post-Production Lead &bull; <strong style="color:#0A0A0A">Muk Post</strong></div>
+      <div style="margin-top:7px;font-size:12px">
+        <a href="mailto:contact@mukpost.com" style="color:#2D318F;text-decoration:none;font-weight:600">contact@mukpost.com</a>
+        <span style="color:#CCCCCC;margin:0 6px">&bull;</span>
+        <a href="https://mukpost.com" style="color:#2D318F;text-decoration:none;font-weight:600">mukpost.com</a>
+      </div>
+      <div style="margin-top:6px;font-size:11px">
+        <a href="https://mukpost.com/#work" style="display:inline-block;background:#0A0A0A;color:#FFFFFF;padding:3px 8px;border-radius:2px;font-size:10px;font-family:Menlo,Consolas,monospace;letter-spacing:0.5px;text-decoration:none">VIEW SELECTED WORKS ↗</a>
+      </div>
+    </td>
+  </tr>
+</table>
+          </div>
+        </div>
+      </div>
+
+      <!-- VARIANT 4 -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">04 · The Wordmark Header (Horizontal)</div>
+            <div class="card-desc">Top-down horizontal layout with the standalone stenciled MUK wordmark and clean hairline divider.</div>
+          </div>
+          <button class="copy-btn" onclick="copySig('sig4', this)">Copy Signature</button>
+        </div>
+        <div class="preview-box">
+          <div id="sig4">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#0A0A0A;font-size:13px;line-height:1.5;border-collapse:collapse;max-width:420px">
+  <tr>
+    <td style="padding:0 0 9px 0;border-bottom:1px solid #1E1E1E">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr>
+          <td style="vertical-align:middle">
+            <img src="https://mukpost.com/brand/assets/logos/muk-wordmark_ink.png" width="72" height="auto" alt="MUK" style="display:block;border:0;width:72px;height:auto">
+          </td>
+          <td style="vertical-align:middle;text-align:right;font-family:Menlo,Consolas,monospace;font-size:9.5px;letter-spacing:1.4px;color:#888888;text-transform:uppercase">
+            POST-PRODUCTION · TORONTO
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding:9px 0 0 0">
+      <div style="font-weight:700;font-size:14px;color:#0A0A0A">Jackson McMurdo</div>
+      <div style="font-size:12px;color:#555555;margin-top:2px">Editing &nbsp;·&nbsp; Colour Grading &nbsp;·&nbsp; Sound Design &nbsp;·&nbsp; Titling</div>
+      <div style="margin-top:7px;font-size:12px">
+        <a href="mailto:contact@mukpost.com" style="color:#2D318F;text-decoration:none;font-weight:600">contact@mukpost.com</a>
+        <span style="color:#CCCCCC;margin:0 6px">/</span>
+        <a href="https://mukpost.com" style="color:#2D318F;text-decoration:none;font-weight:600">mukpost.com</a>
+        <span style="color:#CCCCCC;margin:0 6px">/</span>
+        <a href="https://instagram.com/muk.post" style="color:#555555;text-decoration:none">@muk.post</a>
+      </div>
+    </td>
+  </tr>
+</table>
+          </div>
+        </div>
+      </div>
+
+      <!-- VARIANT 5 -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">05 · The Commercial Producer (Direct Pitch)</div>
+            <div class="card-desc">Optimized for agency, label, and director outreach with a clear "Request a Project Quote" CTA button.</div>
+          </div>
+          <button class="copy-btn" onclick="copySig('sig5', this)">Copy Signature</button>
+        </div>
+        <div class="preview-box">
+          <div id="sig5">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#0A0A0A;font-size:13px;line-height:1.45;border-collapse:collapse">
+  <tr>
+    <td style="padding:0 16px 0 0;vertical-align:top;border-right:2px solid #F8A695">
+      <img src="https://mukpost.com/brand/assets/logos/muk-tile_indigo.png" width="62" height="62" alt="Muk Post" style="display:block;border:0;width:62px;height:62px;border-radius:2px">
+    </td>
+    <td style="padding:0 0 0 16px;vertical-align:top">
+      <div style="font-weight:700;font-size:15px;color:#0A0A0A">Jackson McMurdo</div>
+      <div style="font-size:12px;color:#555555;margin-top:2px">Muk Post Production &bull; Toronto, Canada (EST)</div>
+      <div style="margin-top:7px;font-size:12px">
+        <a href="mailto:contact@mukpost.com" style="color:#2D318F;text-decoration:none;font-weight:600">contact@mukpost.com</a>
+        <span style="color:#CCCCCC;margin:0 6px">&bull;</span>
+        <a href="https://mukpost.com" style="color:#2D318F;text-decoration:none;font-weight:600">mukpost.com</a>
+      </div>
+      <div style="margin-top:8px">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td style="background:#2D318F;border-radius:2px;padding:4px 10px">
+              <a href="https://mukpost.com/#contact" style="font-family:Menlo,Consolas,monospace;font-size:10px;font-weight:600;letter-spacing:0.8px;color:#FFFFFF;text-decoration:none;display:inline-block">REQUEST A PROJECT QUOTE ↗</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </td>
+  </tr>
+</table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="instructions">
+      <h3>How to Install in Gmail or Apple Mail</h3>
+      <ol>
+        <li>Click <b>Copy Signature</b> above on whichever variant you want.</li>
+        <li><b>Gmail:</b> Click the Gear icon ⚙ → <i>See all settings</i> → Scroll down to <i>Signature</i> → Create new or edit → Paste directly into the signature box (<kbd>Cmd + V</kbd>). Scroll to the bottom and click <i>Save Changes</i>.</li>
+        <li><b>Apple Mail:</b> <i>Mail</i> → <i>Settings</i> → <i>Signatures</i> → Click <b>+</b> → Uncheck <i>"Always match my default message font"</i> → Paste (<kbd>Cmd + V</kbd>).</li>
+        <li>All logo assets are hosted from the live CDN at <code>mukpost.com/brand/</code> so recipients see them automatically with zero attachments.</li>
+      </ol>
+      <a href="../index.html#applications" class="back-link">← Back to Brand Hub</a>
+    </div>
+  </div>
+
+  <script>
+    function setMode(mode) {
+      if (mode === 'dark') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('btnDark').classList.add('active');
+        document.getElementById('btnLight').classList.remove('active');
+      } else {
+        document.body.classList.remove('dark-mode');
+        document.getElementById('btnLight').classList.add('active');
+        document.getElementById('btnDark').classList.remove('active');
+      }
+    }
+
+    function copySig(id, btn) {
+      var el = document.getElementById(id);
+      var range = document.createRange();
+      range.selectNode(el);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      try {
+        var success = document.execCommand('copy');
+        if (success) {
+          var orig = btn.innerText;
+          btn.innerText = 'COPIED!';
+          btn.classList.add('copied');
+          setTimeout(function() {
+            btn.innerText = orig;
+            btn.classList.remove('copied');
+          }, 2000);
+        }
+      } catch (err) {
+        console.error('Copy failed', err);
+      }
+      window.getSelection().removeAllRanges();
+    }
+  </script>
+</body>
+</html>
