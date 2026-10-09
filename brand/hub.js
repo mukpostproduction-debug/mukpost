@@ -33,7 +33,7 @@
   ];
   var SPACE = [4, 8, 12, 16, 24, 32, 48, 64, 96, 144];
   var CHECKS = [
-    ['Logo is the supplied file', 'Not retyped, redrawn, recoloured or cleaned up.'],
+    ['Standalone logo used (never M + MUK together)', 'Primary M, wordmark, or tile alone. Never lock up the M mark beside or above MUK (no double-M).'],
     ['Approved colourway and clear space', 'One of the six pairings, with ½ M clear on every side.'],
     ['Colours from the palette only', 'Indigo is a surface. No indigo text on black.'],
     ['One accent per layout', 'Salmon, once. No extra colours, no gradients.'],
@@ -47,7 +47,6 @@
   var DL = [
     { g: 'Logo · The M', items: ['m_white', 'm_ink', 'm_salmon', 'm_indigo'].map(function (k) { return { p: 'logos/muk-' + k.replace('_', '_') + '.png', n: 'M · ' + cap(k.split('_')[1]), s: 'PNG · transparent', lt: k.indexOf('ink') > -1 || k.indexOf('indigo') > -1 }; }) },
     { g: 'Logo · Wordmark', items: ['white', 'ink', 'salmon', 'indigo'].map(function (c) { return { p: 'logos/muk-wordmark_' + c + '.png', n: 'Wordmark · ' + cap(c), s: 'PNG · transparent', lt: c === 'ink' || c === 'indigo' }; }) },
-    { g: 'Logo · Lockup', items: ['white', 'ink', 'salmon', 'indigo'].map(function (c) { return { p: 'logos/muk-lockup_' + c + '.png', n: 'Lockup · ' + cap(c), s: 'PNG · transparent', lt: c === 'ink' || c === 'indigo' }; }) },
     { g: 'Tiles, avatars and banners', items: [
       { p: 'logos/muk-tile_indigo.png', n: 'Tile · Indigo', s: 'PNG · 1024²', full: 1 }, { p: 'logos/muk-tile_salmon.png', n: 'Tile · Salmon', s: 'PNG · 1024²', full: 1 },
       { p: 'logos/muk-tile_ink.png', n: 'Tile · Ink', s: 'PNG · 1024²', full: 1 }, { p: 'logos/muk-pfp_textured.jpg', n: 'Avatar · Textured', s: 'JPG · 1024²', full: 1 },
