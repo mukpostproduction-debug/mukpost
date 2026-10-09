@@ -4,3 +4,5 @@ Disallow: /Client_Delivery_Portal/
 Disallow: /emilia-and-john/
 Disallow: /delivery/
 
+Sitemap: https://mukpost.com/sitemap.xml
+
