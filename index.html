@@ -1773,29 +1773,16 @@
             <!-- FEATURED MUSIC VIDEO PREMIERE DROP -->
             <div class="featured-drop-wrapper">
                 
-                <!-- OVER TOP OF VIDEO: TITLE, SUBTITLE & COUNTDOWN -->
+                <!-- OVER TOP OF VIDEO: TITLE, SUBTITLE & LIVE STATUS -->
                 <div class="featured-drop-header">
                     <h2 class="featured-drop-title">Donat Jackson - sweartoGod!</h2>
-                    <p class="featured-drop-subtitle">music video directed by Mason Cline, dropping at midnight.</p>
+                    <p class="featured-drop-subtitle">Official music video directed by Mason Cline. Post-production by Muk Post.</p>
                     
-                    <!-- COUNTDOWN -->
-                    <div class="clean-countdown" aria-label="Countdown">
-                        <div class="countdown-display" id="midnightCountdown">
-                            <div class="countdown-block">
-                                <span class="countdown-num" id="cdHours">00</span>
-                                <span class="countdown-tag">HRS</span>
-                            </div>
-                            <span class="countdown-divider">:</span>
-                            <div class="countdown-block">
-                                <span class="countdown-num" id="cdMinutes">00</span>
-                                <span class="countdown-tag">MIN</span>
-                            </div>
-                            <span class="countdown-divider">:</span>
-                            <div class="countdown-block">
-                                <span class="countdown-num" id="cdSeconds">00</span>
-                                <span class="countdown-tag">SEC</span>
-                            </div>
-                        </div>
+                    <div style="display: flex; justify-content: center; margin: 0.8rem 0 1.25rem;">
+                        <span class="premiere-status-badge" style="display: inline-flex; align-items: center; gap: 0.55rem; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.35); color: #10B981; padding: 0.45rem 1.15rem; font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700; border-radius: 9999px;">
+                            <span class="pulse-dot" style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #10B981; box-shadow: 0 0 10px #10B981;"></span>
+                            <span>OUT NOW ON YOUTUBE</span>
+                        </span>
                     </div>
                 </div>
 
@@ -1813,7 +1800,7 @@
 
                 <!-- UNDERNEATH: YOUTUBE LINK BUTTON -->
                 <div class="premiere-actions-row">
-                    <a href="https://www.youtube.com/@MukPostProduction" target="_blank" rel="noopener noreferrer" class="youtube-drop-btn" id="heroYoutubeBtn">
+                    <a href="https://www.youtube.com/watch?v=a3y5_lFqbsE" target="_blank" rel="noopener noreferrer" class="youtube-drop-btn" id="heroYoutubeBtn">
                         <i class="fa-brands fa-youtube" style="margin-right: 0.6rem; color: #ff0000; font-size: 1.15rem;"></i> Watch on YouTube
                     </a>
                     <a href="colour.html#sweartogod-project" class="studio-btn" title="View Colour Stills">
@@ -2060,11 +2047,11 @@
                     </div>
 
                     <!-- Donat Jackson - "sweartogod!" (Dir. Mason Cline) -->
-                    <div class="work-video-card" data-category="editing colour design" onclick="openVideoModal('portfolio-assets/videos/donatjackson-sweartogod-outroteaser-web.mp4', 'Donat Jackson — \"sweartogod!\" (Dir. Mason Cline)', 'Editing &bull; Colour Grading &bull; Title Design &bull; Muk Post', '#')">
+                    <div class="work-video-card" data-category="editing colour design" onclick="openVideoModal('a3y5_lFqbsE', 'Donat Jackson — &quot;sweartogod!&quot;', 'Editing &bull; Colour Grading &bull; Title Design &bull; Muk Post', 'https://www.youtube.com/watch?v=a3y5_lFqbsE')">
                         <div class="work-thumb-wrap">
                             <img src="portfolio-assets/thumbs/donatjackson-sweartogod-thumb.jpg" alt="Donat Jackson — sweartogod!" loading="lazy">
                             <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
-                            <span class="work-duration">Teaser</span>
+                            <span class="work-duration">Official Video</span>
                         </div>
                         <div class="work-card-info">
                             <div class="work-card-top">
@@ -2072,7 +2059,7 @@
                                 <span class="work-year">2026</span>
                             </div>
                             <div class="work-card-title">Donat Jackson — "sweartogod!"</div>
-                            <div class="work-meta">Music Video &bull; Directed by Mason Cline &bull; Premiere Midnight Tonight</div>
+                            <div class="work-meta">Music Video &bull; Directed by Mason Cline &bull; Post by Muk Post</div>
                         </div>
                     </div>
 
@@ -2687,7 +2674,7 @@
             };
 
             window.copyPremiereLink = function() {
-                const url = window.location.href;
+                const url = 'https://www.youtube.com/watch?v=a3y5_lFqbsE';
                 navigator.clipboard.writeText(url).then(() => {
                     const copyBtn = document.getElementById('toastCopyBtn');
                     if (copyBtn) {
@@ -2703,15 +2690,15 @@
     <!-- PREMIERE SCHEDULING INTERACTIVE TOAST -->
     <aside class="premiere-toast" id="premiereToast" role="dialog" aria-labelledby="toastTitle">
         <div class="toast-top">
-            <span class="toast-badge"><span class="pulse-dot"></span> Midnight Alert</span>
+            <span class="toast-badge"><span class="pulse-dot" style="display:inline-block; width:6px; height:6px; border-radius:50%; background:#10B981;"></span> Out Now</span>
             <button type="button" class="toast-close-btn" onclick="closePremiereToast()" aria-label="Close notification"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="toast-body">
-            <h4 id="toastTitle">Midnight Alert</h4>
-            <p>The music video premieres tonight at <strong>12:00 AM Midnight EDT</strong> on YouTube. The link is currently being scheduled and will go live at midnight.</p>
+            <h4 id="toastTitle">Now Streaming</h4>
+            <p>Donat Jackson — "sweartogod!" is out now on YouTube. Directed by Mason Cline. Post-production by Muk Post.</p>
             <div class="toast-actions">
-                <a href="https://www.instagram.com/muk.post/" target="_blank" rel="noopener noreferrer" class="toast-action-btn toast-action-primary">
-                    <i class="fa-brands fa-instagram"></i> Follow @muk.post
+                <a href="https://www.youtube.com/watch?v=a3y5_lFqbsE" target="_blank" rel="noopener noreferrer" class="toast-action-btn toast-action-primary">
+                    <i class="fa-brands fa-youtube" style="color: #ff3333;"></i> Watch on YouTube
                 </a>
                 <button type="button" id="toastCopyBtn" class="toast-action-btn toast-action-secondary" onclick="copyPremiereLink()">
                     <i class="fa-regular fa-copy"></i> Copy Link

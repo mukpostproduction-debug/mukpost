@@ -248,9 +248,18 @@
             border-radius: var(--radius-full);
             animation: redBlink 1.8s ease-in-out infinite;
         }
+        .pulse-dot.dot-emerald {
+            background: #10B981;
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+            animation: emeraldBlink 1.8s ease-in-out infinite;
+        }
         @keyframes redBlink {
             0%, 100% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.3; transform: scale(0.85); }
+        }
+        @keyframes emeraldBlink {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(0.85); }
         }
 
         .card-body {
@@ -532,14 +541,13 @@
         </div>
 
         <!-- 1. OUT NOW: LATEST FEATURED PROJECT -->
-        <!-- 1. PREMIERING TONIGHT: LATEST FEATURED PROJECT -->
-        <div class="section-label">Premiere Tonight • Midnight (12:00 AM EDT)</div>
+        <div class="section-label">Latest Release • Out Now</div>
         
         <div class="featured-card">
-            <a href="index.html" class="video-card-thumb" aria-label="Watch Teaser & Live Countdown">
+            <a href="https://www.youtube.com/watch?v=a3y5_lFqbsE" target="_blank" rel="noopener noreferrer" class="video-card-thumb" aria-label="Watch sweartogod! Music Video on YouTube">
                 <div class="status-pill">
-                    <span class="pulse-dot"></span>
-                    <span>Premiere Tonight</span>
+                    <span class="pulse-dot dot-emerald"></span>
+                    <span>Out Now</span>
                 </div>
                 <img src="portfolio-assets/thumbs/donatjackson-sweartogod-thumb.jpg" alt="Donat Jackson - sweartogod! Music Video">
                 <div class="video-play-badge">
@@ -556,14 +564,14 @@
             </div>
             <!-- DIRECT PREMIERE ACCESS ROW -->
             <div class="card-actions-row">
-                <a href="index.html" class="card-action-btn" title="Watch 4:3 Teaser & Midnight Countdown">
-                    <i class="fa-solid fa-play"></i> Teaser & Countdown
+                <a href="https://www.youtube.com/watch?v=a3y5_lFqbsE" target="_blank" rel="noopener noreferrer" class="card-action-btn card-action-yt" title="Watch on YouTube">
+                    <i class="fa-brands fa-youtube" style="color: #ff3333;"></i> Watch on YouTube
                 </a>
                 <a href="colour.html#sweartogod-project" class="card-action-btn" title="Inspect 53 Colour Grading Stills">
                     <i class="fa-solid fa-palette"></i> 53 Colour Stills
                 </a>
-                <a href="https://www.youtube.com/@MukPostProduction" target="_blank" rel="noopener noreferrer" class="card-action-btn card-action-yt" title="YouTube Channel">
-                    <i class="fa-brands fa-youtube"></i> YouTube
+                <a href="index.html#work" class="card-action-btn" title="View Portfolio">
+                    <i class="fa-solid fa-film"></i> Portfolio
                 </a>
             </div>
         </div>
@@ -644,10 +652,10 @@
                 <i class="fa-solid fa-chevron-down dropdown-chevron"></i>
             </button>
             <div class="dropdown-content">
-                <a href="index.html" class="dropdown-item">
-                    <i class="fa-solid fa-film item-icon" style="color: #ffffff;"></i>
-                    <span>Donat Jackson — "sweartogod!" (Teaser & Drop)</span>
-                    <span class="item-tag" style="color: #ffffff; border-color: rgba(255, 255, 255, 0.25); background: rgba(255, 255, 255, 0.08);">Tonight</span>
+                <a href="https://www.youtube.com/watch?v=a3y5_lFqbsE" target="_blank" rel="noopener noreferrer" class="dropdown-item">
+                    <i class="fa-brands fa-youtube item-icon" style="color: #ff3333;"></i>
+                    <span>Donat Jackson — "sweartogod!"</span>
+                    <span class="item-tag" style="color: #10b981; border-color: rgba(16, 185, 129, 0.3); background: rgba(16, 185, 129, 0.1);">Out Now</span>
                 </a>
                 <a href="colour.html#sweartogod-project" class="dropdown-item">
                     <i class="fa-solid fa-palette item-icon" style="color: #ffffff;"></i>
