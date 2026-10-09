@@ -87,7 +87,7 @@
 
         /* ==========================================================================
            FEATURED MUSIC VIDEO PREMIERE // DONAT JACKSON - "sweartogod!"
-           Clean Stamped 4:3 Video Showcase + Ambient Outer Glow + Header & Countdown
+           Clean Stamped 4:3 Video Showcase + Ambient Outer Glow + Header & Live Drop Status
            ========================================================================== */
         .featured-drop-wrapper {
             margin-bottom: 4.5rem;
@@ -131,58 +131,37 @@
             line-height: 1.45;
         }
 
-        /* CLEAN MINIMALIST COUNTDOWN (No green light dot, no dropping at midnight badge) */
-        .clean-countdown {
+        /* FEATURED DROP STATUS BADGE */
+        .premiere-status-badge {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            padding: 0.5rem 1.4rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.09);
-            border-radius: var(--radius-sm);
-            margin: 0 auto;
-        }
-
-        .countdown-display {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.85rem;
-        }
-
-        .countdown-block {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 52px;
-        }
-
-        .countdown-num {
+            gap: 0.55rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            color: #10B981;
+            padding: 0.45rem 1.15rem;
             font-family: var(--font-mono);
-            font-size: clamp(1.45rem, 2.6vw, 1.95rem);
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: 0.06em;
-            line-height: 1;
-        }
-
-        .countdown-tag {
-            font-family: var(--font-mono);
-            font-size: 0.58rem;
-            font-weight: 600;
-            letter-spacing: 0.22em;
-            color: var(--text-muted);
-            margin-top: 0.35rem;
+            font-size: 0.78rem;
             text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-weight: 700;
+            border-radius: var(--radius-full);
+            margin: 0.8rem auto 1.25rem;
         }
 
-        .countdown-divider {
-            font-family: var(--font-mono);
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            margin-bottom: 0.7rem;
-            opacity: 0.45;
+        .pulse-dot {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #10B981;
+            box-shadow: 0 0 10px #10B981;
+            animation: livePulse 1.8s ease-in-out infinite;
+        }
+
+        @keyframes livePulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(0.85); }
         }
 
         /* CLEANLY STAMPED 4:3 VIDEO WITH AMBIENT OUTER GLOW */
@@ -1695,10 +1674,7 @@
             .work-cat { margin-bottom: 4.5rem; }
             .featured-drop-wrapper { margin-bottom: 2.8rem; }
             .featured-drop-header { margin-bottom: 1.2rem; }
-            .clean-countdown { padding: 0.45rem 1rem; }
-            .countdown-num { font-size: 1.3rem; }
-            .countdown-block { min-width: 40px; }
-            .countdown-divider { font-size: 1.1rem; margin-bottom: 0.5rem; }
+            .premiere-status-badge { font-size: 0.72rem; padding: 0.4rem 1rem; }
             .stamped-video-container { margin-bottom: 1.4rem; }
             .premiere-actions-row { flex-direction: column; width: 100%; gap: 0.75rem; }
             .youtube-drop-btn, .studio-btn { width: 100%; justify-content: center; }
@@ -1711,9 +1687,6 @@
 
         @media (max-width: 375px) {
             .hero h1 { letter-spacing: 0.25em; font-size: 0.68rem; }
-            .countdown-num { font-size: 1.15rem; }
-            .countdown-block { min-width: 34px; }
-            .countdown-tag { font-size: 0.5rem; }
         }
     </style>
 </head>
@@ -1778,9 +1751,9 @@
                     <h2 class="featured-drop-title">Donat Jackson - sweartoGod!</h2>
                     <p class="featured-drop-subtitle">Official music video directed by Mason Cline. Post-production by Muk Post.</p>
                     
-                    <div style="display: flex; justify-content: center; margin: 0.8rem 0 1.25rem;">
-                        <span class="premiere-status-badge" style="display: inline-flex; align-items: center; gap: 0.55rem; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.35); color: #10B981; padding: 0.45rem 1.15rem; font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.14em; font-weight: 700; border-radius: 9999px;">
-                            <span class="pulse-dot" style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #10B981; box-shadow: 0 0 10px #10B981;"></span>
+                    <div style="display: flex; justify-content: center;">
+                        <span class="premiere-status-badge">
+                            <span class="pulse-dot"></span>
                             <span>OUT NOW ON YOUTUBE</span>
                         </span>
                     </div>
@@ -2608,43 +2581,10 @@
         });
 
         // ==========================================================================
-        // MIDNIGHT PREMIERE COUNTDOWN & APPLE 4:3 VIDEO PLAYER CONTROLS
-        // Donat Jackson - "sweartogod!" (Dir. Mason Cline)
+        // FEATURED 4:3 VIDEO PLAYER CONTROLS (Donat Jackson - "sweartogod!")
         // ==========================================================================
-        (function initMidnightPremierePlayer() {
-            // --- 1. Countdown to Tonight at Midnight ---
-            function updateCountdown() {
-                const now = new Date();
-                // Target midnight tonight (next 00:00:00 local time)
-                const targetMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0);
-                const diff = targetMidnight.getTime() - now.getTime();
-
-                const cdHours = document.getElementById('cdHours');
-                const cdMinutes = document.getElementById('cdMinutes');
-                const cdSeconds = document.getElementById('cdSeconds');
-                const statusBadge = document.querySelector('.premiere-status-badge');
-
-                if (diff <= 0) {
-                    if (cdHours) cdHours.textContent = '00';
-                    if (cdMinutes) cdMinutes.textContent = '00';
-                    if (cdSeconds) cdSeconds.textContent = '00';
-                    if (statusBadge) {
-                        statusBadge.innerHTML = '<span class="pulse-dot active-live"></span><span>OUT NOW &bull; PREMIERE LIVE ON YOUTUBE</span>';
-                    }
-                } else {
-                    const hours = Math.floor(diff / (1000 * 60 * 60));
-                    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                    if (cdHours) cdHours.textContent = String(hours).padStart(2, '0');
-                    if (cdMinutes) cdMinutes.textContent = String(minutes).padStart(2, '0');
-                    if (cdSeconds) cdSeconds.textContent = String(seconds).padStart(2, '0');
-                }
-            }
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-
-            // --- 2. Clean 4:3 Video Interaction ---
+        (function initFeaturedHeroPlayer() {
+            // --- Clean 4:3 Video Interaction ---
             const video = document.getElementById('heroTeaserVideo');
             const videoWrap = document.getElementById('stampedVideoWrap');
 
