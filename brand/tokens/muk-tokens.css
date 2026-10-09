@@ -1,0 +1,46 @@
+/* ==========================================================================
+   MUK POST — DESIGN TOKENS  ·  v1.0  ·  2026-10
+   Drop this file into any project. Everything else references these names.
+   Indigo is a SURFACE colour (never text on black — 1.8:1). Use --mp-indigo-ui
+   for text/lines on dark. Signal green = live status dot only.
+   ========================================================================== */
+:root {
+  /* Colour — core */
+  --mp-ink: #0A0A0A;          /* canvas */
+  --mp-paper: #FFFFFF;        /* text on dark, documents */
+  --mp-indigo: #2D318F;       /* signature surface */
+  --mp-indigo-ui: #8B90E8;    /* indigo for text / lines on dark */
+  --mp-salmon: #F8A695;       /* signature accent */
+  --mp-signal: #10B981;       /* live status only */
+
+  /* Colour — greys (neutral, no tint) */
+  --mp-g1: #111111;           /* surface */
+  --mp-g2: #1E1E1E;           /* hairline / border */
+  --mp-g3: #333333;           /* border hover */
+  --mp-g4: #555555;           /* muted text, large only */
+  --mp-g5: #888888;           /* dim text */
+  --mp-g6: #AAAAAA;           /* secondary text */
+  --mp-g7: #EEEEEE;           /* body text on dark */
+
+  /* Type */
+  --mp-font-display: 'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif;
+  --mp-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --mp-font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Space (4-pt base) */
+  --mp-space-1: 4px;  --mp-space-2: 8px;  --mp-space-3: 12px; --mp-space-4: 16px;
+  --mp-space-5: 24px; --mp-space-6: 32px; --mp-space-8: 48px; --mp-space-12: 64px;
+  --mp-space-16: 96px; --mp-space-24: 144px;
+
+  /* Shape — sharp */
+  --mp-radius-sm: 2px;
+  --mp-radius-md: 4px;
+  --mp-radius-pill: 9999px;
+  --mp-border: 1px solid var(--mp-g2);
+
+  /* Motion — web (calm). Social cuts are on the beat, see Motion section. */
+  --mp-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --mp-dur-fast: 200ms;
+  --mp-dur-base: 400ms;
+  --mp-dur-slow: 700ms;
+}

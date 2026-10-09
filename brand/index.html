@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muk Post — Brand System v1.0</title>
+<meta name="description" content="The Muk Post brand system: logos, colours, type, voice and assets. Grab what you need, check if it's on brand.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/logos/muk-tile_indigo.png">
+<link rel="stylesheet" href="tokens/muk-tokens.css">
+<link rel="stylesheet" href="hub.css">
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<header class="topbar">
+  <a class="brand" href="#top" aria-label="Muk Post brand system home">
+    <img src="assets/logos/muk-m_white.png" alt="Muk Post M">
+    <span class="mono">Brand System · v1.0</span>
+  </a>
+  <div class="right">
+    <a class="btn" href="#checklist">Is it on brand?</a>
+    <a class="btn primary" href="downloads/MukPost_BrandKit_v1.0.zip" download>Download kit ↓</a>
+  </div>
+</header>
+
+<nav class="rail" aria-label="Sections">
+  <ol id="railList"></ol>
+  <div class="foot mono">Muk Post<br>Toronto<br>contact@mukpost.com</div>
+</nav>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-l">
+    <div>
+      <span class="label salmon">Brand System · v1.0 · October 2026</span>
+      <h1>The Muk Post<br>brand <em>system.</em></h1>
+      <p class="lead">Professional grade integration of sight and sound. One page to find the right logo, the right colour and the right words, so nothing gets guessed.</p>
+    </div>
+    <div>
+      <p class="label plain" style="margin-bottom:14px">Grab and go</p>
+      <div class="grab" id="grab"></div>
+    </div>
+  </div>
+  <div class="hero-r">
+    <span class="corner tl">M — Primary mark</span>
+    <span class="corner tr">Toronto, Canada<br>43.6532° N, 79.3832° W</span>
+    <img class="bigM" src="assets/logos/muk-m_salmon.png" alt="Muk Post spray-textured M">
+    <span class="corner bl">Salmon on Indigo<br>5.6 : 1</span>
+    <span class="corner br">Edit · Colour<br>Sound · Design</span>
+  </div>
+</section>
+
+<!-- ================= 01 FOUNDATION ================= -->
+<section class="sec" id="foundation" data-title="Foundation">
+  <div class="wrap">
+    <div class="sec-head fx">
+      <div class="num">01</div>
+      <div><span class="label">Foundation</span><h2>What Muk Post is.</h2></div>
+      <p class="lead">A brand guide should settle arguments. This section gives the team one shared definition of the studio, who it's for and what words like <em class="s">premium</em> actually mean here.</p>
+    </div>
+
+    <div class="grid g3 fx">
+      <div class="card indigo"><span class="label plain">Mission</span><h4>Muk Post is a Toronto post house for music, film and brands.</h4><p>Picture and sound, finished by one team. Edit, colour, sound and design under one roof, delivered remotely.</p></div>
+      <div class="card"><span class="label">Tagline</span><h4 style="font-size:30px">Professional grade integration of sight and sound.</h4><p>Use whole. Don't shorten, reorder or paraphrase. Always ends with a full stop.</p></div>
+      <div class="card"><span class="label">Descriptor</span><h4 style="font-size:30px">Edit · Colour · Sound · Design.</h4><p>The four departments, in this order, separated by a middle dot. Use under the logo or as a footer line.</p></div>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">Who we make it for</span>
+      <div class="aud">
+        <div class="card"><span class="label plain">01</span><div><h4>Musicians and labels</h4><p>Music videos, visualizers, singles. It has to look like a release, not a demo.</p></div></div>
+        <div class="card"><span class="label plain">02</span><div><h4>Independent filmmakers</h4><p>Shorts, features, docs. A finish that holds up on a festival screen.</p></div></div>
+        <div class="card"><span class="label plain">03</span><div><h4>Brands and agencies</h4><p>Campaigns and spots. Clean delivery to spec, on deadline.</p></div></div>
+        <div class="card"><span class="label plain">04</span><div><h4>Weddings and events</h4><p>Films people keep. It has to feel like the day.</p></div></div>
+      </div>
+      <p class="body" style="margin-top:20px">Position: <b style="color:var(--mp-paper)">a full post house.</b> All four audiences see the same Muk Post. Same system, different work in the grid.</p>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">Five brand words</span>
+      <h3>Each one defined by what it looks like.</h3>
+      <div class="words">
+        <div class="word"><span class="n mono">01</span><h4>Restrained</h4><p class="def">Say less. One idea per frame, one accent per layout. We remove until it works.</p>
+          <div class="ex on"><span class="k">On brand</span>A single-line headline. Half the frame empty.</div>
+          <div class="ex off"><span class="k">Off brand</span>Badges, bursts, “NEW!” stickers, three type weights shouting.</div></div>
+        <div class="word"><span class="n mono">02</span><h4>Gritty</h4><p class="def">Rough on purpose. The spray-textured M and film grain are part of the identity.</p>
+          <div class="ex on"><span class="k">On brand</span>Textured logo, grain on stills, one texture per layout.</div>
+          <div class="ex off"><span class="k">Off brand</span>Glossy vector polish. Stock “grunge” overlays on everything.</div></div>
+        <div class="word"><span class="n mono">03</span><h4>Precise</h4><p class="def">Real numbers, frame-accurate. If we state a spec, it's true and exact.</p>
+          <div class="ex on"><span class="k">On brand</span>“248 graded stills.” “24 fps · 4K.”</div>
+          <div class="ex off"><span class="k">Off brand</span>“Lots of projects.” “High quality.” Rounded or invented figures.</div></div>
+        <div class="word"><span class="n mono">04</span><h4>Confident</h4><p class="def">Short declaratives. No hedging, no begging, no apologising for price.</p>
+          <div class="ex on"><span class="k">On brand</span>“Graded frame by frame.”</div>
+          <div class="ex off"><span class="k">Off brand</span>“We strive to deliver the best possible results for you.”</div></div>
+        <div class="word"><span class="n mono">05</span><h4>Cinematic</h4><p class="def">Dark, high contrast, image first. The work leads and the interface gets out of the way.</p>
+          <div class="ex on"><span class="k">On brand</span>Ink canvas, a graded still, one line of type.</div>
+          <div class="ex off"><span class="k">Off brand</span>Bright flat templates, stock icons, clip-art.</div></div>
+      </div>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">“Premium” — translated</span>
+      <h3>Three people say it. Here's what we mean.</h3>
+      <table class="table">
+        <thead><tr><th style="width:28%">When someone says</th><th style="width:14%">Muk Post</th><th>What it means here</th></tr></thead>
+        <tbody>
+          <tr><td>“Minimal and restrained”</td><td><span class="tag yes">Yes</span></td><td>Space, one accent, short copy. Premium here is what we leave out.</td></tr>
+          <tr><td>“Gritty and textured”</td><td><span class="tag yes">Yes</span></td><td>Premium here is also what we leave rough. The spray M, grain and real frames are the signature.</td></tr>
+          <tr><td>“Expensive-looking”</td><td><span class="tag part">Only via craft</span></td><td>It comes from grade, type, spacing and sound. Never from effects, shine or ornament.</td></tr>
+          <tr><td>“Luxury”</td><td><span class="tag no">No</span></td><td>No luxury-speak, no serif-and-gold hotel look.</td></tr>
+          <tr><td>“Gold, fleur-de-lis, fringe”</td><td><span class="tag no">Never</span></td><td>No ornament, flourishes, bevels, drop shadows or stock gradients.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">Naming</span>
+      <div class="grid g3">
+        <div class="card"><span class="label plain">In sentences</span><h4>Muk Post</h4><p>Two words, title case. “Colour by Muk Post.”</p></div>
+        <div class="card"><span class="label plain">In labels and logos</span><h4 style="letter-spacing:.14em;font-family:var(--mp-font-mono);font-size:18px;font-weight:600">M U K &nbsp; P O S T</h4><p>Spaced caps, mono. Labels, footers, credits lines, the logo.</p></div>
+        <div class="card flat"><span class="label plain">Never</span><h4 style="color:var(--mp-g5)">MukPost · Muk-Post · Muk Productions</h4><p>Handles are the exception: @muk.post, @MukPostProduction.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 VOICE ================= -->
+<section class="sec" id="voice" data-title="Voice">
+  <div class="wrap">
+    <div class="sec-head fx">
+      <div class="num">02</div>
+      <div><span class="label">Voice</span><h2>Confident. Minimal.</h2></div>
+      <p class="lead">Short declaratives. We state what we did and let the work carry it. Write it like a credit, not a pitch.</p>
+    </div>
+
+    <div class="rewrite fx">
+      <div class="hd">Off brand</div><div class="hd on">On brand</div>
+      <div class="off">We're passionate about delivering stunning, game-changing visuals!</div><div class="on">Graded frame by frame.</div>
+      <div class="off">Affordable post-production solutions for every budget.</div><div class="on">Finishing for music videos, films and campaigns.</div>
+      <div class="off">We'd love to maybe help you with your project, if you're interested!</div><div class="on">Tell us about the project. We'll send a quote.</div>
+      <div class="off">Our award-winning team strives to exceed expectations.</div><div class="on">Colour, sound and edit by Muk Post.</div>
+      <div class="off">High quality, fast turnaround, amazing results.</div><div class="on">24 fps. 4K. Delivered to spec.</div>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">Rules</span>
+      <ul class="rules">
+        <li><b>Headlines are sentence case and end with a full stop.</b> “Graded frame by frame.” Not Title Case, not “!”</li>
+        <li><b>No exclamation marks.</b> Project titles keep their own punctuation (“sweartogod!”).</li>
+        <li><b>Numerals, always.</b> “248 stills”, “24 fps”, “4K”, “2 passes”. Units after a space.</li>
+        <li><b>Canadian spelling.</b> Colour, grey, centre, favourite.</li>
+        <li><b>Say what we did.</b> Use the confirmed credit wording, never a bigger role. If unsure, ask.</li>
+        <li><b>One idea per line.</b> If a sentence needs “and also”, split it.</li>
+        <li><b>No emoji.</b> In captions, emails, decks or on the site.</li>
+        <li><b>Never invent a figure.</b> Counts, dates and timelines come from real files or are confirmed first.</li>
+      </ul>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">Never write</span>
+      <div class="ban">
+        <span>epic</span><span>stunning</span><span>game-changing</span><span>solutions</span><span>synergy</span><span>we strive</span><span>passionate about</span><span>affordable</span><span>cheap</span><span>world-class</span><span>cutting-edge</span><span>amazing</span><span>emoji</span><span>!!</span>
+      </div>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">Templates</span>
+      <h3>Copy, fill the brackets, send.</h3>
+      <div class="grid g2">
+        <div class="card tpl" data-tpl><span class="label">Release caption</span><button class="btn sm" data-copy-tpl>Copy</button>[Title]. [Artist].
+[Role] by Muk Post.
+
+Full video on YouTube. Link in bio.</div>
+        <div class="card tpl" data-tpl><span class="label">Quote email · opener</span><button class="btn sm" data-copy-tpl>Copy</button>Thanks for the details.
+
+Below: scope, timeline and deliverables for [project]. Quote attached.
+
+Jackson
+Muk Post</div>
+        <div class="card tpl" data-tpl><span class="label">Delivery email</span><button class="btn sm" data-copy-tpl>Copy</button>[Project] is final.
+
+Files: [format · resolution · fps]
+Link: [link]
+
+Notes on changes are welcome for [N] days.</div>
+        <div class="card tpl" data-tpl><span class="label">Availability post</span><button class="btn sm" data-copy-tpl>Copy</button>Booking [month].
+Edit. Colour. Sound. Design.
+
+contact@mukpost.com</div>
+      </div>
+      <p class="note">Brackets are placeholders. Fill them with real, confirmed values only.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 LOGO ================= -->
+<section class="sec" id="logo" data-title="Logo">
+  <div class="wrap">
+    <div class="sec-head fx">
+      <div class="num">03</div>
+      <div><span class="label">Logo</span><h2>The M, then the name.</h2></div>
+      <p class="lead">The spray-textured M is the hero mark. The MUK wordmark is the secondary lockup. Always use the supplied files — never retype, redraw or clean them up.</p>
+    </div>
+
+    <div class="logo-hero fx">
+      <div class="stage indigo" style="min-height:520px"><img src="assets/logos/muk-m_salmon.png" alt="" style="height:62%;width:auto"><div class="cap"><span>Primary mark · M</span><span>Salmon on Indigo</span></div></div>
+      <div class="grid" style="grid-template-rows:1fr 1fr">
+        <div class="stage ink"><img src="assets/logos/muk-wordmark_white.png" alt="" style="width:56%"><div class="cap"><span>Secondary · Wordmark</span><span>Paper on Ink</span></div></div>
+        <div class="stage paper"><img src="assets/logos/muk-lockup_ink.png" alt="" style="width:62%"><div class="cap"><span>Lockup · M + wordmark</span><span>Ink on Paper</span></div></div>
+      </div>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">When to use which</span>
+      <div class="fam">
+        <div><div class="stage ink"><img src="assets/logos/muk-m_white.png" alt="" style="height:52%;width:auto"></div><div class="fam-note"><b>The M</b>Default. Avatars, end cards, favicons, watermarks, anywhere space is tight.</div></div>
+        <div><div class="stage ink"><img src="assets/logos/muk-wordmark_white.png" alt="" style="width:64%"></div><div class="fam-note"><b>The wordmark</b>Headers, credit lines, document covers. When the name needs to be read.</div></div>
+        <div><div class="stage ink"><img src="assets/logos/muk-lockup_white.png" alt="" style="width:76%"></div><div class="fam-note"><b>The lockup</b>First introductions: decks, invoices, signatures. Never rebuild it by hand.</div></div>
+        <div><div class="stage ink"><img src="assets/logos/muk-tile_indigo.png" alt="" style="width:100%;height:100%;object-fit:cover"></div><div class="fam-note"><b>The tile</b>Profile pictures and app icons. M sits at 56% of the tile, centred.</div></div>
+      </div>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">Approved colourways</span>
+      <h3>Six combinations. Nothing else.</h3>
+      <div class="cw">
+        <div class="stage ink"><span class="ok tag yes">Primary</span><img src="assets/logos/muk-m_white.png" alt=""><div class="cap"><span>Paper on Ink</span><span>19.8 : 1</span></div></div>
+        <div class="stage ink"><span class="ok tag yes">Accent</span><img src="assets/logos/muk-m_salmon.png" alt=""><div class="cap"><span>Salmon on Ink</span><span>10.3 : 1</span></div></div>
+        <div class="stage indigo"><span class="ok tag yes">Signature</span><img src="assets/logos/muk-m_salmon.png" alt=""><div class="cap"><span>Salmon on Indigo</span><span>5.6 : 1</span></div></div>
+        <div class="stage indigo"><span class="ok tag yes">Reverse</span><img src="assets/logos/muk-m_white.png" alt=""><div class="cap"><span>Paper on Indigo</span><span>10.8 : 1</span></div></div>
+        <div class="stage paper"><span class="ok tag yes">Documents</span><img src="assets/logos/muk-m_ink.png" alt=""><div class="cap"><span>Ink on Paper</span><span>19.8 : 1</span></div></div>
+        <div class="stage salmon"><span class="ok tag yes">Poster</span><img src="assets/logos/muk-m_ink.png" alt=""><div class="cap"><span>Ink on Salmon</span><span>10.3 : 1</span></div></div>
+      </div>
+      <div class="callout" style="margin-top:24px"><div class="big">1.8:1</div><p><b style="color:var(--mp-paper)">Indigo logo on black fails.</b> Indigo is a surface, not a text colour. On a black layout the logo is paper or salmon. The indigo logo is only for paper and light backgrounds (10.8 : 1).</p></div>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">Clear space</span>
+      <h3>Half an M, on every side.</h3>
+      <div class="clear">
+        <div class="stage g1"><div class="clearbox"><i class="t">x</i><i class="b">x</i><i class="l">x</i><i class="r">x</i><img src="assets/logos/muk-m_white.png" alt=""></div></div>
+        <div class="grid" style="align-content:start">
+          <div class="card"><span class="label plain">Rule</span><h4>x = ½ the height of the M.</h4><p>Keep that margin clear of text, edges, other logos and busy image detail on all four sides. The same rule applies to the wordmark and lockup (measure from the tallest letter).</p></div>
+          <div class="card"><span class="label plain">Placement</span><p>Prefer corners with generous margins, or centred on a clean field. On photography, place over the darkest, calmest part of the frame.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">Minimum size</span>
+      <div class="minsz">
+        <div class="card"><h4>The M</h4><div class="row"><div><img src="assets/logos/muk-m_white.png" alt="" style="height:16px;width:auto"><small>16 px · 6 mm</small></div><div><img src="assets/logos/muk-m_white.png" alt="" style="height:32px;width:auto"><small>32 px</small></div><div><img src="assets/logos/muk-m_white.png" alt="" style="height:64px;width:auto"><small>64 px</small></div></div></div>
+        <div class="card"><h4>The wordmark</h4><div class="row"><div><img src="assets/logos/muk-wordmark_white.png" alt="" style="width:48px"><small>48 px · 15 mm</small></div><div><img src="assets/logos/muk-wordmark_white.png" alt="" style="width:96px"><small>96 px</small></div><div><img src="assets/logos/muk-wordmark_white.png" alt="" style="width:160px"><small>160 px</small></div></div></div>
+        <div class="card"><h4>The lockup</h4><div class="row"><div><img src="assets/logos/muk-lockup_white.png" alt="" style="width:96px"><small>96 px · 30 mm</small></div><div><img src="assets/logos/muk-lockup_white.png" alt="" style="width:160px"><small>160 px</small></div><div><img src="assets/logos/muk-lockup_white.png" alt="" style="width:240px"><small>240 px</small></div></div></div>
+      </div>
+      <p class="note">Minimums are v1.0 defaults. The texture needs a few pixels to read, so below these sizes switch to the flat tile.</p>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">Misuse</span>
+      <h3>Eight ways to break it.</h3>
+      <div class="misuse">
+        <div><div class="stage ink"><span class="x">✕</span><img src="assets/logos/muk-m_salmon.png" alt="" style="transform:scaleX(1.7)"></div><p class="t"><b>Don't stretch</b> or squash.</p></div>
+        <div><div class="stage ink"><span class="x">✕</span><img src="assets/logos/muk-m_salmon.png" alt="" style="filter:hue-rotate(115deg) saturate(2.4)"></div><p class="t"><b>Don't recolour</b> outside the six colourways.</p></div>
+        <div><div class="stage paper"><span class="x">✕</span><img src="assets/logos/muk-m_ink.png" alt="" style="filter:drop-shadow(8px 10px 6px rgba(0,0,0,.55))"></div><p class="t"><b>Don't add</b> shadows, glow, bevels or outlines.</p></div>
+        <div><div class="stage ink"><span class="x">✕</span><img src="assets/logos/muk-m_white.png" alt="" style="transform:rotate(-16deg)"></div><p class="t"><b>Don't rotate</b> or tilt.</p></div>
+        <div><div class="stage ink"><span class="x">✕</span><img src="assets/logos/muk-m_indigo.png" alt=""></div><p class="t"><b>Don't use indigo on black.</b> 1.8 : 1.</p></div>
+        <div><div class="stage ink" style="background:url('assets/stills/needmoretime-office.jpg') center/cover"><span class="x">✕</span><img src="assets/logos/muk-m_white.png" alt="" style="height:60%"></div><p class="t"><b>Don't place</b> over busy imagery.</p></div>
+        <div><div class="stage ink"><span class="x">✕</span><span style="font-family:var(--mp-font-display);font-weight:800;font-size:96px;color:var(--mp-salmon);line-height:1">M</span></div><p class="t"><b>Don't retype it.</b> Use the artwork, not a font.</p></div>
+        <div><div class="stage ink"><span class="x">✕</span><div style="display:flex;align-items:center;gap:2px;border:1px solid var(--mp-g3);padding:2px"><img src="assets/logos/muk-m_salmon.png" alt="" style="height:54px"><span class="mono" style="color:var(--mp-g6);font-size:10px">Post-production</span></div></div><p class="t"><b>Don't crowd</b> the clear space.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 COLOUR ================= -->
+<section class="sec" id="colour" data-title="Colour">
+  <div class="wrap">
+    <div class="sec-head fx">
+      <div class="num">04</div>
+      <div><span class="label">Colour</span><h2>Studio black. Two accents.</h2></div>
+      <p class="lead">A monochrome core with Indigo and Salmon from the logo as the signature. Click any value to copy it.</p>
+    </div>
+
+    <div class="swatches fx" id="swatches"></div>
+    <p class="note">CMYK is a naive conversion for reference. Proof every print job; Pantone matches are on the v1.1 list.</p>
+    <div class="greys fx" id="greys"></div>
+
+    <div class="sub fx">
+      <span class="label">Proportion</span>
+      <h3>Mostly ink. Colour is the exception.</h3>
+      <div class="ratio" id="ratio"></div>
+      <p class="note">Rule of thumb for any layout. Salmon is the one accent. Indigo is a surface. Signal green is a status dot, nothing more.</p>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">Tonal ramps</span>
+      <h3>Tints and shades, when you need them.</h3>
+      <div class="ramps" id="ramps"></div>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">Accessible pairs</span>
+      <h3>What can sit on what.</h3>
+      <div class="pairs" id="pairs"></div>
+      <p class="note">Ratios are live from the hex values. WCAG: AAA ≥ 7, AA ≥ 4.5, AA Large ≥ 3 (headlines and 24 px+).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 TYPE ================= -->
+<section class="sec" id="type" data-title="Type">
+  <div class="wrap">
+    <div class="sec-head fx">
+      <div class="num">05</div>
+      <div><span class="label">Typography</span><h2>Three typefaces. Three jobs.</h2></div>
+      <p class="lead">Bricolage Grotesque for headlines, Inter for reading, JetBrains Mono for labels and data. All free, open-licensed, and included in the kit.</p>
+    </div>
+
+    <div class="spec fx">
+      <div class="card"><div class="aa" style="font-family:var(--mp-font-display);font-weight:800">Aa</div>
+        <div class="info"><span class="label">Display</span><h4>Bricolage Grotesque</h4><p>Headlines, titles, big numbers. Weights 600–800. Tight tracking −3% to −4.5%. Slightly quirky ink-traps echo the spray M.</p>
+          <div class="glyphs" style="font-family:var(--mp-font-display);font-weight:700">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 .,:;!?&amp;@→</div>
+          <div class="acts"><a class="btn sm" href="assets/fonts/Bricolage.ttf" download>Download TTF</a><a class="btn sm" target="_blank" rel="noopener" href="https://fonts.google.com/specimen/Bricolage+Grotesque">Google Fonts ↗</a></div></div></div>
+      <div class="card"><div class="aa" style="font-family:var(--mp-font-body);font-weight:500">Aa</div>
+        <div class="info"><span class="label">Body</span><h4>Inter</h4><p>Paragraphs, UI, forms, emails. Weights 400, 500, 600. 16 px minimum on screen, 1.55–1.6 line height.</p>
+          <div class="glyphs" style="font-family:var(--mp-font-body)">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 .,:;!?&amp;@→</div>
+          <div class="acts"><a class="btn sm" href="assets/fonts/Inter.ttf" download>Download TTF</a><a class="btn sm" target="_blank" rel="noopener" href="https://fonts.google.com/specimen/Inter">Google Fonts ↗</a></div></div></div>
+      <div class="card"><div class="aa" style="font-family:var(--mp-font-mono);font-weight:600">Aa</div>
+        <div class="info"><span class="label">Mono</span><h4>JetBrains Mono</h4><p>Labels, buttons, timecodes, specs. Always uppercase, +14–16% tracking, 10–12 px. Prefix section labels with “// ”.</p>
+          <div class="glyphs" style="font-family:var(--mp-font-mono);font-size:17px">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789 01:00:00:00 → ↗ ↓</div>
+          <div class="acts"><a class="btn sm" href="assets/fonts/JetBrainsMono.ttf" download>Download TTF</a><a class="btn sm" target="_blank" rel="noopener" href="https://fonts.google.com/specimen/JetBrains+Mono">Google Fonts ↗</a></div></div></div>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">Scale</span>
+      <h3>Seven sizes. Use these.</h3>
+      <div class="scale">
+        <div><span class="mono spc">Display</span><span class="smp" style="font-family:var(--mp-font-display);font-weight:800;font-size:96px;line-height:.9;letter-spacing:-.045em">Graded frame.</span><span class="mono spc">Bricolage 800 · 96/0.9 · −4.5%</span></div>
+        <div><span class="mono spc">H1</span><span class="smp" style="font-family:var(--mp-font-display);font-weight:700;font-size:64px;line-height:.95;letter-spacing:-.04em">Colour, sound, edit, design.</span><span class="mono spc">Bricolage 700 · 64/0.95 · −4%</span></div>
+        <div><span class="mono spc">H2</span><span class="smp" style="font-family:var(--mp-font-display);font-weight:700;font-size:40px;line-height:1;letter-spacing:-.03em">Selected works, finished in house.</span><span class="mono spc">Bricolage 700 · 40/1.0 · −3%</span></div>
+        <div><span class="mono spc">H3</span><span class="smp" style="font-family:var(--mp-font-display);font-weight:700;font-size:24px;line-height:1.1;letter-spacing:-.025em">Professional grade integration of sight and sound.</span><span class="mono spc">Bricolage 700 · 24/1.1 · −2.5%</span></div>
+        <div><span class="mono spc">Body L</span><span class="smp" style="font-size:18px;color:var(--mp-g6)">Remote, Toronto-based finishing for music videos, films and campaigns.</span><span class="mono spc">Inter 400 · 18/1.55</span></div>
+        <div><span class="mono spc">Body</span><span class="smp" style="font-size:16px;color:var(--mp-g6)">Tell us about the project. We'll send a quote with scope and timeline.</span><span class="mono spc">Inter 400 · 16/1.6</span></div>
+        <div><span class="mono spc">Label</span><span class="smp mono" style="color:var(--mp-salmon)">// Colour stills · 248 graded</span><span class="mono spc">JetBrains Mono 500 · 11/1.4 · +16% · caps</span></div>
+      </div>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">In use</span>
+      <div class="pairing">
+        <div class="card"><span class="label">Colour stills</span><div class="big">Graded frame by frame.</div><p class="lead" style="font-size:18px">Professional grade integration of sight and sound. Remote, Toronto-based finishing for music videos, films and campaigns.</p><div class="ui-row" style="margin-top:28px"><a class="btn primary" href="#">Get in touch ↗</a><a class="btn" href="#">See the work</a></div></div>
+        <div class="grid">
+          <div class="card indigo"><span class="label plain" style="color:var(--mp-salmon)">Number</span><div style="font-family:var(--mp-font-display);font-weight:800;font-size:96px;letter-spacing:-.05em;line-height:.9;color:var(--mp-salmon)">248</div><p class="mono" style="color:var(--mp-paper);margin-top:8px">Graded stills</p></div>
+          <div class="card paper"><span class="label plain">Rules</span><p style="font-size:14px">Never fake bold or italic. Never set body in the display face. Never track body text. If a font isn't installed (email, Docs), fall back to Arial. Don't substitute with something close.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 IMAGERY ================= -->
+<section class="sec" id="imagery" data-title="Imagery">
+  <div class="wrap">
+    <div class="sec-head fx">
+      <div class="num">06</div>
+      <div><span class="label">Imagery &amp; texture</span><h2>Real frames. Graded.</h2></div>
+      <p class="lead">The work is the brand. Every image is a real frame from a real project, graded in the studio. No stock, no filters, no overlays.</p>
+    </div>
+
+    <div class="stills fx">
+      <figure class="w3 h2"><img src="assets/stills/sweartogod-a.jpg" alt="Still from sweartogod!"><figcaption>sweartogod!</figcaption></figure>
+      <figure class="w3"><img src="assets/stills/360-hawk.jpg" alt="Still from 360°"><figcaption>360°</figcaption></figure>
+      <figure><img src="assets/stills/toll-car.jpg" alt="Still from Toll"><figcaption>Toll</figcaption></figure>
+      <figure><img src="assets/stills/beerleague-elder.jpg" alt="Still from Beer League"><figcaption>Beer League</figcaption></figure>
+      <figure><img src="assets/stills/needmoretime-office.jpg" alt="Still from needmoretime!"><figcaption>needmoretime!</figcaption></figure>
+      <figure><img src="assets/stills/needmoretime-night.jpg" alt="Still from needmoretime!"><figcaption>needmoretime!</figcaption></figure>
+      <figure class="w2"><img src="assets/stills/beerleague-goalie.jpg" alt="Still from Beer League"><figcaption>Beer League</figcaption></figure>
+      <figure class="w2"><img src="assets/stills/360-portrait.jpg" alt="Still from 360°"><figcaption>360°</figcaption></figure>
+      <figure><img src="assets/stills/beerleague-keys.jpg" alt="Still from Beer League"><figcaption>Beer League</figcaption></figure>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">The grade</span>
+      <h3>Flat in. Graded out.</h3>
+      <div class="grid" style="grid-template-columns:1.5fr 1fr">
+        <div class="cmp" id="cmp"><img src="assets/stills/360-hawk.jpg" alt="Graded"><img class="flat" src="assets/stills/360-hawk.jpg" alt="Flat"><span class="lab mono" style="left:14px;color:var(--mp-g6)">Flat</span><span class="lab mono" style="right:14px;color:var(--mp-salmon)">Graded</span><div class="bar" id="cmpBar"></div><input type="range" min="0" max="100" value="50" id="cmpIn" aria-label="Compare flat and graded"></div>
+        <div class="grid" style="align-content:start">
+          <div class="card"><span class="label plain">Look</span><h4>Cinematic, not stylised.</h4><p>Natural skin, deep blacks, controlled highlights. One look per project, held across every frame.</p></div>
+          <div class="card"><span class="label plain">Never</span><p>Preset filters, vignettes, light leaks, text on faces, or images we didn't make. Illustration above is a demonstration of flat vs graded, not a real before/after.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">The stamped frame</span>
+      <div class="grid" style="grid-template-columns:1fr 1.4fr;align-items:center">
+        <div class="stamp"><img src="assets/stills/toll-car.jpg" alt="Stamped frame example"><div class="lbl mono"><span>Toll</span><span>4 : 3</span></div></div>
+        <div class="card"><span class="label plain">Treatment</span><h4>Black mat, hairline border, mono caption.</h4><p>The signature way to present a still on social and in the studio. 4:3 frame, 12 px black mat, 1 px #333 border, soft salmon glow (8% opacity), label in JetBrains Mono. Caption states the project, never a claim.</p></div>
+      </div>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">Texture</span>
+      <h3>Four grounds. One per layout.</h3>
+      <div class="texs">
+        <div class="stage" style="background:url('assets/textures/texture_ink.jpg') center/cover"><img src="assets/logos/muk-m_white.png" alt=""><div class="cap"><span>Ink</span><span>Default</span></div></div>
+        <div class="stage indigo"><img src="assets/logos/muk-m_salmon.png" alt=""><div class="cap"><span>Indigo</span><span>Signature</span></div></div>
+        <div class="stage salmon"><img src="assets/logos/muk-m_ink.png" alt=""><div class="cap"><span>Salmon</span><span>Poster</span></div></div>
+        <div class="stage paper"><img src="assets/logos/muk-m_ink.png" alt=""><div class="cap"><span>Paper</span><span>Documents</span></div></div>
+      </div>
+      <p class="note">Textures are the original spray-grain backgrounds. Use at full bleed, crop in close, scale the M large. Never tile, never combine two.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 LAYOUT & UI ================= -->
+<section class="sec" id="layout" data-title="Layout &amp; UI">
+  <div class="wrap">
+    <div class="sec-head fx">
+      <div class="num">07</div>
+      <div><span class="label">Layout &amp; UI</span><h2>Full width. Sharp edges.</h2></div>
+      <p class="lead">Use the whole screen. Generous gutters, hairline rules, 2–4 px corners, one accent. These are the exact components on mukpost.com.</p>
+    </div>
+
+    <div class="grid g2 fx">
+      <div class="card"><span class="label">Grid</span><h4>12 columns, 24 px gutters, 48 px margins.</h4><p>Full-bleed on desktop. No narrow centred column. Content max-width 1680 px, then margins grow. 20 px margins on mobile, 4 columns.</p></div>
+      <div class="card"><span class="label">Rules</span><h4>Hairlines, not boxes.</h4><p>Separate with 1 px #1E1E1E lines. Cards are #111 with a 1 px border. Hover raises the border to #333. No shadows on ink.</p></div>
+    </div>
+
+    <div class="grid g2 sub fx">
+      <div><span class="label" style="display:block;margin-bottom:20px">Spacing · 4 pt base</span>
+        <div class="space" id="space"></div></div>
+      <div><span class="label" style="display:block;margin-bottom:20px">Shape</span>
+        <div class="shape"><div style="border-radius:0">0 · Images</div><div style="border-radius:2px">2 · Chips</div><div style="border-radius:4px">4 · Buttons, cards</div><div style="border-radius:9999px;align-items:center;justify-content:center;padding:0">Pill</div></div>
+        <span class="label" style="display:block;margin:36px 0 20px">Components</span>
+        <div class="ui-row"><a class="btn primary" href="#">Get in touch ↗</a><a class="btn" href="#">Secondary</a><a class="btn accent" href="#">Accent</a></div>
+        <div class="ui-row" style="margin-top:20px"><span class="pill"><i class="live"></i>Booking now</span><span class="pill">Colour</span><span class="pill">Sound</span></div>
+        <div class="field" style="margin-top:24px"><span class="label plain">Email</span><input type="text" placeholder="you@studio.com"></div>
+      </div>
+    </div>
+    <p class="note">Primary button is Paper on Ink (white, black label). Salmon buttons are for one call-to-action per layout. Signal green appears only as the live-status dot.</p>
+  </div>
+</section>
+
+<!-- ================= 08 MOTION & SOUND ================= -->
+<section class="sec" id="motion" data-title="Motion &amp; sound">
+  <div class="wrap">
+    <div class="sec-head fx">
+      <div class="num">08</div>
+      <div><span class="label">Motion &amp; sound</span><h2>Calm on the site. Fast on the feed.</h2></div>
+      <p class="lead">The website moves slowly and confidently. Social is cut hard on the beat. Nothing bounces, nothing wobbles, nothing fades slowly.</p>
+    </div>
+
+    <div class="mo fx">
+      <div class="card"><div><span class="label">Web</span><h4>Rise and settle.</h4><p>12 px rise plus fade, 700 ms, expo-out. Hover 200 ms. One reveal per element, never repeated.</p></div>
+        <div class="demo-stage"><div class="rv" id="rv" style="display:flex;flex-direction:column;gap:10px;align-items:flex-start"><span class="label">// Colour stills</span><b style="font-family:var(--mp-font-display);font-size:40px;letter-spacing:-.04em;color:var(--mp-paper);line-height:1">Graded frame.</b><span class="btn sm primary">Get in touch ↗</span></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span class="mono" style="color:var(--mp-g5)">cubic-bezier(.16, 1, .3, 1)</span><button class="btn sm" data-replay="rv">Replay ↻</button></div></div>
+      <div class="card"><div><span class="label">Social</span><h4>Grade-in.</h4><p>The signature move: a still starts flat, a scan line sweeps down, and the grade lands. 0.9 s, stepped to 24 fps. Cuts land on the beat.</p></div>
+        <div class="demo-stage"><div class="gi go" id="gi"><img src="assets/stills/needmoretime-night.jpg" alt=""></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center"><span class="mono" style="color:var(--mp-g5)">flat → graded · 0.9 s</span><button class="btn sm" data-replay="gi">Replay ↻</button></div></div>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">Anatomy of a reel</span>
+      <h3>Five beats, 15 to 30 seconds.</h3>
+      <div class="beats">
+        <div><span class="mono" style="color:var(--mp-salmon)">0:00 – 1:30</span><b>Hook</b><p>Strongest frame or one line. Nothing before it.</p></div>
+        <div><span class="mono" style="color:var(--mp-salmon)">Beats 2–4</span><b>Proof</b><p>Real stills or footage, cut on the beat with a tick.</p></div>
+        <div><span class="mono" style="color:var(--mp-salmon)">Mid</span><b>Grade-in</b><p>The scan-line reveal. Colour is the pitch.</p></div>
+        <div><span class="mono" style="color:var(--mp-salmon)">Last 2 s</span><b>Ask</b><p>“Get in touch ↗” and mukpost.com. One call to action.</p></div>
+        <div><span class="mono" style="color:var(--mp-salmon)">Final hit</span><b>Mark</b><p>The M lands with a low hit. Hold, then stop.</p></div>
+      </div>
+    </div>
+
+    <div class="sub fx">
+      <span class="label">Specs and sound</span>
+      <div class="grid g3">
+        <div class="card"><span class="label plain">Format</span><h4>1080 × 1920 · 30 fps</h4><p>Reels: keep key copy between y 230 and 1540. Stories: clear the top 270 and bottom 340. Leave room for the link sticker.</p></div>
+        <div class="card"><span class="label plain">Motion</span><h4>Hard cuts, white-bar wipes.</h4><p>Scene change: white bar, 0.4 s, swap at the covered midpoint. Easing is out-quart or out-expo. No overshoot, no bounce.</p></div>
+        <div class="card"><span class="label plain">Sound</span><h4>Ticks and one low hit.</h4><p>A soft tick on every cut, a low hit on the M. No hype music, no vocals over the pitch. Master at −14 LUFS, true peak under −1 dBTP.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 09 APPLICATIONS ================= -->
+<section class="sec" id="applications" data-title="Applications">
+  <div class="wrap">
+    <div class="sec-head fx">
+      <div class="num">09</div>
+      <div><span class="label">Applications</span><h2>The system, in use.</h2></div>
+      <p class="lead">Every touchpoint is built from the same parts: ink canvas, one accent, three typefaces, a real frame, the M.</p>
+    </div>
+
+    <div class="apps fx">
+      <div class="app s7"><div class="shot" style="background:#050505"><div class="mock-site"><div class="nv"><img src="assets/logos/muk-m_white.png" alt=""><span>WORK · COLOUR · SOUND · DESIGN</span><span style="color:var(--mp-paper)">GET IN TOUCH ↗</span></div><div class="hh"><span class="label" style="font-size:8px">Colour stills</span><b>Graded frame<br>by frame.</b><span class="b">GET IN TOUCH ↗</span></div><div class="rw"><img src="assets/stills/sweartogod-a.jpg" alt=""><img src="assets/stills/toll-car.jpg" alt=""><img src="assets/stills/beerleague-elder.jpg" alt=""><img src="assets/stills/needmoretime-night.jpg" alt=""></div></div></div><div class="meta"><span class="label plain">Website</span><p>Ink canvas, full-width, mono nav, one white button.</p></div></div>
+
+      <div class="app s5"><div class="shot" style="background:#050505"><div class="mock-story"><span class="pill" style="align-self:flex-start;height:20px;font-size:7px"><i class="live" style="width:5px;height:5px"></i>Out now</span><b>Title. Artist.</b><div class="stamp"><img src="assets/stills/sweartogod-a.jpg" alt=""><div class="lbl mono"><span>Post by Muk Post</span><span>4:3</span></div></div><div class="chip">WATCH ON YOUTUBE ↓</div></div></div><div class="meta"><span class="label plain">Story · 9:16</span><p>Status pill, title, stamped frame, one CTA.</p></div></div>
+
+      <div class="app s8"><div class="shot" style="background:#e9e9ee"><div class="mock-sig" id="sig">
+        <table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,Helvetica,sans-serif;color:#0A0A0A;font-size:13px;line-height:1.5">
+          <tr>
+            <td style="padding-right:18px;border-right:2px solid #F8A695;vertical-align:top"><img src="assets/logos/muk-tile_indigo.png" data-abs="https://mukpost.com/brand/assets/logos/muk-tile_indigo.png" width="68" height="68" alt="Muk Post" style="display:block;border:0;width:68px;height:68px"></td>
+            <td style="padding-left:18px;vertical-align:top">
+              <div style="font-weight:700;font-size:15px;color:#0A0A0A">Jackson McMurdo</div>
+              <div style="color:#555555">Muk Post · Post-production, Toronto</div>
+              <div style="margin-top:8px"><a href="mailto:contact@mukpost.com" style="color:#2D318F;text-decoration:none">contact@mukpost.com</a> &nbsp;·&nbsp; <a href="https://mukpost.com" style="color:#2D318F;text-decoration:none">mukpost.com</a></div>
+              <div style="margin-top:6px;font-size:10px;letter-spacing:1.6px;color:#888888">EDIT · COLOUR · SOUND · DESIGN</div>
+            </td>
+          </tr>
+        </table></div></div><div class="meta"><span class="label plain">Email signature · live</span><p style="flex:1">Table-based, Arial, no phone. Replaces the old Montserrat one.</p><button class="btn sm accent" id="copySig">Copy signature</button></div></div>
+
+      <div class="app s4"><div class="shot" style="background:#050505;padding:20px"><div class="mock-doc"><div class="hd"><img src="assets/logos/muk-lockup_ink.png" alt=""><span class="mono">Quote № 0000</span></div><h5>Colour, sound<br>and edit.</h5><div class="mono">Project · [Title] &nbsp; Client · [Name]</div><div><div class="ln"><span>Colour grade — [scope]</span><span>$ —</span></div><div class="ln"><span>Sound design and mix</span><span>$ —</span></div><div class="ln"><span>Edit and finishing</span><span>$ —</span></div></div><div class="mono" style="margin-top:auto">contact@mukpost.com · mukpost.com</div></div></div><div class="meta"><span class="label plain">Quote / invoice</span><p>Paper, ink lockup, mono details.</p></div></div>
+
+      <div class="app s6"><div class="shot" style="background:#050505;gap:24px;display:flex;flex-wrap:wrap;justify-content:center;align-items:center"><img src="assets/logos/muk-tile_indigo.png" alt="" style="width:150px;border-radius:50%"><img src="assets/logos/muk-tile_ink.png" alt="" style="width:150px;border-radius:50%;border:1px solid var(--mp-g3)"><img src="assets/logos/muk-banner_black.png" alt="" style="width:100%;margin-top:10px"></div><div class="meta"><span class="label plain">Social avatar &amp; banner</span><p>Indigo tile is primary. Ink tile for dark UIs.</p></div></div>
+
+      <div class="app s6"><div class="shot" style="background:#050505"><div class="mock-card"><div class="mono"><span>Muk Post</span><span>Deck · 16:9</span></div><b>Professional grade integration of sight and sound.</b><div class="mono"><span>Edit · Colour · Sound · Design</span><span>mukpost.com</span></div></div></div><div class="meta"><span class="label plain">Deck title card</span><p>Indigo texture, salmon headline in Bricolage.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10 DOWNLOADS ================= -->
+<section class="sec" id="downloads" data-title="Downloads">
+  <div class="wrap">
+    <div class="sec-head fx">
+      <div class="num">10</div>
+      <div><span class="label">Downloads</span><h2>Everything, one click.</h2></div>
+      <p class="lead">Always grab from here. If it isn't on this page, it isn't current. Transparent PNGs, trimmed tight: add clear space in layout.</p>
+    </div>
+
+    <div class="dl-hero fx">
+      <div><h3>Full brand kit.</h3><p>Logos (every colourway), textures, fonts, tokens, email signature. v1.0.</p></div>
+      <a class="btn primary" href="downloads/MukPost_BrandKit_v1.0.zip" download>Download .zip ↓</a>
+    </div>
+
+    <div id="dlRoot" class="fx"></div>
+    <p class="note" style="margin-top:28px">Source masters (layered PSDs) live in the studio drive under 01_BRAND_&amp;_IDENTITY/Logos. A vector (SVG) master of the M and wordmark doesn't exist yet. It's on the v1.1 list.</p>
+  </div>
+</section>
+
+<!-- ================= 11 CHECKLIST ================= -->
+<section class="sec" id="checklist" data-title="On-brand check">
+  <div class="wrap">
+    <div class="sec-head fx">
+      <div class="num">11</div>
+      <div><span class="label">On-brand check</span><h2>Is it on brand? Why?</h2></div>
+      <p class="lead">Run any layout, post or document through these ten questions before it goes out. Ten ticks is on brand. Anything else tells you what to fix.</p>
+    </div>
+
+    <div class="check fx">
+      <ul class="cl" id="cl"></ul>
+      <div class="verdict" id="verdict"><span class="label plain">Score</span><div class="score"><span id="sc">0</span><small>/10</small></div><div class="meter"><i id="mt"></i></div><h4 id="vh">Nothing checked yet.</h4><p id="vp">Tick what's true. The unchecked items are what to fix.</p><button class="btn sm" id="reset" style="margin-top:22px">Reset</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 12 CHANGELOG ================= -->
+<section class="sec" id="changelog" data-title="Changelog">
+  <div class="wrap">
+    <div class="sec-head fx">
+      <div class="num">12</div>
+      <div><span class="label">Changelog</span><h2>Version history.</h2></div>
+      <p class="lead">When something changes here, it changes everywhere. This page is the single source of truth.</p>
+    </div>
+    <div class="log fx">
+      <div><b>v1.0</b><span class="mono" style="color:var(--mp-g5)">Oct 2026</span><p>First complete system. Studio Black core with Indigo and Salmon. Bricolage Grotesque, Inter, JetBrains Mono. Logo rules, voice, motion, asset kit, on-brand check. Retires the old pitch-deck “Volt green” and the Montserrat email signature.</p></div>
+      <div><b>v1.1 · planned</b><span class="mono" style="color:var(--mp-g5)">Next</span><p>Vector masters for the M and wordmark. Pantone and print CMYK proofs. Rebuilt pitch deck and invoice templates. Reel and Story templates in the kit. Light-mode web variant.</p></div>
+      <div><b>v0 · legacy</b><span class="mono" style="color:var(--mp-g5)">Before</span><p>Black-and-white website in Inter + Space Mono, indigo/salmon logo files, unfinished InDesign guideline draft (Helvetica Neue + EB Garamond). Superseded.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="end">
+  <div class="statement">Graded frame <em>by frame.</em></div>
+  <div style="display:flex;flex-direction:column;gap:12px;align-items:flex-end">
+    <img src="assets/logos/muk-m_salmon.png" alt="Muk Post" style="height:64px;width:auto">
+    <span class="mono" style="color:var(--mp-g5)">Muk Post · Toronto · contact@mukpost.com · mukpost.com</span>
+  </div>
+</footer>
+</main>
+
+<div class="toast" id="toast">Copied</div>
+<script src="hub.js"></script>
+</body>
+</html>

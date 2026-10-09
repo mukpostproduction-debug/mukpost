@@ -1,0 +1,35 @@
+{
+  "$schema": "Muk Post design tokens",
+  "version": "1.0",
+  "date": "2026-10",
+  "colour": {
+    "ink":       { "hex": "#0A0A0A", "rgb": [10, 10, 10],    "role": "Canvas" },
+    "paper":     { "hex": "#FFFFFF", "rgb": [255, 255, 255], "role": "Text on dark, documents" },
+    "indigo":    { "hex": "#2D318F", "rgb": [45, 49, 143],   "role": "Signature surface" },
+    "indigoUI":  { "hex": "#8B90E8", "rgb": [139, 144, 232], "role": "Indigo for text and lines on dark" },
+    "salmon":    { "hex": "#F8A695", "rgb": [248, 166, 149], "role": "Signature accent" },
+    "signal":    { "hex": "#10B981", "rgb": [16, 185, 129],  "role": "Live status only" },
+    "greys": {
+      "g1": "#111111", "g2": "#1E1E1E", "g3": "#333333", "g4": "#555555",
+      "g5": "#888888", "g6": "#AAAAAA", "g7": "#EEEEEE"
+    }
+  },
+  "type": {
+    "display": "Bricolage Grotesque",
+    "body": "Inter",
+    "mono": "JetBrains Mono"
+  },
+  "space": [4, 8, 12, 16, 24, 32, 48, 64, 96, 144],
+  "radius": { "sm": 2, "md": 4, "pill": 9999 },
+  "motion": {
+    "ease": "cubic-bezier(0.16, 1, 0.3, 1)",
+    "duration": { "fast": 200, "base": 400, "slow": 700 }
+  },
+  "contact": {
+    "email": "contact@mukpost.com",
+    "web": "mukpost.com",
+    "instagram": "@muk.post",
+    "youtube": "@MukPostProduction",
+    "location": "Toronto"
+  }
+}
