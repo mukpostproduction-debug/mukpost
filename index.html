@@ -168,16 +168,21 @@
             justify-content: center;
             cursor: pointer;
             user-select: none;
+            background: transparent;
         }
 
         .hero-m-video {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: contain;
             display: block;
             background: transparent;
-            border-radius: var(--radius-sm);
-            transition: transform 0.4s var(--ease-out), opacity 0.35s ease;
+            border: none;
+            outline: none;
+            mix-blend-mode: screen; /* Eliminates any black background or compression border artifacts */
+            transition: transform 0.4s var(--ease-out), opacity 0.3s ease;
         }
 
         .hero-m-static {
@@ -188,7 +193,7 @@
             object-fit: contain;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.4s ease, transform 0.4s var(--ease-out);
+            transition: opacity 0.3s ease, transform 0.4s var(--ease-out);
         }
 
         .hero-m-stage.settled .hero-m-static {
@@ -1594,12 +1599,17 @@
             <div class="hero-m-stage" id="heroMStage" title="Muk Post · Click to replay animation">
                 <video id="heroMVideo" 
                        class="hero-m-video"
-                       poster="portfolio-assets/logos/muk-m_white.png" 
+                       poster="portfolio-assets/logos/muk-m_white_landed.png" 
                        autoplay muted playsinline preload="auto">
-                    <source src="portfolio-assets/videos/muk_m_logo_white_land_web.mp4" type="video/mp4">
+                    <!-- Apple Safari / iOS HEVC with Alpha -->
+                    <source src="portfolio-assets/videos/muk_m_logo_white_land_alpha.mov" type='video/mp4; codecs="hvc1"'>
+                    <source src="portfolio-assets/videos/muk_m_logo_white_land_alpha.mp4" type='video/mp4; codecs="hvc1"'>
+                    <!-- Chrome / Firefox / Edge / Android VP9 with Alpha -->
                     <source src="portfolio-assets/videos/muk_m_logo_white_land_alpha.webm" type="video/webm">
+                    <!-- Universal Fallback MP4 -->
+                    <source src="portfolio-assets/videos/muk_m_logo_white_land_web.mp4" type="video/mp4">
                 </video>
-                <img src="portfolio-assets/logos/muk-m_white.png" alt="Muk Post" class="hero-m-static" id="heroMStatic">
+                <img src="portfolio-assets/logos/muk-m_white_landed.png" alt="Muk Post" class="hero-m-static" id="heroMStatic">
             </div>
             <h1>Toronto-Based Remote Post-Production House</h1>
         </section>
