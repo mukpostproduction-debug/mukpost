@@ -147,24 +147,63 @@
 
         /* HERO & OPENING ANIMATIONS */
         .hero {
-            min-height: 90vh;
+            min-height: 84vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             border-bottom: none;
-            padding: 130px 2rem 70px;
+            padding: 120px 2rem 60px;
         }
 
-        .hero-wordmark {
-            width: 580px;
-            max-width: 82vw;
-            margin-bottom: 2rem;
+        /* HERO LOGO ANIMATION STAGE */
+        .hero-m-stage {
+            position: relative;
+            width: clamp(210px, 32vw, 320px);
+            aspect-ratio: 1 / 1;
+            margin: 0 auto 2.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .hero-m-video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            background: transparent;
+            border-radius: var(--radius-sm);
+            transition: transform 0.4s var(--ease-out), opacity 0.35s ease;
+        }
+
+        .hero-m-static {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
             opacity: 0;
-            transform: scale(0.96);
-            animation: heroFadeScale 1.8s var(--ease-out) forwards;
-            animation-delay: 0.15s;
+            pointer-events: none;
+            transition: opacity 0.4s ease, transform 0.4s var(--ease-out);
+        }
+
+        .hero-m-stage.settled .hero-m-static {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .hero-m-stage.settled .hero-m-video {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .hero-m-stage:hover .hero-m-video,
+        .hero-m-stage:hover .hero-m-static {
+            transform: scale(1.025);
         }
 
         .hero h1 {
@@ -177,169 +216,6 @@
             transform: translateY(12px);
             animation: heroSubFade 1.4s var(--ease-out) forwards;
             animation-delay: 0.75s;
-        }
-
-        /* ==========================================================================
-           FEATURED MUSIC VIDEO PREMIERE // DONAT JACKSON - "sweartogod!"
-           Clean Stamped 4:3 Video Showcase + Ambient Outer Glow + Header & Live Drop Status
-           ========================================================================== */
-        .featured-drop-wrapper {
-            margin-bottom: 4.5rem;
-            opacity: 0;
-            transform: translateY(16px);
-            animation: heroSubFade 1s var(--ease-out) forwards;
-            animation-delay: 0.25s;
-            text-align: center;
-            width: 100%;
-            max-width: 1380px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* HEADER: Title & Subtitle */
-        .featured-drop-header {
-            margin-bottom: 1.6rem;
-            text-align: center;
-            max-width: 980px;
-            padding: 0 1rem;
-        }
-
-        .featured-drop-title {
-            font-size: clamp(1.4rem, 3.2vw, 2.35rem);
-            font-weight: 700;
-            letter-spacing: -0.015em;
-            color: #ffffff;
-            margin: 0 0 0.55rem;
-            text-transform: none;
-            line-height: 1.15;
-        }
-
-        .featured-drop-subtitle {
-            font-size: clamp(0.78rem, 1.35vw, 0.96rem);
-            font-weight: 400;
-            color: var(--text-secondary);
-            letter-spacing: 0.02em;
-            margin: 0 0 1.35rem;
-            line-height: 1.45;
-        }
-
-        /* FEATURED DROP STATUS BADGE */
-        .premiere-status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.55rem;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.35);
-            color: #10B981;
-            padding: 0.45rem 1.15rem;
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
-            font-weight: 700;
-            border-radius: var(--radius-full);
-            margin: 0.8rem auto 1.25rem;
-        }
-
-        .pulse-dot {
-            display: inline-block;
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #10B981;
-            box-shadow: 0 0 10px #10B981;
-            animation: livePulse 1.8s ease-in-out infinite;
-        }
-
-        @keyframes livePulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.35; transform: scale(0.85); }
-        }
-
-        /* CLEANLY STAMPED 4:3 VIDEO WITH AMBIENT OUTER GLOW */
-        .stamped-video-container {
-            width: 100%;
-            margin: 0 auto 2rem;
-            position: relative;
-        }
-
-        .stamped-4x3-video-wrap {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 4 / 3;
-            background: #000000;
-            border-radius: var(--radius-sm);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            /* Luminous studio outer-glow drop shadow popping off obsidian background */
-            box-shadow: 
-                0 0 0 1px rgba(255, 255, 255, 0.08),
-                0 0 45px rgba(255, 255, 255, 0.15),
-                0 0 95px rgba(255, 255, 255, 0.08),
-                0 30px 80px rgba(0, 0, 0, 0.95);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: border-color 0.4s ease, box-shadow 0.4s var(--ease-out);
-        }
-
-        .stamped-4x3-video-wrap:hover {
-            border-color: rgba(255, 255, 255, 0.30);
-            box-shadow: 
-                0 0 0 1px rgba(255, 255, 255, 0.15),
-                0 0 65px rgba(255, 255, 255, 0.22),
-                0 0 130px rgba(255, 255, 255, 0.12),
-                0 35px 95px rgba(0, 0, 0, 0.98);
-        }
-
-        .stamped-4x3-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            background: #000000;
-        }
-
-        /* Action Buttons Row */
-        .premiere-actions-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.85rem;
-            flex-wrap: wrap;
-            margin-top: 0.6rem;
-        }
-
-        .youtube-drop-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #ffffff;
-            color: #000000;
-            padding: 0.95rem 2.2rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            text-decoration: none;
-            transition: all 0.25s var(--ease-out);
-            font-size: 0.82rem;
-            border-radius: var(--radius-sm);
-            box-shadow: var(--shadow-sm);
-            border: none;
-            cursor: pointer;
-        }
-
-        .youtube-drop-btn:hover {
-            background: #eaeaea;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
-        }
-
-        .youtube-drop-btn:active {
-            transform: scale(0.98);
         }
 
         .studio-btn {
@@ -371,122 +247,6 @@
             transform: scale(0.98);
         }
 
-        /* PREMIERE TOAST NOTIFICATION */
-        .premiere-toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            opacity: 0;
-            visibility: hidden;
-            background: rgba(14, 14, 18, 0.97);
-            border: 1px solid var(--border-hover);
-            border-radius: var(--radius-md);
-            padding: 1.4rem 1.8rem;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: var(--shadow-lg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 10000;
-            transition: transform 0.4s var(--ease-out), opacity 0.4s ease, visibility 0.4s ease;
-            text-align: left;
-        }
-
-        .premiere-toast.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .toast-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.6rem;
-        }
-
-        .toast-badge {
-            font-family: var(--font-mono);
-            font-size: 0.68rem;
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--text-dim);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-        }
-
-        .toast-close-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-dim);
-            font-size: 1rem;
-            cursor: pointer;
-            padding: 0.2rem;
-            transition: color 0.2s ease;
-        }
-
-        .toast-close-btn:hover { color: #ffffff; }
-
-        .toast-body h4 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin: 0 0 0.35rem;
-            letter-spacing: 0.02em;
-        }
-
-        .toast-body p {
-            font-size: 0.82rem;
-            color: var(--text-secondary);
-            margin: 0 0 1.1rem;
-            line-height: 1.5;
-        }
-
-        .toast-actions {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-
-        .toast-action-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            padding: 0.6rem 1.1rem;
-            border-radius: var(--radius-sm);
-            font-size: 0.74rem;
-            font-weight: 700;
-            text-decoration: none;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            transition: all 0.2s ease;
-        }
-
-        .toast-action-primary {
-            background: #ffffff;
-            color: #000000;
-            border: 1px solid #ffffff;
-        }
-
-        .toast-action-primary:hover {
-            background: #e2e2e8;
-            color: #000000;
-        }
-
-        .toast-action-secondary {
-            background: rgba(255, 255, 255, 0.06);
-            color: #ffffff;
-            border: 1px solid var(--border);
-        }
-
-        .toast-action-secondary:hover {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: var(--border-hover);
-        }
 
         @keyframes heroFadeScale {
             0% { opacity: 0; transform: scale(0.94); filter: blur(4px); }
@@ -1763,15 +1523,10 @@
 
         /* MOBILE RESPONSIVENESS OVERRIDES */
         @media (max-width: 768px) {
-            .hero { min-height: auto; padding: 110px 1.2rem 50px; }
-            .hero-wordmark { width: 85vw; }
+            .hero { min-height: auto; padding: 105px 1.2rem 45px; }
+            .hero-m-stage { width: clamp(170px, 55vw, 240px); margin-bottom: 1.6rem; }
             .work-cat { margin-bottom: 4.5rem; }
-            .featured-drop-wrapper { margin-bottom: 2.8rem; }
-            .featured-drop-header { margin-bottom: 1.2rem; }
-            .premiere-status-badge { font-size: 0.72rem; padding: 0.4rem 1rem; }
-            .stamped-video-container { margin-bottom: 1.4rem; }
-            .premiere-actions-row { flex-direction: column; width: 100%; gap: 0.75rem; }
-            .youtube-drop-btn, .studio-btn { width: 100%; justify-content: center; }
+            .studio-btn { width: 100%; justify-content: center; }
             .tech-stack-label { border-right: none; width: 100%; margin-bottom: 0.5rem; }
             .laurels-wrapper { gap: 1.5rem; margin-top: 2.5rem; }
             .laurels-wrapper img { height: 50px; }
@@ -1836,47 +1591,16 @@
         <!-- HERO -->
         <section class="hero container">
             
-            <!-- FEATURED YOUTUBE VIDEO DROP -->
-            <!-- FEATURED MUSIC VIDEO PREMIERE DROP -->
-            <div class="featured-drop-wrapper">
-                
-                <!-- OVER TOP OF VIDEO: TITLE, SUBTITLE & LIVE STATUS -->
-                <div class="featured-drop-header">
-                    <h2 class="featured-drop-title">Donat Jackson - sweartoGod!</h2>
-                    <p class="featured-drop-subtitle">Official music video directed by Mason Cline. Post-production by Muk Post.</p>
-                    
-                    <div style="display: flex; justify-content: center;">
-                        <span class="premiere-status-badge">
-                            <span class="pulse-dot"></span>
-                            <span>OUT NOW ON YOUTUBE</span>
-                        </span>
-                    </div>
-                </div>
-
-                <!-- 4:3 VIDEO CLEANLY STAMPED WITH OUTER-GLOW DROP SHADOW -->
-                <div class="stamped-video-container">
-                    <div class="stamped-4x3-video-wrap" id="stampedVideoWrap">
-                        <video id="heroTeaserVideo" 
-                               class="stamped-4x3-video"
-                               src="portfolio-assets/videos/donatjackson-sweartogod-outroteaser-web.mp4" 
-                               poster="portfolio-assets/videos/donatjackson-sweartogod-poster.jpg" 
-                               autoplay loop muted playsinline preload="auto">
-                        </video>
-                    </div>
-                </div>
-
-                <!-- UNDERNEATH: YOUTUBE LINK BUTTON -->
-                <div class="premiere-actions-row">
-                    <a href="https://www.youtube.com/watch?v=a3y5_lFqbsE" target="_blank" rel="noopener noreferrer" class="youtube-drop-btn" id="heroYoutubeBtn">
-                        <i class="fa-brands fa-youtube" style="margin-right: 0.6rem; color: #ff0000; font-size: 1.15rem;"></i> Watch on YouTube
-                    </a>
-                    <a href="colour.html#sweartogod-project" class="studio-btn" title="View Colour Stills">
-                        <i class="fa-solid fa-palette" style="margin-right: 0.5rem;"></i> Colour Stills
-                    </a>
-                </div>
+            <div class="hero-m-stage" id="heroMStage" title="Muk Post · Click to replay animation">
+                <video id="heroMVideo" 
+                       class="hero-m-video"
+                       poster="portfolio-assets/logos/muk-m_white.png" 
+                       autoplay muted playsinline preload="auto">
+                    <source src="portfolio-assets/videos/muk_m_logo_white_land_web.mp4" type="video/mp4">
+                    <source src="portfolio-assets/videos/muk_m_logo_white_land_alpha.webm" type="video/webm">
+                </video>
+                <img src="portfolio-assets/logos/muk-m_white.png" alt="Muk Post" class="hero-m-static" id="heroMStatic">
             </div>
-
-            <img src="https://i.imgur.com/MilMt1c.png" alt="MUK POST" class="hero-wordmark">
             <h1>Toronto-Based Remote Post-Production House</h1>
         </section>
 
@@ -2669,77 +2393,44 @@
             if (videoModal && videoModal.style.display === 'flex') {
                 if (e.key === 'Escape') closeVideoModal();
             }
-            if (e.key === 'Escape') {
-                closePremiereToast();
-            }
         });
 
         // ==========================================================================
-        // FEATURED 4:3 VIDEO PLAYER CONTROLS (Donat Jackson - "sweartogod!")
+        // HERO M LOGO ANIMATION (Plays once on load, sits permanently on White M)
         // ==========================================================================
-        (function initFeaturedHeroPlayer() {
-            // --- Clean 4:3 Video Interaction ---
-            const video = document.getElementById('heroTeaserVideo');
-            const videoWrap = document.getElementById('stampedVideoWrap');
+        (function initHeroLogoAnimation() {
+            const stage = document.getElementById('heroMStage');
+            const video = document.getElementById('heroMVideo');
 
-            if (video && videoWrap) {
-                videoWrap.addEventListener('click', () => {
-                    if (video.paused) {
-                        video.play().catch(e => console.log('Play err:', e));
-                    } else {
-                        video.pause();
-                    }
-                });
+            if (!stage || !video) return;
+
+            function settleOnWhite() {
+                stage.classList.add('settled');
             }
 
-            // --- 3. Premiere Toast Notification Helpers ---
-            const toast = document.getElementById('premiereToast');
-            const premiereNotifyBtn = document.getElementById('premiereNotifyBtn');
+            // Once the video finishes playing through, lock onto the crisp White M
+            video.addEventListener('ended', settleOnWhite);
 
-            if (premiereNotifyBtn) {
-                premiereNotifyBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (toast) toast.classList.add('show');
-                });
-            }
+            video.addEventListener('timeupdate', () => {
+                // When reached the final White M hold
+                if (video.currentTime >= 3.65) {
+                    settleOnWhite();
+                }
+            });
 
-            window.closePremiereToast = function() {
-                if (toast) toast.classList.remove('show');
-            };
+            // If browser blocks autoplay, settle immediately on crisp White M stencil
+            video.play().catch(() => {
+                settleOnWhite();
+            });
 
-            window.copyPremiereLink = function() {
-                const url = 'https://www.youtube.com/watch?v=a3y5_lFqbsE';
-                navigator.clipboard.writeText(url).then(() => {
-                    const copyBtn = document.getElementById('toastCopyBtn');
-                    if (copyBtn) {
-                        const orig = copyBtn.innerHTML;
-                        copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Link Copied!';
-                        setTimeout(() => copyBtn.innerHTML = orig, 2200);
-                    }
-                }).catch(() => {});
-            };
+            // Replay animation on click
+            stage.addEventListener('click', () => {
+                stage.classList.remove('settled');
+                video.currentTime = 0;
+                video.play().catch(e => console.log('Replay error:', e));
+            });
         })();
     </script>
-
-    <!-- PREMIERE SCHEDULING INTERACTIVE TOAST -->
-    <aside class="premiere-toast" id="premiereToast" role="dialog" aria-labelledby="toastTitle">
-        <div class="toast-top">
-            <span class="toast-badge"><span class="pulse-dot" style="display:inline-block; width:6px; height:6px; border-radius:50%; background:#10B981;"></span> Out Now</span>
-            <button type="button" class="toast-close-btn" onclick="closePremiereToast()" aria-label="Close notification"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <div class="toast-body">
-            <h4 id="toastTitle">Now Streaming</h4>
-            <p>Donat Jackson — "sweartogod!" is out now on YouTube. Directed by Mason Cline. Post-production by Muk Post.</p>
-            <div class="toast-actions">
-                <a href="https://www.youtube.com/watch?v=a3y5_lFqbsE" target="_blank" rel="noopener noreferrer" class="toast-action-btn toast-action-primary">
-                    <i class="fa-brands fa-youtube" style="color: #ff3333;"></i> Watch on YouTube
-                </a>
-                <button type="button" id="toastCopyBtn" class="toast-action-btn toast-action-secondary" onclick="copyPremiereLink()">
-                    <i class="fa-regular fa-copy"></i> Copy Link
-                </button>
-            </div>
-        </div>
-    </aside>
 
     <!-- GET IN TOUCH / PROJECT INQUIRY WALKTHROUGH MODAL -->
     <dialog id="inquiry-dialog" class="inquiry-dialog" aria-labelledby="inquiryDialogHeading">
@@ -2885,6 +2576,7 @@
                     <div class="inquiry-field-group">
                         <label class="inquiry-label" for="inquiryBudget">Target Budget <small>(CAD / USD)</small></label>
                         <select id="inquiryBudget" name="budget" class="inquiry-select">
+                            <option value="Free Trial Pilot ($0 / 3 Free Clips)">Free Trial Pilot ($0 / 3 Free Clips)</option>
                             <option value="Under $1,500">Under $1,500</option>
                             <option value="$1,500 – $3,500" selected>$1,500 &ndash; $3,500</option>
                             <option value="$3,500 – $7,500">$3,500 &ndash; $7,500</option>
@@ -3110,9 +2802,48 @@
                     });
                 });
 
-                if (window.location.hash === '#contact' || window.location.hash === '#inquiry') {
-                    setTimeout(window.openInquiryModal, 400);
+                // URL Query & Hash parameter auto-population for Free Trial & Campaigns
+                function checkUrlParams() {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const hash = window.location.hash.toLowerCase();
+                    const isTrial = urlParams.get('trial') === 'free' || urlParams.get('trial') === 'true' || urlParams.get('ref') === 'free' || hash.includes('trial');
+
+                    if (hash === '#contact' || hash === '#inquiry' || isTrial) {
+                        setTimeout(() => {
+                            window.openInquiryModal();
+                            if (isTrial) {
+                                // Pre-configure for Free Trial Pilot
+                                const otherRadio = form.querySelector('input[name="project_type"][value="Custom / Turnkey Post"]');
+                                if (otherRadio) otherRadio.checked = true;
+
+                                const editCb = form.querySelector('input[name="services"][value="Offline Editing"]');
+                                const motionCb = form.querySelector('input[name="services"][value="Motion & Titling"]');
+                                const colourCb = form.querySelector('input[name="services"][value="Colour Grading"]');
+                                const audioCb = form.querySelector('input[name="services"][value="Sound Design & Mix"]');
+                                if (editCb) editCb.checked = true;
+                                if (motionCb) motionCb.checked = true;
+                                if (colourCb) colourCb.checked = true;
+                                if (audioCb) audioCb.checked = true;
+
+                                const budgetSelect = document.getElementById('inquiryBudget');
+                                if (budgetSelect) {
+                                    budgetSelect.value = "Free Trial Pilot ($0 / 3 Free Clips)";
+                                }
+
+                                const runtimeInput = document.getElementById('inquiryRuntime');
+                                if (runtimeInput && !runtimeInput.value) {
+                                    runtimeInput.value = "3 Free Vertical Clips (9:16) from 1 Longform Episode";
+                                }
+
+                                const detailsInput = document.getElementById('inquiryDetails');
+                                if (detailsInput && !detailsInput.value) {
+                                    detailsInput.value = "[FREE TRIAL PILOT — 3 CLIPS]\nYouTube Video Link / Drive Link: \nKey takeaway / favorite timestamp (optional): ";
+                                }
+                            }
+                        }, 400);
+                    }
                 }
+                checkUrlParams();
 
                 // Step 1 -> Step 2
                 if (step1Next) {
@@ -3207,9 +2938,14 @@
 
                         const projectDetails = detailsInput ? detailsInput.value.trim() : '';
 
+                        const isTrialPilot = budget.includes('Free Trial') || projectDetails.includes('FREE TRIAL');
+                        const emailSubject = isTrialPilot
+                            ? `🔥 [FREE TRIAL PILOT — 3 CLIPS] ${nameVal} (@${instagram || 'creator'})`
+                            : `[Muk Post Quote Request] ${projectType} — ${nameVal} (${services})`;
+
                         const payload = {
                             "_replyto": emailVal,
-                            "_subject": `[Muk Post Quote Request] ${projectType} — ${nameVal} (${services})`,
+                            "_subject": emailSubject,
                             "Client Name": nameVal,
                             "Contact Email": emailVal,
                             "Role or Company": role || 'Not specified',
