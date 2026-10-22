@@ -898,7 +898,7 @@
             <!-- TRANSPORT CONTROLS -->
             <div class="transport-bar">
                 <div class="left-transport">
-                    <button class="play-btn" id="playBtn" title="Play/Pause">▶</button>
+                    <button class="play-btn" id="playBtn" title="Play/Pause"><svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5L13.5 8L4 13.5V2.5Z"/></svg></button>
                     <div class="timecode-box" id="timecodeDisplay">06:03:12 / 10:33:09</div>
                 </div>
                 <div class="transport-meta">
@@ -1477,14 +1477,14 @@
                     audios[k].play().catch(e => console.log(e));
                 }
                 isPlaying = true;
-                playBtn.textContent = "⏸";
+                playBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M3.5 2.5H6.5V13.5H3.5V2.5ZM9.5 2.5H12.5V13.5H9.5V2.5Z"/></svg>';
             } else {
                 video.pause();
                 for (const k in audios) {
                     audios[k].pause();
                 }
                 isPlaying = false;
-                playBtn.textContent = "▶";
+                playBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5L13.5 8L4 13.5V2.5Z"/></svg>';
             }
         }
 

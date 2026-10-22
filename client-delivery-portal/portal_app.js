@@ -68,7 +68,7 @@ window.handleGateSubmit = function() {
     if (gateOverlay) {
       gateOverlay.classList.add('unlocked');
     }
-    showToast('✨ Welcome Emilia & John. Your wedding vault is unlocked.');
+    showToast('Welcome Emilia & John. Your wedding vault is unlocked.');
   } else {
     // Authentication failed
     if (errorEl) {
@@ -141,7 +141,7 @@ function initChapterSeekers() {
       chapterCards.forEach(c => c.style.borderColor = 'var(--border-subtle)');
       card.style.borderColor = 'var(--gold-primary)';
 
-      showToast(`🎬 Seeking Highlight Film to ${timecode} — [${chapterName}]`);
+      showToast(`Seeking Highlight Film to ${timecode} — [${chapterName}]`);
     };
 
     card.addEventListener('click', handleSeek);
@@ -162,7 +162,7 @@ function initPlayTriggers() {
   playButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      showToast('▶ Master 4K Video Player Initialized. Ready for streaming.');
+      showToast('Master 4K Video Player Initialized. Ready for streaming.');
     });
   });
 }
@@ -191,5 +191,5 @@ function showToast(message) {
 }
 
 function triggerDownload(assetName) {
-  showToast(`⏳ Initiating direct high-speed transfer for: ${assetName}`);
+  showToast(`Initiating direct high-speed transfer for: ${assetName}`);
 }
