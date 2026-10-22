@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commercial Director's Treatments &amp; Visual Research | Muk Post Treatment Lab</title>
     <meta name="description" content="Boutique commercial director's treatment agency by Muk Post. High-velocity pitch decks, bespoke ghostwriting, 4K auteur visual pulls, and living motion presentations. Fast-track 24h &amp; 48h turnaround for commercial directors and production companies worldwide.">
-    <meta name="keywords" content="commercial director treatments, director treatment ghostwriter, commercial pitch deck, visual research treatment, director treatment agency, live motion treatment deck, pitch treats, ambushed tv, the collective pitch, jackson mcmurdo">
+    <meta name="keywords" content="commercial director treatments, director treatment ghostwriter, commercial pitch deck, visual research treatment, director treatment agency, live motion treatment deck, pitch deck design, commercial film treatment, jackson mcmurdo">
     
     <link rel="canonical" href="https://mukpost.com/treatments.html">
     <link rel="icon" href="https://i.imgur.com/0czpN64.png" type="image/png">
@@ -979,66 +979,38 @@
             </div>
         </section>
 
-        <!-- INTERACTIVE TREATMENT SHOWROOM -->
+        <!-- INTERACTIVE TREATMENT SHOWROOM (PRIVATE VAULT STATE) -->
         <section class="showroom-section" id="showroom">
             <div class="container">
-                <div class="section-header-row">
-                    <div>
-                        <span class="section-tag">Interactive Portfolio</span>
-                        <h2 class="section-title">The Living Pitch Decks</h2>
-                    </div>
-
-                    <!-- DECK SELECTOR TABS -->
-                    <div class="deck-tabs-bar" role="tablist">
-                        <button class="deck-tab-btn active" onclick="switchDeck('arcteryx')">Arc'teryx Whistler</button>
-                        <button class="deck-tab-btn" onclick="switchDeck('jeep')">Jeep 4x4 Trail</button>
-                        <button class="deck-tab-btn" onclick="switchDeck('taylormade')">TaylorMade Stealth</button>
-                        <button class="deck-tab-btn" onclick="switchDeck('nio')">Nio Electric</button>
-                        <button class="deck-tab-btn" onclick="switchDeck('vrbo')">Vrbo Escape</button>
-                    </div>
+                <div class="section-header-row" style="text-align: center; max-width: 800px; margin: 0 auto 3rem auto; display: block;">
+                    <span class="section-tag" style="display: inline-block;">Private Studio Vault</span>
+                    <h2 class="section-title" style="margin-top: 0.75rem;">Commercial Pitch Case Studies</h2>
+                    <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-top: 1rem;">
+                        Our commercial treatments are protected under strict production agency NDAs. We provide curated, full-bleed 16:9 InDesign decks and living motion presentations directly to directors and executive producers currently in active bidding.
+                    </p>
                 </div>
 
-                <!-- THE LIVING STAGE -->
-                <div class="deck-stage-wrap">
-                    <!-- TOP HUD -->
-                    <div class="stage-hud-bar">
-                        <div class="stage-title-wrap">
-                            <span class="stage-badge" id="deckBadge">ARC'TERYX</span>
-                            <span class="stage-title" id="deckTitle">"NO BAD WEATHER" — COMMERCIAL TVC</span>
-                        </div>
-                        <div class="stage-controls">
-                            <span class="stage-counter" id="stageCounter">SPREAD 01 / 10</span>
-                            <button class="stage-btn" onclick="prevSlide()"><i class="fa-solid fa-chevron-left"></i> Prev</button>
-                            <button class="stage-btn" onclick="nextSlide()">Next <i class="fa-solid fa-chevron-right"></i></button>
-                            <button class="stage-btn" id="motionToggleBtn" onclick="toggleMotion()"><i class="fa-solid fa-play"></i> Motion: Off</button>
-                        </div>
+                <!-- EXCLUSIVE VAULT CARD -->
+                <div style="background: rgba(14, 14, 18, 0.85); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 4rem 2rem; text-align: center; max-width: 960px; margin: 0 auto; backdrop-filter: blur(20px); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-orange), transparent);"></div>
+                    <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255, 74, 2, 0.1); border: 1px solid rgba(255, 74, 2, 0.3); padding: 0.4rem 1rem; border-radius: 100px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-orange); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5rem;">
+                        <span style="width: 6px; height: 6px; border-radius: 50%; background: var(--accent-orange); box-shadow: 0 0 10px var(--accent-orange);"></span>
+                        Private Director Showcase
                     </div>
-
-                    <!-- 16:9 VIEWPORT -->
-                    <div class="stage-viewport" id="stageViewport">
-                        <img src="treatment-assets/slide_01_web.jpg" alt="Treatment Spread" class="stage-slide-img" id="mainSlideImg">
-                        <div class="stage-motion-overlay" id="motionOverlay">
-                            <video class="stage-motion-video" id="motionVideo" loop muted playsinline preload="auto">
-                                <source src="treatment-assets/spread05_loam_motion.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                    </div>
-
-                    <!-- THUMBNAIL TRACKER -->
-                    <div class="spread-thumbnail-strip" id="thumbnailStrip">
-                        <!-- Populated by JS -->
-                    </div>
-
-                    <!-- DECK METADATA FOOTER -->
-                    <div class="stage-meta-footer">
-                        <div class="deck-desc-text" id="deckDesc">
-                            <strong>Directorial Concept:</strong> An uncompromising visceral sensory attack on the wet cold of Whistler's Callaghan Valley. Shot on Alexa Mini LF + Atlas Orion Anamorphic lenses with heavy contrast, mist-diffused headlights, and micro-textile closeups.
-                        </div>
-                        <div class="deck-meta-list" id="deckMeta">
-                            <span>Archetype: <strong>The Collective Pitch (Swiss Editorial)</strong></span>
-                            <span>Format: <strong>:60 Anthem + 3x :15 Cuts</strong></span>
-                            <span>Delivery: <strong>14-Spread InDesign PDF + Living HTML</strong></span>
-                        </div>
+                    <h3 style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 1rem;">
+                        Request Full Pitch Decks &amp; Motion Previews
+                    </h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; max-width: 600px; margin: 0 auto 2.5rem auto; line-height: 1.6;">
+                        Select your brand category (Automotive, Luxury/Fashion, Tech Anthems, Outdoor Adventure, or Athletic) to receive an uncompressed sample pack tailored to your agency's upcoming pitch.
+                    </p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="#intake" class="hero-cta-btn" style="padding: 1rem 2rem; font-size: 0.95rem;">
+                            <span>Request Tailored Deck Samples</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#pricing" class="hero-secondary-btn" style="padding: 1rem 2rem; font-size: 0.95rem;">
+                            <span>View Commercial Rate Card</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1057,8 +1029,8 @@
                 <div class="archetype-grid">
                     <!-- Archetype 1 -->
                     <div class="archetype-card">
-                        <span class="archetype-pill arch-tcp">THE COLLECTIVE PITCH</span>
-                        <h3 class="archetype-title">Editorial Swiss Grid</h3>
+                        <span class="archetype-pill arch-tcp">SWISS EDITORIAL</span>
+                        <h3 class="archetype-title">Architectural Grid &amp; Multi-Column</h3>
                         <p class="archetype-desc">
                             Clean, high-contrast architecture with an app-nav pill header, structured 3-column directorial prose, and paper/dark contrast. The global benchmark for premium automotive, high-tech, and commercial brand anthems.
                         </p>
@@ -1072,8 +1044,8 @@
 
                     <!-- Archetype 2 -->
                     <div class="archetype-card">
-                        <span class="archetype-pill arch-ambush">AMBUSHED.TV</span>
-                        <h3 class="archetype-title">Acid Framing &amp; Streetwear</h3>
+                        <span class="archetype-pill arch-ambush">ACID KINETIC</span>
+                        <h3 class="archetype-title">Streetwear &amp; Neon Boundaries</h3>
                         <p class="archetype-desc">
                             Distressed perimeter boundaries, raw neon/acid callouts, split-screen cinemagraph GIFs, and uninhibited 35mm grain. Built for youth culture, high-fashion campaigns, sneakers, and gritty auteur music videos.
                         </p>
@@ -1087,8 +1059,8 @@
 
                     <!-- Archetype 3 -->
                     <div class="archetype-card">
-                        <span class="archetype-pill arch-tella">TELLAVISION</span>
-                        <h3 class="archetype-title">Minimalist Swiss Gallery</h3>
+                        <span class="archetype-pill arch-tella">MINIMALIST CINEMA</span>
+                        <h3 class="archetype-title">Luxury Gallery &amp; Widescreen</h3>
                         <p class="archetype-desc">
                             Cinematic letterboxing, vast negative space, ultra-refined typography, and museum-grade pacing. Zero visual clutter; allows bespoke cinematography and deliberate narrative beats to breathe effortlessly.
                         </p>
@@ -1102,10 +1074,10 @@
 
                     <!-- Archetype 4 -->
                     <div class="archetype-card">
-                        <span class="archetype-pill arch-sports">SWISS SPORTS / KRUGER</span>
-                        <h3 class="archetype-title">Kinetic Bold Badges</h3>
+                        <span class="archetype-pill arch-sports">HIGH-VELOCITY GRID</span>
+                        <h3 class="archetype-title">Bold Action &amp; Heavyweight Badges</h3>
                         <p class="archetype-desc">
-                            Tilted Barbara Kruger-style callout badges, heavy typographic weight, bold athletic color blocks, and rapid-fire visual sequencing. Tailored for dynamic sports campaigns, beverages, and intense action sequences.
+                            Tilted graphic callout badges, heavy typographic weight, bold athletic color blocks, and rapid-fire visual sequencing. Tailored for dynamic sports campaigns, beverages, and intense action sequences.
                         </p>
                         <div class="archetype-specs">
                             <span class="spec-tag">DIN Condensed</span>
@@ -1279,13 +1251,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="form-label" for="intakeArchetype">Preferred Aesthetic Archetype</label>
+                                <label class="form-label" for="intakeArchetype">Preferred Aesthetic System</label>
                                 <select id="intakeArchetype" name="archetype" class="form-select">
-                                    <option value="The Collective Pitch (Editorial Swiss)">The Collective Pitch (Editorial Swiss)</option>
-                                    <option value="Ambushed.tv (Acid &amp; Streetwear)">Ambushed.tv (Acid &amp; Streetwear)</option>
-                                    <option value="TellAVision (Minimalist Luxury)">TellAVision (Minimalist Luxury)</option>
-                                    <option value="Swiss Sports / Kruger (Kinetic Bold)">Swiss Sports / Kruger (Kinetic Bold)</option>
-                                    <option value="Let Director/Studio Recommend">Let Director / Studio Recommend</option>
+                                    <option value="Swiss Editorial (High-Contrast Commercial)">Swiss Editorial (High-Contrast Commercial)</option>
+                                    <option value="Acid Kinetic (Streetwear &amp; Youth Culture)">Acid Kinetic (Streetwear &amp; Youth Culture)</option>
+                                    <option value="Minimalist Cinema (Luxury &amp; Architecture)">Minimalist Cinema (Luxury &amp; Architecture)</option>
+                                    <option value="High-Velocity Grid (Sports, Action &amp; Energy)">High-Velocity Grid (Sports, Action &amp; Energy)</option>
+                                    <option value="Bespoke Director Custom Design">Bespoke Director Custom Design</option>
                                 </select>
                             </div>
 
@@ -1360,62 +1332,47 @@
                 ],
                 motionVideo: "treatment-assets/spread05_loam_motion.mp4",
                 desc: "<strong>Directorial Concept:</strong> An uncompromising visceral sensory attack on the wet cold of Whistler's Callaghan Valley. Shot on Alexa Mini LF + Atlas Orion Anamorphic lenses with heavy contrast, mist-diffused headlights, and micro-textile closeups.",
-                archetype: "The Collective Pitch (Swiss Editorial)",
+                archetype: "Swiss Editorial Architecture",
                 format: ":60 Anthem + 3x :15 Cuts",
                 delivery: "14-Spread InDesign PDF + Living HTML"
             },
             jeep: {
                 badge: "JEEP",
                 title: "\"TRAIL RATED APEX\" — 4X4 COMMERCIAL",
-                slides: [
-                    "treatment-assets/jeep_1.webp",
-                    "treatment-assets/jeep_2.webp",
-                    "treatment-assets/jeep_4.webp",
-                    "treatment-assets/jeep_5.webp"
-                ],
+                slides: [],
                 motionVideo: null,
                 desc: "<strong>Directorial Concept:</strong> Unfiltered rock-crawling realism through Utah red rock canyons. Heavy golden-hour backlight, dust-particulate macro lighting, and low-angle pursuit tracking.",
-                archetype: "Swiss Sports / Kruger Kinetic",
+                archetype: "High-Velocity Grid",
                 format: ":30 Broadcast Spot",
                 delivery: "10-Spread InDesign PDF"
             },
             taylormade: {
                 badge: "TAYLORMADE",
                 title: "\"STEALTH VELOCITY\" — ATHLETIC LAUNCH",
-                slides: [
-                    "treatment-assets/taylormade_1.webp",
-                    "treatment-assets/taylormade_2.webp"
-                ],
+                slides: [],
                 motionVideo: null,
                 desc: "<strong>Directorial Concept:</strong> High-speed Phantom 1000fps capture of carbon-composite clubface impact. Jet-black studio environment with surgical razor-thin rim lighting.",
-                archetype: "TellAVision (Minimalist Luxury)",
+                archetype: "Minimalist Cinema Gallery",
                 format: ":45 Digital Anthem",
                 delivery: "12-Spread InDesign PDF + Presentation"
             },
             nio: {
                 badge: "NIO",
                 title: "\"ELECTRIC DAWN\" — EV HORIZON SPOT",
-                slides: [
-                    "treatment-assets/nio_1.webp",
-                    "treatment-assets/nio_2.webp"
-                ],
+                slides: [],
                 motionVideo: null,
                 desc: "<strong>Directorial Concept:</strong> Sleek aerodynamic exploration across Scandinavian architectural bridge expanses at blue hour. Precision anamorphic lens flares and ultra-smooth Russian Arm tracking.",
-                archetype: "The Collective Pitch (Swiss Editorial)",
+                archetype: "Swiss Editorial Architecture",
                 format: ":60 Global Launch",
                 delivery: "16-Spread InDesign Master Deck"
             },
             vrbo: {
                 badge: "VRBO",
                 title: "\"THE RETREAT ESCAPE\" — BRAND NARRATIVE",
-                slides: [
-                    "treatment-assets/vrbo_1.webp",
-                    "treatment-assets/vrbo_2.webp",
-                    "treatment-assets/vrbo_3.webp"
-                ],
+                slides: [],
                 motionVideo: null,
                 desc: "<strong>Directorial Concept:</strong> Warm 35mm Eastman 500T grain capturing intimate family reunions in secluded Pacific Northwest cabins. Natural golden-hour window fill and fluid Steadicam.",
-                archetype: "TellAVision (Minimalist Luxury)",
+                archetype: "Minimalist Cinema Gallery",
                 format: ":30 & :60 Story Spots",
                 delivery: "12-Spread InDesign PDF"
             }
