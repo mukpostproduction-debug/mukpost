@@ -272,6 +272,35 @@
             border: 1px solid #252a37;
         }
 
+        
+        .shot-switcher {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 6px;
+            padding: 2px;
+            gap: 2px;
+        }
+
+        .shot-btn {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            font-family: var(--font-display, 'Bricolage Grotesque', sans-serif);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .shot-btn.active {
+            background: rgba(255, 107, 74, 0.2);
+            color: #ff8c69;
+            border: 1px solid rgba(255, 107, 74, 0.4);
+        }
+    
         .toggle-btn {
             background: transparent;
             border: none;
@@ -1078,8 +1107,14 @@
             
             <!-- Left: Interactive Split Comparison -->
             <div class="preview-card">
-                <div class="preview-header">
-                    <span class="preview-meta">SHOT 01: ICELAND CANYON // BEFORE vs AFTER</span>
+                <div class="preview-header" style="flex-wrap: wrap; gap: 8px;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span class="preview-meta" id="previewMeta">SHOT 01: ICELAND // BEFORE vs AFTER</span>
+                        <div class="shot-switcher">
+                            <button class="shot-btn active" id="shot1Btn">Shot 01 (Falls)</button>
+                            <button class="shot-btn" id="shot2Btn">Shot 02 (Volcano)</button>
+                        </div>
+                    </div>
                     <div class="toggle-group">
                         <button class="toggle-btn active" id="viewSplitBtn">Split</button>
                         <button class="toggle-btn" id="viewGradeBtn">Grade</button>
@@ -1164,14 +1199,24 @@
 
                 <!-- Success Box (Shows upon submission) -->
                 <div class="download-success-box" id="successBox">
-                    <div class="success-title">⚡️ Your Download Has Started!</div>
+                    <div class="success-title">⚡️ Your Challenge Suite is Ready!</div>
                     <p class="success-desc">
-                        Your browser is downloading <strong>MukPost_ColorPro_2026_10Node_Balance_Kit.zip</strong>. We also logged your access on the Muk Post Dispatch.
+                        Your browser is downloading the complete 2-shot suite archive. You can also download individual shot packages below:
                     </p>
-                    <a href="../downloads/MukPost_ColorPro_2026_10Node_Balance_Kit.zip" class="direct-download-link" id="directDownloadLink" download>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        Click Here If Download Didn't Start
-                    </a>
+                    <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 12px;">
+                        <a href="../downloads/MukPost_ColorPro_2026_Full_Suite_Kit.zip" class="direct-download-link" id="directDownloadLink" download style="background: #ffffff; color: #000000; font-weight: 800; justify-content: center; padding: 12px 14px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Download Full Suite (Shots 01 + 02) (.ZIP - 12.5 MB)
+                        </a>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                            <a href="../downloads/MukPost_ColorPro_2026_Shot1_Volcano_Kit.zip" class="direct-download-link" download style="font-size: 0.74rem; padding: 10px 8px; justify-content: center; background: rgba(255, 107, 74, 0.2); border: 1px solid rgba(255, 107, 74, 0.5); color: #ff8c69;">
+                                Shot 02: Volcano (.ZIP 4.7MB)
+                            </a>
+                            <a href="../downloads/MukPost_ColorPro_2026_10Node_Balance_Kit.zip" class="direct-download-link" download style="font-size: 0.74rem; padding: 10px 8px; justify-content: center; background: rgba(56, 189, 248, 0.2); border: 1px solid rgba(56, 189, 248, 0.5); color: #38bdf8;">
+                                Shot 01: Iceland (.ZIP 7.7MB)
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -1249,19 +1294,19 @@
                 </div>
 
                 <!-- Shot 2: Active Volcano -->
-                <div class="challenge-shot-card">
-                    <div class="shot-badge upcoming">UPCOMING GRADE DROP</div>
+                <div class="challenge-shot-card active-shot">
+                    <div class="shot-badge live">AVAILABLE NOW IN KIT</div>
                     <div class="shot-thumb-wrapper">
-                        <img src="assets/shots/shot1_volcano.jpg" alt="Shot 02: Active Volcano Eruption" class="shot-thumb">
-                        <div class="shot-format-tag">DWG LOOK DEV</div>
+                        <img src="assets/shots/shot1_volcano_split.jpg" alt="Shot 02: Active Volcano Caldera" class="shot-thumb">
+                        <div class="shot-format-tag">16:9 + 9:16 TIMELINES</div>
                     </div>
                     <div class="shot-info">
-                        <div class="shot-num">SHOT 02 // VOLCANIC EXTREMES</div>
+                        <div class="shot-num">SHOT 02 // DENIS BARBAS</div>
                         <h3 class="shot-name">Active Volcano Caldera</h3>
-                        <p class="shot-desc">Extreme incandescent highlights, volcanic ash roll-off, and molten lava luminance mapping.</p>
+                        <p class="shot-desc">Extreme incandescent highlights, volcanic ash roll-off, and molten lava luminance mapping. Mastered in 13.0s dual format.</p>
                         <div class="shot-status-row">
-                            <span class="status-indicator pending"></span>
-                            <span class="status-text">Grading In Progress • Auto-Sent to Subscribers</span>
+                            <span class="status-indicator live"></span>
+                            <span class="status-text">Master Grade &amp; Project Included</span>
                         </div>
                     </div>
                 </div>
@@ -1517,6 +1562,45 @@
             sliderHandle.style.display = 'none';
         });
 
+        
+        // --- SHOT SWITCHER LOGIC ---
+        const shot1Btn = document.getElementById('shot1Btn');
+        const shot2Btn = document.getElementById('shot2Btn');
+        const previewMeta = document.getElementById('previewMeta');
+        const imgRaw = document.getElementById('imgRaw');
+
+        const shotData = {
+            shot1: {
+                meta: 'SHOT 01: ICELAND // BEFORE vs AFTER',
+                raw: 'assets/iceland_raw_full.jpg',
+                graded: 'assets/iceland_graded_full.jpg'
+            },
+            shot2: {
+                meta: 'SHOT 02: ACTIVE VOLCANO // BEFORE vs AFTER',
+                raw: 'assets/volcano_raw_full.jpg',
+                graded: 'assets/volcano_graded_full.jpg'
+            }
+        };
+
+        if (shot1Btn && shot2Btn) {
+            shot1Btn.addEventListener('click', () => {
+                shot1Btn.classList.add('active');
+                shot2Btn.classList.remove('active');
+                previewMeta.textContent = shotData.shot1.meta;
+                imgRaw.src = shotData.shot1.raw;
+                imgGraded.src = shotData.shot1.graded;
+            });
+
+            shot2Btn.addEventListener('click', () => {
+                shot2Btn.classList.add('active');
+                shot1Btn.classList.remove('active');
+                previewMeta.textContent = shotData.shot2.meta;
+                imgRaw.src = shotData.shot2.raw;
+                imgGraded.src = shotData.shot2.graded;
+            });
+        }
+    
+
         // --- 2. LEAD FORM SUBMISSION & AUTOMATIC DOWNLOAD ---
         const downloadForm = document.getElementById('downloadForm');
         const submitBtn = document.getElementById('submitBtn');
@@ -1540,10 +1624,10 @@
             const formData = new FormData(downloadForm);
 
             // Trigger download immediately
-            const downloadUrl = '../downloads/MukPost_ColorPro_2026_10Node_Balance_Kit.zip';
+            const downloadUrl = '../downloads/MukPost_ColorPro_2026_Full_Suite_Kit.zip';
             const dlAnchor = document.createElement('a');
             dlAnchor.href = downloadUrl;
-            dlAnchor.download = 'MukPost_ColorPro_2026_10Node_Balance_Kit.zip';
+            dlAnchor.download = 'MukPost_ColorPro_2026_Full_Suite_Kit.zip';
             document.body.appendChild(dlAnchor);
             dlAnchor.click();
             document.body.removeChild(dlAnchor);
