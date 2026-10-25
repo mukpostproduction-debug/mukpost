@@ -727,6 +727,109 @@
         .page-footer a:hover {
             color: #ffffff;
         }
+    
+        /* Studio & Plugin Compatibility Warning Box */
+        .plugin-warning-box {
+            background: rgba(251, 191, 36, 0.05);
+            border: 1px solid rgba(251, 191, 36, 0.35);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin: 0 auto 40px;
+            max-width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(251, 191, 36, 0.15);
+            box-sizing: border-box;
+        }
+
+        .warning-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-mono, 'JetBrains Mono', monospace);
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #fbbf24;
+            background: rgba(251, 191, 36, 0.12);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            border-radius: 4px;
+            padding: 4px 10px;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+
+        .warning-title {
+            font-family: var(--font-display, 'Bricolage Grotesque', sans-serif);
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0 0 10px;
+            letter-spacing: -0.02em;
+        }
+
+        .warning-text {
+            font-size: 0.88rem;
+            color: #e2e8f0;
+            line-height: 1.6;
+            margin: 0 0 18px;
+        }
+
+        .plugin-list-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .plugin-item {
+            background: rgba(15, 17, 23, 0.9);
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .plugin-tag {
+            display: inline-block;
+            font-family: var(--font-mono, 'JetBrains Mono', monospace);
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #fbbf24;
+            background: rgba(251, 191, 36, 0.15);
+            padding: 2px 7px;
+            border-radius: 3px;
+            margin-bottom: 8px;
+            letter-spacing: 0.05em;
+        }
+
+        .plugin-item strong {
+            display: block;
+            font-size: 0.95rem;
+            color: #ffffff;
+            margin-bottom: 4px;
+            font-family: var(--font-display, 'Bricolage Grotesque', sans-serif);
+        }
+
+        .plugin-item p {
+            font-size: 0.78rem;
+            color: #94a3b8;
+            margin: 0;
+            line-height: 1.45;
+        }
+
+        .warning-subtext {
+            font-size: 0.82rem;
+            color: #cbd5e1;
+            margin: 0;
+            line-height: 1.55;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid #fbbf24;
+            padding: 10px 14px;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .plugin-warning-chip {
+            border-color: rgba(251, 191, 36, 0.4) !important;
+            background: rgba(251, 191, 36, 0.04) !important;
+        }
+
     </style>
 </head>
 <body>
@@ -759,9 +862,9 @@
             </p>
 
             <div class="chips-row">
-                <div class="feature-chip">
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                    DaVinci Resolve Free &amp; Studio 18.5+
+                <div class="feature-chip" style="border-color: rgba(251, 191, 36, 0.4); background: rgba(251, 191, 36, 0.08); color: #fbbf24;">
+                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                    DaVinci Resolve Studio Required (Paid)
                 </div>
                 <div class="feature-chip">
                     <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
@@ -777,6 +880,31 @@
                 </div>
             </div>
         </section>
+
+        
+        <!-- STUDIO & PLUGIN COMPATIBILITY NOTICE -->
+        <div class="plugin-warning-box">
+            <div class="warning-badge">⚠️ STUDIO &amp; OFX PLUGIN COMPATIBILITY NOTICE</div>
+            <h3 class="warning-title">Paid DaVinci Resolve Studio &amp; Commercial Plugins Required</h3>
+            <p class="warning-text">
+                <strong>Please Note Before Downloading:</strong> This project and PowerGrade tree were graded inside the latest paid version of <strong>DaVinci Resolve Studio</strong>. They will <strong>not open or function properly</strong> in the Free version of DaVinci Resolve. Furthermore, our final lens texture and print grain passes utilize two paid commercial third-party plugins:
+            </p>
+            <div class="plugin-list-grid">
+                <div class="plugin-item">
+                    <span class="plugin-tag">PAID THIRD-PARTY PLUGIN</span>
+                    <strong>Node 06: Node Mills — Lens Node</strong>
+                    <p>Commercial optical aberration, halation, and lens roll-off plugin. If you do not have Node Mills installed, Node 06 will show an offline OFX indicator and should be bypassed.</p>
+                </div>
+                <div class="plugin-item">
+                    <span class="plugin-tag">PAID THIRD-PARTY PLUGIN</span>
+                    <strong>Node 08: Alex Tech — Magic Grade Film</strong>
+                    <p>Paid film grain and print texture emulation plugin. Requires a commercial license from Alex Tech or should simply be toggled off in your node graph.</p>
+                </div>
+            </div>
+            <p class="warning-subtext">
+                💡 <strong>Good News:</strong> If you have DaVinci Resolve Studio but do not own these two specific plugins, simply <em>bypass Node 06 and Node 08</em>. The core 8-node color science engine — including our <strong>Linear Gamma White Balance</strong>, <strong>Sony S-Log3 CSTs</strong>, <strong>Primary Exposure</strong>, <strong>Contrast S-curve</strong>, and <strong>One-Node Look</strong> — uses 100% native DaVinci Resolve tools and will work perfectly!
+            </p>
+        </div>
 
         <!-- Main Action Grid: Interactive Frame + Email Form -->
         <div class="action-grid">
@@ -863,7 +991,7 @@
                     </button>
 
                     <p class="form-disclaimer">
-                        🔒 Zero spam. We send high-signal color grading breakdowns &amp; Resolve tools. Unsubscribe in 1 click at any time.
+                        ⚠️ <strong>Notice:</strong> Requires DaVinci Resolve Studio (Paid). Nodes 06 &amp; 08 require Node Mills Lens Node and Alex Tech Magic Grade Film plugins (or bypass them for 100% native DWG grading).
                     </p>
                 </form>
 
@@ -958,20 +1086,20 @@
                     <div class="node-name">SATURATION</div>
                     <div class="node-details">ColorSlice selective chrominance expansion on moss and skies.</div>
                 </div>
-                <div class="node-chip">
-                    <div class="node-num">NODE 06</div>
-                    <div class="node-name">SHARPNESS &amp; LENS</div>
-                    <div class="node-details">Subtle high-frequency edge roll-off and simulated lens halation.</div>
+                <div class="node-chip plugin-warning-chip">
+                    <div class="node-num" style="color: #fbbf24;">NODE 06 • PAID PLUGIN</div>
+                    <div class="node-name">NODE MILLS LENS NODE</div>
+                    <div class="node-details">Paid third-party plugin: Optical halation and lens roll-off (Requires Studio + Node Mills license).</div>
                 </div>
                 <div class="node-chip">
                     <div class="node-num">NODE 07</div>
                     <div class="node-name">ONE NODE LOOK</div>
                     <div class="node-details">Creative split-tone highlight warmth and deep teal rock shadows.</div>
                 </div>
-                <div class="node-chip">
-                    <div class="node-num">NODE 08</div>
-                    <div class="node-name">35MM GRAIN</div>
-                    <div class="node-details">Organic 35mm film stock grain texture and print emulation.</div>
+                <div class="node-chip plugin-warning-chip">
+                    <div class="node-num" style="color: #fbbf24;">NODE 08 • PAID PLUGIN</div>
+                    <div class="node-name">ALEX TECH MAGIC GRADE</div>
+                    <div class="node-details">Paid third-party plugin: 35mm film stock grain &amp; print emulation (Requires Studio + Alex Tech license).</div>
                 </div>
                 <div class="node-chip">
                     <div class="node-num">NODE 09</div>
