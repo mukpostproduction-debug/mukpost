@@ -93,17 +93,21 @@
         }
 
         .nav-brand {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 12px;
             text-decoration: none;
-            color: #ffffff;
         }
 
         .nav-brand img {
-            width: 30px;
-            height: 30px;
+            width: 34px;
+            height: 34px;
             object-fit: contain;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .nav-brand:hover img {
+            transform: scale(1.06);
+            opacity: 0.9;
         }
 
         .nav-brand-title {
@@ -840,9 +844,8 @@
     <!-- Navigation -->
     <header class="nav-wrapper">
         <div class="nav-inner">
-            <a href="https://mukpost.com" class="nav-brand">
+            <a href="https://mukpost.com" class="nav-brand" aria-label="Muk Post">
                 <img src="balance/assets/mlogo.png" alt="Muk Post">
-                <span class="nav-brand-title">MUK POST</span>
             </a>
             <div class="nav-badge">
                 <span class="nav-badge-dot"></span>
