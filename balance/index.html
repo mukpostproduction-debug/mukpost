@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download 10-Node DaVinci Resolve Kit // Muk Post × ViewSonic ColorPro 2026</title>
-    <meta name="description" content="Download the exact 10-node scene-referred DaVinci Wide Gamut pipeline, timeline (.drt), and project (.drp) from Jackson McMurdo's ViewSonic ColorPro 2026 Iceland submission.">
+    <title>ColorPro 2026 Challenge Grade Suite // Muk Post</title>
+    <meta name="description" content="Download the master 10-node scene-referred DaVinci Wide Gamut pipeline, timelines, and project archive for the ViewSonic ColorPro 2026 Challenge suite by Jackson McMurdo / Muk Post.">
     <link rel="canonical" href="https://mukpost.com/balance">
     
     <!-- Open Graph / Meta -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mukpost.com/balance">
-    <meta property="og:title" content="10-Node DaVinci Resolve Timeline & Grade Kit // Muk Post">
-    <meta property="og:description" content="Scene-referred DWG color grading pipeline, standalone project (.drp), and timelines (.drt) for DaVinci Resolve Free & Studio.">
+    <meta property="og:title" content="ColorPro 2026 Challenge Grade Suite // Muk Post">
+    <meta property="og:description" content="Master 10-node scene-referred DWG grading suite, standalone project (.drp), and multi-shot timelines (.drt) for the ViewSonic ColorPro 2026 Challenge.">
     <meta property="og:image" content="https://mukpost.com/balance/assets/hero_split_16x9.jpg">
 
     <!-- Fonts -->
@@ -671,6 +671,170 @@
             line-height: 1.4;
         }
 
+        /* ColorPro Challenge Suite Multi-Shot Grid */
+        .challenge-shots-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 32px;
+            margin-bottom: 70px;
+        }
+
+        @media (max-width: 1024px) {
+            .challenge-shots-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 640px) {
+            .challenge-shots-grid { grid-template-columns: 1fr; }
+        }
+
+        .challenge-shot-card {
+            background: #11141c;
+            border: 1px solid #202636;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .challenge-shot-card:hover {
+            transform: translateY(-4px);
+            border-color: #3b4254;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+        }
+
+        .challenge-shot-card.active-shot {
+            border-color: rgba(16, 185, 129, 0.45);
+            background: linear-gradient(180deg, rgba(16, 185, 129, 0.05) 0%, #11141c 100%);
+            box-shadow: 0 0 24px rgba(16, 185, 129, 0.08);
+        }
+
+        .shot-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 2;
+            font-family: var(--font-mono, monospace);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            padding: 4px 9px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            backdrop-filter: blur(8px);
+        }
+
+        .shot-badge.live {
+            background: rgba(16, 185, 129, 0.9);
+            color: #000000;
+        }
+
+        .shot-badge.upcoming {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            color: #fbbf24;
+        }
+
+        .shot-thumb-wrapper {
+            position: relative;
+            width: 100%;
+            height: 190px;
+            overflow: hidden;
+            background: #000000;
+        }
+
+        .shot-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0.88;
+            transition: transform 0.35s ease, opacity 0.35s ease;
+        }
+
+        .challenge-shot-card:hover .shot-thumb {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        .shot-format-tag {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(6px);
+            font-family: var(--font-mono, monospace);
+            font-size: 0.62rem;
+            color: #cbd5e1;
+            padding: 3px 7px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .shot-info {
+            padding: 16px 18px 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .shot-num {
+            font-family: var(--font-mono, monospace);
+            font-size: 0.66rem;
+            color: var(--accent-peach);
+            letter-spacing: 0.08em;
+            margin-bottom: 4px;
+        }
+
+        .shot-name {
+            font-family: var(--font-display, sans-serif);
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 0 0 6px;
+        }
+
+        .shot-desc {
+            font-size: 0.78rem;
+            color: #94a3b8;
+            line-height: 1.45;
+            margin: 0 0 16px;
+            flex: 1;
+        }
+
+        .shot-status-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-family: var(--font-mono, monospace);
+            font-size: 0.68rem;
+        }
+
+        .status-indicator {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-indicator.live {
+            background: #10b981;
+            box-shadow: 0 0 8px #10b981;
+        }
+
+        .status-indicator.pending {
+            background: #fbbf24;
+            box-shadow: 0 0 6px rgba(251, 191, 36, 0.6);
+        }
+
+        .status-text {
+            color: #cbd5e1;
+        }
+
         /* 3-Step Setup */
         .steps-row {
             display: grid;
@@ -858,10 +1022,10 @@
         
         <!-- Hero Header -->
         <section class="hero-section">
-            <span class="hero-tag">ViewSonic ColorPro 2026 Challenge Submission Kit</span>
-            <h1 class="hero-title">The 10-Node Scene-Referred DWG Pipeline.</h1>
+            <span class="hero-tag">ViewSonic ColorPro 2026 Challenge Suite</span>
+            <h1 class="hero-title">The Complete ColorPro Grade Suite.</h1>
             <p class="hero-desc">
-                Download the exact DaVinci Resolve project archive (<code>.drp</code>), dual-format timelines (<code>.drt</code>), and 10-node PowerGrade tree (<code>.drx</code>) from Jackson McMurdo's 13-second Iceland speed grade.
+                Download the master DaVinci Resolve project archive (<code>.drp</code>), dual-format timelines (<code>.drt</code>), and universal 10-node PowerGrade tree (<code>.drx</code>) for the ViewSonic ColorPro 2026 Challenge. Engineered to grade the entire official challenge shot suite — starting with our Iceland canyon master, with upcoming challenge shot grades added directly to the kit.
             </p>
 
             <div class="chips-row">
@@ -875,7 +1039,7 @@
                 </div>
                 <div class="feature-chip">
                     <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                    Linear Gamma White Balance
+                    Multi-Shot Challenge Suite
                 </div>
                 <div class="feature-chip">
                     <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
@@ -915,7 +1079,7 @@
             <!-- Left: Interactive Split Comparison -->
             <div class="preview-card">
                 <div class="preview-header">
-                    <span class="preview-meta">ICELAND HERO SHOT // BEFORE vs AFTER</span>
+                    <span class="preview-meta">SHOT 01: ICELAND CANYON // BEFORE vs AFTER</span>
                     <div class="toggle-group">
                         <button class="toggle-btn active" id="viewSplitBtn">Split</button>
                         <button class="toggle-btn" id="viewGradeBtn">Grade</button>
@@ -952,8 +1116,8 @@
             <!-- Right: Lead Capture Form & Instant Download -->
             <div class="lead-card">
                 <div class="lead-header">
-                    <h2>Get the Complete Kit</h2>
-                    <p>Enter your details below to instantly download the DaVinci Resolve project and join the Muk Post Colorist Dispatch for future node releases.</p>
+                    <h2>Get the Complete Challenge Kit</h2>
+                    <p>Enter your details below to instantly download the master project and 10-node PowerGrade tree. As each new ColorPro challenge shot grade drops, you will receive the updated project files directly.</p>
                 </div>
 
                 <form id="downloadForm" action="https://formspree.io/f/xrpzyngg" method="POST">
@@ -1055,6 +1219,109 @@
             </div>
         </section>
 
+        <!-- ColorPro 2026 Multi-Shot Challenge Suite Showcase -->
+        <section class="challenge-suite-section">
+            <div class="section-header" style="margin-top: 70px;">
+                <div class="section-tag">ViewSonic ColorPro 2026 Challenge</div>
+                <h2 class="section-title">The Complete Challenge Shot Suite</h2>
+                <p style="font-size: 0.92rem; color: #94a3b8; max-width: 680px; margin: 0 auto; line-height: 1.55;">
+                    We are grading every official clip from the ViewSonic ColorPro 2026 Challenge inside DaVinci Wide Gamut. Subscribe once to download the core 10-node kit and get instant updates as each shot grade and timeline drops.
+                </p>
+            </div>
+
+            <div class="challenge-shots-grid">
+                <!-- Shot 1: Iceland Canyon -->
+                <div class="challenge-shot-card active-shot">
+                    <div class="shot-badge live">AVAILABLE NOW IN KIT</div>
+                    <div class="shot-thumb-wrapper">
+                        <img src="assets/shots/shot3_canyon.jpg" alt="Shot 01: Iceland Canyon & Waterfalls" class="shot-thumb">
+                        <div class="shot-format-tag">16:9 + 9:16 TIMELINES</div>
+                    </div>
+                    <div class="shot-info">
+                        <div class="shot-num">SHOT 01 // DENIS BARBAS</div>
+                        <h3 class="shot-name">Iceland Canyon &amp; Falls</h3>
+                        <p class="shot-desc">High-contrast volcanic gorges, cascading glacial waters, and deep moss greens. Mastered in 13.0s dual format.</p>
+                        <div class="shot-status-row">
+                            <span class="status-indicator live"></span>
+                            <span class="status-text">Master Grade &amp; Project Included</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shot 2: Active Volcano -->
+                <div class="challenge-shot-card">
+                    <div class="shot-badge upcoming">UPCOMING GRADE DROP</div>
+                    <div class="shot-thumb-wrapper">
+                        <img src="assets/shots/shot1_volcano.jpg" alt="Shot 02: Active Volcano Eruption" class="shot-thumb">
+                        <div class="shot-format-tag">DWG LOOK DEV</div>
+                    </div>
+                    <div class="shot-info">
+                        <div class="shot-num">SHOT 02 // VOLCANIC EXTREMES</div>
+                        <h3 class="shot-name">Active Volcano Caldera</h3>
+                        <p class="shot-desc">Extreme incandescent highlights, volcanic ash roll-off, and molten lava luminance mapping.</p>
+                        <div class="shot-status-row">
+                            <span class="status-indicator pending"></span>
+                            <span class="status-text">Grading In Progress • Auto-Sent to Subscribers</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shot 3: Reine Coastline -->
+                <div class="challenge-shot-card">
+                    <div class="shot-badge upcoming">UPCOMING GRADE DROP</div>
+                    <div class="shot-thumb-wrapper">
+                        <img src="assets/shots/shot4_reine.jpg" alt="Shot 03: Reine Norway Coastline (D-Log)" class="shot-thumb">
+                        <div class="shot-format-tag">DJI D-LOG RUSHES</div>
+                    </div>
+                    <div class="shot-info">
+                        <div class="shot-num">SHOT 03 // RONALD SOETHJE</div>
+                        <h3 class="shot-name">Reine Arctic Coast (D-Log)</h3>
+                        <p class="shot-desc">Nordic coastal village, red rorbuer cabins, dramatic fjord weather, and marine deep water tones.</p>
+                        <div class="shot-status-row">
+                            <span class="status-indicator pending"></span>
+                            <span class="status-text">D-Log CST Pipeline • Auto-Sent to Subscribers</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shot 4: Alpine Mountain Ridges -->
+                <div class="challenge-shot-card">
+                    <div class="shot-badge upcoming">UPCOMING GRADE DROP</div>
+                    <div class="shot-thumb-wrapper">
+                        <img src="assets/shots/shot5_mountain.jpg" alt="Shot 04: Alpine Mountain Ridges" class="shot-thumb">
+                        <div class="shot-format-tag">AERIAL CINEMA</div>
+                    </div>
+                    <div class="shot-info">
+                        <div class="shot-num">SHOT 04 // ALPINE RIDGES</div>
+                        <h3 class="shot-name">Jagged Alpine Peaks</h3>
+                        <p class="shot-desc">Subtle haze separation, high-altitude UV skies, and steep rock face shadow texture.</p>
+                        <div class="shot-status-row">
+                            <span class="status-indicator pending"></span>
+                            <span class="status-text">Atmospheric Pass • Auto-Sent to Subscribers</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shot 5: Glacial Cascade -->
+                <div class="challenge-shot-card">
+                    <div class="shot-badge upcoming">UPCOMING GRADE DROP</div>
+                    <div class="shot-thumb-wrapper">
+                        <img src="assets/shots/shot2_waterfall.jpg" alt="Shot 05: Glacial Cascade" class="shot-thumb">
+                        <div class="shot-format-tag">MIST &amp; WATER HIGHLIGHTS</div>
+                    </div>
+                    <div class="shot-info">
+                        <div class="shot-num">SHOT 05 // GLACIAL CASCADE</div>
+                        <h3 class="shot-name">Glacial Falls Cascade</h3>
+                        <p class="shot-desc">Controlled spray highlights, cyan glacial runoff, and soft highlight threshold management.</p>
+                        <div class="shot-status-row">
+                            <span class="status-indicator pending"></span>
+                            <span class="status-text">Spray Texture Pass • Auto-Sent to Subscribers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- 10-Node Pipeline Blueprint -->
         <section class="pipeline-card">
             <div style="text-align: center; max-width: 600px; margin: 0 auto 20px;">
@@ -1141,9 +1408,9 @@
                 </div>
                 <div class="step-box">
                     <div class="step-number">03</div>
-                    <h4 class="step-heading">Apply PowerGrade</h4>
+                    <h4 class="step-heading">Apply to Any Challenge Shot</h4>
                     <p class="step-text">
-                        Right-click in your Resolve Gallery, select <em>Import...</em>, choose <code>MukPost_Iceland_10Node_LinearWB.drx</code>, and apply to any clip!
+                        Right-click in your Resolve Gallery, select <em>Import...</em>, choose <code>MukPost_Iceland_10Node_LinearWB.drx</code>, and apply to Iceland, Volcano, Reine D-Log, or any camera LOG footage!
                     </p>
                 </div>
             </div>
