@@ -1,8 +1,12 @@
 User-agent: *
+Allow: /
 Disallow: /client-delivery-portal/
 Disallow: /Client_Delivery_Portal/
 Disallow: /emilia-and-john/
+Disallow: /emlia-and-john/
+Disallow: /balence/
+Disallow: /balence.html
+Disallow: /youtube.html
 Disallow: /delivery/
 
 Sitemap: https://mukpost.com/sitemap.xml
-
