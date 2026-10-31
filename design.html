@@ -8,7 +8,8 @@
         <div class="video-modal-dialog">
             <button class="video-modal-close" onclick="closeVideoModal()" aria-label="Close video player"><i class="fa-solid fa-xmark"></i></button>
             <div class="video-modal-iframe-wrap">
-                <iframe id="videoModalIframe" src="" title="Muk Post Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe id="videoModalIframe" src="" title="Muk Post Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none;"></iframe>
+                <video id="videoModalVideo" controls playsinline preload="metadata" style="display: none; width: 100%; height: 100%; background: #000;"></video>
             </div>
             <div class="video-modal-footer">
                 <div class="video-modal-meta">
@@ -1227,9 +1228,9 @@
 
             <div class="works-grid">
                 <!-- Donat Jackson - Need More Time -->
-                <div class="work-video-card" onclick="openVideoModal('m3GzM8sJ_V8', 'Donat Jackson — needmoretime!', 'Graphic Design • Typography • Motion Graphics', 'https://www.youtube.com/watch?v=m3GzM8sJ_V8')">
+                <div class="work-video-card" onclick="openVideoModal('portfolio-assets/videos/donatjackson-needmoretime-1080p.mp4', 'Donat Jackson — needmoretime!', 'Graphic Design • Typography • Motion Graphics', 'https://www.youtube.com/watch?v=m3GzM8sJ_V8')">
                     <div class="work-thumb-wrap">
-                        <img src="https://img.youtube.com/vi/m3GzM8sJ_V8/hqdefault.jpg" alt="Donat Jackson — Need More Time" loading="lazy">
+                        <img src="portfolio-assets/thumbs/donatjackson-needmoretime.jpg" alt="Donat Jackson — Need More Time" loading="lazy">
                         <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
                         <span class="work-duration">Full Video</span>
                     </div>
@@ -1244,9 +1245,9 @@
                 </div>
 
                 <!-- insyt. - 360° -->
-                <div class="work-video-card" onclick="openVideoModal('CKdqD851gQ0', 'insyt. — 360°', 'Motion Graphics • Kinetic Typography', 'https://www.youtube.com/watch?v=CKdqD851gQ0')">
+                <div class="work-video-card" onclick="openVideoModal('portfolio-assets/videos/insyt-360-1080p.mp4', 'insyt. — 360°', 'Motion Graphics • Kinetic Typography', 'https://www.youtube.com/watch?v=CKdqD851gQ0')">
                     <div class="work-thumb-wrap">
-                        <img src="https://img.youtube.com/vi/CKdqD851gQ0/hqdefault.jpg" alt="insyt. — 360°" loading="lazy">
+                        <img src="portfolio-assets/thumbs/insyt-360.jpg" alt="insyt. — 360°" loading="lazy">
                         <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
                         <span class="work-duration">Full Video</span>
                     </div>
@@ -1261,9 +1262,9 @@
                 </div>
 
                 <!-- insyt. - Toll -->
-                <div class="work-video-card" onclick="openVideoModal('chQBG5lTCnM', 'insyt. — Toll', 'Title Design • Motion Graphics', 'https://www.youtube.com/watch?v=chQBG5lTCnM')">
+                <div class="work-video-card" onclick="openVideoModal('portfolio-assets/videos/insyt-toll-1080p.mp4', 'insyt. — Toll', 'Title Design • Motion Graphics', 'https://www.youtube.com/watch?v=chQBG5lTCnM')">
                     <div class="work-thumb-wrap">
-                        <img src="https://img.youtube.com/vi/chQBG5lTCnM/hqdefault.jpg" alt="insyt. — Toll" loading="lazy">
+                        <img src="portfolio-assets/thumbs/insyt-toll.jpg" alt="insyt. — Toll" loading="lazy">
                         <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
                         <span class="work-duration">Full Video</span>
                     </div>
@@ -1278,9 +1279,9 @@
                 </div>
 
                 <!-- Titling & Motion Graphics Reel -->
-                <div class="work-video-card" onclick="openVideoModal('9u2EourejMM', 'Titling & Graphic Design Showcase', 'Muk Post Studio Showcase Reel', 'https://www.youtube.com/watch?v=9u2EourejMM')">
+                <div class="work-video-card" onclick="openVideoModal('portfolio-assets/videos/reels/title-cards-reel-1080p.mp4', 'Titling & Graphic Design Showcase', 'Muk Post Studio Showcase Reel', 'https://www.youtube.com/watch?v=9u2EourejMM')">
                     <div class="work-thumb-wrap">
-                        <img src="https://img.youtube.com/vi/9u2EourejMM/hqdefault.jpg" alt="Titling Showcase Reel" loading="lazy">
+                        <img src="portfolio-assets/thumbs/reels/poster-design-reel.jpg" alt="Titling Showcase Reel" loading="lazy">
                         <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
                         <span class="work-duration">Studio Reel</span>
                     </div>
@@ -1606,22 +1607,52 @@
         // --- Video Theater Modal Logic ---
         const videoModal = document.getElementById('videoModal');
         const videoModalIframe = document.getElementById('videoModalIframe');
+        const videoModalVideo = document.getElementById('videoModalVideo');
         const videoModalTitle = document.getElementById('videoModalTitle');
         const videoModalRole = document.getElementById('videoModalRole');
         const videoModalExternalBtn = document.getElementById('videoModalExternalBtn');
 
-        function openVideoModal(ytId, title, role, externalUrl) {
-            videoModalTitle.textContent = title;
+        function openVideoModal(source, title, role, externalUrl) {
+            videoModalTitle.innerHTML = title;
             videoModalRole.innerHTML = role;
-            videoModalExternalBtn.href = externalUrl;
-            videoModalIframe.src = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0&modestbranding=1&color=white`;
+            if (externalUrl) {
+                videoModalExternalBtn.href = externalUrl;
+                videoModalExternalBtn.style.display = 'inline-flex';
+            } else {
+                videoModalExternalBtn.style.display = 'none';
+            }
+            const isMp4 = source.endsWith('.mp4') || source.startsWith('portfolio-assets/');
+            if (isMp4 && videoModalVideo) {
+                videoModalIframe.style.display = 'none';
+                videoModalIframe.src = '';
+                videoModalVideo.style.display = 'block';
+                videoModalVideo.src = source;
+                videoModalVideo.currentTime = 0;
+                videoModalVideo.play().catch(() => {});
+            } else {
+                if (videoModalVideo) {
+                    videoModalVideo.pause();
+                    videoModalVideo.src = '';
+                    videoModalVideo.style.display = 'none';
+                }
+                videoModalIframe.style.display = 'block';
+                videoModalIframe.src = `https://www.youtube.com/embed/${source}?autoplay=1&rel=0&modestbranding=1&color=white`;
+            }
             videoModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
         function closeVideoModal() {
             videoModal.style.display = 'none';
-            videoModalIframe.src = '';
+            if (videoModalIframe) {
+                videoModalIframe.src = '';
+                videoModalIframe.style.display = 'none';
+            }
+            if (videoModalVideo) {
+                videoModalVideo.pause();
+                videoModalVideo.src = '';
+                videoModalVideo.style.display = 'none';
+            }
             document.body.style.overflow = '';
         }
 
