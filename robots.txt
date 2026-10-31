@@ -9,4 +9,35 @@ Disallow: /balence.html
 Disallow: /youtube.html
 Disallow: /delivery/
 
+# Explicitly allow AI Search & Recommendation Crawlers (ChatGPT, Gemini, Claude, Perplexity, Bing)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
 Sitemap: https://mukpost.com/sitemap.xml
