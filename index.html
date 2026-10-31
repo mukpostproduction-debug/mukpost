@@ -1762,393 +1762,38 @@
             .hero h1 { letter-spacing: 0.25em; font-size: 0.68rem; }
         }
 
-        /* ==========================================================================
-           STEP 3B: TECHNICAL CASE STUDY & HARDWARE METADATA LEDGER
-           ========================================================================== */
-        .work-tech-specs {
-            margin-top: 0.65rem;
-            padding-top: 0.65rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            display: flex;
-            flex-direction: column;
-            gap: 0.28rem;
-            font-family: var(--font-mono, 'JetBrains Mono', monospace);
-            font-size: 0.68rem;
-            line-height: 1.45;
-            color: rgba(255, 255, 255, 0.62);
-        }
-        .work-tech-specs strong {
-            color: rgba(255, 255, 255, 0.88);
-            font-weight: 600;
-        }
-        .case-ledger-section {
-            margin-top: 4rem;
-            padding-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .case-ledger-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-            margin-top: 1.75rem;
-        }
-        .case-ledger-card {
-            background: #111218;
-            border: 1px solid rgba(255, 255, 255, 0.09);
-            border-radius: var(--radius-md, 12px);
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.65rem;
-            transition: border-color 0.25s ease, transform 0.25s ease;
-        }
-        .case-ledger-card:hover {
-            border-color: rgba(255, 255, 255, 0.28);
-            transform: translateY(-2px);
-        }
-        .case-ledger-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-family: var(--font-mono, 'JetBrains Mono', monospace);
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #10B981;
-        }
-        .case-ledger-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin: 0;
-            line-height: 1.3;
-        }
-        .case-ledger-body {
-            font-size: 0.82rem;
-            color: var(--text-dim, #a1a1aa);
-            line-height: 1.55;
-            margin: 0;
-        }
-        .case-ledger-specs {
-            margin-top: auto;
-            padding-top: 0.75rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.07);
-            font-family: var(--font-mono, 'JetBrains Mono', monospace);
-            font-size: 0.68rem;
-            color: rgba(255, 255, 255, 0.68);
-            line-height: 1.5;
-        }
-        .seo-service-routes-strip {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-            margin-top: 2.5rem;
-        }
-        .seo-route-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: var(--radius-md, 12px);
-            padding: 1.4rem 1.5rem;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            transition: all 0.25s ease;
-        }
-        .seo-route-card:hover {
-            border-color: #F8A695;
-            background: rgba(255, 255, 255, 0.055);
-            transform: translateY(-2px);
-        }
-        .seo-route-eyebrow {
-            font-family: var(--font-mono, 'JetBrains Mono', monospace);
-            font-size: 0.66rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: #F8A695;
-        }
-        .seo-route-title {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #ffffff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .seo-route-desc {
-            font-size: 0.8rem;
-            color: var(--text-dim, #a1a1aa);
-            line-height: 1.5;
-        }
-        @media (max-width: 960px) {
-            .case-ledger-grid, .seo-service-routes-strip {
-                grid-template-columns: 1fr;
-            }
-        }
-
-
-        /* ==========================================================================
-           QUICK PROJECT SCOPE / TURNAROUND ESTIMATE COMPONENT (STEP 4)
-           ========================================================================== */
-        .quick-scope-card {
-            width: 100%;
-            max-width: 960px;
-            margin: 0 auto 3.5rem;
-            padding: clamp(1.75rem, 3.5vw, 2.75rem);
-            background: linear-gradient(180deg, rgba(20, 22, 30, 0.94) 0%, rgba(11, 12, 16, 0.98) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            border-radius: var(--radius-md, 14px);
-            box-shadow: 0 28px 80px rgba(0, 0, 0, 0.8), 0 0 40px rgba(45, 49, 143, 0.14);
-            text-align: left;
-            position: relative;
-            overflow: hidden;
-        }
-        .quick-scope-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #2D318F 0%, #F8A695 50%, #10B981 100%);
-            opacity: 0.9;
-        }
-        .quick-scope-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 1.25rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.8rem;
-            padding-bottom: 1.25rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .quick-scope-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: var(--font-mono, 'JetBrains Mono', monospace);
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: #10B981;
-            margin-bottom: 0.45rem;
-        }
-        .quick-scope-title {
-            font-size: clamp(1.55rem, 3vw, 2.2rem);
-            font-weight: 800;
-            letter-spacing: -0.025em;
-            color: #ffffff;
-            margin: 0 0 0.35rem;
-            line-height: 1.15;
-        }
-        .quick-scope-sub {
-            font-size: 0.9rem;
-            color: var(--text-dim, #a1a1aa);
-            margin: 0;
-            line-height: 1.5;
-            max-width: 620px;
-        }
-        .quick-scope-estimate-badge {
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.32);
-            border-radius: var(--radius-sm, 8px);
-            padding: 0.65rem 1rem;
-            min-width: 225px;
-            text-align: right;
-        }
-        .quick-scope-estimate-label {
-            display: block;
-            font-family: var(--font-mono, 'JetBrains Mono', monospace);
-            font-size: 0.63rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: rgba(255, 255, 255, 0.58);
-            margin-bottom: 0.2rem;
-        }
-        .quick-scope-estimate-val {
-            font-family: var(--font-mono, 'JetBrains Mono', monospace);
-            font-size: 0.84rem;
-            font-weight: 700;
-            color: #10B981;
-        }
-        .qs-group {
-            margin-bottom: 1.35rem;
-        }
-        .qs-label {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: var(--font-mono, 'JetBrains Mono', monospace);
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.78);
-            margin-bottom: 0.6rem;
-        }
-        .qs-label span.qs-hint {
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.45);
-            text-transform: none;
-            letter-spacing: 0;
-            font-size: 0.72rem;
-        }
-        .qs-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.55rem;
-        }
-        .qs-pill {
-            position: relative;
+        .storage-btn-interactive {
             cursor: pointer;
-            user-select: none;
-        }
-        .qs-pill input {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-        }
-        .qs-pill-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            padding: 0.75rem 1.35rem;
+            border-radius: 999px;
             display: inline-flex;
             align-items: center;
-            gap: 0.45rem;
-            padding: 0.58rem 1rem;
-            background: rgba(255, 255, 255, 0.035);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            border-radius: var(--radius-sm, 8px);
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.75);
-            transition: all 0.18s ease;
-        }
-        .qs-pill:hover .qs-pill-box {
-            border-color: rgba(255, 255, 255, 0.35);
+            gap: 0.7rem;
             color: #ffffff;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 0.06em;
+            transition: all 0.25s var(--ease-out);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+        }
+        .storage-btn-interactive:hover {
+            border-color: rgba(255, 255, 255, 0.4);
             background: rgba(255, 255, 255, 0.07);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 255, 255, 0.08);
         }
-        .qs-pill input:checked + .qs-pill-box {
-            background: #ffffff;
-            color: #0a0a0a;
-            border-color: #ffffff;
-            box-shadow: 0 0 18px rgba(255, 255, 255, 0.18);
-        }
-        .qs-inputs-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-top: 1.2rem;
-        }
-        .qs-field {
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-        .qs-input {
-            width: 100%;
-            padding: 0.82rem 0.95rem;
-            background: rgba(0, 0, 0, 0.55);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: var(--radius-sm, 8px);
-            color: #ffffff;
-            font-size: 0.86rem;
-            font-family: inherit;
-            outline: none;
-            box-sizing: border-box;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-        .qs-input:focus {
-            border-color: #F8A695;
-            box-shadow: 0 0 0 3px rgba(248, 166, 149, 0.14);
-        }
-        .qs-footer-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-            padding-top: 1.25rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .qs-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-        .qs-submit-btn {
+        .storage-btn-cta {
+            margin-left: 0.35rem;
+            padding: 0.24rem 0.65rem;
             background: #ffffff;
             color: #000000;
-            border: none;
-            padding: 0.9rem 1.75rem;
-            border-radius: var(--radius-sm, 8px);
-            font-size: 0.83rem;
-            font-weight: 800;
-            letter-spacing: 0.07em;
+            border-radius: 999px;
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.55rem;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 18px rgba(255, 255, 255, 0.16);
-        }
-        .qs-submit-btn:hover {
-            background: #F8A695;
-            color: #0a0a0a;
-            transform: translateY(-1px);
-        }
-        .qs-mailto-btn {
-            background: transparent;
-            color: rgba(255, 255, 255, 0.78);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            padding: 0.85rem 1.2rem;
-            border-radius: var(--radius-sm, 8px);
-            font-size: 0.78rem;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            transition: all 0.2s ease;
-        }
-        .qs-mailto-btn:hover {
-            border-color: #ffffff;
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.05);
-        }
-        .qs-status {
-            font-size: 0.82rem;
-            margin-top: 0.85rem;
-            padding: 0.75rem 1rem;
-            border-radius: var(--radius-sm, 8px);
-            display: none;
-        }
-        .qs-status.success {
-            display: block;
-            background: rgba(16, 185, 129, 0.12);
-            border: 1px solid rgba(16, 185, 129, 0.4);
-            color: #10B981;
-        }
-        .qs-status.error {
-            display: block;
-            background: rgba(239, 68, 68, 0.12);
-            border: 1px solid rgba(239, 68, 68, 0.4);
-            color: #f87171;
-        }
-        @media (max-width: 720px) {
-            .qs-inputs-grid {
-                grid-template-columns: 1fr;
-            }
-            .quick-scope-estimate-badge {
-                width: 100%;
-                text-align: left;
-            }
         }
 
     </style>
@@ -2387,99 +2032,79 @@
                     </div>
                 </div>
 
-                                <div class="works-grid">
+                <div class="works-grid">
                     <!-- Côté Ibis - Draft Night -->
-                    <div class="work-video-card" data-category="sound colour" onclick="openVideoModal('portfolio-assets/videos/draft-night.mp4', 'C&ocirc;t&eacute; Ibis — &ldquo;Draft Night&rdquo;', 'Sound Design &amp; Mix &bull; Colour Grading &bull; Directed by Mason Cline &bull; Prod. Pylon Collective', '', 'https://www.instagram.com/p/DQw_MU9kczC/')">
+                    <div class="work-video-card" data-category="sound" onclick="openVideoModal('portfolio-assets/videos/draft-night.mp4', 'C&ocirc;t&eacute; Ibis — &ldquo;Draft Night&rdquo;', 'Sound Design &amp; Mix &bull; Directed by Mason Cline &bull; Prod. Pylon Collective', '', 'https://www.instagram.com/p/DQw_MU9kczC/')">
                         <div class="work-thumb-wrap">
-                            <img src="portfolio-assets/thumbs/draft-night.jpg" alt="Côté Ibis Draft Night Commercial Sound Design & Colour Grade by Muk Post" loading="lazy">
+                            <img src="portfolio-assets/thumbs/draft-night.jpg" alt="Côté Ibis — Draft Night" loading="lazy">
                             <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
                             <span class="work-duration">Campaign</span>
                         </div>
                         <div class="work-card-info">
                             <div class="work-card-top">
-                                <span class="work-role-tag">Sound Design &bull; Mix &bull; Colour</span>
+                                <span class="work-role-tag">Sound Design &bull; Mix</span>
                                 <span class="work-year">2026</span>
                             </div>
                             <div class="work-card-title">Côté Ibis — "Draft Night"</div>
                             <div class="work-meta">Commercial &bull; Fitted Hat Campaign &bull; Dir. Mason Cline</div>
-                            <div class="work-tech-specs">
-                                <span><strong>Camera:</strong> Sony FX3 (S-Log3) &amp; URSA Mini Pro BRAW</span>
-                                <span><strong>Services:</strong> Pro Tools Sound Design, RX Dialogue Cleanup, DaVinci Resolve Grade</span>
-                                <span><strong>Deliverables:</strong> 4K 16:9 Master, 9:16 Social Cutdowns &amp; Broadcast Stems</span>
-                            </div>
                         </div>
                     </div>
 
                     <!-- Holy Vexation Pt 1 -->
                     <div class="work-video-card" data-category="sound" onclick="openVideoModal('portfolio-assets/videos/holy-vexation-pt1.mp4', 'Holy Vexation — 1/3: Frustration', 'Sound Editor &bull; Directed by Declan McKenna &bull; DP Dario Butera &bull; Shot on 16mm Kodak', '', 'https://www.instagram.com/p/DRK4xGxEhjg/')">
                         <div class="work-thumb-wrap">
-                            <img src="portfolio-assets/thumbs/holy-vexation-pt1.jpg" alt="Holy Vexation Part 1 16mm Kodak Short Film Sound Design by Muk Post" loading="lazy">
+                            <img src="portfolio-assets/thumbs/holy-vexation-pt1.jpg" alt="Holy Vexation — Part 1" loading="lazy">
                             <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
                             <span class="work-duration">16mm Film</span>
                         </div>
                         <div class="work-card-info">
                             <div class="work-card-top">
-                                <span class="work-role-tag">Sound Editor &bull; RX Cleanup</span>
+                                <span class="work-role-tag">Sound Editor</span>
                                 <span class="work-year">2026</span>
                             </div>
                             <div class="work-card-title">Holy Vexation — 1/3: Frustration</div>
                             <div class="work-meta">Short Film &bull; Shot on 16mm Kodak &bull; Dir. Declan McKenna</div>
-                            <div class="work-tech-specs">
-                                <span><strong>Camera / Audio:</strong> 16mm Kodak Film &bull; Zoom F6 32-Bit Float Location Audio</span>
-                                <span><strong>Services:</strong> iZotope RX Camera Motor De-Noise, Custom Foley &amp; Pro Tools Mix</span>
-                                <span><strong>Deliverables:</strong> 2K Film Scan Stereo &amp; 5.1 Surround Stems</span>
-                            </div>
                         </div>
                     </div>
 
                     <!-- Holy Vexation Pt 2 -->
                     <div class="work-video-card" data-category="sound" onclick="openVideoModal('portfolio-assets/videos/holy-vexation-pt2.mp4', 'Holy Vexation — 2/3: Contemplation', 'Sound Editor &bull; Directed by Declan McKenna &bull; DP Dario Butera &bull; Shot on 16mm Kodak', '', 'https://www.instagram.com/p/DRQCsekEjv5/')">
                         <div class="work-thumb-wrap">
-                            <img src="portfolio-assets/thumbs/holy-vexation-pt2.jpg" alt="Holy Vexation Part 2 16mm Kodak Short Film Sound Design by Muk Post" loading="lazy">
+                            <img src="portfolio-assets/thumbs/holy-vexation-pt2.jpg" alt="Holy Vexation — Part 2" loading="lazy">
                             <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
                             <span class="work-duration">16mm Film</span>
                         </div>
                         <div class="work-card-info">
                             <div class="work-card-top">
-                                <span class="work-role-tag">Sound Editor &bull; Mix</span>
+                                <span class="work-role-tag">Sound Editor</span>
                                 <span class="work-year">2026</span>
                             </div>
                             <div class="work-card-title">Holy Vexation — 2/3: Contemplation</div>
                             <div class="work-meta">Short Film &bull; Shot on 16mm Kodak &bull; Dir. Declan McKenna</div>
-                            <div class="work-tech-specs">
-                                <span><strong>Camera / Audio:</strong> 16mm Kodak Vision3 &bull; Zoom F6 Field Multitrack</span>
-                                <span><strong>Services:</strong> Dialogue Isolation, Spectral Repair, Atmospheric Sound Design</span>
-                                <span><strong>Deliverables:</strong> Calibrated Cinema &amp; Web Masters (-14 LUFS / -24 LKFS)</span>
-                            </div>
                         </div>
                     </div>
 
                     <!-- Holy Vexation Pt 3 -->
                     <div class="work-video-card" data-category="sound" onclick="openVideoModal('portfolio-assets/videos/holy-vexation-pt3.mp4', 'Holy Vexation — 3/3: Reconciliation', 'Sound Editor &bull; Directed by Declan McKenna &bull; DP Dario Butera &bull; Shot on 16mm Kodak', '', 'https://www.instagram.com/p/DRVRi7jEuqd/')">
                         <div class="work-thumb-wrap">
-                            <img src="portfolio-assets/thumbs/holy-vexation-pt3.jpg" alt="Holy Vexation Part 3 16mm Kodak Short Film Sound Design by Muk Post" loading="lazy">
+                            <img src="portfolio-assets/thumbs/holy-vexation-pt3.jpg" alt="Holy Vexation — Part 3" loading="lazy">
                             <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
                             <span class="work-duration">16mm Film</span>
                         </div>
                         <div class="work-card-info">
                             <div class="work-card-top">
-                                <span class="work-role-tag">Sound Editor &bull; Foley</span>
+                                <span class="work-role-tag">Sound Editor</span>
                                 <span class="work-year">2026</span>
                             </div>
                             <div class="work-card-title">Holy Vexation — 3/3: Reconciliation</div>
                             <div class="work-meta">Short Film &bull; Shot on 16mm Kodak &bull; Dir. Declan McKenna</div>
-                            <div class="work-tech-specs">
-                                <span><strong>Camera / Audio:</strong> 16mm Kodak &bull; DP Dario Butera &bull; Zoom F6</span>
-                                <span><strong>Services:</strong> Avid Pro Tools Re-Recording Mix, Custom Foley &amp; ADR Match</span>
-                                <span><strong>Deliverables:</strong> Full DX / MX / SFX Stems &amp; Festival Print Master</span>
-                            </div>
                         </div>
                     </div>
 
                     <!-- Donat Jackson - "sweartogod!" (Dir. Mason Cline) -->
                     <div class="work-video-card" data-category="editing colour design" onclick="openVideoModal('a3y5_lFqbsE', 'Donat Jackson — &quot;sweartogod!&quot;', 'Editing &bull; Colour Grading &bull; Title Design &bull; Muk Post', 'https://www.youtube.com/watch?v=a3y5_lFqbsE')">
                         <div class="work-thumb-wrap">
-                            <img src="portfolio-assets/thumbs/donatjackson-sweartogod-thumb.jpg" alt="Donat Jackson Swear to God (sweartogod!) Music Video Editing & Colour Grading by Muk Post" loading="lazy">
+                            <img src="portfolio-assets/thumbs/donatjackson-sweartogod-thumb.jpg" alt="Donat Jackson — sweartogod!" loading="lazy">
                             <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
                             <span class="work-duration">Official Video</span>
                         </div>
@@ -2488,20 +2113,15 @@
                                 <span class="work-role-tag">Edit &bull; Colour &bull; Design</span>
                                 <span class="work-year">2026</span>
                             </div>
-                            <div class="work-card-title">Donat Jackson — "sweartogod!" (Swear to God)</div>
+                            <div class="work-card-title">Donat Jackson — "sweartogod!"</div>
                             <div class="work-meta">Music Video &bull; Directed by Mason Cline &bull; Post by Muk Post</div>
-                            <div class="work-tech-specs">
-                                <span><strong>Camera:</strong> ARRI Alexa (LogC) &amp; Blackmagic URSA Mini Pro (BRAW)</span>
-                                <span><strong>Services:</strong> Offline/Online Edit, DaVinci Wide Gamut Kodak 2383 Grade, Title Design</span>
-                                <span><strong>Deliverables:</strong> 4K ProRes 4444 XQ Master, YouTube HDR/Rec.709 &amp; 9:16 Reels</span>
-                            </div>
                         </div>
                     </div>
 
                     <!-- Donat Jackson - "needmoretime!" -->
-                    <div class="work-video-card" data-category="editing colour sound design" onclick="openVideoModal('m3GzM8sJ_V8', 'Donat Jackson — &quot;needmoretime!&quot;', 'Direction &bull; Offline/Online Edit &bull; Colour Grading &bull; DIT &bull; VFX &bull; Sound Design', 'https://www.youtube.com/watch?v=m3GzM8sJ_V8')">
+                    <div class="work-video-card" data-category="editing colour sound design" onclick="openVideoModal('m3GzM8sJ_V8', 'Donat Jackson — &quot;needmoretime!&quot;', 'Direction &bull; Edit &bull; Colour Grading &bull; DIT &bull; VFX &bull; Sound', 'https://www.youtube.com/watch?v=m3GzM8sJ_V8')">
                         <div class="work-thumb-wrap">
-                            <img src="https://img.youtube.com/vi/m3GzM8sJ_V8/hqdefault.jpg" alt="Donat Jackson needmoretime! Music Video Colour Grading, DIT & VFX by Muk Post" loading="lazy">
+                            <img src="https://img.youtube.com/vi/m3GzM8sJ_V8/hqdefault.jpg" alt="Donat Jackson — needmoretime!" loading="lazy">
                             <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
                             <span class="work-duration">Official Video</span>
                         </div>
@@ -2512,18 +2132,13 @@
                             </div>
                             <div class="work-card-title">Donat Jackson — "needmoretime!"</div>
                             <div class="work-meta">Music Video &bull; Directed by Jackson McMurdo &amp; Mason Cline</div>
-                            <div class="work-tech-specs">
-                                <span><strong>Camera:</strong> RED EPIC-W 8K (R3D) &amp; URSA Mini Pro 4.6K</span>
-                                <span><strong>Services:</strong> On-Set DIT Checksum Offload, Edit, DaVinci Resolve Grade, Fusion VFX</span>
-                                <span><strong>Deliverables:</strong> 4K Master, Custom Kinetic Title Cards &amp; Stems</span>
-                            </div>
                         </div>
                     </div>
 
                     <!-- Lady Marge - Beer League -->
                     <div class="work-video-card" data-category="editing colour sound design" onclick="openVideoModal('zOgTcW_rOoQ', 'Lady Marge — Beer League', 'Colour Grading &bull; Live Audio Recording &bull; Assistant Edit &bull; Titling &amp; Design', 'https://youtu.be/zOgTcW_rOoQ')">
                         <div class="work-thumb-wrap">
-                            <img src="https://img.youtube.com/vi/zOgTcW_rOoQ/hqdefault.jpg" alt="Lady Marge Beer League Live Session Colour Grading & Audio by Muk Post" loading="lazy">
+                            <img src="https://img.youtube.com/vi/zOgTcW_rOoQ/hqdefault.jpg" alt="Lady Marge — Beer League" loading="lazy">
                             <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
                             <span class="work-duration">Live Session</span>
                         </div>
@@ -2533,148 +2148,76 @@
                                 <span class="work-year">2026</span>
                             </div>
                             <div class="work-card-title">Lady Marge — "Beer League"</div>
-                            <div class="work-meta">Live off the Dressing Room Floor &bull; Audio &bull; Colour &bull; Edit &bull; Design</div>
-                            <div class="work-tech-specs">
-                                <span><strong>Camera / Audio:</strong> Multi-Cam Sony FX3 + Super 8 Texture &bull; Zoom F6 Multitrack</span>
-                                <span><strong>Services:</strong> DaVinci Resolve Colour Grade, Live Audio Capture &amp; Pro Tools Mix, Titling</span>
-                                <span><strong>Deliverables:</strong> 4K Multi-Cam Master &amp; Broadcast Stereo Mix</span>
-                            </div>
+                            <div class="work-meta">Live off the Dressing Room Floor &bull; Audio &bull; Colour &bull; Assistant Edit &bull; Design</div>
                         </div>
                     </div>
 
                     <!-- insyt. - 360° -->
-                    <div class="work-video-card" data-category="editing colour sound design" onclick="openVideoModal('CKdqD851gQ0', 'insyt. — 360°', 'Graphic &amp; Title Design &bull; Colour Grading &bull; Sound Design &bull; Directed by Jackson McMurdo', 'https://www.youtube.com/watch?v=CKdqD851gQ0')">
+                    <div class="work-video-card" data-category="design" onclick="openVideoModal('CKdqD851gQ0', 'insyt. — 360°', 'Graphic &amp; Title Design &bull; Directed by Jackson McMurdo', 'https://www.youtube.com/watch?v=CKdqD851gQ0')">
                         <div class="work-thumb-wrap">
-                            <img src="https://img.youtube.com/vi/CKdqD851gQ0/hqdefault.jpg" alt="insyt. 360° Music Video Title Design, Colour & Sound by Muk Post" loading="lazy">
+                            <img src="https://img.youtube.com/vi/CKdqD851gQ0/hqdefault.jpg" alt="insyt. — 360°" loading="lazy">
                             <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
                             <span class="work-duration">Full Video</span>
                         </div>
                         <div class="work-card-info">
                             <div class="work-card-top">
-                                <span class="work-role-tag">Colour &bull; Sound &bull; Design</span>
+                                <span class="work-role-tag">Design</span>
                                 <span class="work-year">2026</span>
                             </div>
                             <div class="work-card-title">insyt. — "360°"</div>
                             <div class="work-meta">Music Video &bull; Directed by Jackson McMurdo</div>
-                            <div class="work-tech-specs">
-                                <span><strong>Camera:</strong> Sony FX3 (S-Log3) &amp; Vintage Anamorphic Glass</span>
-                                <span><strong>Services:</strong> Co-Edit, DaVinci Resolve Film Emulation, Sound FX, Kinetic Titles</span>
-                                <span><strong>Deliverables:</strong> 4K DCI Master &amp; Isolated Vector Title Stems</span>
-                            </div>
                         </div>
                     </div>
 
                     <!-- insyt. - Toll -->
                     <div class="work-video-card" data-category="editing colour sound design" onclick="openVideoModal('chQBG5lTCnM', 'insyt. — Toll', 'VFX &bull; Colour Grading &bull; Co-Editor &bull; Title Design &bull; Sound Design', 'https://www.youtube.com/watch?v=chQBG5lTCnM')">
                         <div class="work-thumb-wrap">
-                            <img src="https://img.youtube.com/vi/chQBG5lTCnM/hqdefault.jpg" alt="insyt. Toll Music Video VFX, Colour Grading & Sound Design by Muk Post" loading="lazy">
+                            <img src="https://img.youtube.com/vi/chQBG5lTCnM/hqdefault.jpg" alt="insyt. — Toll" loading="lazy">
                             <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
                             <span class="work-duration">Full Video</span>
                         </div>
                         <div class="work-card-info">
                             <div class="work-card-top">
-                                <span class="work-role-tag">VFX &bull; Colour &bull; Co-Edit &bull; Sound</span>
+                                <span class="work-role-tag">VFX &bull; Colour &bull; Co-Edit</span>
                                 <span class="work-year">2026</span>
                             </div>
                             <div class="work-card-title">insyt. — "Toll"</div>
                             <div class="work-meta">Music Video &bull; Directed by Jackson McMurdo</div>
-                            <div class="work-tech-specs">
-                                <span><strong>Camera:</strong> Blackmagic URSA Mini Pro (BRAW) &amp; Sony FX3</span>
-                                <span><strong>Services:</strong> Fusion VFX Compositing, DaVinci Wide Gamut Grade, Sound Hits, Titling</span>
-                                <span><strong>Deliverables:</strong> 4K ProRes 422 HQ Master &amp; Social Cutdowns</span>
-                            </div>
                         </div>
                     </div>
 
                     <!-- Johnny Tsatsos - Cerberus -->
                     <div class="work-video-card" data-category="sound" onclick="location.href='sound.html'">
                         <div class="work-thumb-wrap">
-                            <img src="https://img.youtube.com/vi/9Wv0WVDgzEU/hqdefault.jpg" alt="CERBERUS Short Film — Winner of Best Picture at Toronto Reeljects Film Festival — Sound Design by Muk Post" loading="lazy">
+                            <img src="https://img.youtube.com/vi/9Wv0WVDgzEU/hqdefault.jpg" alt="Johnny Tsatsos — Cerberus" loading="lazy">
                             <div class="work-play-btn"><i class="fa-solid fa-sliders"></i></div>
-                            <span class="work-duration">Best Picture Winner</span>
+                            <span class="work-duration">Stem Mixer</span>
                         </div>
                         <div class="work-card-info">
                             <div class="work-card-top">
-                                <span class="work-role-tag">5.1 &amp; Stereo Mix &bull; Sound Design</span>
+                                <span class="work-role-tag">Original Mix &bull; Sound Design</span>
                                 <span class="work-year">2026</span>
                             </div>
-                            <div class="work-card-title">Johnny Tsatsos — "CERBERUS"</div>
-                            <div class="work-meta">Winner of Best Picture — Toronto Reeljects Film Festival</div>
-                            <div class="work-tech-specs">
-                                <span><strong>Camera / Audio:</strong> ARRI Alexa Mini LF &bull; Zoom F6 Location Dialogue</span>
-                                <span><strong>Services:</strong> Avid Pro Tools 5.1 &amp; Stereo Mix, iZotope RX Dialogue Cleanup, Foley</span>
-                                <span><strong>Deliverables:</strong> Theatrical 5.1 Surround Print Master &amp; Interactive Stem Mixer</span>
-                            </div>
+                            <div class="work-card-title">Johnny Tsatsos — "Cerberus"</div>
+                            <div class="work-meta">Interactive Stem Mixing Suite in Sound Department</div>
                         </div>
                     </div>
 
-                    <!-- Pylon Collective - BTS: AKUA RTR -->
-                    <div class="work-video-card" data-category="editing colour sound" onclick="openVideoModal('V2NjhuePlm0', 'Pylon Collective — BTS: AKUA &ldquo;RTR&rdquo;', 'Directed, Filmed, Edited &amp; Audio by Jackson McMurdo &bull; Pylon Collective', 'https://www.youtube.com/watch?v=V2NjhuePlm0')">
+                    <!-- Pylon Collective - BTS: AKUA RTR (Older) -->
+                    <div class="work-video-card" data-category="editing sound" onclick="openVideoModal('V2NjhuePlm0', 'Pylon Collective — BTS: AKUA &ldquo;RTR&rdquo;', 'Directed, Filmed, Edited &amp; Audio by Jackson McMurdo &bull; Pylon Collective', 'https://www.youtube.com/watch?v=V2NjhuePlm0')">
                         <div class="work-thumb-wrap">
-                            <img src="portfolio-assets/thumbs/pylon-rtr-bts.jpg" alt="Pylon Collective AKUA RTR Mini-Doc Directed, Edited & Graded by Jackson McMurdo" loading="lazy">
+                            <img src="portfolio-assets/thumbs/pylon-rtr-bts.jpg" alt="Pylon Collective — BTS: AKUA RTR" loading="lazy">
                             <div class="work-play-btn"><i class="fa-solid fa-play"></i></div>
                             <span class="work-duration">Mini-Doc</span>
                         </div>
                         <div class="work-card-info">
                             <div class="work-card-top">
-                                <span class="work-role-tag">DIT &bull; Edit &bull; Colour &bull; Audio</span>
+                                <span class="work-role-tag">Directing &bull; Edit &bull; Audio</span>
                                 <span class="work-year">2024</span>
                             </div>
-                            <div class="work-card-title">Pylon Collective — AKUA "RTR" (+ Mini-Doc)</div>
-                            <div class="work-meta">Music Video &amp; Documentary &bull; Dir. Declan McKenna &amp; Jackson McMurdo</div>
-                            <div class="work-tech-specs">
-                                <span><strong>Camera:</strong> RED EPIC-W 8K, Sony FX3 &amp; Super 8 Archival Texture</span>
-                                <span><strong>Services:</strong> On-Set DIT &amp; Dailies, Documentary Editing, Colour Grading, Pro Tools Mix</span>
-                                <span><strong>Deliverables:</strong> 4K Broadcast &amp; Web Documentary Package</span>
-                            </div>
+                            <div class="work-card-title">Pylon Collective — BTS: AKUA "RTR"</div>
+                            <div class="work-meta">Behind The Scenes &bull; Directed &amp; Edited by Jackson McMurdo</div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- STEP 3B: INDEXABLE NARRATIVE, COMMERCIAL & BROADCAST CASE STUDIES LEDGER -->
-                <div class="case-ledger-section reveal" id="production-credits-ledger">
-                    <span class="works-eyebrow">// TECHNICAL CASE STUDIES &amp; VERIFIED PRODUCTION CREDITS</span>
-                    <h3 style="font-size: clamp(1.35rem, 2.5vw, 1.85rem); font-weight: 800; color: #ffffff; margin: 0.35rem 0 0.4rem;">Narrative Festival Winners, Theatrical Screenings &amp; Broadcast Clients</h3>
-                    <p style="font-size: 0.88rem; color: var(--text-dim); margin: 0; max-width: 780px; line-height: 1.55;">
-                        Complete camera-to-delivery technical breakdowns across theatrical narrative shorts, music videos, and broadcast commercial finishes executed at Muk Post in Toronto.
-                    </p>
-
-                    <div class="case-ledger-grid">
-                        <article class="case-ledger-card">
-                            <span class="case-ledger-badge"><i class="fa-solid fa-trophy"></i> Best Picture Winner &bull; Narrative Short</span>
-                            <h4 class="case-ledger-title">"CERBERUS" (Dir. Johnny Tsatsos)</h4>
-                            <p class="case-ledger-body">
-                                <strong>Winner of Best Picture at Toronto Reeljects Film Festival.</strong> Full post-production sound architecture, surgical dialogue restoration on noisy location recordings, bespoke creature/environmental Foley, and theatrical re-recording mix.
-                            </p>
-                            <div class="case-ledger-specs">
-                                <strong>Hardware &amp; Toolchain:</strong> ARRI Alexa, Zoom F6, Avid Pro Tools, DaVinci Fairlight, iZotope RX Advanced<br>
-                                <strong>Deliverables:</strong> 5.1 Surround Theatrical Mix, Stereo Master (-24 LKFS), DX/MX/SFX Stems
-                            </div>
-                        </article>
-
-                        <article class="case-ledger-card">
-                            <span class="case-ledger-badge"><i class="fa-solid fa-film"></i> Winter Garden Theatre &bull; Narrative Short</span>
-                            <h4 class="case-ledger-title">"To Catch a Bear" &amp; "SP!KE"</h4>
-                            <p class="case-ledger-body">
-                                <strong>"To Catch a Bear" screened at the historic Winter Garden Theatre in Toronto.</strong> Executed offline/online editorial conform, scene-referred DaVinci Wide Gamut color grading with 35mm film print emulation, and theatrical sound finishing alongside narrative short <strong>"SP!KE"</strong>.
-                            </p>
-                            <div class="case-ledger-specs">
-                                <strong>Hardware &amp; Toolchain:</strong> ARRI Alexa Mini LF, RED EPIC-W 8K, DaVinci Resolve Studio, Pro Tools<br>
-                                <strong>Deliverables:</strong> 2K/4K Cinema DCP, ProRes 4444 XQ Master &amp; 5.1 Surround Stems
-                            </div>
-                        </article>
-
-                        <article class="case-ledger-card">
-                            <span class="case-ledger-badge"><i class="fa-solid fa-tv"></i> Broadcast, Institutional &amp; Hospitality</span>
-                            <h4 class="case-ledger-title">NHL Alumni Association, Griffin Poetry Prize &amp; Kingsley Management</h4>
-                            <p class="case-ledger-body">
-                                High-turnaround commercial, broadcast, and hospitality finishing for <strong>NHL Alumni Association</strong>, <strong>Griffin Poetry Prize</strong>, and <strong>Kingsley Management / South Point Hotel</strong>, plus music video finishing for <strong>Callum Sheehan</strong>.
-                            </p>
-                            <div class="case-ledger-specs">
-                                <strong>Hardware &amp; Toolchain:</strong> Sony FX3, URSA Mini Pro, Super 8, DaVinci Resolve Studio, iZotope RX<br>
-                                <strong>Deliverables:</strong> Calibrated Rec.709 Broadcast Masters, Multi-Aspect Social Suites &amp; Clean Dialogue Mixes
-                            </div>
-                        </article>
                     </div>
                 </div>
             </div>
@@ -2686,189 +2229,72 @@
             
             <div class="caps-grid">
                 <div class="cap-card reveal">
-                    <h3><a href="services/video-editing-dit-toronto/" style="color: inherit; text-decoration: none;">01. Editing &amp; DIT ↗</a></h3>
+                    <h3>01. Editing</h3>
                     <ul class="cap-list">
-                        <li>Offline &amp; online narrative, music video &amp; commercial cutting</li>
-                        <li>Native ARRI Alexa, RED EPIC-W 8K, Sony FX3 &amp; BRAW workflows</li>
-                        <li>On-set / near-set DIT, checksum offload &amp; LUT/CDL dailies</li>
-                        <li>35TB+ hybrid NVMe/SSD &amp; redundant cloud storage pipeline</li>
+                        <li>Narrative & commercial precision cutting</li>
+                        <li>Native 4K/8K media handling</li>
+                        <li>DaVinci Resolve studio workflow</li>
+                        <li>Camera raw media management</li>
                     </ul>
                 </div>
                 <div class="cap-card reveal">
-                    <h3><a href="services/sound-design-audio-mixing/" style="color: inherit; text-decoration: none;">02. Sound &amp; RX Cleanup ↗</a></h3>
+                    <h3>02. Sound</h3>
                     <ul class="cap-list">
-                        <li>Avid Pro Tools &amp; Fairlight 5.1 surround &amp; stereo mixing</li>
-                        <li>iZotope RX dialogue cleanup, de-rustle &amp; spectral restoration</li>
-                        <li>Custom Foley, sound design &amp; Zoom F6 32-bit float workflows</li>
+                        <li>High-fidelity sound design & mixing</li>
+                        <li>Dialogue cleanup & surgical restoration</li>
+                        <li>Pro Tools and DaVinci Fairlight mixing and mastering</li>
                     </ul>
                 </div>
                 <div class="cap-card reveal">
-                    <h3><a href="services/color-grading-toronto/" style="color: inherit; text-decoration: none;">03. Colour Grading ↗</a></h3>
+                    <h3>03. Colour</h3>
                     <ul class="cap-list">
-                        <li>DaVinci Resolve Studio scene-referred DWG / ACES grading</li>
-                        <li>35mm Kodak 2383 print emulation, 16mm Kodak &amp; Super 8 matching</li>
-                        <li>Show LUT creation &amp; Calman-calibrated Rec.709 / P3 delivery</li>
-                        <li>Interactive 4K Frame.io review sessions</li>
+                        <li>Industrial-grade cinematic grading</li>
+                        <li>Mood alignment & look development</li>
+                        <li>Color space management & LUT creation</li>
+                        <li>Calibrated monitoring delivery</li>
                     </ul>
                 </div>
                 <div class="cap-card reveal">
-                    <h3><a href="design.html" style="color: inherit; text-decoration: none;">04. Titles, VFX &amp; Products ↗</a></h3>
+                    <h3>04. Design</h3>
                     <ul class="cap-list">
-                        <li>Custom film titling, hand-drawn calligraphy &amp; kinetic typography</li>
-                        <li>DaVinci Fusion compositing, set extension &amp; cleanup VFX</li>
-                        <li><a href="store.html" style="color: #F8A695; text-decoration: underline;">Ultimate DaVinci Resolve Studio Template</a> for global finishers</li>
+                        <li>Custom film titling & typography</li>
+                        <li>Motion graphics & VFX integration</li>
+                        <li>Intermediate Fusion compositing</li>
                     </ul>
                 </div>
-            </div>
-
-            <!-- DEDICATED HIGH-INTENT SERVICE LANDING ROUTES STRIP -->
-            <div class="seo-service-routes-strip reveal" aria-label="Dedicated Post-Production Service Suites">
-                <a href="services/color-grading-toronto/" class="seo-route-card">
-                    <span class="seo-route-eyebrow">// SERVICE SUITE 01 &bull; TORONTO &amp; REMOTE</span>
-                    <div class="seo-route-title"><span>Color Grading &amp; Finishing in DaVinci Resolve</span> <span>↗</span></div>
-                    <p class="seo-route-desc">DaVinci Wide Gamut color pipelines, Kodak 2383 print emulation, and camera matching for ARRI Alexa, RED EPIC-W 8K, Sony FX3, URSA Mini Pro, and Super 8.</p>
-                </a>
-                <a href="services/sound-design-audio-mixing/" class="seo-route-card">
-                    <span class="seo-route-eyebrow">// SERVICE SUITE 02 &bull; PRO TOOLS &amp; RX</span>
-                    <div class="seo-route-title"><span>Sound Design, Pro Tools Mixing &amp; RX Cleanup</span> <span>↗</span></div>
-                    <p class="seo-route-desc">5.1 surround &amp; stereo broadcast mixing, iZotope RX spectral dialogue restoration, custom Foley, and Zoom F6 post workflows behind Best Picture winner CERBERUS.</p>
-                </a>
-                <a href="services/video-editing-dit-toronto/" class="seo-route-card">
-                    <span class="seo-route-eyebrow">// SERVICE SUITE 03 &bull; EDITORIAL &amp; DIT</span>
-                    <div class="seo-route-title"><span>Video Editing, On-Set DIT &amp; Dailies Toronto</span> <span>↗</span></div>
-                    <p class="seo-route-desc">Offline/online assembly, checksum-verified camera offloads, CDL/LUT dailies pipelines, and turnkey finishing for narrative shorts, music videos, and commercials.</p>
-                </a>
             </div>
 
             <!-- AWARDS & LAURELS -->
             <div class="laurels-wrapper reveal">
-                <img src="portfolio-assets/site-media/film-laurel-1.png" alt="Toronto Reeljects Film Festival Best Picture Winner Laurel — CERBERUS">
-                <img src="portfolio-assets/site-media/film-laurel-2.png" alt="Winter Garden Theatre Official Screening Selection — To Catch a Bear">
-                <img src="portfolio-assets/site-media/film-laurel-3.png" alt="Festival Official Selection Laurel — SP!KE">
-                <img src="portfolio-assets/site-media/film-laurel-4.png" alt="Independent Cinema & Music Video Official Selection Laurel">
+                <img src="portfolio-assets/site-media/film-laurel-1.png" alt="Film Laurel 1">
+                <img src="portfolio-assets/site-media/film-laurel-2.png" alt="Film Laurel 2">
+                <img src="portfolio-assets/site-media/film-laurel-3.png" alt="Film Laurel 3">
+                <img src="portfolio-assets/site-media/film-laurel-4.png" alt="Film Laurel 4">
             </div>
 
-            <!-- In-House Storage Badge -->
+            <!-- Studio Hardware & Storage Spec Button -->
             <div class="storage-wrapper reveal">
-                <div class="storage-banner">
+                <button type="button" class="storage-banner storage-btn-interactive" onclick="openInquiryModal()" title="Inquire about direct RAW ingest & remote workflow">
                     <span class="storage-badge-dot"></span>
-                    <span>35TB+ Hybrid High-Speed NVMe/SSD &amp; Redundant Cloud Storage Array</span>
-                </div>
+                    <i class="fa-solid fa-hard-drive" style="font-size: 0.82rem; color: #ffffff; opacity: 0.85;"></i>
+                    <span>35TB+ Hybrid NVMe SSD &amp; Redundant Cloud Array</span>
+                    <span class="storage-btn-cta">Book Ingest ↗</span>
+                </button>
             </div>
         </section>
-        </main>
+    </main>
 
     <!-- CONTACT / FOOTER -->
     <footer id="contact" class="container">
         <img src="portfolio-assets/site-media/muk-favicon-m.png" alt="M Logo" class="footer-logo reveal">
         
-        <!-- STEP 4: QUICK PROJECT SCOPE / GET A TURNAROUND ESTIMATE COMPONENT -->
-        <div class="quick-scope-card reveal" id="quick-project-scope">
-            <div class="quick-scope-header">
-                <div>
-                    <span class="quick-scope-eyebrow"><span class="pulse-dot dot-emerald"></span> // QUICK PROJECT SCOPE &bull; DIRECT TO JACKSON MCMURDO</span>
-                    <h2 class="quick-scope-title">Scope a Project / Get a Turnaround Estimate</h2>
-                    <p class="quick-scope-sub">Select your required finishing disciplines, project format, and target delivery window. Dispatches directly to <strong>contact@mukpost.com</strong> for a same-day turnaround &amp; rate estimate.</p>
-                </div>
-                <div class="quick-scope-estimate-badge">
-                    <span class="quick-scope-estimate-label">Estimated Studio Turnaround</span>
-                    <span class="quick-scope-estimate-val" id="homeQuickScopeForm_est">2–4 Business Days (4K Frame.io)</span>
-                </div>
-            </div>
-
-            <form id="homeQuickScopeForm" onsubmit="return submitQuickScope(event, 'homeQuickScopeForm')" novalidate>
-                <input type="text" name="_gotcha" style="display:none !important;" tabindex="-1" autocomplete="off">
-
-                <div class="qs-group">
-                    <div class="qs-label">
-                        <span>01. Services Needed *</span>
-                        <span class="qs-hint">Select one or multiple finishing disciplines</span>
-                    </div>
-                    <div class="qs-pills">
-                        <label class="qs-pill">
-                            <input type="checkbox" name="qs_services" value="Editing" onchange="updateQuickScopeEstimate('homeQuickScopeForm')">
-                            <span class="qs-pill-box"><i class="fa-solid fa-scissors"></i> Editing</span>
-                        </label>
-                        <label class="qs-pill">
-                            <input type="checkbox" name="qs_services" value="Color Grading" checked onchange="updateQuickScopeEstimate('homeQuickScopeForm')">
-                            <span class="qs-pill-box"><i class="fa-solid fa-sliders"></i> Color Grading</span>
-                        </label>
-                        <label class="qs-pill">
-                            <input type="checkbox" name="qs_services" value="Sound Design / Mixing" onchange="updateQuickScopeEstimate('homeQuickScopeForm')">
-                            <span class="qs-pill-box"><i class="fa-solid fa-wave-square"></i> Sound Design / Mixing</span>
-                        </label>
-                        <label class="qs-pill">
-                            <input type="checkbox" name="qs_services" value="Dialogue Cleanup" onchange="updateQuickScopeEstimate('homeQuickScopeForm')">
-                            <span class="qs-pill-box"><i class="fa-solid fa-microphone-lines"></i> Dialogue Cleanup</span>
-                        </label>
-                        <label class="qs-pill">
-                            <input type="checkbox" name="qs_services" value="DIT / Dailies" onchange="updateQuickScopeEstimate('homeQuickScopeForm')">
-                            <span class="qs-pill-box"><i class="fa-solid fa-hard-drive"></i> DIT / Dailies</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="qs-group">
-                    <div class="qs-label">
-                        <span>02. Project Type *</span>
-                        <span class="qs-hint">Primary release format</span>
-                    </div>
-                    <div class="qs-pills">
-                        <label class="qs-pill">
-                            <input type="radio" name="qs_project_type" value="Music Video" checked onchange="updateQuickScopeEstimate('homeQuickScopeForm')">
-                            <span class="qs-pill-box"><i class="fa-solid fa-compact-disc"></i> Music Video</span>
-                        </label>
-                        <label class="qs-pill">
-                            <input type="radio" name="qs_project_type" value="Narrative Short / Feature" onchange="updateQuickScopeEstimate('homeQuickScopeForm')">
-                            <span class="qs-pill-box"><i class="fa-solid fa-film"></i> Narrative Short / Feature</span>
-                        </label>
-                        <label class="qs-pill">
-                            <input type="radio" name="qs_project_type" value="Commercial / Branded" onchange="updateQuickScopeEstimate('homeQuickScopeForm')">
-                            <span class="qs-pill-box"><i class="fa-solid fa-bullhorn"></i> Commercial / Branded</span>
-                        </label>
-                        <label class="qs-pill">
-                            <input type="radio" name="qs_project_type" value="Documentary / Podcast" onchange="updateQuickScopeEstimate('homeQuickScopeForm')">
-                            <span class="qs-pill-box"><i class="fa-solid fa-clapperboard"></i> Documentary / Podcast</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="qs-inputs-grid">
-                    <div class="qs-field">
-                        <label class="qs-label" for="homeQuickScopeForm_runtime">03. Estimated Runtime &amp; Camera Spec</label>
-                        <input type="text" id="homeQuickScopeForm_runtime" name="estimated_runtime" class="qs-input" placeholder="e.g. 3:30 Music Video (ARRI Alexa / FX3) or 14m Short">
-                    </div>
-                    <div class="qs-field">
-                        <label class="qs-label" for="homeQuickScopeForm_date">04. Target Delivery Date</label>
-                        <input type="text" id="homeQuickScopeForm_date" name="target_delivery_date" class="qs-input" placeholder="e.g. Nov 18, 2026 / Rush 48hr / Flexible">
-                    </div>
-                    <div class="qs-field">
-                        <label class="qs-label" for="homeQuickScopeForm_link">05. Link to Footage / Rough Cut / Treatment <span class="qs-hint">(Optional)</span></label>
-                        <input type="url" id="homeQuickScopeForm_link" name="footage_link" class="qs-input" placeholder="https://app.frame.io/... or Drive / Dropbox / Vimeo link">
-                    </div>
-                    <div class="qs-field">
-                        <label class="qs-label" for="homeQuickScopeForm_email">06. Client Email * <span class="qs-hint">(For Direct Quote Reply)</span></label>
-                        <input type="email" id="homeQuickScopeForm_email" name="email" class="qs-input" placeholder="producer@productionco.com" required autocomplete="email">
-                    </div>
-                </div>
-
-                <div class="qs-footer-bar">
-                    <div class="qs-actions">
-                        <button type="submit" class="qs-submit-btn" id="homeQuickScopeForm_submit">
-                            <span>Get Turnaround &amp; Quote Estimate</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </button>
-                        <a href="mailto:contact@mukpost.com?subject=Project%20Scope%20%E2%80%94%20Muk%20Post" class="qs-mailto-btn" id="homeQuickScopeForm_mailto" onclick="syncQuickScopeMailto('homeQuickScopeForm')">
-                            <i class="fa-regular fa-envelope"></i> Email Direct (contact@mukpost.com)
-                        </a>
-                    </div>
-                    <button type="button" class="qs-mailto-btn" onclick="openInquiryModal()" data-inquiry>
-                        <i class="fa-solid fa-sliders"></i> Full Multi-Step Technical Walkthrough
-                    </button>
-                </div>
-
-                <div class="qs-status" id="homeQuickScopeForm_status" role="status" aria-live="polite"></div>
-            </form>
+        <div class="footer-cta-card reveal">
+            <span class="footer-eyebrow">// START A PROJECT</span>
+            <h2 class="footer-headline">Let's get to work.</h2>
+            <p class="footer-subtext">Tell us what you're making — from initial offline assembly to final cinema grade and master delivery.</p>
+            <button type="button" class="footer-inquiry-btn" onclick="openInquiryModal()" data-inquiry>
+                Get in touch ↗
+            </button>
         </div>
 
         <div class="footer-socials reveal">
@@ -2888,28 +2314,59 @@
                 <i class="fa-brands fa-linkedin-in"></i> LinkedIn
             </a>
         </div>
-    
-        <!-- MUK POST GLOBAL SEO STUDIO DIRECTORY -->
-        <nav aria-label="Muk Post Studio Directory" class="muk-seo-directory" style="width: 100%; max-width: 1120px; margin: 2.5rem auto 0; padding-top: 1.75rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; flex-wrap: wrap; justify-content: center; gap: 0.65rem 1.4rem; font-family: var(--font-mono, monospace); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.48);">
-            <a href="https://mukpost.com/" style="color: inherit; text-decoration: none;">Home</a>
-            <a href="https://mukpost.com/services/color-grading-toronto/" style="color: inherit; text-decoration: none;">Color Grading Toronto</a>
-            <a href="https://mukpost.com/services/sound-design-audio-mixing/" style="color: inherit; text-decoration: none;">Sound Design &amp; Pro Tools Mix</a>
-            <a href="https://mukpost.com/services/video-editing-dit-toronto/" style="color: inherit; text-decoration: none;">Video Editing &amp; DIT Toronto</a>
-            <a href="https://mukpost.com/colour.html" style="color: inherit; text-decoration: none;">Colour Suite</a>
-            <a href="https://mukpost.com/sound.html" style="color: inherit; text-decoration: none;">Stem Mixer</a>
-            <a href="https://mukpost.com/design.html" style="color: inherit; text-decoration: none;">Film Titles &amp; Design</a>
-            <a href="https://mukpost.com/treatments.html" style="color: inherit; text-decoration: none;">Director's Treatments</a>
-            <a href="https://mukpost.com/creators.html" style="color: inherit; text-decoration: none;">YouTube &amp; Creator Suite</a>
-            <a href="https://mukpost.com/post-production-toronto.html" style="color: inherit; text-decoration: none;">Toronto Post House</a>
-            <a href="https://mukpost.com/colourist-london.html" style="color: inherit; text-decoration: none;">London Colourist</a>
-            <a href="https://mukpost.com/post-production-london.html" style="color: inherit; text-decoration: none;">UK Post-Production</a>
-            <a href="https://mukpost.com/store.html" style="color: inherit; text-decoration: none;">Resolve Master Template</a>
-            <a href="https://mukpost.com/balance.html" style="color: inherit; text-decoration: none;">ColorPro Grade Suite</a>
-            <a href="https://mukpost.com/brand/" style="color: inherit; text-decoration: none;">Brand System</a>
-            <a href="https://mukpost.com/links.html" style="color: inherit; text-decoration: none;">Direct Links</a>
-        </nav>
 
     </footer>
+
+    <!-- VIDEO THEATER MODAL (CINEMA VIEWER) -->
+    <div class="video-modal" id="videoModal" onclick="handleVideoModalBackdrop(event)">
+        <div class="video-modal-dialog">
+            <div class="video-modal-top">
+                <div class="video-modal-heading">
+                    <h3 id="videoModalTitle">Video Title</h3>
+                    <p id="videoModalRole">Credits & Role</p>
+                </div>
+                <button class="video-modal-close" onclick="closeVideoModal()" aria-label="Close cinema viewer">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="video-modal-iframe-wrap">
+                <iframe id="videoModalIframe" src="" title="Muk Post Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none;"></iframe>
+                <video id="videoModalVideo" playsinline preload="metadata" style="display: none;"></video>
+                <div id="videoModalLoading" class="player-loading" style="display: none;">Loading cinema reel…</div>
+                
+                <!-- Sleek Frosted Glass Cinema Controls (Qazi Benchmark) -->
+                <div class="video-controls" id="videoModalControls" style="display: none;">
+                    <button type="button" class="video-ctrl-btn" id="videoCtrlPlay" aria-label="Play/Pause">
+                        <i class="fa-solid fa-play" id="videoCtrlPlayIcon"></i>
+                    </button>
+                    <span class="video-time" id="videoCtrlTime">0:00</span>
+                    <input class="video-seek" id="videoCtrlSeek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek through film">
+                    <span class="video-duration" id="videoCtrlDuration">0:00</span>
+                    <button type="button" class="video-ctrl-btn" id="videoCtrlMute" aria-label="Mute/Unmute">
+                        <i class="fa-solid fa-volume-high" id="videoCtrlMuteIcon"></i>
+                    </button>
+                    <button type="button" class="video-ctrl-btn" id="videoCtrlFs" aria-label="Fullscreen">
+                        <i class="fa-solid fa-expand"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="video-modal-footer">
+                <div class="video-modal-footer-tag">
+                    <span class="film-tag">// MUK POST PRODUCTION &bull; TORONTO</span>
+                </div>
+                <div class="video-modal-actions">
+                    <a id="videoModalExternalBtn" href="#" target="_blank" rel="noopener noreferrer" class="video-ext-btn" style="display: none;">
+                        <i class="fa-brands fa-youtube" style="margin-right: 0.45rem; color: #ff0000;"></i> Watch on YouTube ↗
+                    </a>
+                    <a id="videoModalIgBtn" href="#" target="_blank" rel="noopener noreferrer" class="video-ext-btn ig-btn" style="display: none;">
+                        <i class="fa-brands fa-instagram" style="margin-right: 0.45rem; color: #E1306C;"></i> Instagram ↗
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Global inquiry dialog helpers
@@ -3402,14 +2859,6 @@
                             <span>Motion &amp; Titling</span>
                         </label>
                         <label class="service-pill">
-                            <input type="checkbox" name="services" value="Dialogue Cleanup (iZotope RX)">
-                            <span>Dialogue Cleanup (RX)</span>
-                        </label>
-                        <label class="service-pill">
-                            <input type="checkbox" name="services" value="DIT & Dailies">
-                            <span>DIT &amp; Dailies</span>
-                        </label>
-                        <label class="service-pill">
                             <input type="checkbox" name="services" value="Full Post Package">
                             <span>Full Post Package</span>
                         </label>
@@ -3541,57 +2990,6 @@
             </button>
         </div>
     </dialog>
-
-    <!-- VIDEO THEATER MODAL (CINEMA VIEWER) -->
-    <div class="video-modal" id="videoModal" onclick="handleVideoModalBackdrop(event)">
-        <div class="video-modal-dialog">
-            <div class="video-modal-top">
-                <div class="video-modal-heading">
-                    <h3 id="videoModalTitle">Video Title</h3>
-                    <p id="videoModalRole">Credits & Role</p>
-                </div>
-                <button class="video-modal-close" onclick="closeVideoModal()" aria-label="Close cinema viewer">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <div class="video-modal-iframe-wrap">
-                <iframe id="videoModalIframe" src="" title="Muk Post Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none;"></iframe>
-                <video id="videoModalVideo" playsinline preload="metadata" style="display: none;"></video>
-                <div id="videoModalLoading" class="player-loading" style="display: none;">Loading cinema reel…</div>
-                
-                <!-- Sleek Frosted Glass Cinema Controls (Qazi Benchmark) -->
-                <div class="video-controls" id="videoModalControls" style="display: none;">
-                    <button type="button" class="video-ctrl-btn" id="videoCtrlPlay" aria-label="Play/Pause">
-                        <i class="fa-solid fa-play" id="videoCtrlPlayIcon"></i>
-                    </button>
-                    <span class="video-time" id="videoCtrlTime">0:00</span>
-                    <input class="video-seek" id="videoCtrlSeek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek through film">
-                    <span class="video-duration" id="videoCtrlDuration">0:00</span>
-                    <button type="button" class="video-ctrl-btn" id="videoCtrlMute" aria-label="Mute/Unmute">
-                        <i class="fa-solid fa-volume-high" id="videoCtrlMuteIcon"></i>
-                    </button>
-                    <button type="button" class="video-ctrl-btn" id="videoCtrlFs" aria-label="Fullscreen">
-                        <i class="fa-solid fa-expand"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="video-modal-footer">
-                <div class="video-modal-footer-tag">
-                    <span class="film-tag">// MUK POST PRODUCTION &bull; TORONTO</span>
-                </div>
-                <div class="video-modal-actions">
-                    <a id="videoModalExternalBtn" href="#" target="_blank" rel="noopener noreferrer" class="video-ext-btn" style="display: none;">
-                        <i class="fa-brands fa-youtube" style="margin-right: 0.45rem; color: #ff0000;"></i> Watch on YouTube ↗
-                    </a>
-                    <a id="videoModalIgBtn" href="#" target="_blank" rel="noopener noreferrer" class="video-ext-btn ig-btn" style="display: none;">
-                        <i class="fa-brands fa-instagram" style="margin-right: 0.45rem; color: #E1306C;"></i> Instagram ↗
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- INTERACTIVE INQUIRY WALKTHROUGH CONTROLLER -->
     <script>
@@ -3898,142 +3296,6 @@
                 setupController();
             }
         })();
-    </script>
-    <script>
-
-        // Step 4: Quick Project Scope / Turnaround Estimator & Formspree Handler
-        window.updateQuickScopeEstimate = function(formId) {
-            const form = document.getElementById(formId);
-            const badge = document.getElementById(formId + '_est');
-            if (!form || !badge) return;
-            const services = Array.from(form.querySelectorAll('input[name="qs_services"]:checked')).map(i => i.value);
-            const pTypeEl = form.querySelector('input[name="qs_project_type"]:checked');
-            const pType = pTypeEl ? pTypeEl.value : 'Music Video';
-
-            let est = '2–4 Business Days (4K Frame.io)';
-            if (services.length === 0) {
-                est = 'Select 1+ service above';
-            } else if (services.includes('DIT / Dailies') && services.length === 1) {
-                est = 'Same-Day / On-Set Checksum & LUTs';
-            } else if (pType.includes('Narrative') && services.length >= 2) {
-                est = '5–10 Business Days (Full Finishing)';
-            } else if (pType.includes('Commercial')) {
-                est = '24–72 Hours (Agency Fast-Track)';
-            } else if (services.length >= 3) {
-                est = '4–7 Business Days (Integrated Post)';
-            }
-            badge.textContent = est;
-            syncQuickScopeMailto(formId);
-        };
-
-        window.syncQuickScopeMailto = function(formId) {
-            const form = document.getElementById(formId);
-            const mailtoBtn = document.getElementById(formId + '_mailto');
-            if (!form || !mailtoBtn) return;
-            const services = Array.from(form.querySelectorAll('input[name="qs_services"]:checked')).map(i => i.value).join(', ') || 'Unspecified';
-            const pTypeEl = form.querySelector('input[name="qs_project_type"]:checked');
-            const pType = pTypeEl ? pTypeEl.value : 'Project';
-            const runtime = (document.getElementById(formId + '_runtime')?.value || '').trim() || 'TBD';
-            const targetDate = (document.getElementById(formId + '_date')?.value || '').trim() || 'TBD';
-            const link = (document.getElementById(formId + '_link')?.value || '').trim() || 'N/A';
-            const email = (document.getElementById(formId + '_email')?.value || '').trim() || '';
-
-            const subject = encodeURIComponent(`[Muk Post Quick Scope] ${pType} — ${services}`);
-            const body = encodeURIComponent(
-                `Hi Jackson,
-
-I'd like to scope a project with Muk Post:
-
-` +
-                `• Services Needed: ${services}
-` +
-                `• Project Type: ${pType}
-` +
-                `• Estimated Runtime / Camera: ${runtime}
-` +
-                `• Target Delivery Date: ${targetDate}
-` +
-                `• Footage / Treatment Link: ${link}
-` +
-                `• Client Email: ${email}
-
-` +
-                `Best regards,`
-            );
-            mailtoBtn.href = `mailto:contact@mukpost.com?subject=${subject}&body=${body}`;
-        };
-
-        window.submitQuickScope = async function(e, formId) {
-            e.preventDefault();
-            const form = document.getElementById(formId);
-            const statusEl = document.getElementById(formId + '_status');
-            const submitBtn = document.getElementById(formId + '_submit');
-            if (!form || !statusEl) return false;
-
-            const services = Array.from(form.querySelectorAll('input[name="qs_services"]:checked')).map(i => i.value);
-            const pTypeEl = form.querySelector('input[name="qs_project_type"]:checked');
-            const pType = pTypeEl ? pTypeEl.value : 'Music Video';
-            const runtime = (document.getElementById(formId + '_runtime')?.value || '').trim();
-            const targetDate = (document.getElementById(formId + '_date')?.value || '').trim();
-            const link = (document.getElementById(formId + '_link')?.value || '').trim();
-            const email = (document.getElementById(formId + '_email')?.value || '').trim();
-
-            if (services.length === 0) {
-                statusEl.className = 'qs-status error';
-                statusEl.textContent = 'Please select at least one service needed (Editing, Color Grading, Sound Design, Dialogue Cleanup, or DIT).';
-                return false;
-            }
-            if (!email || !email.includes('@')) {
-                statusEl.className = 'qs-status error';
-                statusEl.textContent = 'Please enter a valid email address so Jackson can send your turnaround estimate.';
-                document.getElementById(formId + '_email')?.focus();
-                return false;
-            }
-
-            const origHtml = submitBtn.innerHTML;
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span>Dispatching Scope...</span>';
-
-            const payload = {
-                _subject: `[Muk Post Quick Scope] ${pType} — ${services.join(', ')}`,
-                _replyto: email,
-                email: email,
-                services_needed: services.join(', '),
-                project_type: pType,
-                estimated_runtime: runtime || 'Not specified',
-                target_delivery_date: targetDate || 'Not specified',
-                footage_or_treatment_link: link || 'None provided',
-                source_page: window.location.pathname
-            };
-
-            try {
-                const res = await fetch('https://formspree.io/f/xrpzyngg', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
-                if (res.ok) {
-                    statusEl.className = 'qs-status success';
-                    statusEl.innerHTML = `<strong>Scope Dispatched to contact@mukpost.com.</strong> Jackson McMurdo will reply to <strong>${email}</strong> within 24 hours with a custom turnaround schedule and rate quote.`;
-                    form.reset();
-                    updateQuickScopeEstimate(formId);
-                } else {
-                    throw new Error('Formspree non-200');
-                }
-            } catch (err) {
-                syncQuickScopeMailto(formId);
-                statusEl.className = 'qs-status error';
-                statusEl.innerHTML = `Network firewall blocked direct dispatch — <a href="${document.getElementById(formId + '_mailto').href}" style="color:#ffffff;text-decoration:underline;font-weight:700;">click here to send your pre-filled scope directly via email to contact@mukpost.com</a>.`;
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = origHtml;
-            }
-            return false;
-        };
-
     </script>
 </body>
 </html>

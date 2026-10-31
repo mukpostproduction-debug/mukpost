@@ -116,22 +116,4 @@
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
-  <url>
-    <loc>https://mukpost.com/services/color-grading-toronto/</loc>
-    <lastmod>2026-10-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://mukpost.com/services/sound-design-audio-mixing/</loc>
-    <lastmod>2026-10-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://mukpost.com/services/video-editing-dit-toronto/</loc>
-    <lastmod>2026-10-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
 </urlset>
