@@ -40,6 +40,9 @@
 
 ## Key Website Routes
 - [Home & Portfolio Directory](https://mukpost.com/)
+- [Color Grading & Finishing in DaVinci Resolve (Toronto & Remote)](https://mukpost.com/services/color-grading-toronto/)
+- [Post-Production Sound Design, Pro Tools Mixing & RX Dialogue Cleanup](https://mukpost.com/services/sound-design-audio-mixing/)
+- [Video Editing, On-Set DIT & Dailies Management Toronto](https://mukpost.com/services/video-editing-dit-toronto/)
 - [DaVinci Resolve Color Grading Gallery (248+ Stills)](https://mukpost.com/colour.html)
 - [Sound Design, Pro Tools Mixing & Interactive Stem Mixer](https://mukpost.com/sound.html)
 - [Film Title Design, Calligraphy & Motion Graphics](https://mukpost.com/design.html)

@@ -53,3 +53,4 @@ npm install
 1. In Google Cloud Console → **APIs & Services** → **Library**, enable **Google Search Console API**.
 2. Go to **Credentials** → **Create Credentials** → **OAuth client ID** → **Desktop app** and save to `/Users/jacksonmcmurdo/Desktop/Muk_Post/02_BUSINESS_&_OPERATIONS/APPLY_AGENT/credentials/gsc_client_secrets.json`.
 3. On first tool call in Antigravity, authorize `mcmurdo.jackson@gmail.com` for `sc-domain:mukpost.com`.
+

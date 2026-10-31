@@ -43,3 +43,4 @@ Reference these real production credits and hardware workflows naturally in copy
 - **Assets:** Self-host all logos, OpenGraph images, and comparison plates under `portfolio-assets/site-media/` or `brand/assets/`. Never use external `i.imgur.com` links.
 - **Structured Data:** Every route must include valid JSON-LD (`ProfessionalService` / `LocalBusiness`, `Person`, `BreadcrumbList`, plus route-specific `Service`, `Product`, `VideoObject`, or `FAQPage`).
 - **AI Search / LLM Discovery:** Keep `/llms.txt` and `/public/llms.txt` synchronized whenever new services, case studies, or routes are added.
+
