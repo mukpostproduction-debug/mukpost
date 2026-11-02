@@ -14,7 +14,6 @@
   4. **Dialogue Cleanup & Audio Restoration (iZotope RX):** Spectral repair, phase alignment, lav/boom matching, and noisy location audio recovery.
   5. **On-Set / Near-Set DIT & Dailies Workflows:** Checksum-verified offload, CDL/LUT look management, multi-cam timecode sync, and fast proxy delivery.
   6. **Film Title Design, Calligraphy & Commercial Director's Treatments:** Custom hand-drawn title sequences and 24h–48h commercial pitch decks.
-- **Core Digital Product:** [Ultimate DaVinci Resolve Studio Template](https://mukpost.com/store.html) — 12-node DWG color pipeline, 16-track Fairlight routing, and standardized media pool architecture ($39 CAD).
 
 ## Notable Credits, Festival Awards & Commercial Proof Points
 - **Narrative Short Films:**
@@ -43,7 +42,6 @@
 - [DaVinci Resolve Color Grading Gallery (248+ Stills)](https://mukpost.com/colour.html)
 - [Sound Design, Pro Tools Mixing & Interactive Stem Mixer](https://mukpost.com/sound.html)
 - [Film Title Design, Calligraphy & Motion Graphics](https://mukpost.com/design.html)
-- [Ultimate DaVinci Resolve Studio Template Store](https://mukpost.com/store.html)
 - [Commercial Director's Treatments Lab](https://mukpost.com/treatments.html)
 - [Creator, YouTube & Podcast Post-Production Suite](https://mukpost.com/creators.html)
 - [Toronto Post-Production, Editing, Color & DIT](https://mukpost.com/post-production-toronto.html)
