@@ -526,6 +526,32 @@
             line-height: 1.65;
         }
 
+        .cap-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cap-list li {
+            font-size: 0.86rem;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.65rem;
+            line-height: 1.5;
+        }
+
+        .cap-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .cap-list li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
         .work-cat {
             margin-bottom: 7rem;
         }
@@ -1181,21 +1207,39 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 3rem;
-            margin-top: 2rem;
+            gap: clamp(2rem, 4.5vw, 3.8rem);
+            margin-top: 4.5rem;
         }
         .laurels-wrapper img {
-            height: 68px;
+            height: 82px;
             width: auto;
             object-fit: contain;
-            opacity: 0.75;
+            opacity: 0.85;
             transition: opacity 0.3s ease, transform 0.3s var(--ease-out);
-            filter: brightness(0.95);
+            filter: brightness(0.96);
         }
         .laurels-wrapper img:hover {
             opacity: 1;
-            transform: scale(1.05);
+            transform: scale(1.05) translateY(-2px);
             filter: brightness(1.1);
+        }
+
+        /* STUDIO STORAGE & HARDWARE BADGE */
+        .storage-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 3.2rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        .storage-badge-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-emerald);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.85);
+            flex-shrink: 0;
         }
 
         /* ==========================================================================
@@ -1752,8 +1796,10 @@
             .work-cat { margin-bottom: 4.5rem; }
             .studio-btn { width: 100%; justify-content: center; }
             .tech-stack-label { border-right: none; width: 100%; margin-bottom: 0.5rem; }
-            .laurels-wrapper { gap: 1.5rem; margin-top: 2.5rem; }
-            .laurels-wrapper img { height: 50px; }
+            .laurels-wrapper { gap: 1.5rem; margin-top: 3rem; }
+            .laurels-wrapper img { height: 58px; }
+            .storage-wrapper { margin-top: 2.4rem; }
+            .storage-btn-interactive { flex-wrap: wrap; justify-content: center; text-align: center; border-radius: 14px; padding: 0.85rem 1.1rem; }
             .works-grid { grid-template-columns: 1fr; }
             .works-catalog-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
         }

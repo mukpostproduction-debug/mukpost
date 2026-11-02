@@ -185,11 +185,13 @@ button:active,
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
-  padding: 0 clamp(24px, 4.5vw, 64px);
+  padding-left: clamp(24px, 4.5vw, 64px);
+  padding-right: clamp(24px, 4.5vw, 64px);
 }
 
 section {
-  padding: 110px 0;
+  padding-top: 110px;
+  padding-bottom: 110px;
   border-bottom: 1px solid var(--border);
   position: relative;
 }
@@ -769,7 +771,8 @@ h1, h2, h3, h4, h5, h6 {
    CONTACT FORM & FOOTER
    ========================================================================== */
 footer {
-  padding: 110px 0 90px;
+  padding-top: 110px;
+  padding-bottom: 90px;
   text-align: center;
 }
 
@@ -950,7 +953,7 @@ footer {
 @media (max-width: 768px) {
   .nav-links, .nav-socials { display: none !important; }
   .mobile-menu-btn { display: flex !important; align-items: center; justify-content: center; }
-  section { padding: 70px 0; }
+  section { padding-top: 70px; padding-bottom: 70px; }
   .workflow-headline { margin-bottom: 2.8rem; font-size: 1.7rem; }
   .contact-section { padding: 2rem 1.4rem; margin-top: 2.2rem; }
   .form-grid { grid-template-columns: 1fr; gap: 1.3rem; margin-top: 1.4rem; }
@@ -959,10 +962,10 @@ footer {
   .submit-btn { width: 100%; padding: 1.1rem; }
   .footer-socials { flex-direction: column; align-items: stretch; gap: 0.9rem; }
   .social-btn { justify-content: center; }
-  footer { padding: 80px 0 60px; }
+  footer { padding-top: 80px; padding-bottom: 60px; }
 }
 
 @media (max-width: 375px) {
-  .container { padding: 0 1.2rem; }
+  .container { padding-left: 1.2rem; padding-right: 1.2rem; }
   .contact-section { padding: 1.6rem 1rem; }
 }
