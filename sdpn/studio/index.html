@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sdpn // LFR20 Studio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/CustomEase.min.js"></script>
+</head>
+<body>
+
+  <!-- TOP STUDIO HEADER (58px Apple macOS × NHL.com Bar) -->
+  <header class="studio-header">
+    <div class="header-brand" id="brandHomeBtn" role="button" tabindex="0" title="Return to Studio Home">
+      <span class="sdpn-pill-badge">sdpn</span>
+      <h1 class="studio-title">LFR20 Studio</h1>
+    </div>
+
+    <!-- CENTER MACOS SEGMENTED CONTROL (HOME + ALL 8 TEMPLATES) -->
+    <nav class="template-segmented-bar" aria-label="Broadcast Templates">
+      <button class="seg-tab active" id="tab-home" data-template="home" type="button">Home</button>
+      <span class="seg-divider" aria-hidden="true"></span>
+      <button class="seg-tab" id="tab-stat" data-template="stat" type="button">Player Card</button>
+      <button class="seg-tab" id="tab-matchup" data-template="matchup" type="button">Head-to-Head</button>
+      <button class="seg-tab" id="tab-teamtape" data-template="teamtape" type="button">Tale of Tape</button>
+      <button class="seg-tab" id="tab-standings" data-template="standings" type="button">NHL Standings</button>
+      <button class="seg-tab" id="tab-stamp" data-template="stamp" type="button">Dang-It!</button>
+      <button class="seg-tab" id="tab-trade" data-template="trade" type="button">Trade Alert</button>
+      <button class="seg-tab" id="tab-threestars" data-template="threestars" type="button">3 Stars</button>
+      <button class="seg-tab" id="tab-scorebug" data-template="scorebug" type="button">Scorebug</button>
+    </nav>
+
+    <!-- RIGHT ACTIONS (HOME LIVE SYNC PILLS / EDITOR EXPORT PILLS) -->
+    <div class="header-actions">
+      <div class="header-home-group" id="headerHomeActions">
+        <button class="btn-pill-secondary nhl-sync-pill" id="btnHeaderSyncNHL" type="button" title="Sync Live NHL Schedule & Standings">
+          <span class="live-sync-dot" id="headerSyncDot"></span>
+          <span id="headerSyncLabel">NHL Live Synced</span>
+        </button>
+        <button class="btn-pill-primary" id="btnHeaderOpenEditor" type="button">Open Studio &rarr;</button>
+      </div>
+
+      <div class="header-editor-group" id="headerEditorActions" style="display:none;">
+        <div class="res-segmented" id="resSegmented" role="group" aria-label="Export Resolution">
+          <button class="res-btn active" data-res="1080p" type="button" title="1920x1080 Full HD">1080p</button>
+          <button class="res-btn" data-res="4k" type="button" title="3840x2160 4K Ultra HD">4K</button>
+        </div>
+        <select class="codec-pill-select" id="exportCodecSelect" aria-label="Video Export Codec" style="display:none;">
+          <option value="prores4444">ProRes 4444 (.mov)</option>
+          <option value="webm">VP9 Alpha (.webm)</option>
+        </select>
+        <button class="btn-pill-secondary" id="btnExportPNG" type="button">Save PNG</button>
+        <button class="btn-pill-primary" id="btnExportWebM" type="button">Export Video (.webm)</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- STUDIO HOME LAUNCHPAD (DEFAULT LANDING VIEW — LIVE NHL NEXT GAME + 8 GRAPHICS GALLERY) -->
+  <section class="home-launchpad" id="homeView" aria-label="Studio Home Launchpad">
+    <div class="home-launchpad-inner">
+
+      <!-- UPCOMING MAPLE LEAFS GAME LIVE HUB BANNER -->
+      <div class="next-game-hero" id="nextGameHero">
+        <div class="hero-col-meta">
+          <div class="hero-badge-row">
+            <span class="live-status-pill">
+              <span class="live-sync-dot"></span>
+              <span id="homeSyncBadgeText">LIVE NHL SCHEDULE SYNC</span>
+            </span>
+            <span class="hero-ep-pill" id="homeGameEpisode">LFR20 &bull; GAME 21</span>
+          </div>
+          <h2 class="hero-headline" id="homeHeroHeadline">Maple Leafs Next Broadcast Package</h2>
+          <p class="hero-schedule-line" id="homeGameMetaLine">Thu, Nov 12, 2026 &bull; 7:00 PM ET &bull; Scotiabank Arena &bull; SN</p>
+          <div class="hero-last-game-chip" id="homeLastGameChip">Last Game (G20): COL 6, TOR 3 &bull; Final</div>
+        </div>
+
+        <div class="hero-matchup-lockup">
+          <div class="hero-club-card" id="homeAwayClubCard">
+            <div class="hero-club-crest-wrap">
+              <img id="homeAwayCrest" src="assets/logos/MIN_light.svg" alt="MIN">
+            </div>
+            <div class="hero-club-info">
+              <div class="hero-club-code-row">
+                <span class="hero-club-code" id="homeAwayCode">MIN</span>
+                <span class="hero-club-role" id="homeAwayRole">AWAY</span>
+              </div>
+              <span class="hero-club-name" id="homeAwayName">Minnesota Wild</span>
+              <span class="hero-club-record" id="homeAwayRecord">13-3-4 &bull; 30 PTS &bull; 1st Central</span>
+            </div>
+          </div>
+
+          <div class="hero-vs-pill" id="homeMatchupSep">@</div>
+
+          <div class="hero-club-card" id="homeHomeClubCard">
+            <div class="hero-club-crest-wrap">
+              <img id="homeHomeCrest" src="assets/logos/TOR_light.svg" alt="TOR">
+            </div>
+            <div class="hero-club-info">
+              <div class="hero-club-code-row">
+                <span class="hero-club-code" id="homeHomeCode">TOR</span>
+                <span class="hero-club-role" id="homeHomeRole">HOME</span>
+              </div>
+              <span class="hero-club-name" id="homeHomeName">Toronto Maple Leafs</span>
+              <span class="hero-club-record" id="homeHomeRecord">8-10-2 &bull; 18 PTS &bull; Atlantic</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-actions-col">
+          <button class="btn-hero-primary" id="btnPrepNextGame" type="button">Open Game 21 Package &rarr;</button>
+          <button class="btn-hero-secondary" id="btnHomeSyncNHL" type="button">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            <span id="btnHomeSyncLabel">Sync Live NHL</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 8-TEMPLATE INTERACTIVE BROADCAST GRAPHICS GALLERY -->
+      <div class="home-suite-header">
+        <div>
+          <h3 class="home-suite-title">Broadcast Graphics Suite</h3>
+          <p class="home-suite-sub" id="homeSuiteSubtitle">All 8 animated templates pre-synced for Minnesota Wild @ Toronto Maple Leafs — click any graphic to customize &amp; export in 1080p60 or 4K60 Alpha.</p>
+        </div>
+        <div class="home-suite-meta-pill">32 NHL Clubs &bull; 277 Cutouts &bull; Straight Alpha</div>
+      </div>
+
+      <div class="home-cards-grid" id="homeCardsContainer"></div>
+
+    </div>
+  </section>
+
+  <!-- THREE-ZONE APPLE × NHL.COM WORKSPACE -->
+  <div class="studio-workspace" id="studioWorkspace" style="display:none;">
+
+    <!-- LEFT SIDEBAR: NHL.COM 32-TEAM & 277-PLAYER ROSTER BROWSER (290px) -->
+    <aside class="roster-sidebar">
+
+      <!-- 32-Team Circular Crest Strip -->
+      <div class="team-strip-wrap">
+        <button class="strip-nav-btn" id="btnTeamScrollLeft" type="button" aria-label="Scroll Teams Left">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="team-crest-strip" id="teamCrestStrip"></div>
+        <button class="strip-nav-btn" id="btnTeamScrollRight" type="button" aria-label="Scroll Teams Right">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+
+      <!-- Live Search Box -->
+      <div class="roster-search-box">
+        <div class="search-input-wrap">
+          <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="rosterSearchInput" class="search-input" placeholder="Search 250+ NHL Players...">
+        </div>
+
+        <!-- Contextual Multi-Slot Target Selector (Head-to-Head / 3 Stars / Stamp) -->
+        <div class="slot-assignment-bar" id="slotAssignmentBar" style="display:none;"></div>
+      </div>
+
+      <!-- Scrollable NHL.com Circular Avatar Roster List -->
+      <div class="player-avatar-list" id="playerAvatarList"></div>
+    </aside>
+
+    <!-- CENTER STAGE: 16:9 MONITOR + FLOATING QUICKTIME TRANSPORT PILL -->
+    <main class="center-stage">
+
+      <div class="monitor-stage-wrap">
+        <div class="broadcast-monitor mode-lfr" id="viewportScreen">
+
+          <!-- PREVIEW-ONLY STEVE DANGLE LFR BLUE ROOM 10S LOOP UNDERLAY (NEVER EXPORTED INTO .MOV / .WEBM / .PNG) -->
+          <div class="lfr-room-underlay" id="lfrRoomUnderlay" aria-hidden="true">
+            <video id="lfrRoomVideo" src="assets/brand/lfr-blue-room-loop.mp4" poster="assets/brand/lfr-blue-room-poster.jpg" autoplay loop muted playsinline preload="auto"></video>
+          </div>
+
+          <!-- PREVIEW-ONLY NHL CENTER ICE BROADCAST PLATE (NEVER EXPORTED INTO .WEBM / .PNG) -->
+          <div class="ice-rink-underlay" id="iceRinkUnderlay" aria-hidden="true">
+            <div class="arena-crowd-tier">
+              <div class="arena-glass-stanchions"></div>
+            </div>
+            <div class="arena-boards-tier">
+              <span class="board-ad">sdpn</span>
+              <span class="board-ad board-ad-blue">SCOTIABANK ARENA</span>
+              <span class="board-ad">NHL.COM</span>
+              <span class="board-ad board-ad-red" id="iceBoardEpisode">LFR20 • GAME 21</span>
+              <span class="board-ad">SPORTS ARE FUN</span>
+            </div>
+            <div class="arena-ice-sheet">
+              <div class="ice-line blue-line-left"></div>
+              <div class="ice-line red-center-line"></div>
+              <div class="ice-line blue-line-right"></div>
+              <div class="center-faceoff-circle">
+                <svg class="center-ice-ring-svg" viewBox="0 0 360 360" aria-hidden="true">
+                  <defs>
+                    <path id="iceTopArc" d="M 42,180 A 138,138 0 1,1 318,180" />
+                    <path id="iceBotArc" d="M 318,180 A 138,138 0 1,1 42,180" />
+                  </defs>
+                  <circle cx="180" cy="180" r="166" fill="none" stroke="rgba(0,56,168,0.26)" stroke-width="5" />
+                  <circle cx="180" cy="180" r="112" fill="none" stroke="rgba(0,56,168,0.18)" stroke-width="2.5" />
+                  <text fill="rgba(0,32,91,0.28)" font-family="Inter, sans-serif" font-weight="800" font-size="22" letter-spacing="7">
+                    <textPath href="#iceTopArc" startOffset="50%" text-anchor="middle" id="iceRingTopText">TORONTO MAPLE LEAFS</textPath>
+                  </text>
+                  <text fill="rgba(0,32,91,0.24)" font-family="Inter, sans-serif" font-weight="800" font-size="20" letter-spacing="8">
+                    <textPath href="#iceBotArc" startOffset="50%" text-anchor="middle">sdpn • LFR20 STUDIO</textPath>
+                  </text>
+                </svg>
+                <img id="centerIceLogo" src="assets/logos/TOR_light.svg" alt="">
+                <div class="faceoff-dot"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TRUE 1920x1080 60FPS ALPHA BROADCAST CANVAS -->
+          <canvas id="broadcastCanvas"></canvas>
+        </div>
+      </div>
+
+      <!-- FLOATING WHITE APPLE QUICKTIME TRANSPORT CAPSULE -->
+      <div class="quicktime-pill">
+        <button class="qt-icon-btn" id="btnPlayPause" type="button" title="Play / Pause">
+          <svg id="iconPlay" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+          <svg id="iconPause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"></rect><rect x="14" y="4" width="4" height="16" rx="1"></rect></svg>
+        </button>
+        <button class="qt-icon-btn qt-icon-sm" id="btnRestart" type="button" title="Restart Animation">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+        </button>
+
+        <span class="qt-timecode" id="timecodeDisplay">0:01.6 / 0:04.5</span>
+
+        <input type="range" class="qt-scrubber" id="timelineSlider" min="0" max="4.5" step="0.01" value="1.65" aria-label="Timeline Scrubber">
+
+        <div class="backdrop-segmented" role="group" aria-label="Preview Backdrop">
+          <button class="backdrop-btn" data-backdrop="alpha" type="button">Alpha</button>
+          <button class="backdrop-btn" data-backdrop="studio" type="button">Studio</button>
+          <button class="backdrop-btn" data-backdrop="ice" type="button">Ice</button>
+          <button class="backdrop-btn active" data-backdrop="lfr" type="button">Blue Room</button>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- RIGHT CONTEXTUAL INSPECTOR SIDEBAR (310px) -->
+    <aside class="inspector-sidebar">
+
+      <!-- macOS Inspector Toolbar + Quick Scenario Presets -->
+      <div class="inspector-toolbar">
+        <div class="inspector-icons" aria-hidden="true">
+          <span class="insp-icon active">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"></rect><line x1="9" y1="8" x2="15" y2="8"></line><line x1="9" y1="12" x2="15" y2="12"></line><line x1="9" y1="16" x2="13" y2="16"></line></svg>
+          </span>
+          <span class="insp-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="16" y2="12"></line><line x1="4" y1="18" x2="12" y2="18"></line></svg>
+          </span>
+          <span class="insp-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+          </span>
+        </div>
+      </div>
+
+      <!-- Quick Load Scenario Preset Selector -->
+      <div class="inspector-block preset-block">
+        <label class="insp-label" for="presetSelect">Quick Load Preset</label>
+        <select class="insp-select" id="presetSelect">
+          <option value="tonight">Next Game: MIN @ TOR (Matthews #34)</option>
+          <option value="h2h_next">Superstar Duel (Matthews vs Kaprizov)</option>
+          <option value="tape_game20">Game 21 Tale of Tape (MIN @ TOR)</option>
+          <option value="tendy_battle">Tendy Battle (Stolarz vs Wallstedt)</option>
+          <option value="matthews_season">Matthews #34 (2026-27 Season)</option>
+          <option value="mckenna">Cowan #53 (Rookie Spotlight)</option>
+          <option value="atlantic_panic">Atlantic Panic (Live Standings Race)</option>
+          <option value="dangit">Dang-It! (4 Straight Losses)</option>
+          <option value="hatpick">Hat-Pick! (Beaston Cowan #53)</option>
+          <option value="trade_alert">Trade Alert (TOR / CBJ Breakdown)</option>
+          <option value="lfr_3stars">LFR 3 Stars (Vs Minnesota)</option>
+          <option value="scorebug_live">Game 21 Live Scorebug &amp; Panic</option>
+        </select>
+      </div>
+
+      <!-- 1. PLAYER CARD INSPECTOR -->
+      <div class="inspector-section" id="section-stat">
+        <div class="inspector-block toggle-row-block">
+          <span class="toggle-row-text" id="statModeLabel">2026-27 Season | <strong>Tonight's Game</strong></span>
+          <label class="apple-switch">
+            <input type="checkbox" id="statTonightToggle" checked>
+            <span class="apple-slider"></span>
+          </label>
+        </div>
+
+        <div class="inspector-block">
+          <div class="insp-field">
+            <label class="insp-label" for="statContext">Banner Tag</label>
+            <input class="insp-input" id="statContext" type="text" value="LFR20 • GAME 20 VS COL">
+          </div>
+
+          <div class="insp-field">
+            <label class="insp-label" for="statVerdict">Stamp Pill</label>
+            <input class="insp-input" id="statVerdict" type="text" value="ELITE" list="verdictSuggestions">
+            <datalist id="verdictSuggestions">
+              <option value="ELITE"></option>
+              <option value="BEASTON"></option>
+              <option value="CLUTCH"></option>
+              <option value="GHOSTED"></option>
+              <option value="PAIN"></option>
+            </datalist>
+          </div>
+        </div>
+
+        <div class="inspector-block">
+          <div class="stat-cards-2x2">
+            <div class="stat-edit-card">
+              <input class="stat-card-lbl" id="statLbl0" type="text" value="G">
+              <input class="stat-card-val" id="statVal0" type="text" value="2">
+            </div>
+            <div class="stat-edit-card">
+              <input class="stat-card-lbl" id="statLbl1" type="text" value="A">
+              <input class="stat-card-val" id="statVal1" type="text" value="2">
+            </div>
+            <div class="stat-edit-card">
+              <input class="stat-card-lbl" id="statLbl2" type="text" value="PTS">
+              <input class="stat-card-val" id="statVal2" type="text" value="4">
+            </div>
+            <div class="stat-edit-card">
+              <input class="stat-card-lbl" id="statLbl3" type="text" value="SOG">
+              <input class="stat-card-val" id="statVal3" type="text" value="7">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. HEAD-TO-HEAD INSPECTOR -->
+      <div class="inspector-section" id="section-matchup" style="display:none;">
+        <div class="inspector-block">
+          <div class="insp-field">
+            <label class="insp-label" for="matchupTitle">Matchup Banner</label>
+            <input class="insp-input" id="matchupTitle" type="text" value="LFR20 • SUPERSTAR HEAD-TO-HEAD">
+          </div>
+          <div class="insp-field">
+            <label class="insp-label" for="matchupStatMode">Comparison Stat Set</label>
+            <select class="insp-select" id="matchupStatMode">
+              <option value="scoring">Scoring Line (G / A / PTS / TOI)</option>
+              <option value="impact">Two-Way Impact (GP / PTS / +/- / SOG)</option>
+              <option value="goalie">Goaltending Duel (GP / W-L-OT / SV% / GAA)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="inspector-block">
+          <div class="insp-field">
+            <label class="insp-label" for="matchupLeftTeam">Left Club & Contender</label>
+            <select class="insp-select" id="matchupLeftTeam" style="margin-bottom:6px;"></select>
+            <select class="insp-select" id="matchupLeftPlayer"></select>
+          </div>
+          <div class="insp-field">
+            <label class="insp-label" for="matchupRightTeam">Right Club & Contender</label>
+            <select class="insp-select" id="matchupRightTeam" style="margin-bottom:6px;"></select>
+            <select class="insp-select" id="matchupRightPlayer"></select>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. TALE OF THE TAPE INSPECTOR -->
+      <div class="inspector-section" id="section-teamtape" style="display:none;">
+        <div class="inspector-block">
+          <div class="insp-field">
+            <label class="insp-label" for="tapeHeader">Board Title</label>
+            <input class="insp-input" id="tapeHeader" type="text" value="LFR20 • GAME 20 TALE OF THE TAPE">
+          </div>
+          <div class="insp-field">
+            <label class="insp-label" for="tapeSubheader">Venue / Broadcast Time</label>
+            <input class="insp-input" id="tapeSubheader" type="text" value="SCOTIABANK ARENA • 7:00 PM EST">
+          </div>
+          <div class="insp-field">
+            <label class="insp-label" for="tapeAwayTeam">Visitor Club</label>
+            <select class="insp-select" id="tapeAwayTeam"></select>
+          </div>
+          <div class="insp-field">
+            <label class="insp-label" for="tapeHomeTeam">Home Club</label>
+            <select class="insp-select" id="tapeHomeTeam"></select>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. NHL STANDINGS INSPECTOR -->
+      <div class="inspector-section" id="section-standings" style="display:none;">
+        <div class="inspector-block">
+          <div class="insp-field">
+            <label class="insp-label" for="standingsDivision">NHL Division</label>
+            <select class="insp-select" id="standingsDivision">
+              <option value="Atlantic">Atlantic Division</option>
+              <option value="Metropolitan">Metropolitan Division</option>
+              <option value="Central">Central Division</option>
+              <option value="Pacific">Pacific Division</option>
+            </select>
+          </div>
+          <div class="insp-field">
+            <label class="insp-label" for="standingsFocusTeam">Highlighted Club</label>
+            <select class="insp-select" id="standingsFocusTeam"></select>
+          </div>
+          <div class="insp-field">
+            <label class="insp-label" for="standingsSubtitle">Broadcast Subtitle</label>
+            <input class="insp-input" id="standingsSubtitle" type="text" value="2026-27 PLAYOFF RACE • NOV 10">
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. DANG-IT! / HAT-PICK! KINETIC STAMP INSPECTOR -->
+      <div class="inspector-section" id="section-stamp" style="display:none;">
+        <div class="inspector-block">
+          <div class="insp-field">
+            <label class="insp-label" for="stampType">Stamp Mode</label>
+            <select class="insp-select" id="stampType">
+              <option value="dangit">DANG-IT! (Crimson Alert)</option>
+              <option value="hatpick">HAT-PICK! (Championship Gold)</option>
+            </select>
+          </div>
+          <div class="insp-field">
+            <label class="insp-label" for="stampHeadline">Primary Slam Headline</label>
+            <input class="insp-input" id="stampHeadline" type="text" value="3 STRAIGHT LOSSES">
+          </div>
+          <div class="insp-field">
+            <label class="insp-label" for="stampSubtext">Lower Callout Strip</label>
+            <input class="insp-input" id="stampSubtext" type="text" value="LFR20 G19 • SHUT OUT 4-0 BY NEW JERSEY">
+          </div>
+          <div class="insp-field">
+            <label class="insp-label" for="stampPlayerSelect">Featured Player Cutout</label>
+            <select class="insp-select" id="stampPlayerSelect"></select>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. TRADE ALERT INSPECTOR -->
+      <div class="inspector-section" id="section-trade" style="display:none;">
+        <div class="inspector-block">
+          <div class="insp-field">
+            <label class="insp-label" for="tradeBadge">Header Strap</label>
+            <input class="insp-input" id="tradeBadge" type="text" value="TRADE ALERT">
+          </div>
+          <div class="insp-field">
+            <label class="insp-label" for="tradeLeftTeam">Left Club & Terms</label>
+            <select class="insp-select" id="tradeLeftTeam" style="margin-bottom:6px;"></select>
+            <input class="insp-input" id="tradeLeftSubtitle" type="text" value="ACQUIRES • $3.85M AAV" style="margin-bottom:6px;">
+            <textarea class="insp-textarea" id="tradeLeftItems" rows="2">Kirill Marchenko (RW)
+2027 3rd Round Pick (CBJ)</textarea>
+          </div>
+          <div class="insp-field">
+            <label class="insp-label" for="tradeRightTeam">Right Club & Terms</label>
+            <select class="insp-select" id="tradeRightTeam" style="margin-bottom:6px;"></select>
+            <input class="insp-input" id="tradeRightSubtitle" type="text" value="ACQUIRES • 15% RETAINED" style="margin-bottom:6px;">
+            <textarea class="insp-textarea" id="tradeRightItems" rows="2">2027 1st Round Pick (Top-10 Prot.)
+Top Marlies Prospect</textarea>
+          </div>
+          <div class="insp-field">
+            <label class="insp-label" for="tradeTicker">Bottom Ticker</label>
+            <input class="insp-input" id="tradeTicker" type="text" value="sdpn INSTANT REACTION • EMERGENCY SDP BREAKDOWN">
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. THREE STARS INSPECTOR -->
+      <div class="inspector-section" id="section-threestars" style="display:none;">
+        <div class="inspector-block">
+          <div class="insp-field">
+            <label class="insp-label" for="starsHeader">Podium Header</label>
+            <input class="insp-input" id="starsHeader" type="text" value="LFR20 • THREE STARS OF THE GAME">
+          </div>
+          <div class="insp-field">
+            <label class="insp-label" for="starsMode">Ribbon Style</label>
+            <select class="insp-select" id="starsMode">
+              <option value="stars">1st / 2nd / 3rd Star</option>
+              <option value="verdict">The Hero / Spark / Pain</option>
+            </select>
+          </div>
+          <div class="insp-field">
+            <label class="insp-label" for="star1Player">1st Star</label>
+            <select class="insp-select" id="star1Player" style="margin-bottom:5px;"></select>
+            <input class="insp-input" id="star1Line" type="text" value="2G • 3A • 5 PTS">
+          </div>
+          <div class="insp-field">
+            <label class="insp-label" for="star2Player">2nd Star</label>
+            <select class="insp-select" id="star2Player" style="margin-bottom:5px;"></select>
+            <input class="insp-input" id="star2Line" type="text" value="2G • 2A • 4 PTS">
+          </div>
+          <div class="insp-field">
+            <label class="insp-label" for="star3Player">3rd Star</label>
+            <select class="insp-select" id="star3Player" style="margin-bottom:5px;"></select>
+            <input class="insp-input" id="star3Line" type="text" value="1G • GWG • +2">
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. SCOREBUG & PANIC METER INSPECTOR -->
+      <div class="inspector-section" id="section-scorebug" style="display:none;">
+        <div class="inspector-block">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <span class="insp-label" style="margin-bottom:0;">Live Box Score</span>
+            <button class="btn-inline-sync" id="btnFetchNHL" type="button">Sync Live NHL</button>
+          </div>
+          <div class="grid-2">
+            <div class="insp-field">
+              <label class="insp-label" for="scoreEpisode">Broadcast Tag</label>
+              <input class="insp-input" id="scoreEpisode" type="text" value="LFR20 • GAME 20">
+            </div>
+            <div class="insp-field">
+              <label class="insp-label" for="scoreStatus">Period / Clock</label>
+              <input class="insp-input" id="scoreStatus" type="text" value="3RD • 04:18">
+            </div>
+          </div>
+
+          <div class="insp-field">
+            <label class="insp-label" for="scoreAwayTeam">Visitor Club</label>
+            <select class="insp-select" id="scoreAwayTeam" style="margin-bottom:6px;"></select>
+            <div class="grid-2">
+              <input class="insp-input" id="scoreAwayScore" type="text" value="3" placeholder="Goals">
+              <input class="insp-input" id="scoreAwayShots" type="text" value="31" placeholder="SOG">
+            </div>
+          </div>
+
+          <div class="insp-field">
+            <label class="insp-label" for="scoreHomeTeam">Home Club</label>
+            <select class="insp-select" id="scoreHomeTeam" style="margin-bottom:6px;"></select>
+            <div class="grid-2">
+              <input class="insp-input" id="scoreHomeScore" type="text" value="4" placeholder="Goals">
+              <input class="insp-input" id="scoreHomeShots" type="text" value="35" placeholder="SOG">
+            </div>
+          </div>
+
+          <div class="insp-field">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <label class="insp-label" for="scorePanic" style="margin-bottom:0;">Dangle Panic Meter</label>
+              <span class="panic-pct-badge" id="panicValueDisplay">68%</span>
+            </div>
+            <input type="range" class="qt-scrubber" id="scorePanic" min="0" max="100" value="68" style="width:100%;">
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+
+      <!-- CLEAN APPLE LIGHT EXPORT MODAL -->
+  <div class="modal-overlay" id="exportOverlay">
+    <div class="modal-card">
+      <div class="modal-spinner"></div>
+      <h3 class="modal-heading" id="exportModalHeading">Exporting Transparent Video</h3>
+      <p id="exportStatusMsg" class="modal-status">Frame 0 / 270 (0%)</p>
+      <div class="progress-track">
+        <div class="progress-fill" id="exportProgressBar"></div>
+      </div>
+      <p class="modal-sub" id="exportModalSub">1920x1080 60fps VP9 WebM with Alpha Channel</p>
+    </div>
+  </div>
+
+  <!-- BROWSER EXPORT TOAST (Native Mac App uses native AppKit NSDraggingSource Dock) -->
+  <div class="export-dock-chip" id="webExportToast" style="display:none;">
+    <span class="export-check-dot"></span>
+    <span class="export-dock-text" id="webExportToastText">Export saved to Downloads</span>
+    <button class="export-dock-close" id="btnCloseWebToast" type="button" aria-label="Dismiss">&times;</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

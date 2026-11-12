@@ -4,16 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow, noarchive">
-  <title>sdpn // LFR20 Studio — Private Pitch by Muk Post</title>
-  <meta name="description" content="Private preview of sdpn LFR20 Studio — custom macOS 4K60 & 1080p60 broadcast motion graphics software engineered in Toronto by Muk Post Software Solutions.">
+  <title>sdpn LFR20 Studio — Private Pitch by Muk Post</title>
+  <meta name="description" content="Private preview of sdpn LFR20 Studio — custom broadcast motion graphics software engineered in Toronto by Jackson McMurdo (Muk Post).">
 
   <!-- Self-Hosted Muk Post Brand Icons -->
   <link rel="icon" type="image/png" sizes="96x96" href="../portfolio-assets/site-media/favicon-96.png">
   <link rel="apple-touch-icon" href="../portfolio-assets/site-media/apple-touch-icon.png">
   <meta property="og:title" content="sdpn // LFR20 Studio — Built for LFR20 by Muk Post">
-  <meta property="og:description" content="Zero After Effects. Ready at the final horn. Custom Mac broadcast graphics studio for Steve Dangle, Adam Wylde & Jesse Blake.">
+  <meta property="og:description" content="Zero After Effects. Ready at the final horn. Test the interactive sdpn LFR20 Studio live in your browser.">
   <meta property="og:image" content="https://mukpost.com/sdpn/poster.jpg">
   <meta property="og:type" content="website">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "name": "Muk Post",
+        "url": "https://mukpost.com",
+        "email": "contact@mukpost.com",
+        "founder": {
+          "@type": "Person",
+          "name": "Jackson McMurdo"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Toronto",
+          "addressRegion": "ON",
+          "addressCountry": "CA"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "sdpn LFR20 Studio",
+        "operatingSystem": "macOS, Web",
+        "applicationCategory": "MultimediaApplication",
+        "creator": {
+          "@type": "Organization",
+          "name": "Muk Post"
+        }
+      }
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,6 +75,10 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     html, body {
       background-color: var(--bg-canvas);
       color: var(--ink-primary);
@@ -56,7 +94,6 @@
       color: #FFFFFF;
     }
 
-    /* Subtle top daylight studio wash */
     body::before {
       content: "";
       position: fixed;
@@ -90,7 +127,7 @@
     }
 
     .top-bar-inner {
-      max-width: 1240px;
+      max-width: 1380px;
       margin: 0 auto;
       height: 64px;
       padding: 0 28px;
@@ -131,6 +168,12 @@
       margin: 0 4px;
     }
 
+    .top-bar-right {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .vip-pill {
       display: inline-flex;
       align-items: center;
@@ -165,14 +208,14 @@
     }
 
     /* ==========================================================================
-       2. HERO EDITORIAL STAGE (ABOVE THE FOLD)
+       2. HERO EDITORIAL STAGE + WALKTHROUGH VIDEO
        ========================================================================== */
     .main-stage {
       flex: 1;
       width: 100%;
-      max-width: 1240px;
+      max-width: 1440px;
       margin: 0 auto;
-      padding: 52px 28px 64px;
+      padding: 48px 22px 72px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -193,7 +236,7 @@
       text-transform: uppercase;
       padding: 6px 14px;
       border-radius: 999px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       box-shadow: 0 2px 8px rgba(0, 56, 168, 0.06);
     }
 
@@ -206,13 +249,13 @@
     }
 
     .hero-headline {
-      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      font-size: clamp(2.6rem, 5.4vw, 4.7rem);
       font-weight: 800;
       letter-spacing: -0.035em;
-      line-height: 1.03;
+      line-height: 1.04;
       color: var(--ink-primary);
-      max-width: 1040px;
-      margin-bottom: 22px;
+      max-width: 1020px;
+      margin-bottom: 18px;
       text-wrap: balance;
     }
 
@@ -221,13 +264,13 @@
     }
 
     .hero-subhead {
-      font-size: clamp(1.03rem, 1.45vw, 1.2rem);
+      font-size: clamp(1.02rem, 1.38vw, 1.16rem);
       font-weight: 450;
       line-height: 1.56;
       letter-spacing: -0.01em;
       color: var(--ink-secondary);
       max-width: 740px;
-      margin-bottom: 40px;
+      margin-bottom: 34px;
       text-wrap: pretty;
     }
 
@@ -242,7 +285,7 @@
     .cinema-bezel {
       position: relative;
       width: 100%;
-      max-width: 1180px;
+      max-width: 1140px;
       aspect-ratio: 16 / 9;
       border-radius: 18px;
       overflow: hidden;
@@ -252,7 +295,7 @@
         0 34px 90px -18px rgba(8, 16, 36, 0.34),
         0 12px 28px -8px rgba(8, 16, 36, 0.16),
         0 0 0 1px rgba(255, 255, 255, 0.65) inset;
-      margin-bottom: 34px;
+      margin-bottom: 30px;
     }
 
     #pitchVideo {
@@ -263,7 +306,6 @@
       background: #071024;
     }
 
-    /* Custom Play / Walkthrough Ready Overlay */
     .video-overlay {
       position: absolute;
       inset: 0;
@@ -273,7 +315,7 @@
       align-items: center;
       justify-content: center;
       padding: 24px;
-      background: radial-gradient(circle at 50% 50%, rgba(7, 16, 36, 0.32) 0%, rgba(7, 16, 36, 0.56) 100%);
+      background: radial-gradient(circle at 50% 50%, rgba(7, 16, 36, 0.24) 0%, rgba(7, 16, 36, 0.54) 100%);
       transition: opacity 0.35s var(--ease-out-expo), visibility 0.35s;
     }
 
@@ -283,16 +325,15 @@
       pointer-events: none;
     }
 
-    /* Mode A: When pitch.mp4 IS present — tactile Apple Cinema Play Pill */
     .play-trigger-btn {
       display: inline-flex;
       align-items: center;
       gap: 14px;
-      background: rgba(10, 14, 26, 0.82);
+      background: rgba(10, 14, 26, 0.84);
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
       color: #FFFFFF;
-      border: 1px solid rgba(255, 255, 255, 0.24);
+      border: 1px solid rgba(255, 255, 255, 0.26);
       border-radius: 999px;
       padding: 14px 28px 14px 18px;
       font-family: var(--font-sans);
@@ -322,182 +363,302 @@
       flex-shrink: 0;
     }
 
-    /* Mode B: When pitch.mp4 has NOT been dropped in yet — Broadcast Ready Slate */
-    .slot-ready-card {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      background: rgba(10, 14, 26, 0.86);
-      backdrop-filter: saturate(180%) blur(22px);
-      -webkit-backdrop-filter: saturate(180%) blur(22px);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      border-radius: 16px;
-      padding: 18px 28px;
-      color: #FFFFFF;
-      max-width: 560px;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
-    }
-
-    .video-overlay.is-slot-mode .play-trigger-btn {
-      display: none;
-    }
-
-    .video-overlay.is-slot-mode .slot-ready-card {
-      display: flex;
-    }
-
-    .slot-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
+    .play-dur-tag {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #93C5FD;
-    }
-
-    .slot-kicker-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #38BDF8;
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
-    }
-
-    .slot-title {
-      font-size: 15.5px;
-      font-weight: 600;
-      letter-spacing: -0.015em;
-      color: #FFFFFF;
-    }
-
-    .slot-title code {
-      font-family: var(--font-mono);
-      font-size: 13.5px;
-      background: rgba(255, 255, 255, 0.12);
-      padding: 2px 6px;
-      border-radius: 5px;
-      color: #E0F2FE;
-    }
-
-    .slot-sub {
-      font-size: 12.5px;
-      color: rgba(255, 255, 255, 0.68);
+      color: rgba(255, 255, 255, 0.72);
+      margin-left: 2px;
     }
 
     /* ==========================================================================
-       4. 2-BUTTON ACTION DOCK + TRUST CAPTION
+       4. ACTION DOCK + GREYED-OUT MAC PACKAGE BOX (UNLOCKED UPON PURCHASE)
        ========================================================================== */
     .action-dock {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
-      max-width: 880px;
+      max-width: 940px;
+      margin-bottom: 64px;
     }
 
     .action-buttons {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
+      align-items: stretch;
       justify-content: center;
       gap: 14px;
       width: 100%;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
-    .btn-primary-pkg {
+    .btn-primary-live {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 11px;
+      gap: 10px;
       background: var(--sdpn-blue);
       color: #FFFFFF;
       text-decoration: none;
-      font-size: 16px;
+      font-size: 15.5px;
       font-weight: 650;
       letter-spacing: -0.015em;
       padding: 16px 30px;
-      border-radius: 999px;
+      border-radius: 14px;
       border: 1px solid rgba(255, 255, 255, 0.14);
       box-shadow:
-        0 14px 32px -8px rgba(0, 56, 168, 0.45),
+        0 14px 32px -8px rgba(0, 56, 168, 0.42),
         0 2px 6px rgba(0, 56, 168, 0.2);
       transition: transform 0.18s var(--ease-out-expo), background 0.18s ease, box-shadow 0.18s ease;
     }
 
-    .btn-primary-pkg:hover {
+    .btn-primary-live:hover {
       background: var(--sdpn-blue-hover);
       transform: translateY(-1.5px);
       box-shadow:
-        0 18px 38px -8px rgba(0, 56, 168, 0.55),
+        0 18px 38px -8px rgba(0, 56, 168, 0.52),
         0 4px 10px rgba(0, 56, 168, 0.24);
     }
 
-    .btn-primary-pkg:active {
-      transform: translateY(0);
-    }
-
-    .btn-secondary-sandbox {
+    /* Greyed-out Mac Package Box */
+    .mac-pkg-locked-box {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      background: var(--surface-elevated);
-      color: var(--ink-primary);
-      text-decoration: none;
-      font-size: 16px;
+      gap: 10px;
+      background: #E5E7EB;
+      color: #6B7280;
+      font-size: 15px;
       font-weight: 600;
-      letter-spacing: -0.015em;
-      padding: 16px 28px;
+      letter-spacing: -0.012em;
+      padding: 15px 24px;
+      border-radius: 14px;
+      border: 1px dashed rgba(107, 114, 128, 0.42);
+      cursor: not-allowed;
+      user-select: none;
+      opacity: 0.78;
+    }
+
+    .locked-pill-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 8px;
       border-radius: 999px;
-      border: 1px solid var(--border-strong);
-      box-shadow: 0 4px 14px rgba(10, 10, 12, 0.05);
-      transition: transform 0.18s var(--ease-out-expo), border-color 0.18s ease, background 0.18s ease;
+      background: rgba(107, 114, 128, 0.16);
+      color: #4B5563;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
-    .btn-secondary-sandbox:hover {
-      background: #FFFFFF;
-      border-color: var(--ink-primary);
-      transform: translateY(-1.5px);
-    }
-
-    .trust-caption {
+    .pkg-purchase-note {
+      display: inline-block;
       font-size: 12.5px;
       line-height: 1.55;
       color: var(--ink-muted);
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid var(--border-hairline);
+      padding: 8px 16px;
+      border-radius: 999px;
       max-width: 780px;
       text-align: center;
     }
 
-    .trust-caption a {
+    .pkg-purchase-note strong {
       color: var(--ink-secondary);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      font-weight: 500;
+      font-weight: 600;
+      margin-right: 4px;
     }
 
-    .trust-caption a:hover {
-      color: var(--sdpn-blue);
+    .pkg-purchase-note code {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--ink-secondary);
+      background: rgba(10, 10, 12, 0.05);
+      padding: 1px 5px;
+      border-radius: 4px;
     }
 
     /* ==========================================================================
-       5. MINIMAL 3-STAT FOOTER STRIP
+       5. IN-SITE INTERACTIVE WEB VIEWER (#web-viewer)
+       ========================================================================== */
+    .viewer-section {
+      width: 100%;
+      max-width: 1396px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      scroll-margin-top: 84px;
+    }
+
+    .viewer-section-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 22px;
+      max-width: 780px;
+    }
+
+    .viewer-live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #047857;
+      background: #ECFDF5;
+      border: 1px solid #A7F3D0;
+      padding: 5px 13px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .viewer-live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    }
+
+    .viewer-heading {
+      font-size: clamp(1.75rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--ink-primary);
+      margin-bottom: 8px;
+    }
+
+    .viewer-sub {
+      font-size: 15px;
+      line-height: 1.55;
+      color: var(--ink-secondary);
+    }
+
+    .studio-window-frame {
+      width: 100%;
+      background: #FFFFFF;
+      border-radius: 18px;
+      border: 1px solid rgba(10, 10, 12, 0.14);
+      box-shadow:
+        0 32px 84px -18px rgba(8, 16, 36, 0.24),
+        0 10px 24px -8px rgba(8, 16, 36, 0.1);
+      overflow: hidden;
+    }
+
+    .studio-window-bar {
+      height: 46px;
+      padding: 0 18px;
+      background: #F8FAFC;
+      border-bottom: 1px solid var(--border-hairline);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .window-dots {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .w-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+    .w-dot.red { background: #FF5F57; border: 1px solid rgba(0,0,0,0.08); }
+    .w-dot.yellow { background: #FEBC2E; border: 1px solid rgba(0,0,0,0.08); }
+    .w-dot.green { background: #28C840; border: 1px solid rgba(0,0,0,0.08); }
+
+    .window-url-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-hairline);
+      border-radius: 8px;
+      padding: 4px 14px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--ink-secondary);
+    }
+
+    .window-bar-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .window-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFFFFF;
+      color: var(--ink-primary);
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      padding: 5px 11px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .window-action-btn:hover {
+      background: #F1F5F9;
+      border-color: var(--ink-primary);
+    }
+
+    .studio-iframe-wrap {
+      width: 100%;
+      height: 830px;
+      background: #F5F5F7;
+      position: relative;
+    }
+
+    .studio-iframe-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .mobile-viewer-notice {
+      display: none;
+      padding: 28px 22px;
+      text-align: center;
+      background: #FFFFFF;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* ==========================================================================
+       6. MINIMAL FOOTER + DIRECT CONTACT HANDOFF
        ========================================================================== */
     .footer-strip {
       width: 100%;
       border-top: 1px solid var(--border-hairline);
-      background: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.78);
       margin-top: auto;
     }
 
     .footer-inner {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 28px 28px 34px;
+      padding: 30px 28px 36px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -534,9 +695,28 @@
       font-weight: 600;
     }
 
+    .credibility-line a {
+      color: var(--sdpn-blue);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .credibility-line a:hover {
+      text-decoration: underline;
+    }
+
     /* ==========================================================================
-       6. MOBILE RESPONSIVE REFINEMENTS (390px iPhone Viewport)
+       7. MOBILE RESPONSIVE REFINEMENTS
        ========================================================================== */
+    @media (max-width: 960px) {
+      .studio-iframe-wrap {
+        height: 680px;
+      }
+      .window-url-pill {
+        display: none;
+      }
+    }
+
     @media (max-width: 720px) {
       .top-bar-inner {
         height: 54px;
@@ -547,11 +727,6 @@
       .muk-mark {
         width: 22px;
         height: 22px;
-      }
-
-      .brand-left {
-        gap: 8px;
-        min-width: 0;
       }
 
       .brand-label {
@@ -565,65 +740,24 @@
 
       .vip-pill {
         font-size: 9.5px;
-        letter-spacing: 0.04em;
         padding: 4px 8px 4px 9px;
-        gap: 5px;
-        flex-shrink: 0;
       }
 
       .vip-pill .vip-prefix {
         display: none;
       }
 
-      .sdpn-mini-badge {
-        font-size: 10.5px;
-        padding: 1.5px 6px;
-      }
-
       .main-stage {
-        padding: 32px 18px 44px;
-      }
-
-      .eyebrow-pill {
-        font-size: 10px;
-        letter-spacing: 0.06em;
-        padding: 5px 11px;
-        margin-bottom: 16px;
+        padding: 30px 16px 48px;
       }
 
       .hero-headline {
-        font-size: clamp(2.15rem, 9.2vw, 2.8rem);
-        line-height: 1.06;
-        margin-bottom: 16px;
-      }
-
-      .hero-subhead {
-        font-size: 0.97rem;
-        line-height: 1.52;
-        margin-bottom: 26px;
+        font-size: clamp(2.1rem, 9vw, 2.75rem);
       }
 
       .cinema-bezel {
         border-radius: 13px;
-        margin-bottom: 24px;
-      }
-
-      .slot-ready-card {
-        padding: 12px 16px;
-        border-radius: 12px;
-        max-width: 92%;
-      }
-
-      .slot-title {
-        font-size: 13px;
-      }
-
-      .slot-title code {
-        font-size: 11.5px;
-      }
-
-      .slot-sub {
-        display: none;
+        margin-bottom: 22px;
       }
 
       .action-buttons {
@@ -632,11 +766,25 @@
         gap: 10px;
       }
 
-      .btn-primary-pkg,
-      .btn-secondary-sandbox {
+      .btn-primary-live,
+      .mac-pkg-locked-box {
         width: 100%;
-        font-size: 15px;
-        padding: 15px 20px;
+        font-size: 14.5px;
+        padding: 15px 18px;
+      }
+
+      .pkg-purchase-note {
+        border-radius: 12px;
+        padding: 10px 14px;
+        font-size: 12px;
+      }
+
+      .studio-iframe-wrap {
+        display: none;
+      }
+
+      .mobile-viewer-notice {
+        display: flex;
       }
 
       .stat-row {
@@ -647,10 +795,6 @@
 
       .stat-sep {
         display: none;
-      }
-
-      .footer-inner {
-        padding: 24px 18px 30px;
       }
     }
   </style>
@@ -666,14 +810,16 @@
           <span class="brand-label">MUK POST SOFTWARE SOLUTIONS<span class="city-suffix"><span class="slash">//</span>TORONTO</span></span>
         </a>
 
-        <div class="vip-pill">
-          <span><span class="vip-prefix">PRIVATE </span>PITCH FOR</span>
-          <span class="sdpn-mini-badge">sdpn</span>
+        <div class="top-bar-right">
+          <div class="vip-pill">
+            <span><span class="vip-prefix">PRIVATE </span>PITCH FOR</span>
+            <span class="sdpn-mini-badge">sdpn</span>
+          </div>
         </div>
       </div>
     </header>
 
-    <!-- 2. HERO + CINEMA STAGE + ACTION DOCK -->
+    <!-- 2. HERO + CINEMA STAGE + ACTION DOCK + IN-SITE WEB STUDIO -->
     <main class="main-stage">
 
       <div class="eyebrow-pill">
@@ -686,7 +832,7 @@
       </h1>
 
       <p class="hero-subhead">
-        A custom Mac broadcast graphics studio engineered in Toronto by <strong>Jackson McMurdo (Muk Post)</strong> &mdash; drag 4K &amp; 1080p transparent player cards, live NHL standings, trade alerts, and Dang-It stamps straight into Premiere or Resolve in 3 seconds.
+        A custom broadcast motion-graphics engine engineered in Toronto by <strong>Jackson McMurdo (Muk Post)</strong> &mdash; build 4K &amp; 1080p player chyrons, live NHL standings, trade alerts, and Panic Meter scorebugs in seconds.
       </p>
 
       <!-- 3. 16:9 CENTERPIECE WALKTHROUGH PLAYER -->
@@ -703,59 +849,102 @@
               </svg>
             </span>
             <span>Watch Studio Walkthrough</span>
+            <span class="play-dur-tag">3:11</span>
           </button>
+        </div>
+      </section>
 
-          <div class="slot-ready-card" id="slotReadyCard">
-            <div class="slot-kicker">
-              <span class="slot-kicker-dot"></span>
-              <span>STUDIO PREVIEW FRAME</span>
+      <!-- 4. ACTION DOCK + GREYED-OUT MAC PACKAGE BOX -->
+      <div class="action-dock">
+        <div class="action-buttons">
+          <a href="#web-viewer" class="btn-primary-live">
+            <span>Test Live in Web Viewer Below &darr;</span>
+          </a>
+
+          <div class="mac-pkg-locked-box" aria-disabled="true" title="Use the live Web Viewer below until purchase">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>Download sdpn Studio for Mac (.pkg)</span>
+            <span class="locked-pill-tag">Locked</span>
+          </div>
+        </div>
+
+        <p class="pkg-purchase-note">
+          <strong>Note:</strong> Please use the interactive Web Viewer below to test all 8 templates &mdash; the native macOS ProRes 4444 installer (<code>.pkg</code>) unlocks upon purchase.
+        </p>
+      </div>
+
+      <!-- 5. IN-SITE INTERACTIVE SDPN LFR20 STUDIO PLAYER -->
+      <section class="viewer-section" id="web-viewer" aria-label="Interactive sdpn LFR20 Web Viewer">
+        <div class="viewer-section-header">
+          <div class="viewer-live-pill">
+            <span class="viewer-live-dot"></span>
+            <span>INTERACTIVE WEB VIEWER &bull; TEST IT LIVE</span>
+          </div>
+          <h2 class="viewer-heading">Try sdpn LFR20 Studio in Your Browser</h2>
+          <p class="viewer-sub">
+            Click any of the 8 broadcast packages, swap any of the 32 NHL clubs or 277 player cutouts, scrub the Panic Meter, and test-export PNGs or WebM clips right here.
+          </p>
+        </div>
+
+        <div class="studio-window-frame">
+          <div class="studio-window-bar">
+            <div class="window-dots" aria-hidden="true">
+              <span class="w-dot red"></span>
+              <span class="w-dot yellow"></span>
+              <span class="w-dot green"></span>
             </div>
-            <div class="slot-title">
-              Walkthrough Video Ready Slot &mdash; Drop <code>pitch.mp4</code> into <code>/sdpn/</code>
+
+            <div class="window-url-pill">
+              <span>sdpn // LFR20 Studio &mdash; Interactive Browser Build (Web Preview)</span>
             </div>
-            <div class="slot-sub">
-              Automatically switches to instant 1080p/4K playback the moment <code>pitch.mp4</code> is placed.
+
+            <div class="window-bar-actions">
+              <button type="button" class="window-action-btn" id="btnReloadStudio" title="Reset Interactive Studio">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
+                <span>Reset</span>
+              </button>
+              <a href="studio/index.html" target="_blank" rel="noopener" class="window-action-btn">
+                <span>Full-Screen Tab &nearr;</span>
+              </a>
             </div>
+          </div>
+
+          <div class="studio-iframe-wrap">
+            <iframe id="studioIframe" src="studio/index.html" title="sdpn LFR20 Studio Interactive Web Viewer" loading="lazy" allow="clipboard-write"></iframe>
+          </div>
+
+          <div class="mobile-viewer-notice">
+            <p style="font-size:14px; color:#4B5563; line-height:1.5;">
+              <strong>sdpn LFR20 Studio</strong> is a 16:9 desktop broadcast suite best experienced on Mac/PC &mdash; tap below to open the interactive Web Viewer in a full tab.
+            </p>
+            <a href="studio/index.html" target="_blank" rel="noopener" class="btn-primary-live" style="width:auto; padding:13px 24px; font-size:14px;">
+              <span>Open Full-Screen Web Viewer &nearr;</span>
+            </a>
           </div>
         </div>
       </section>
 
-      <!-- 4. 2-BUTTON ACTION DOCK -->
-      <div class="action-dock">
-        <div class="action-buttons">
-          <a href="downloads/sdpn-LFR20-Studio-Installer.pkg" download="sdpn-LFR20-Studio-Installer.pkg" class="btn-primary-pkg">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            <span>Download sdpn Studio for Mac (.pkg)</span>
-          </a>
-
-          <a href="studio/index.html" class="btn-secondary-sandbox">
-            <span>Launch Live Browser Sandbox &rarr;</span>
-          </a>
-        </div>
-
-        <p class="trust-caption">
-          macOS Apple Silicon &bull; v4.1 Private Preview (.pkg) &bull; 100% Local Execution, Zero Telemetry &bull; Built by Muk Post Software Solutions (<a href="mailto:contact@mukpost.com">contact@mukpost.com</a>)
-        </p>
-      </div>
-
     </main>
 
-    <!-- 5. MINIMAL 3-STAT FOOTER STRIP -->
+    <!-- 6. MINIMAL 3-STAT FOOTER STRIP -->
     <footer class="footer-strip">
       <div class="footer-inner">
         <div class="stat-row">
           <span>8 Custom LFR &amp; sdpn Templates</span>
           <span class="stat-sep">&bull;</span>
-          <span>All 29 Leafs + 32 NHL Clubs</span>
+          <span>All 32 NHL Clubs &amp; 277 Cutouts</span>
           <span class="stat-sep">&bull;</span>
-          <span>4K60 &amp; 1080p60 Alpha Drag-and-Drop</span>
+          <span>4K60 &amp; 1080p60 Alpha Ready</span>
         </div>
 
         <p class="credibility-line">
+          Ready to unlock the native macOS ProRes 4444 Studio package or add custom LFR20 templates? Reach <strong>Jackson McMurdo</strong> directly at <a href="mailto:contact@mukpost.com?subject=sdpn%20LFR20%20Studio">contact@mukpost.com</a>.
+        </p>
+
+        <p class="credibility-line" style="font-size:12px; color:#6B7280;">
           <em>Previously built custom motion-graphics systems for <strong>Hockey Psychology</strong> &bull; Post-production for <strong>NHL Alumni Association</strong>.</em>
         </p>
       </div>
@@ -768,33 +957,8 @@
       const video = document.getElementById('pitchVideo');
       const overlay = document.getElementById('videoOverlay');
       const playBtn = document.getElementById('btnPlayWalkthrough');
-
-      function activateSlotFallback() {
-        video.removeAttribute('controls');
-        overlay.classList.remove('is-playing');
-        overlay.classList.add('is-slot-mode');
-      }
-
-      function activateLiveVideo() {
-        overlay.classList.remove('is-slot-mode');
-        video.setAttribute('controls', 'controls');
-      }
-
-      // Probe pitch.mp4 cleanly so missing video never shows a broken browser player
-      fetch('pitch.mp4', { method: 'HEAD', cache: 'no-store' })
-        .then(function (res) {
-          const ct = (res.headers.get('content-type') || '').toLowerCase();
-          if (res.ok && !ct.includes('text/html')) {
-            activateLiveVideo();
-          } else {
-            activateSlotFallback();
-          }
-        })
-        .catch(function () {
-          activateSlotFallback();
-        });
-
-      video.addEventListener('error', activateSlotFallback, true);
+      const reloadBtn = document.getElementById('btnReloadStudio');
+      const iframe = document.getElementById('studioIframe');
 
       playBtn.addEventListener('click', function () {
         overlay.classList.add('is-playing');
@@ -810,6 +974,12 @@
       video.addEventListener('play', function () {
         overlay.classList.add('is-playing');
       });
+
+      if (reloadBtn && iframe) {
+        reloadBtn.addEventListener('click', function () {
+          iframe.src = 'studio/index.html';
+        });
+      }
     })();
   </script>
 </body>
