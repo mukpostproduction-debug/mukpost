@@ -856,8 +856,8 @@
 
       <!-- 3. 16:9 CENTERPIECE WALKTHROUGH PLAYER -->
       <section class="cinema-bezel" aria-label="sdpn LFR20 Studio Walkthrough Video">
-        <video id="pitchVideo" playsinline preload="metadata" poster="poster.jpg">
-          <source src="pitch.mp4" type="video/mp4">
+        <video id="pitchVideo" playsinline preload="auto" poster="poster.jpg?v=2">
+          <source src="pitch.mp4?v=2" type="video/mp4">
         </video>
 
         <div class="video-overlay" id="videoOverlay">
@@ -932,7 +932,7 @@
           </div>
 
           <div class="studio-iframe-wrap">
-            <iframe id="studioIframe" src="studio/index.html" title="sdpn LFR20 Studio Interactive Web Viewer" loading="lazy" allow="clipboard-write"></iframe>
+            <iframe id="studioIframe" data-src="studio/index.html" title="sdpn LFR20 Studio Interactive Web Viewer" allow="clipboard-write"></iframe>
           </div>
 
           <div class="mobile-viewer-notice">
@@ -978,10 +978,37 @@
       const playBtn = document.getElementById('btnPlayWalkthrough');
       const reloadBtn = document.getElementById('btnReloadStudio');
       const iframe = document.getElementById('studioIframe');
+      const viewerSection = document.getElementById('web-viewer');
+
+      function ensureStudioLoaded() {
+        if (iframe && !iframe.getAttribute('src')) {
+          const target = iframe.getAttribute('data-src');
+          if (target) iframe.setAttribute('src', target);
+        }
+      }
+
+      if ('IntersectionObserver' in window && viewerSection && iframe) {
+        const io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              ensureStudioLoaded();
+              io.disconnect();
+            }
+          });
+        }, { rootMargin: '180px 0px' });
+        io.observe(viewerSection);
+      } else {
+        window.addEventListener('load', function () {
+          setTimeout(ensureStudioLoaded, 2500);
+        });
+      }
 
       playBtn.addEventListener('click', function () {
         overlay.classList.add('is-playing');
         video.setAttribute('controls', 'controls');
+        if (iframe && iframe.contentWindow) {
+          iframe.contentWindow.postMessage({ action: 'pauseForWalkthrough' }, '*');
+        }
         const p = video.play();
         if (p && typeof p.catch === 'function') {
           p.catch(function () {
@@ -992,11 +1019,22 @@
 
       video.addEventListener('play', function () {
         overlay.classList.add('is-playing');
+        if (iframe && iframe.contentWindow) {
+          iframe.contentWindow.postMessage({ action: 'pauseForWalkthrough' }, '*');
+        }
+      });
+
+      ['pause', 'ended'].forEach(function (evName) {
+        video.addEventListener(evName, function () {
+          if (iframe && iframe.contentWindow) {
+            iframe.contentWindow.postMessage({ action: 'resumeAfterWalkthrough' }, '*');
+          }
+        });
       });
 
       if (reloadBtn && iframe) {
         reloadBtn.addEventListener('click', function () {
-          iframe.src = 'studio/index.html';
+          iframe.setAttribute('src', 'studio/index.html');
         });
       }
     })();

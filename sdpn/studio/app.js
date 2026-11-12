@@ -918,12 +918,14 @@ function initCanvas() {
   requestAnimationFrame(renderLoop);
 }
 
+let parentWalkthroughPlaying = false;
+
 function renderLoop(timestamp) {
   if (!lastTimestamp) lastTimestamp = timestamp;
   const delta = Math.min(0.05, (timestamp - lastTimestamp) / 1000);
   lastTimestamp = timestamp;
 
-  if (State.view === 'editor') {
+  if (State.view === 'editor' && !document.hidden && !parentWalkthroughPlaying) {
     if (State.isPlaying && !State.isExporting) {
       State.currentTime += delta;
       if (State.currentTime > State.duration) {
@@ -937,11 +939,24 @@ function renderLoop(timestamp) {
       }
       updateScrubber();
     }
-
     drawFrame(State.currentTime, true);
   }
   requestAnimationFrame(renderLoop);
 }
+
+window.addEventListener('message', function (ev) {
+  if (!ev || !ev.data) return;
+  if (ev.data.action === 'pauseForWalkthrough') {
+    parentWalkthroughPlaying = true;
+    State.isPlaying = false;
+    if (typeof updatePlayBtn === 'function') updatePlayBtn();
+    const vid = document.getElementById('lfrRoomVideo');
+    if (vid) vid.pause();
+  } else if (ev.data.action === 'resumeAfterWalkthrough') {
+    parentWalkthroughPlaying = false;
+    if (typeof window.__syncLfrVideoPlayback === 'function') window.__syncLfrVideoPlayback();
+  }
+});
 
 function updateScrubber() {
   const slider = document.getElementById('timelineSlider');
