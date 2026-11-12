@@ -215,7 +215,7 @@
       width: 100%;
       max-width: 1440px;
       margin: 0 auto;
-      padding: 48px 22px 72px;
+      padding: 34px 22px 72px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -270,7 +270,7 @@
       letter-spacing: -0.01em;
       color: var(--ink-secondary);
       max-width: 740px;
-      margin-bottom: 34px;
+      margin-bottom: 24px;
       text-wrap: pretty;
     }
 
@@ -313,9 +313,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: radial-gradient(circle at 50% 50%, rgba(7, 16, 36, 0.24) 0%, rgba(7, 16, 36, 0.54) 100%);
+      justify-content: flex-end;
+      padding: 24px 24px 38px;
+      background: linear-gradient(180deg, rgba(4, 10, 28, 0.02) 0%, rgba(4, 10, 28, 0.08) 62%, rgba(4, 10, 28, 0.38) 100%);
       transition: opacity 0.35s var(--ease-out-expo), visibility 0.35s;
     }
 
@@ -758,6 +758,25 @@
       .cinema-bezel {
         border-radius: 13px;
         margin-bottom: 22px;
+      }
+
+      .video-overlay {
+        padding: 10px 12px 12px;
+      }
+
+      .play-trigger-btn {
+        padding: 7px 14px 7px 9px;
+        font-size: 12px;
+        gap: 8px;
+      }
+
+      .play-circle {
+        width: 26px;
+        height: 26px;
+      }
+
+      .play-dur-tag {
+        font-size: 10.5px;
       }
 
       .action-buttons {
