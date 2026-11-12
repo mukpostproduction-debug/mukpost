@@ -1205,22 +1205,233 @@
     color: rgba(201, 211, 220, 0.45);
   }
 
+  .show-xs { display: none; }
+  .mobile-nav-strip { display: none; }
+
+  /* Rich poster backdrops on video containers so iOS never shows a black box */
+  .scaling-video-stage,
+  .pure-video-frame {
+    background-size: cover;
+    background-position: center;
+  }
+
   @media (max-width: 991px) {
-    .padding-global { padding-left: 1.25rem; padding-right: 1.25rem; }
-    .site-header { padding: 1rem 1.25rem; }
+    .padding-global { padding-left: 1rem; padding-right: 1rem; }
+    .site-header {
+      padding: 0.7rem 0.95rem 0.55rem;
+      background-color: rgba(9, 12, 16, 0.92);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(201, 211, 220, 0.1);
+    }
     .site-nav { display: none; }
-    .seamless-cinema-grid,
-    .pillars-grid,
-    .contact-wrapper,
-    .toronto-cta-card {
+    .site-brand { gap: 0.5rem; }
+    .site-brand__crest { width: 34px; height: 34px; }
+    .site-brand__wordmark { height: 22px; }
+    .replay-btn { padding: 0.38rem 0.65rem; font-size: 0.62rem; }
+    .yt-pill { padding: 0.38rem 0.75rem; font-size: 0.72rem; }
+
+    /* Mobile Quick-Jump Pill Bar */
+    .mobile-nav-strip {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      overflow-x: auto;
+      padding-top: 0.55rem;
+      margin-top: 0.5rem;
+      border-top: 1px solid rgba(201, 211, 220, 0.08);
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .mobile-nav-strip::-webkit-scrollbar { display: none; }
+    .mobile-nav-pill {
+      flex-shrink: 0;
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(242, 239, 233, 0.78);
+      background: rgba(37, 48, 58, 0.38);
+      border: 1px solid rgba(201, 211, 220, 0.12);
+      padding: 0.34rem 0.72rem;
+      border-radius: 999px;
+      text-decoration: none;
+    }
+    .mobile-nav-pill--gold {
+      color: var(--obsidian-deep);
+      background: var(--brass);
+      border-color: var(--brass);
+      font-weight: 700;
+    }
+
+    /* Mobile Hero & Above-the-Fold Video */
+    .section-hero {
+      padding-top: 7.4rem;
+      padding-bottom: 1.75rem;
+    }
+    .hero-eyebrow {
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      padding: 0.34rem 0.75rem;
+      margin-bottom: 1rem;
+      max-width: 100%;
+      text-align: center;
+    }
+    .heading-style-h1 {
+      font-size: clamp(2.25rem, 9.6vw, 3.35rem);
+      line-height: 0.96;
+      margin-bottom: 0.85rem;
+    }
+    .hero-subtitle {
+      font-size: 0.96rem;
+      line-height: 1.45;
+      margin-bottom: 1.15rem;
+      padding: 0 0.25rem;
+    }
+    .hero-scroll-more {
+      margin-bottom: 1rem;
+      font-size: 0.64rem;
+    }
+    .scaling-video-section {
+      padding-bottom: 1rem;
+    }
+    .scaling-video-stage {
+      border-radius: 0.95rem !important;
+      transform: none !important;
+    }
+    .unmute-pill-btn {
+      bottom: 0.65rem;
+      right: 0.65rem;
+      padding: 0.42rem 0.78rem;
+      font-size: 0.62rem;
+    }
+
+    /* Horizontal swipeable episode pills on mobile */
+    .cinema-reel-pills {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x: auto;
+      width: 100%;
+      padding-bottom: 0.35rem;
+      margin-top: 0.85rem;
+      scrollbar-width: none;
+    }
+    .cinema-reel-pills::-webkit-scrollbar { display: none; }
+    .cinema-pill {
+      flex-shrink: 0;
+      font-size: 0.65rem;
+      padding: 0.45rem 0.85rem;
+    }
+
+    /* Mobile Section Spacing & Typography */
+    .section-worked { padding: 2.75rem 0 2.25rem; }
+    .marquee-item { width: 165px; height: 74px; padding: 0.65rem; }
+    .marquee-logo-text { font-size: 1.2rem; }
+    .marquee-logo-sub { font-size: 0.54rem; }
+
+    .section-about { padding: 3.25rem 0 2rem; }
+    .shadow-heading-h2 { font-size: 0.68rem; letter-spacing: 0.14em; margin-bottom: 1.1rem; }
+    .rich-text-3xl {
+      font-size: clamp(1.22rem, 5.2vw, 1.65rem);
+      line-height: 1.34;
+      margin-bottom: 1.4rem;
+    }
+
+    .section-seamless-cinema { padding: 1.5rem 0 3.5rem; }
+    .seamless-cinema-grid {
       grid-template-columns: 1fr;
+      gap: 1.1rem;
+      margin-top: 1rem;
+    }
+    .pure-video-frame { border-radius: 0.95rem; }
+
+    /* Sponsors Section on Mobile */
+    .section-sponsors { padding: 3.5rem 0; }
+    .sponsors-hero-wrapper { margin-bottom: 2.25rem; }
+    .sponsors-rink-stage {
+      border-radius: 0.95rem;
+      margin-bottom: 1.4rem;
+    }
+    .text-size-6xl {
+      font-size: clamp(2.2rem, 9.2vw, 3.4rem);
+      line-height: 0.96;
     }
     .sponsors-metrics-strip {
       grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1.75rem;
     }
+    .sponsor-metric-pill {
+      padding: 1rem 0.75rem;
+      border-radius: 0.85rem;
+    }
+    .sponsor-metric-val { font-size: 2rem; }
+    .sponsor-metric-lbl { font-size: 0.58rem; }
+
+    .contact-wrapper {
+      grid-template-columns: 1fr;
+      padding: 1.5rem;
+      gap: 1.75rem;
+      margin-top: 2.5rem;
+      border-radius: 1.15rem;
+    }
+    .contact-user__img { width: 58px; height: 58px; }
+    .contact-user__title { font-size: 1.75rem; }
+    .contact-user__desc { font-size: 0.9rem; }
+    .partner-form__row { grid-template-columns: 1fr; gap: 0.9rem; }
+    .partner-form__submit { width: 100%; text-align: center; justify-content: center; }
+
+    /* Pitch & Toronto Coffee Card on Mobile */
+    .section-pitch { padding: 3.5rem 0 4rem; }
+    .pillars-grid {
+      grid-template-columns: 1fr;
+      gap: 0.95rem;
+      margin-top: 1.75rem;
+    }
+    .pillar-card {
+      padding: 1.35rem;
+      border-radius: 1rem;
+    }
+    .pillar-title { font-size: 1.55rem; margin-bottom: 0.5rem; }
+    .pillar-desc { font-size: 0.9rem; }
+
+    .toronto-cta-card {
+      grid-template-columns: 1fr;
+      padding: 1.6rem 1.35rem;
+      gap: 1.75rem;
+      margin-top: 2.25rem;
+      border-radius: 1.25rem;
+    }
+    .toronto-cta-title { font-size: 2rem; }
+    .toronto-cta-desc { font-size: 0.92rem; margin-bottom: 1.35rem; }
+    .toronto-btn-row { flex-direction: column; width: 100%; }
+    .btn-primary-brass, .btn-secondary-slate {
+      width: 100%;
+      justify-content: center;
+      padding: 0.9rem 1.2rem;
+      font-size: 0.72rem;
+    }
+    .toronto-checklist-box { padding: 1.25rem; border-radius: 1rem; }
+    .toronto-list { font-size: 0.86rem; gap: 0.65rem; }
+
+    /* Footer on Mobile */
+    .section-footer-v2 { padding: 3rem 0 2.25rem; }
     .footer-v2__list {
       grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 2rem;
     }
+    .footer-v2__link { padding: 0.85rem 0.4rem; }
+    .footer-v2__big { font-size: 1.5rem; }
+    .footer-v2__bottom { font-size: 0.62rem; line-height: 1.5; padding: 0 0.5rem; }
+  }
+
+  @media (max-width: 480px) {
+    .hide-xs { display: none; }
+    .show-xs { display: inline; }
+    .preloader-crest-wrap { width: 88px; height: 88px; margin-bottom: 14px; }
+    .preloader-pill-wrap { width: 230px; margin-top: 20px; }
   }
 </style>
 </head>
@@ -1326,12 +1537,21 @@
     </nav>
 
     <div class="site-header__actions">
-      <button class="replay-btn" id="replayIntroBtn" title="Replay Wordmark Animation">↺ Replay Intro</button>
+      <button class="replay-btn" id="replayIntroBtn" title="Replay Wordmark Animation">↺ <span class="hide-xs">Replay </span>Intro</button>
       <a href="https://www.youtube.com/@hockeypsychology" target="_blank" rel="noopener" class="yt-pill">
-        <span>@hockeypsychology</span>
+        <span class="hide-xs">@hockeypsychology</span>
+        <span class="show-xs">YouTube</span>
         <span>↗</span>
       </a>
     </div>
+  </div>
+  <!-- Mobile Thumb-Friendly Navigation Strip -->
+  <div class="mobile-nav-strip">
+    <a href="#top" class="mobile-nav-pill">Home</a>
+    <a href="#watch" class="mobile-nav-pill">Watch</a>
+    <a href="#sponsors" class="mobile-nav-pill mobile-nav-pill--gold">Sponsors</a>
+    <a href="#editing-suite" class="mobile-nav-pill">Live Suite</a>
+    <a href="#pitch" class="mobile-nav-pill">Toronto Coffee ☕</a>
   </div>
 </header>
 
@@ -1613,7 +1833,7 @@
   <!-- ========================================================================
        SECTION 5: FULL INTERACTIVE LIVE EDITING SUITE (32 NHL TEAMS)
        ======================================================================== -->
-  <section id="editing-suite" class="py-24 relative">
+  <section id="editing-suite" class="py-12 sm:py-24 relative">
     <div class="padding-global">
       <div class="container-large space-y-10">
         <div class="about-wrapper" style="margin-bottom: 1rem;">
@@ -1642,18 +1862,18 @@
             </span>
           </div>
 
-          <div class="flex items-center gap-2 text-xs">
-            <button onclick="toggleSplitCompare()" id="btnCompare" class="px-3.5 py-1.5 rounded-lg font-semibold border transition" style="background:#25303A; border-color:#415364; color:#F2EFE9;">
-              ⇄ Split-Compare Original Screenshot
+          <div class="w-full sm:w-auto grid grid-cols-2 sm:flex items-center gap-2 text-xs">
+            <button onclick="toggleSplitCompare()" id="btnCompare" class="px-2.5 sm:px-3.5 py-2 sm:py-1.5 rounded-lg font-semibold border transition text-center" style="background:#25303A; border-color:#415364; color:#F2EFE9;">
+              ⇄ Compare Original
             </button>
-            <button onclick="replayCardAnimation()" class="px-3.5 py-1.5 rounded-lg font-bold transition hover:brightness-110" style="background:#C89D54; color:#0F1419;">
+            <button onclick="replayCardAnimation()" class="px-2.5 sm:px-3.5 py-2 sm:py-1.5 rounded-lg font-bold transition hover:brightness-110 text-center" style="background:#C89D54; color:#0F1419;">
               ▶ Replay Motion
             </button>
           </div>
         </div>
 
         <!-- MAIN WORKSPACE: LEFT = CONTROLS (4 COLS) | RIGHT = 16:9 STAGE (8 COLS) -->
-        <div class="grid grid-cols-1 lg:grid-cols-12">
+        <div class="flex flex-col-reverse lg:grid lg:grid-cols-12">
 
           <!-- LEFT PANEL (4 COLS): 32-TEAM PICKER + WINNER/LOSER CONTROLS -->
           <div class="lg:col-span-4 p-4 sm:p-5 space-y-4 border-r" style="background:#141B22; border-color:#2E3C49;">
@@ -1778,13 +1998,13 @@
           </div>
 
           <!-- RIGHT PANEL (8 COLS): 16:9 BROADCAST STAGE + DAVINCI RESOLVE TIMELINE BAR -->
-          <div class="lg:col-span-8 p-5 flex flex-col justify-between space-y-4" style="background:#0A0E12;">
+          <div class="lg:col-span-8 p-3 sm:p-5 flex flex-col justify-between space-y-3 sm:space-y-4" style="background:#0A0E12;">
 
             <!-- 16:9 BROADCAST STAGE -->
-            <div class="relative aspect-video w-full rounded-xl overflow-hidden border shadow-2xl" style="border-color:#2E3C49; background:#07090E;">
+            <div id="broadcastStageViewport" class="relative aspect-video w-full rounded-xl overflow-hidden border shadow-2xl" style="border-color:#2E3C49; background:#07090E;">
 
-              <!-- NEW DESIGNED CARD LAYER -->
-              <div id="designedCardRoot" class="absolute inset-0 w-full h-full overflow-hidden"></div>
+              <!-- NEW DESIGNED CARD LAYER (960x540 Virtual Broadcast Canvas Auto-Scaled for Mobile & Desktop) -->
+              <div id="designedCardRoot" class="absolute top-0 left-0 overflow-hidden" style="width:960px; height:540px; transform-origin: top left;"></div>
 
               <!-- ANTHONY'S ORIGINAL SCREENSHOT LAYER (FOR SPLIT COMPARISON) -->
               <div id="origCompareLayer" class="hidden absolute inset-0 w-full h-full overflow-hidden" style="clip-path: inset(0 50% 0 0);">
@@ -2192,6 +2412,14 @@
         sendYouTubeCommand(iframe, 'unMute');
         sendYouTubeCommand(iframe, 'setVolume', [100]);
         sendYouTubeCommand(iframe, 'playVideo');
+        // iOS Safari / Instagram in-app browser fallback: if postMessage was ignored on a paused iframe, reload with mute=0
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+          const ytId = btn.getAttribute('data-yt-id');
+          if (ytId && iframe && !iframe.dataset.iosUnmutedOnce) {
+            iframe.dataset.iosUnmutedOnce = '1';
+            iframe.src = `https://www.youtube.com/embed/${ytId}?autoplay=1&mute=0&loop=1&playlist=${ytId}&controls=1&modestbranding=1&rel=0&playsinline=1&enablejsapi=1`;
+          }
+        }
       } else {
         btn.classList.remove('is-unmuted');
         if (labelSpan) labelSpan.textContent = '🔇 Unmute Player';
@@ -3023,9 +3251,39 @@
     // =====================================================================
     
 
-  // Initialize Live 32-Team Editing Suite & Preloader
+  // Scale 960x540 Virtual Broadcast Stage smoothly to any mobile or desktop viewport width
+  function scaleBroadcastStage() {
+    const vp = document.getElementById('broadcastStageViewport');
+    const root = document.getElementById('designedCardRoot');
+    if (!vp || !root) return;
+    const w = vp.clientWidth || 320;
+    const scale = w / 960;
+    root.style.transform = `scale(${scale.toFixed(4)})`;
+  }
+  window.addEventListener('resize', scaleBroadcastStage);
+  if (window.ResizeObserver) {
+    const vpEl = document.getElementById('broadcastStageViewport');
+    if (vpEl) new ResizeObserver(scaleBroadcastStage).observe(vpEl);
+  }
+
+  // Set high-res thumbnail backdrops on video containers so mobile never flashes a black box while YouTube loads
+  const scalingStageEl = document.getElementById('scalingVideoStage');
+  if (scalingStageEl && ASSETS.thumb_winners_losers) {
+    scalingStageEl.style.backgroundImage = `url(${ASSETS.thumb_winners_losers})`;
+  }
+  const gridThumbKeys = ['thumb_hughes', 'thumb_2027_season', 'thumb_larkin', 'thumb_boston'];
+  document.querySelectorAll('.pure-video-frame').forEach((frame, idx) => {
+    const k = gridThumbKeys[idx];
+    if (k && ASSETS[k]) {
+      frame.style.backgroundImage = `url(${ASSETS[k]})`;
+    }
+  });
+
+  // Initialize Live 32-Team Editing Suite, Stage Scaling & Preloader
   build32Grid();
   renderCard(false);
+  scaleBroadcastStage();
+  setTimeout(scaleBroadcastStage, 250);
   runPreloaderSequence();
 </script>
 </body>
