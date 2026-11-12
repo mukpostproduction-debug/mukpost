@@ -56,8 +56,15 @@
           <option value="prores4444">ProRes 4444 (.mov)</option>
           <option value="webm">VP9 Alpha (.webm)</option>
         </select>
-        <button class="btn-pill-secondary" id="btnExportPNG" type="button">Save PNG</button>
-        <button class="btn-pill-primary" id="btnExportWebM" type="button">Export Video (.webm)</button>
+        <button class="btn-export-locked" id="btnExportPNG" type="button" aria-disabled="true" title="Exports unlock upon purchase">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <span id="btnExportPNGLabel">Save PNG</span>
+        </button>
+        <button class="btn-export-locked" id="btnExportWebM" type="button" aria-disabled="true" title="Exports unlock upon purchase">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <span id="btnExportWebMLabel">Export Alpha Video</span>
+          <span class="export-lock-tag">LOCKED</span>
+        </button>
       </div>
     </div>
   </header>
@@ -220,7 +227,7 @@
           </div>
 
           <!-- TRUE 1920x1080 60FPS ALPHA BROADCAST CANVAS -->
-          <canvas id="broadcastCanvas"></canvas>
+          <canvas id="broadcastCanvas" oncontextmenu="return false;"></canvas>
         </div>
       </div>
 

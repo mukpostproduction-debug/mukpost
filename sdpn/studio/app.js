@@ -3707,20 +3707,19 @@ async function fetchLiveNHLData() {
 
 function updateExportButtonsUI() {
   const is4k = State.exportRes === '4k';
-  const resPrefix = is4k ? '4K ' : '';
-  const pngBtn = document.getElementById('btnExportPNG');
-  const vidBtn = document.getElementById('btnExportWebM');
+  const pngLbl = document.getElementById('btnExportPNGLabel');
+  const vidLbl = document.getElementById('btnExportWebMLabel');
 
-  if (pngBtn) {
-    pngBtn.innerText = is4k ? 'Save 4K PNG' : 'Save PNG';
+  if (pngLbl) {
+    pngLbl.innerText = is4k ? 'Save 4K PNG' : 'Save PNG';
   }
-  if (vidBtn) {
-    if (isNativeMacApp() && State.exportCodec === 'prores4444') {
-      vidBtn.innerText = is4k ? 'Export 4K ProRes (.mov)' : 'Export ProRes (.mov)';
-    } else {
-      vidBtn.innerText = is4k ? 'Export 4K (.webm)' : 'Export Video (.webm)';
-    }
+  if (vidLbl) {
+    vidLbl.innerText = is4k ? 'Export 4K Alpha' : 'Export Alpha Video';
   }
+}
+
+function showPreviewExportLockedNotice() {
+  showBrowserExportToast('Exports are locked in Preview Mode — 4K/1080p ProRes 4444 & PNG Alpha unlock upon purchase.');
 }
 
 function showBrowserExportToast(message) {
@@ -3746,203 +3745,11 @@ function canvasToPngBlob(targetCanvas) {
 }
 
 async function exportTransparentVideo() {
-  if (State.isExporting) return;
-  State.isExporting = true;
-  const wasPlaying = State.isPlaying;
-  State.isPlaying = false;
-  updatePlayBtn();
-
-  const { canvas: expCanvas, ctx: expCtx, dim } = getOffscreenExportSurface();
-  const isNative = isNativeMacApp();
-  const codec = isNative ? State.exportCodec : 'webm';
-  const isProRes = codec === 'prores4444';
-
-  const overlay = document.getElementById('exportOverlay');
-  const heading = document.getElementById('exportModalHeading');
-  const sub = document.getElementById('exportModalSub');
-  const bar = document.getElementById('exportProgressBar');
-  const msg = document.getElementById('exportStatusMsg');
-
-  overlay.classList.add('active');
-  bar.style.width = '0%';
-
-  if (heading) {
-    heading.innerText = isProRes
-      ? `Exporting ${dim.tag} Apple ProRes 4444`
-      : `Exporting ${dim.tag} Transparent WebM`;
-  }
-  if (sub) {
-    sub.innerText = isProRes
-      ? `${dim.width}x${dim.height} 60fps ProRes 4444 (.mov) with Straight Alpha`
-      : `${dim.width}x${dim.height} 60fps VP9 (.webm) with Alpha Channel`;
-  }
-
-  const totalFrames = Math.round(State.duration * State.fps);
-  const dt = 1 / State.fps;
-  const baseName = `sdpn_LFR20_${State.template.toUpperCase()}_${dim.tag}60_${Date.now()}`;
-
-  try {
-    if (isNative) {
-      msg.innerText = `Initializing ${dim.tag}60 Native Encoder...`;
-      postNativeMessage({
-        action: 'exportStarted',
-        codec,
-        resolution: dim.tag,
-        width: dim.width,
-        height: dim.height,
-        totalFrames
-      });
-
-      const beginRes = await fetch('/api/export/begin', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          baseName,
-          codec,
-          width: dim.width,
-          height: dim.height,
-          fps: State.fps,
-          totalFrames
-        })
-      });
-      if (!beginRes.ok) throw new Error('Native encoder begin failed');
-      const { jobId } = await beginRes.json();
-
-      for (let f = 0; f <= totalFrames; f++) {
-        const t = f * dt;
-        State.currentTime = t;
-        drawFrame(t, false, expCtx, dim.scale);
-        drawFrame(t, true, ctx, 1);
-
-        const pngBlob = await canvasToPngBlob(expCanvas);
-        const frameRes = await fetch(`/api/export/frame?jobId=${encodeURIComponent(jobId)}&frame=${f}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'image/png' },
-          body: pngBlob
-        });
-        if (!frameRes.ok) throw new Error(`Frame ${f} write failed`);
-
-        const pct = Math.round((f / totalFrames) * 94);
-        bar.style.width = `${pct}%`;
-        msg.innerText = `Rendering ${dim.tag} Frame ${f} / ${totalFrames} (${pct}%)`;
-      }
-
-      msg.innerText = isProRes ? 'Finalizing Apple ProRes 4444 (.mov) container...' : 'Finalizing VP9 Alpha (.webm) container...';
-      bar.style.width = '98%';
-
-      const finRes = await fetch('/api/export/finish', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ jobId })
-      });
-      if (!finRes.ok) throw new Error('Native encoder finalize failed');
-      const finData = await finRes.json();
-
-      bar.style.width = '100%';
-      postNativeMessage({
-        action: 'exportCompleted',
-        path: finData.path,
-        filename: finData.filename,
-        resolution: dim.tag,
-        codec: finData.codec || codec,
-        sizeLabel: finData.sizeLabel || ''
-      });
-    } else {
-      msg.innerText = `Initializing ${dim.tag}60 VP9 Alpha Stream...`;
-      const stream = expCanvas.captureStream(60);
-      let mimeType = 'video/webm;codecs=vp9';
-      if (!MediaRecorder.isTypeSupported(mimeType)) mimeType = 'video/webm';
-
-      const chunks = [];
-      const recorder = new MediaRecorder(stream, {
-        mimeType,
-        videoBitsPerSecond: dim.is4k ? 32000000 : 14000000
-      });
-
-      const stoppedPromise = new Promise(resolve => {
-        recorder.ondataavailable = e => {
-          if (e.data && e.data.size > 0) chunks.push(e.data);
-        };
-        recorder.onstop = resolve;
-      });
-
-      recorder.start();
-
-      for (let f = 0; f <= totalFrames; f++) {
-        const t = f * dt;
-        State.currentTime = t;
-        drawFrame(t, false, expCtx, dim.scale);
-        drawFrame(t, true, ctx, 1);
-        const pct = Math.round((f / totalFrames) * 100);
-        bar.style.width = `${pct}%`;
-        msg.innerText = `Frame ${f} / ${totalFrames} (${pct}%) — ${dim.width}x${dim.height}`;
-        await new Promise(r => setTimeout(r, 16));
-      }
-
-      recorder.stop();
-      await stoppedPromise;
-
-      const filename = `${baseName}.webm`;
-      const blob = new Blob(chunks, { type: mimeType });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-
-      showBrowserExportToast(`${dim.tag} Alpha Video Downloaded (${filename})`);
-    }
-  } catch (err) {
-    console.error('Export error:', err);
-    alert(`Export error: ${err.message}`);
-  } finally {
-    overlay.classList.remove('active');
-    State.isExporting = false;
-    State.isPlaying = wasPlaying;
-    updatePlayBtn();
-  }
+  showPreviewExportLockedNotice();
 }
 
 const exportTransparentWebM = exportTransparentVideo;
 
 async function exportTransparentPNG() {
-  const { canvas: expCanvas, ctx: expCtx, dim } = getOffscreenExportSurface();
-  drawFrame(State.currentTime, false, expCtx, dim.scale);
-
-  const filename = `sdpn_LFR20_${State.template.toUpperCase()}_${dim.tag}_${State.currentTime.toFixed(2)}s.png`;
-  const blob = await canvasToPngBlob(expCanvas);
-
-  if (isNativeMacApp()) {
-    const res = await fetch(`/api/export/still?filename=${encodeURIComponent(filename)}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'image/png' },
-      body: blob
-    });
-    if (res.ok) {
-      const info = await res.json();
-      postNativeMessage({
-        action: 'exportCompleted',
-        path: info.path,
-        filename: info.filename,
-        resolution: dim.tag,
-        codec: 'png',
-        sizeLabel: info.sizeLabel || ''
-      });
-    }
-  } else {
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    showBrowserExportToast(`${dim.tag} Transparent PNG Saved (${filename})`);
-  }
-
-  drawFrame(State.currentTime, true, ctx, 1);
+  showPreviewExportLockedNotice();
 }

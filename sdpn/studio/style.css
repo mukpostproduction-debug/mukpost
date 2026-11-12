@@ -249,6 +249,36 @@ button, input, select, textarea {
   border-color: #9CA3AF;
 }
 
+.btn-export-locked {
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px dashed rgba(107, 114, 128, 0.45);
+  background: #E5E7EB;
+  color: #6B7280;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: not-allowed;
+  user-select: none;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+.export-lock-tag {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(107, 114, 128, 0.18);
+  color: #4B5563;
+}
+
 .btn-pill-primary {
   height: 34px;
   padding: 0 16px;
