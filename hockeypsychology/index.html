@@ -2286,7 +2286,16 @@
   document.getElementById('preSkipBtn').addEventListener('click', finishPreloader);
   document.getElementById('replayIntroBtn').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.location.hash === "#editing-suite" || window.location.hash === "#sponsors" || window.location.hash === "#pitch") {
+    finishPreloader();
+    setTimeout(() => {
+      const targetEl = document.querySelector(window.location.hash);
+      if (targetEl) targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      scaleBroadcastStage();
+    }, 150);
+  } else {
     runPreloaderSequence();
+  }
   });
 
   // =========================================================================
